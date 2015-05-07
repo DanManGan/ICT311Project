@@ -1,0 +1,77 @@
+﻿Build started 27/04/2015 7:52:05 PM.
+     1>Project "C:\Users\Justin\Uni\ICT311\Project\Assignment - Working File\Assignment\Assignment.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\Assignment.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /MDd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt BruteForce.cpp GameWorld.cpp InputGLFW.cpp MainGame.cpp Terrain.cpp ViewOpenGL.cpp textureHandler\textureGenerator.cpp
+         BruteForce.cpp
+         GameWorld.cpp
+     1>GameWorld.cpp(41): warning C4244: 'argument' : conversion from 'float' to 'unsigned char', possible loss of data
+     1>GameWorld.cpp(41): warning C4244: 'argument' : conversion from 'float' to 'unsigned char', possible loss of data
+     1>GameWorld.cpp(41): warning C4244: 'argument' : conversion from 'float' to 'unsigned char', possible loss of data
+         InputGLFW.cpp
+         MainGame.cpp
+     1>MainGame.cpp(236): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         Terrain.cpp
+     1>Terrain.cpp(60): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'int', possible loss of data
+     1>Terrain.cpp(134): warning C4244: 'return' : conversion from 'int' to 'float', possible loss of data
+     1>Terrain.cpp(145): warning C4244: 'return' : conversion from 'int' to 'float', possible loss of data
+     1>Terrain.cpp(158): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Terrain.cpp(158): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Terrain.cpp(161): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Terrain.cpp(161): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Terrain.cpp(162): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Terrain.cpp(162): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Terrain.cpp(163): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Terrain.cpp(163): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Terrain.cpp(164): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Terrain.cpp(164): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Terrain.cpp(201): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>Terrain.cpp(342): warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+     1>Terrain.cpp(343): warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+     1>Terrain.cpp(344): warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+         ViewOpenGL.cpp
+     1>ViewOpenGL.cpp(102): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>ViewOpenGL.cpp(103): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>ViewOpenGL.cpp(106): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>ViewOpenGL.cpp(107): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>ViewOpenGL.cpp(109): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>ViewOpenGL.cpp(228): warning C4244: 'argument' : conversion from 'float' to 'GLubyte', possible loss of data
+     1>ViewOpenGL.cpp(228): warning C4244: 'argument' : conversion from 'float' to 'GLubyte', possible loss of data
+     1>ViewOpenGL.cpp(228): warning C4244: 'argument' : conversion from 'float' to 'GLubyte', possible loss of data
+     1>ViewOpenGL.cpp(240): warning C4244: 'argument' : conversion from 'float' to 'GLubyte', possible loss of data
+     1>ViewOpenGL.cpp(240): warning C4244: 'argument' : conversion from 'float' to 'GLubyte', possible loss of data
+     1>ViewOpenGL.cpp(240): warning C4244: 'argument' : conversion from 'float' to 'GLubyte', possible loss of data
+         textureGenerator.cpp
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Justin\Uni\ICT311\Project\Assignment - Working File\Release\Assignment.exe" /INCREMENTAL:NO /NOLOGO OpenGL32.lib freeglut.lib SDL2.lib SDL2main.lib glew32.lib SOIL.lib OpenGL32.lib freeglut.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Assignment.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Justin\Uni\ICT311\Project\Assignment - Working File\Release\Assignment.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Justin\Uni\ICT311\Project\Assignment - Working File\Release\Assignment.lib" /MACHINE:X86 Release\BruteForce.obj
+         Release\Camera.obj
+         Release\InputGLFW.obj
+         Release\MainGame.obj
+         Release\main.obj
+         Release\TerrainLighting.obj
+         Release\ViewOpenGL.obj
+         Release\Terrain.obj
+         Release\bmpLoader.obj
+         Release\imageFactory.obj
+         Release\multitexture.obj
+         Release\pcx.obj
+         Release\textureGenerator.obj
+         Release\textureManager.obj
+         Release\tgaLoader.obj
+         Release\Vec3.obj
+         Release\GameWorld.obj
+     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+         Generating code
+         Finished generating code
+         Assignment.vcxproj -> C:\Users\Justin\Uni\ICT311\Project\Assignment - Working File\Release\Assignment.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Justin\Uni\ICT311\Project\Assignment - Working File\Release\Assignment.exe;#1" /manifest Release\Assignment.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\Assignment.unsuccessfulbuild".
+         Touching "Release\Assignment.lastbuildstate".
+     1>Done Building Project "C:\Users\Justin\Uni\ICT311\Project\Assignment - Working File\Assignment\Assignment.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.74
