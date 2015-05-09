@@ -29,7 +29,7 @@
 #ifndef VIEWOPENGL_H
 #define VIEWOPENGL_H
 
-#include "Vec3.h"
+#include "Vector3D.h"
 #include "textureHandler\image.h"
 
 class ViewOpenGL
@@ -244,13 +244,13 @@ public:
 	  * Uses the passed in values to set the camera position and
 	  * whatthe camera is looking at
 	  * 
-	  * @param position: Vec3 type variable in ViewOpenGL class for camera position
-	  * @param lookAt: Vec3 type variable in ViewOpenGL class for what the camera is looking at
+	  * @param position: Vector3D type variable in ViewOpenGL class for camera position
+	  * @param lookAt: Vector3D type variable in ViewOpenGL class for what the camera is looking at
 	  * 
 	  * @pre 
 	  * @post 
 	  */ 
-	void UpdateCamera(Vec3 position, Vec3 lookAt);
+	void UpdateCamera(Vector3D position, Vector3D lookAt);
 
 	/** 
 	  * @brief Renders textured triangle strip
@@ -266,14 +266,14 @@ public:
 	  * @param numTerrainTexRepeat: int type variable in ViewOpenGL class for number of times texture to be repeated
 	  * @param detailMapID: unsigned int type variable in ViewOpenGL class for detail map id
 	  * @param numDetailMapRepeat: int type variable in ViewOpenGL class number of times detail map to be repeated
-	  * @param scale: Vec3 type variable in ViewOpenGL class for x, y znd z scaling
+	  * @param scale: Vector3D type variable in ViewOpenGL class for x, y znd z scaling
 	  * 
 	  * @pre 
 	  * @post 
 	  */ 
 	void RenderTriangleStrips(unsigned char* verts, int size, unsigned int textureID, 
 		int numTerrainTexRepeat, unsigned int detailMapID, int numDetailMapRepeat, 
-		Vec3 scale, RGB<float> lightColour, unsigned char* lightMap);
+		Vector3D scale, RGB<float> lightColour, unsigned char* lightMap);
 
 	/** 
 	  * @brief Render 2D image

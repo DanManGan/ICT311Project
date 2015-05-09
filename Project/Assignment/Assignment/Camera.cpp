@@ -6,10 +6,10 @@
 
 Camera::Camera()
 {
-	position = Vec3(0.0f, 0.0f, 0.0f);
-	lookAt = Vec3(0.0f, 0.0f, 1.0f);
+	position = Vector3D(0.0f, 0.0f, 0.0f);
+	lookAt = Vector3D(0.0f, 0.0f, 1.0f);
 
-	velocity = Vec3(0.0f, 0.0f, 0.0f);
+	velocity = Vector3D(0.0f, 0.0f, 0.0f);
 
 	yaw = 0.0f;
 	pitch = 0.0f;
@@ -32,7 +32,7 @@ void Camera::MoveToNow(float x, float y, float z)
 
 //--------------------------------------------------------------------------------------
 
-void Camera::MoveToNow(const Vec3& pos)
+void Camera::MoveToNow(const Vector3D& pos)
 {
 	position = pos;
 }
@@ -122,7 +122,7 @@ Camera::Camera(vector3D *pos, vector3D *look)
 
 void Camera::UpdateLookAt()
 {
-	Vec3 look = Vec3(finalLookAt.x - lookAt.x,
+	Vector3D look = Vector3D(finalLookAt.x - lookAt.x,
 					   finalLookAt.y - lookAt.y,
 					   finalLookAt.z - lookAt.z);
 
@@ -131,7 +131,7 @@ void Camera::UpdateLookAt()
 
 void Camera::UpdateMoveTo()
 {
-	Vec3 pos = Vec3(finalPosition.x - position.x,
+	Vector3D pos = Vector3D(finalPosition.x - position.x,
 					  finalPosition.y - position.y,
 					  finalPosition.z - position.z);
 
@@ -195,15 +195,15 @@ void Camera::RotateRoll(float radians)
 	*/
 }
 
-void Camera::LookAtNow( Vec3& pos)
+void Camera::LookAtNow( Vector3D& pos)
 {
 	lookAt = pos;
 }
 
 // look at an object over time
-void Camera::LookAt(const Vec3& pos)
+void Camera::LookAt(const Vector3D& pos)
 {
-	Vec3 v = Vec3(pos - lookAt);
+	Vector3D v = Vector3D(pos - lookAt);
 
 	initLookAt = lookAt;
 	finalLookAt = pos;
@@ -214,9 +214,9 @@ void Camera::LookAt(const Vec3& pos)
 }
 
 // move to an object over time
-void Camera::MoveTo(const Vec3& pos)
+void Camera::MoveTo(const Vector3D& pos)
 {
-	Vec3 v = Vec3(pos - position);
+	Vector3D v = Vector3D(pos - position);
 
 	initPosition = position;
 	finalPosition = pos;

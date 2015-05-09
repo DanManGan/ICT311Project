@@ -174,7 +174,7 @@ void ViewOpenGL::SetSolidView()
 
 //--------------------------------------------------------------------------------------
 
-void ViewOpenGL::UpdateCamera(Vec3 position, Vec3 lookAt)
+void ViewOpenGL::UpdateCamera(Vector3D position, Vector3D lookAt)
 {
 	// set the camera
 	gluLookAt(position.x, position.y, position.z,
@@ -185,7 +185,7 @@ void ViewOpenGL::UpdateCamera(Vec3 position, Vec3 lookAt)
 //--------------------------------------------------------------------------------------
 
 void ViewOpenGL::RenderTriangleStrips(unsigned char* verts, int size, unsigned int textureID, int numTerrainTexRepeat,
-	unsigned int detailMapID, int numDetailMapRepeat, Vec3 scale, RGB<float> lightColour, unsigned char* lightMap)
+	unsigned int detailMapID, int numDetailMapRepeat, Vector3D scale, RGB<float> lightColour, unsigned char* lightMap)
 {
 	unsigned char hcolour = 0;
 	float texLeft = 0, texBottom = 0, texTop = 0;

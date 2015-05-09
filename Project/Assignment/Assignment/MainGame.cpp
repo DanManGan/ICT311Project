@@ -155,40 +155,40 @@ void MainGame::ProcessInput()
 		case 'a' :
 		case 'A' :
 			if(input->keyPress) {
-				m_camera.velocity+=Vec3(-0.5,0,0);
+				m_camera.velocity+=Vector3D(-0.5,0,0);
 			}
 			else {
-				m_camera.velocity=Vec3(0,0,0);
+				m_camera.velocity=Vector3D(0,0,0);
 			}
 			break;
 		      
 		case 'd' :
 		case 'D' :
 			if(input->keyPress)	{
-				m_camera.velocity+=Vec3(0.5,0,0);
+				m_camera.velocity+=Vector3D(0.5,0,0);
 			}
 			else {
-				m_camera.velocity=Vec3(0,0,0);
+				m_camera.velocity=Vector3D(0,0,0);
 			}
 			break;
 
 		case 'w' :
 		case 'W' :
 			if(input->keyPress) {
-				m_camera.velocity+=Vec3(0,0,0.5);
+				m_camera.velocity+=Vector3D(0,0,0.5);
 			}
 			else {
-				m_camera.velocity=Vec3(0,0,0);
+				m_camera.velocity=Vector3D(0,0,0);
 			}
 			break;
 
 		case 's' :
 		case 'S' :
 			if(input->keyPress)	{
-				m_camera.velocity+=Vec3(0,0,-0.5);
+				m_camera.velocity+=Vector3D(0,0,-0.5);
 			}
 			else {
-				m_camera.velocity=Vec3(0,0,0);
+				m_camera.velocity=Vector3D(0,0,0);
 			}
 			break;
 
@@ -197,7 +197,7 @@ void MainGame::ProcessInput()
 			break;
 
 		default:
-			m_camera.velocity = Vec3(0.0f, 0.0f, 0.0f);
+			m_camera.velocity = Vector3D(0.0f, 0.0f, 0.0f);
 			break;
 	}
 

@@ -12,6 +12,7 @@
 
 
 #include "image.h"
+
 #include <gl/glaux.h>
 
 class bmpLoader:public image

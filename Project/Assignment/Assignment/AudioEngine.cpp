@@ -1,4 +1,6 @@
 
+#pragma comment(lib, "irrKlang.lib")	// link with irrKlang.dll
+
 #include "AudioEngine.h"
 #include "Singletons.h"
 

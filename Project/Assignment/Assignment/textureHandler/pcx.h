@@ -10,6 +10,7 @@
 #endif
 
 #include "image.h"
+
 #include <gl/glut.h>
 
 typedef struct _pcxHeader 
@@ -22,7 +23,7 @@ typedef struct _pcxHeader
 
 
 
-class pcx:public image 
+class pcx:public image
 { 
 public: 
   pcx(); 

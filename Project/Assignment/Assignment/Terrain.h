@@ -29,7 +29,7 @@
 
 #include "textureHandler\textureGenerator.h"
 #include "textureHandler\image.h"
-#include "Vec3.h"
+#include "Vector3D.h"
 #include "TerrainLighting.h"
 
 
@@ -488,7 +488,7 @@ protected:
 	  * @pre 
 	  * @post 
 	  */ 
-	Vec3 m_scale;
+	Vector3D m_scale;
 
 	/** 
 	  * @brief Normal texture ID

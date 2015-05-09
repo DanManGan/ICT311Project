@@ -13,32 +13,20 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\textureHandler">
+      <UniqueIdentifier>{2a46750e-955b-435c-ab8d-bafae8ed8c67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\textureHandler">
+      <UniqueIdentifier>{23777cc8-2f1e-46cb-b822-5a8b4c9b42f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AssetManagement">
+      <UniqueIdentifier>{64e41669-2629-4ea1-a504-6c436fce7ded}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AssetManagement">
+      <UniqueIdentifier>{a8dcd2ee-76d9-40bf-b3ce-3edcabb01ef3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="textureHandler\bmpLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textureHandler\image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textureHandler\imageFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textureHandler\multitexture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textureHandler\pcx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textureHandler\textureGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textureHandler\textureManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textureHandler\tgaLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BruteForce.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -57,9 +45,6 @@
     <ClInclude Include="Terrain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vec3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ViewOpenGL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -75,29 +60,50 @@
     <ClInclude Include="TerrainLighting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AudioEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="textureHandler\bmpLoader.h">
+      <Filter>Header Files\textureHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="textureHandler\image.h">
+      <Filter>Header Files\textureHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="textureHandler\imageFactory.h">
+      <Filter>Header Files\textureHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="textureHandler\multitexture.h">
+      <Filter>Header Files\textureHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="textureHandler\pcx.h">
+      <Filter>Header Files\textureHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="textureHandler\textureGenerator.h">
+      <Filter>Header Files\textureHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="textureHandler\textureManager.h">
+      <Filter>Header Files\textureHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="textureHandler\tgaLoader.h">
+      <Filter>Header Files\textureHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="GameAssetFactory.h">
+      <Filter>Header Files\AssetManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\AssetManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="GameAsset.h">
+      <Filter>Header Files\AssetManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="GameAssetManager.h">
+      <Filter>Header Files\AssetManagement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="textureHandler\bmpLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textureHandler\imageFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textureHandler\multitexture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textureHandler\pcx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textureHandler\textureGenerator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textureHandler\textureManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textureHandler\tgaLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BruteForce.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -108,9 +114,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Terrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vec3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ViewOpenGL.cpp">
@@ -127,6 +130,42 @@
     </ClCompile>
     <ClCompile Include="TerrainLighting.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="textureHandler\bmpLoader.cpp">
+      <Filter>Source Files\textureHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="textureHandler\imageFactory.cpp">
+      <Filter>Source Files\textureHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="textureHandler\multitexture.cpp">
+      <Filter>Source Files\textureHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="textureHandler\pcx.cpp">
+      <Filter>Source Files\textureHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="textureHandler\tgaLoader.cpp">
+      <Filter>Source Files\textureHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="textureHandler\textureGenerator.cpp">
+      <Filter>Source Files\textureHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="textureHandler\textureManager.cpp">
+      <Filter>Source Files\textureHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="GameAssetFactory.cpp">
+      <Filter>Source Files\AssetManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="GameAssetManager.cpp">
+      <Filter>Source Files\AssetManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="GameAsset.cpp">
+      <Filter>Source Files\AssetManagement</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

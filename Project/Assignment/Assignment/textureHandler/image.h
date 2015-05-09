@@ -9,6 +9,8 @@
   #pragma once
 #endif
 
+#include "../GameAsset.h"
+
 template <class T>
 struct RGB
 {
@@ -19,7 +21,7 @@ struct RGB
     void reset(){r=0;g=0;b=0;}
 };
 
-class image
+class image : public GameAsset
 {
 public:
 	virtual bool load(char *filename)=0;

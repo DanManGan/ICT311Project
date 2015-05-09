@@ -26,7 +26,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "Vec3.h"
+#include "Vector3D.h"
 
 class Camera
 {
@@ -62,12 +62,12 @@ public:
 	  * 
 	  * Moves camera to the postion specified in the vector
 	  * 
-	  * @param pos: const Vec3 type variable in Camera class 
+	  * @param pos: const Vector3D type variable in Camera class 
 	  * 
 	  * @pre 
 	  * @post 
 	  */ 
-	void MoveToNow(const Vec3& pos);
+	void MoveToNow(const Vector3D& pos);
 
 	/** 
 	  * @brief Move camera to position
@@ -105,7 +105,7 @@ public:
 	  * @pre 
 	  * @post 
 	  */ 
-	Vec3 position;
+	Vector3D position;
 
 	/** 
 	  * @brief Camera move velocity
@@ -115,7 +115,7 @@ public:
 	  * @pre 
 	  * @post 
 	  */ 
-	Vec3 velocity;
+	Vector3D velocity;
 
 	/** 
 	  * @brief Camera lookat vector
@@ -125,7 +125,7 @@ public:
 	  * @pre 
 	  * @post 
 	  */ 
-	Vec3 lookAt;
+	Vector3D lookAt;
 
 	/** 
 	  * @brief Camera Yaw angle
@@ -149,24 +149,24 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////
 
-	Vec3 acceleration;		// acceleration of camera
+	Vector3D acceleration;		// acceleration of camera
 
 	// up, forward, right vectors
-	Vec3 up;
-	Vec3 forward;
-	Vec3 right;
+	Vector3D up;
+	Vector3D forward;
+	Vector3D right;
 
 
 	int screenWidth, screenHeight;
 	int centerX, centerY;
 
 	Camera(int width, int height) {}
-	Camera(Vec3 *look);
-	Camera(Vec3 *pos, Vec3 *look);
+	Camera(Vector3D *look);
+	Camera(Vector3D *pos, Vector3D *look);
 
-	void LookAt(const Vec3& pos);
-	void LookAtNow( Vec3& pos);
-	void MoveTo(const Vec3& pos);
+	void LookAt(const Vector3D& pos);
+	void LookAtNow( Vector3D& pos);
+	void MoveTo(const Vector3D& pos);
 
 
 	// right rotation along y-axis (yaw)
@@ -182,11 +182,11 @@ private:
 
 	// these are used for moving and changing camera orientation
 	// through the MoveTo/LookTo methods
-	Vec3 initPosition, finalPosition;
-	Vec3 initLookAt, finalLookAt;
+	Vector3D initPosition, finalPosition;
+	Vector3D initLookAt, finalLookAt;
 
-	Vec3 lookAtVel;			// velocity for looking at objects
-	Vec3 lookAtAccel;		// acceleration for looking at objects
+	Vector3D lookAtVel;			// velocity for looking at objects
+	Vector3D lookAtAccel;		// acceleration for looking at objects
 
 	void UpdateLookAt();
 	void UpdateMoveTo();
