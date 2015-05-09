@@ -11,6 +11,7 @@ class AudioEngine {
 		AudioEngine();
 		~AudioEngine();
 		void Play2D(const char* filename, bool loop);
+		void Play3D(const char* filename, float x, float y, float z, bool loop);
 		void SetVolume(float volume);
 
 	private:

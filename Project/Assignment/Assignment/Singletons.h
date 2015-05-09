@@ -30,6 +30,7 @@
 #include "GameWorld.h"
 #include "ViewOpenGL.h"
 #include "InputGLFW.h"
+#include "AudioEngine.h"
 
 typedef Singleton<textureManager> textureMan;
 #define texManager textureMan::GetInstance()
@@ -42,5 +43,8 @@ typedef Singleton<ViewOpenGL> openGL;
 
 typedef Singleton<InputGLFW> inputGLFW;
 #define input inputGLFW::GetInstance()
+
+typedef Singleton<AudioEngine> audioEngine;
+#define audio audioEngine::GetInstance()
 
 #endif

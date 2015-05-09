@@ -49,6 +49,9 @@ void MainGame::Init()
 	m_menu = texManager->loadTexture("graphics/menu.bmp");
 	if(!m_menu)
 		std::cout << "Error Loading menu texture" << std::endl;
+	
+	audio->SetVolume(0.1f);
+	audio->Play2D("sounds/woodlands.wav", true);
 
 	m_camera.MoveToNow(gameWorld->GetWorldSize()/2,
 		gameWorld->GetWorldXZHeight
