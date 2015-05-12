@@ -293,6 +293,22 @@ public:
 	  */ 
 	void Render2D(unsigned int image, float left, float right,
 		float top, float bottom);
+	
+	void DrawTree(double baseRadius, double topRadius, 
+					double height, int slices, int stacks);
+
+	void DrawSphere(double radius, int slices, int stacks);
+	
+	void DrawCylinder(double baseRadius, double topRadius, 
+						double height, int slices, int stacks);
+
+	void Rotate(float angle, float x, float y, float z);
+	void Translate(float x, float y, float z);
+	void Scale(float x, float y, float z);
+	void PushMatrix();
+	void PopMatrix();
+	void LoadIdentity();
+	void SwapBuffers();
 
 private:
 

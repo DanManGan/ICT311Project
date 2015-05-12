@@ -29,5 +29,28 @@ void AudioEngine::SetVolume(float volume)
 	audioEngine->setSoundVolume(volume);
 }
 
+void AudioEngine::AddSoundSource(const char* filename)
+{
+	audioEngine->addSoundSourceFromFile(filename);
+}
+
+void AudioEngine::Stop(const char* filename) 
+{
+	audioEngine->removeSoundSource(GetSoundSource(filename));
+}
+
+ISoundSource* AudioEngine::GetSoundSource(const char* filename)
+{
+	return audioEngine->getSoundSource(filename);
+}
+
+bool AudioEngine::GetIsPlaying(const char* filename) 
+{
+	return audioEngine->isCurrentlyPlaying(filename);
+}
+
+
+
+
 
 

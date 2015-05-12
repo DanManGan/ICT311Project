@@ -314,3 +314,89 @@ float ViewOpenGL::GetHeightScaled(unsigned char* verts, int size, float scaleY, 
 {
 		return ((float)(verts[(zPos*size)+xPos]) * scaleY);
 }
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::Rotate(float angle, float x, float y, float z) 
+{
+	glRotatef(angle, x, y, z);
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::Translate(float x, float y, float z)
+{
+	glTranslatef(x, y, z);
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::Scale(float x, float y, float z)
+{
+	glScalef(x, y, z);
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::PushMatrix()
+{
+	glPushMatrix();
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::PopMatrix()
+{
+	glPopMatrix();
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::SwapBuffers()
+{
+	glutSwapBuffers();
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::LoadIdentity()
+{
+	glLoadIdentity();
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::DrawSphere(double radius, int slices, int stacks)
+{
+	glutSolidSphere(radius, slices, stacks);
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::DrawCylinder(double baseRadius, double topRadius, double height, int slices, int stacks)
+{
+	GLUquadricObj* quad = 0;
+
+	quad = gluNewQuadric();
+
+	gluCylinder(quad, baseRadius, topRadius, height, slices, stacks);
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::DrawTree(double baseRadius, double topRadius, double height, int slices, int stacks)
+{
+	glColor3f(0.52f, 0.37f, 0.26f);
+	
+	PushMatrix();
+	Rotate(-90.0f, 1.0f, 0.0f, 0.0f);
+	DrawCylinder(baseRadius, topRadius, height, slices, stacks);
+	PopMatrix();
+
+	glColor3f(0.31f, 0.31f, 0.18f);
+
+	PushMatrix();
+	Translate(0.0f, height, 0.0f);
+	DrawSphere(baseRadius*4, slices, stacks);
+	PopMatrix();
+}
