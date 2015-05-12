@@ -51,12 +51,13 @@ void MainGame::Init()
 		std::cout << "Error Loading menu texture" << std::endl;
 	
 	audio->SetVolume(0.1f);
-	audio->Play2D("sounds/woodlands.wav", true);
+	//audio->Play2D("sounds/MF-W-90.XM", true);
 
 	m_camera.MoveToNow(gameWorld->GetWorldSize()/2,
 		gameWorld->GetWorldXZHeight
 			(gameWorld->GetWorldSize()/2, gameWorld->GetWorldSize()-20)+m_playerHeight,
 		gameWorld->GetWorldSize()-20);
+
 	m_camera.yaw=0;
 	m_camera.pitch=-75;
 }
@@ -158,40 +159,52 @@ void MainGame::ProcessInput()
 		case 'a' :
 		case 'A' :
 			if(input->keyPress) {
-				m_camera.velocity+=Vector3D(-0.5,0,0);
+				m_camera.velocity+=Vector3D(-0.1,0,0);
+				if(audio->GetIsPlaying("sounds/walking.wav") == false)
+					audio->Play2D("sounds/walking.wav", false);
 			}
 			else {
 				m_camera.velocity=Vector3D(0,0,0);
+				audio->Stop("sounds/walking.wav");
 			}
 			break;
 		      
 		case 'd' :
 		case 'D' :
 			if(input->keyPress)	{
-				m_camera.velocity+=Vector3D(0.5,0,0);
+				m_camera.velocity+=Vector3D(0.1,0,0);
+				if(audio->GetIsPlaying("sounds/walking.wav") == false)
+					audio->Play2D("sounds/walking.wav", false);
 			}
 			else {
 				m_camera.velocity=Vector3D(0,0,0);
+				audio->Stop("sounds/walking.wav");
 			}
 			break;
 
 		case 'w' :
 		case 'W' :
 			if(input->keyPress) {
-				m_camera.velocity+=Vector3D(0,0,0.5);
+				m_camera.velocity+=Vector3D(0,0,0.1);
+				if(audio->GetIsPlaying("sounds/walking.wav") == false)
+					audio->Play2D("sounds/walking.wav", false);
 			}
 			else {
 				m_camera.velocity=Vector3D(0,0,0);
+				audio->Stop("sounds/walking.wav");
 			}
 			break;
 
 		case 's' :
 		case 'S' :
 			if(input->keyPress)	{
-				m_camera.velocity+=Vector3D(0,0,-0.5);
+				m_camera.velocity+=Vector3D(0,0,-0.1);
+				if(audio->GetIsPlaying("sounds/walking.wav") == false)
+					audio->Play2D("sounds/walking.wav", false);
 			}
 			else {
 				m_camera.velocity=Vector3D(0,0,0);
+				audio->Stop("sounds/walking.wav");
 			}
 			break;
 
