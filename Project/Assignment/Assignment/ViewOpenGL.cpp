@@ -12,7 +12,8 @@
 
 ViewOpenGL::ViewOpenGL() :
   	 m_winWidth(0),
-	 m_winHeight(0)
+	 m_winHeight(0),
+	 m_numTextures(0)
 {
 	Init();
 }
@@ -399,4 +400,27 @@ void ViewOpenGL::DrawTree(double baseRadius, double topRadius, double height, in
 	Translate(0.0f, height, 0.0f);
 	DrawSphere(baseRadius*4, slices, stacks);
 	PopMatrix();
+}
+
+unsigned int ViewOpenGL::CreateTexture(image* rawImage)
+{
+ //image* texture=loadTextureRaw(filename);
+        if(!rawImage)
+		  return -1;
+m_numTextures++;
+
+	  //unsigned int texID;
+	  	glEnable(GL_TEXTURE_2D);
+   // glGenTextures(1, &texID);
+		 glGenTextures(1, &m_numTextures);
+
+glBindTexture(GL_TEXTURE_2D, m_numTextures); 
+    
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR ); 
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR ); 
+	glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,rawImage->getWidth(),rawImage->getHeight(),0,GL_RGB,GL_UNSIGNED_BYTE,rawImage->getData());
+	glBindTexture(GL_TEXTURE_2D, m_numTextures); 
+	//delete texture;
+	//texture=NULL;
+	return m_numTextures;
 }

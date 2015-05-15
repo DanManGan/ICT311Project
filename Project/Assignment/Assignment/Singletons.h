@@ -31,6 +31,7 @@
 #include "ViewOpenGL.h"
 #include "InputGLFW.h"
 #include "AudioEngine.h"
+#include "GameAssetManager.h"
 
 typedef Singleton<textureManager> textureMan;
 #define texManager textureMan::GetInstance()

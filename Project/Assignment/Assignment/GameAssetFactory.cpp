@@ -33,7 +33,9 @@ GameAsset* GameAssetFactory::LoadTexture(std::string filePath)
 
 		//temp->Load((char*)filePath.c_str());
 		//return temp;
-		unsigned int temp = m_textureManager.loadTexture((char*)filePath.c_str());
+		image* temp = m_textureManager.loadTextureRaw((char*)filePath.c_str());
+
+		//unsigned int temp = m_textureManager.loadTexture((char*)filePath.c_str());
 
 		return new Texture(temp);
 	}
@@ -58,7 +60,7 @@ GameAsset* GameAssetFactory::LoadModel(std::string filePath, std::string texture
 
 		//temp->Load((char*)filePath.c_str());
 		//return temp;
-		return new Texture((char*)filePath.c_str());
+		//return new Texture((char*)filePath.c_str());
 	}
 
 	return nullptr;

@@ -310,6 +310,8 @@ public:
 	void LoadIdentity();
 	void SwapBuffers();
 
+	unsigned int CreateTexture(image* rawImage);
+
 private:
 
 	/** 
@@ -373,6 +375,7 @@ private:
 	  */ 
 	int m_winHeight;
 
+	unsigned int m_numTextures;
 };
 
 #endif

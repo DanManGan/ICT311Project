@@ -2,7 +2,8 @@
 #include "Texture.h"
 
 Texture::Texture() :
-	m_texture(0)
+	m_texture(0),
+	m_image(nullptr)
 {
 }
 
@@ -11,9 +12,9 @@ Texture::Texture() :
 //	m_texture = m_textureManager.loadTexture(filePath);
 //}
 
-Texture::Texture(unsigned int textureID)
+Texture::Texture(image* rawImage)
 {
-	m_texture = textureID;
+	m_image = rawImage;
 }
 
 Texture::~Texture()

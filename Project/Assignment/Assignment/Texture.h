@@ -3,6 +3,7 @@
 #define TEXTURE_H
 
 #include "GameAsset.h"
+#include "textureHandler/image.h"
 
 #include <string>
 
@@ -14,8 +15,8 @@ public:
 
 	
 	Texture();
-
-	Texture(unsigned int textureID);
+	
+	Texture(image* rawImage);
 
 	//Texture(char* filePath);
 
@@ -27,9 +28,12 @@ public:
 
 	unsigned int Get();
 
-protected:
-	unsigned int m_texture;
+	image* GetImage();
 
+protected:
+
+	unsigned int m_texture;
+	image* m_image;
 
 private:
 	
