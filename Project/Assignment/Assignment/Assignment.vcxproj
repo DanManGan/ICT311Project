@@ -118,6 +118,7 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TerrainLighting.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="ViewOpenGL.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="textureHandler\bmpLoader.cpp" />

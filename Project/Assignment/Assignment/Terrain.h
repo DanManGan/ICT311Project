@@ -31,9 +31,10 @@
 #include "textureHandler\image.h"
 #include "Vector3D.h"
 #include "TerrainLighting.h"
+#include "GameAsset.h"
 
 
-class Terrain
+class Terrain : public GameAsset
 {
 public:
 ////////////////////  Terrain Methods  ////////////////////
@@ -88,6 +89,8 @@ public:
 	  * @post 
 	  */ 
 	bool LoadHeightfield(char* file, const int size);
+
+	bool LoadHeightfield(char* file);
 
 	/** 
 	  * @brief Unload Height field
@@ -453,6 +456,13 @@ public:
 	  * @post 
 	  */ 
 	bool CreateSlopeLighting();
+
+////////////////////////////////////////////////////////////////////////////////////////
+	Vector3D GetNormal(int x, int z);
+
+	void ComputeNormals();
+
+	void SetTexture(unsigned int tex);
 
 protected:
 	

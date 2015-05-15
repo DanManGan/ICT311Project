@@ -167,5 +167,8 @@
     <ClCompile Include="GameAsset.cpp">
       <Filter>Source Files\AssetManagement</Filter>
     </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\AssetManagement</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

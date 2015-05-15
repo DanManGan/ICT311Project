@@ -47,4 +47,7 @@ typedef Singleton<InputGLFW> inputGLFW;
 typedef Singleton<AudioEngine> audioEngine;
 #define audio audioEngine::GetInstance()
 
+typedef Singleton<GameAssetManager> gameAssetManager;
+#define assetManager gameAssetManager::GetInstance()
+
 #endif

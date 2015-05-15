@@ -16,7 +16,11 @@ public:
 
 	~GameAssetManager();
 
-	bool Load(const std::string filePath);
+	bool LoadTexture(std::string filePath);
+
+	bool LoadModel(std::string filePath, std::string texturePath);
+
+	GameAsset* GetAsset(std::string filePath);
 
 private:
 
