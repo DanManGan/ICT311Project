@@ -46,9 +46,9 @@ void MainGame::Init()
 	graphics->Init();
 	gameWorld->LoadWorldTexture();
 
-	m_menu = texManager->loadTexture("graphics/menu.bmp");
-	if(!m_menu)
-		std::cout << "Error Loading menu texture" << std::endl;
+	//m_menu = texManager->loadTexture("Textures/menu.bmp");
+	//if(!m_menu)
+	//	std::cout << "Error Loading menu texture" << std::endl;
 	
 	audio->SetVolume(0.1f);
 	//audio->Play2D("sounds/MF-W-90.XM", true);
@@ -92,49 +92,49 @@ void MainGame::ProcessInput()
 			}
 			break;
 
-		case 'n':
-		case 'N': 
-			if(input->keyPress && !m_inputOneShot) {
-				m_inputOneShot = true;
-				gameWorld->TextureMapNormal();
-			} 
-			else if(input->keyRelease) {
-				m_inputOneShot = false;
-			}
-			break;
+		//case 'n':
+		//case 'N': 
+		//	if(input->keyPress && !m_inputOneShot) {
+		//		m_inputOneShot = true;
+		//		gameWorld->TextureMapNormal();
+		//	} 
+		//	else if(input->keyRelease) {
+		//		m_inputOneShot = false;
+		//	}
+		//	break;
 
-		case 'p':
-		case 'P': 
-			if(input->keyPress && !m_inputOneShot) {
-				m_inputOneShot = true;
-				gameWorld->TextureMapProcedural();
-			} 
-			else if(input->keyRelease) {
-				m_inputOneShot = false;
-			}
-			break;
+		//case 'p':
+		//case 'P': 
+		//	if(input->keyPress && !m_inputOneShot) {
+		//		m_inputOneShot = true;
+		//		gameWorld->TextureMapProcedural();
+		//	} 
+		//	else if(input->keyRelease) {
+		//		m_inputOneShot = false;
+		//	}
+		//	break;
 
-		case 'f':
-		case 'F': 
-			if(input->keyPress && !m_inputOneShot) {
-				gameWorld->GenFaultFormTerrain();
-				m_inputOneShot = true;
-			} 
-			else if(input->keyRelease) {
-				m_inputOneShot = false;
-			}
-			break;
+		//case 'f':
+		//case 'F': 
+		//	if(input->keyPress && !m_inputOneShot) {
+		//		gameWorld->GenFaultFormTerrain();
+		//		m_inputOneShot = true;
+		//	} 
+		//	else if(input->keyRelease) {
+		//		m_inputOneShot = false;
+		//	}
+		//	break;
 
-		case 'h':
-		case 'H': 
-			if(input->keyPress && !m_inputOneShot) {
-				gameWorld->LoadHeightMapTerrain();;
-				m_inputOneShot = true;
-			} 
-			else if(input->keyRelease) {
-				m_inputOneShot = false;
-			}
-			break;
+		//case 'h':
+		//case 'H': 
+		//	if(input->keyPress && !m_inputOneShot) {
+		//		gameWorld->LoadHeightMapTerrain();;
+		//		m_inputOneShot = true;
+		//	} 
+		//	else if(input->keyRelease) {
+		//		m_inputOneShot = false;
+		//	}
+		//	break;
 
 		case 'm':
 		case 'M': 

@@ -11,25 +11,25 @@ tga::~tga()
 { 	
 }
 
-unsigned char* tga::GetData()
-{
-	return m_imageData;
-}
-
-int tga::GetHeight()
-{
-	return m_height;
-}
-
-int tga::GetWidth()
-{
-	return m_width;
-}
-
-unsigned int tga::GetBPP()
-{
-	return m_BPP;
-}
+//unsigned char* tga::GetData()
+//{
+//	return m_imageData;
+//}
+//
+//int tga::GetHeight()
+//{
+//	return m_height;
+//}
+//
+//int tga::GetWidth()
+//{
+//	return m_width;
+//}
+//
+//unsigned int tga::GetBPP()
+//{
+//	return m_BPP;
+//}
 
 RGB<unsigned char> tga::GetColor(int x,int y)
 {

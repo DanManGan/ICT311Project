@@ -32,6 +32,9 @@
 #include "Vector3D.h"
 #include "TerrainLighting.h"
 #include "AssetManagement/GameAsset.h"
+#include "AssetManagement/Texture.h"
+
+#include "textureManager.h"
 
 
 class Terrain : public GameAsset
@@ -264,22 +267,9 @@ public:
 	  * @pre 
 	  * @post 
 	  */ 
-	bool LoadTexture(char* file);
-		
-	/** 
-	  * @brief Add texture to procedural textures
-	  * @warning None
-	  * 
-	  * Loads and adds a texture in for procedural map creation
-	  * 
-	  * @param file: char type variable in Terrain class for file name
-	  * @return bool value true if file loaded
-	  * 
-	  * 
-	  * @pre 
-	  * @post 
-	  */ 
-	bool LoadProceduralTexture(char* file);
+	//bool LoadTexture(char* file);
+
+	bool SetTexture(unsigned int tex);
 
 	/** 
 	  * @brief Load detail map texture
@@ -294,7 +284,7 @@ public:
 	  * @pre 
 	  * @post 
 	  */ 
-	bool LoadDetailMap(char* file); 
+	bool SetDetailMap(unsigned int tex); 
 
 	/** 
 	  * @brief Set texture repeat value
@@ -322,6 +312,23 @@ public:
 	  */ 
 	void SetNumDetailMapRepeat(int num);
 
+	Texture* GetProceduralTexture(std::string name);
+		
+	/** 
+	  * @brief Add texture to procedural textures
+	  * @warning None
+	  * 
+	  * Loads and adds a texture in for procedural map creation
+	  * 
+	  * @param file: char type variable in Terrain class for file name
+	  * @return bool value true if file loaded
+	  * 
+	  * 
+	  * @pre 
+	  * @post 
+	  */ 
+	bool AddProceduralTexture(Texture* tex);
+	
 	/** 
 	  * @brief Creates procedural texture
 	  * @warning None
@@ -335,35 +342,7 @@ public:
 	  * @pre 
 	  * @post 
 	  */ 
-	bool CreateProceduralTexture();
-
-	/** 
-	  * @brief Sets normal texture on
-	  * @warning None
-	  * 
-	  * Sets normal texture to be used for rendering
-	  * 
-	  * @return bool value true if texture set
-	  * 
-	  * 
-	  * @pre 
-	  * @post 
-	  */ 
-	bool TextureMapNormal();
-
-	/** 
-	  * @brief Sets procedural texture on
-	  * @warning None
-	  * 
-	  * Sets procedural texture to be used for rendering
-	  * 
-	  * @return bool value true if texture set
-	  * 
-	  * 
-	  * @pre 
-	  * @post 
-	  */ 
-	bool TextureMapProcedural();
+	bool CreateProceduralTexture(std::string name);
 
 ////////////////////  Lighting Methods  ////////////////////
 
@@ -462,7 +441,6 @@ public:
 
 	void ComputeNormals();
 
-	void SetTexture(unsigned int tex);
 
 protected:
 	
@@ -510,19 +488,7 @@ protected:
 	  * @pre 
 	  * @post 
 	  */ 
-	unsigned int m_texMapNormalID;
-
-	/** 
-	  * @brief Procedural texture ID
-	  * @warning None
-	  * 
-	  * ID for the procedural texture
-	  * 
-	  * 
-	  * @pre 
-	  * @post 
-	  */ 
-	unsigned int m_texMapProceduralID;
+	unsigned int m_texMapID;
 
 	/** 
 	  * @brief Detail texture ID
@@ -544,17 +510,7 @@ protected:
 	  * @pre 
 	  * @post 
 	  */ 
-	bool m_texMapNormal;
-
-	/** 
-	  * @brief Procedural texture map on member
-	  * @warning None
-	  * 
-	  * 
-	  * @pre 
-	  * @post 
-	  */ 
-	bool m_texMapProcedural;
+	bool m_texMap;
 
 	/** 
 	  * @brief detail texture map on member
@@ -691,7 +647,7 @@ private:
 	  */ 
 	void GetTexCoords(int texNum, unsigned int& x, unsigned int& y);
 	
-
+	textureManager m_tex;
 };
 
 #endif

@@ -311,7 +311,9 @@ public:
 	void LoadIdentity();
 	void SwapBuffers();
 
-	unsigned int CreateTexture(Texture* rawImage);
+	unsigned int BindTexture(Texture* rawImage);
+
+	unsigned int CreateNewTexture(Texture* rawImage);
 
 private:
 

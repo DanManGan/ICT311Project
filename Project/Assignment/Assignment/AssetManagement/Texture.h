@@ -38,20 +38,33 @@ public:
 
 	//bool SetImage(image* rawImage);
 
+	bool SetData(unsigned char* data);
+	bool SetWidth(int width);
+	bool SetHeight(int height);
+	
+	bool SetBPP(unsigned int BPP);
+
 	bool SetTexID(unsigned int texture);
 
-	Texture* GetImage();
+	Texture* GetTexture();
 
 	unsigned int GetTexID();
 
 	//virtual bool load(char *filename)=0;
 	void Unload();
-	virtual unsigned char* GetData()=0;
-	virtual int GetWidth()=0;
-	virtual int GetHeight()=0;
+	//virtual unsigned char* GetData()=0;
+	//virtual int GetWidth()=0;
+	//virtual int GetHeight()=0;
+	//
+	//virtual unsigned int GetBPP()=0;
+	//virtual RGB<unsigned char> GetColor(int x,int y)=0;
+
+	unsigned char* GetData();
+	int GetWidth();
+	int GetHeight();
 	
-	virtual unsigned int GetBPP()=0;
-	virtual RGB<unsigned char> GetColor(int x,int y)=0;
+	unsigned int GetBPP();
+	RGB<unsigned char> GetColor(int x,int y);
 
 protected:
 	

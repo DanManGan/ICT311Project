@@ -18,6 +18,8 @@ public:
 
 	bool Load(std::string filePath);
 
+	bool Load(GameAsset* asset);
+
 	bool LoadModel(std::string filePath, std::string texturePath);
 
 	GameAsset* GetAsset(std::string filePath);

@@ -24,7 +24,7 @@ bool GameWorld::LoadWorld()
 {	
 	m_terrain.SetScaleFactor(1.0f,0.2f,1.0f);
 
-	return m_terrain.LoadHeightfield("graphics/height128.raw",128);
+	return m_terrain.LoadHeightfield("Textures/height128.raw",128);
 }
 
 //--------------------------------------------------------------------------------------
@@ -33,22 +33,32 @@ void GameWorld::LoadWorldTexture()
 {
 	//Procedural terrain only works correctly with TGA files currently
 
-	assetManager->Load("graphics/grass.bmp");
-	//assetManager->Load(MESH, "graphics/detailmap.tga");
-	//std::cout << "asset" << assetManager->GetAsset("graphics/grass.tga") << std::endl;
-	//m_terrain.LoadTexture("graphics/grass.bmp");
-	Texture* tex = (Texture*)assetManager->GetAsset("graphics/grass.bmp");
-	graphics->CreateTexture(tex->GetImage());
-	m_terrain.SetTexture(graphics->CreateTexture(tex->GetImage()));
-	/*m_terrain.SetTexture((Texture*)assetManager->GetAsset("graphics/grass.bmp")->Get());*/
-	m_terrain.LoadProceduralTexture("graphics/lowestTile.tga");
-	m_terrain.LoadProceduralTexture("graphics/lowTile.tga");
-	m_terrain.LoadProceduralTexture("graphics/highTile.tga");
-	m_terrain.LoadProceduralTexture("graphics/highestTile.tga");
-	m_terrain.CreateProceduralTexture();
+	assetManager->Load("Textures/grass.bmp");
+	assetManager->Load("Textures/lowestTile.tga");
+	assetManager->Load("Textures/lowTile.tga");
+	assetManager->Load("Textures/highTile.tga");
+	assetManager->Load("Textures/highestTile.tga");
+	assetManager->Load("Textures/detailmap.tga");
+	//assetManager->Load(MESH, "Textures/detailmap.tga");
+	//std::cout << "asset" << assetManager->GetAsset("Textures/grass.tga") << std::endl;
+	//m_terrain.LoadTexture("Textures/grass.bmp");
+	//Texture* tex = (Texture*)assetManager->GetAsset("Textures/grass.bmp");
+	
+	//tex->SetTexID(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
+	//m_terrain.SetTexture(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
+	m_terrain.SetDetailMap(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
+	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowestTile.tga"));
+	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
+	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highTile.tga"));
+	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highestTile.tga"));
+	m_terrain.CreateProceduralTexture("ProceduralTexture");
+	assetManager->Load(m_terrain.GetProceduralTexture("ProceduralTexture"));
+	//m_terrain.SetTexture(graphics->BindTexture(m_terrain.GetProceduralTexture()));
+	m_terrain.SetTexture(graphics->CreateNewTexture(m_terrain.GetProceduralTexture("ProceduralTexture")));
 	m_terrain.SetNumTerrainTexRepeat(1);
-	m_terrain.LoadDetailMap("graphics/detailmap.tga");
+	//m_terrain.LoadDetailMap("Textures/detailmap.tga");
 	m_terrain.SetNumDetailMapRepeat(8);
+	//m_terrain.SetTexture(graphics->BindTexture((Texture*)assetManager->GetAsset("ProceduralTexture")));
 	m_terrain.SetLightingColor(1.0f, 1.0f, 1.0f);
 	m_terrain.SetSlopeLightingParams( 1, 1, 0.2f, 0.9f, 10.0f );
 	m_terrain.CreateSlopeLighting();
@@ -101,33 +111,19 @@ float GameWorld::GetWorldSize()
 }
 
 //--------------------------------------------------------------------------------------
-
-bool GameWorld::TextureMapNormal()
-{
-	return m_terrain.TextureMapNormal();
-}
-
-//--------------------------------------------------------------------------------------
-
-bool GameWorld::TextureMapProcedural()
-{
-	return m_terrain.TextureMapProcedural();
-}
-
-//--------------------------------------------------------------------------------------
-
-bool GameWorld::GenFaultFormTerrain()
-{
-	return m_terrain.GenFaultFormation(100, 128,1,125,0.1f,false) &&
-		m_terrain.CreateProceduralTexture() && m_terrain.CreateSlopeLighting();
-}
-
-//--------------------------------------------------------------------------------------
-
-bool GameWorld::LoadHeightMapTerrain()
-{
-	return m_terrain.LoadHeightfield("graphics/height128.raw",128) &&
-			m_terrain.CreateProceduralTexture() && m_terrain.CreateSlopeLighting();
-}
-
-//--------------------------------------------------------------------------------------
+//
+//bool GameWorld::GenFaultFormTerrain()
+//{
+//	return m_terrain.GenFaultFormation(100, 128,1,125,0.1f,false) &&
+//		m_terrain.CreateProceduralTexture("faultformTex") && m_terrain.CreateSlopeLighting();
+//}
+//
+////--------------------------------------------------------------------------------------
+//
+//bool GameWorld::LoadHeightMapTerrain()
+//{
+//	return m_terrain.LoadHeightfield("Textures/height128.raw",128) &&
+//			m_terrain.CreateProceduralTexture("heightmapTex") && m_terrain.CreateSlopeLighting();
+//}
+//
+////--------------------------------------------------------------------------------------

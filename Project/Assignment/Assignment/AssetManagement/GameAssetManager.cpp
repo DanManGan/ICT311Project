@@ -1,5 +1,6 @@
 
 #include "GameAssetManager.h"
+#include "Texture.h"
 
 #include <iostream>
 
@@ -25,6 +26,15 @@ bool GameAssetManager::Load(std::string filePath)
 		return false;
 
 	return true;
+}
+
+bool GameAssetManager::Load(GameAsset* asset)
+{
+	if(!asset->GetName().empty()) {
+		m_gameAssets[asset->GetName()] = asset;
+		return true;
+	}
+	return false;
 }
 
 bool GameAssetManager::LoadModel(std::string filePath, std::string texturePath)

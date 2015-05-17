@@ -1,12 +1,13 @@
 
 
 #pragma comment(lib,"glfw.lib")
-
+#define GL_CLAMP_TO_EDGE 0x812F
 #include "Singletons.h"
 #include "ViewOpenGL.h"
 #include "AssetManagement/multitexture.h"
 
 #include <gl/glfw.h>
+#include <gl/glut.h>
 
 //--------------------------------------------------------------------------------------
 
@@ -33,7 +34,7 @@ bool ViewOpenGL::Init()
 
     glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
 	glDisable( GL_TEXTURE_2D );								//disable two dimensional texture mapping
-	//glDisable( GL_LIGHTING );								//disable lighting
+	glDisable( GL_LIGHTING );								//disable lighting
 	glDisable( GL_BLEND );									//disable blending
 	glEnable( GL_DEPTH_TEST );								//Enable depth testing
 	glShadeModel( GL_SMOOTH );								//enable smooth shading
@@ -402,25 +403,56 @@ void ViewOpenGL::DrawTree(double baseRadius, double topRadius, double height, in
 	PopMatrix();
 }
 
-unsigned int ViewOpenGL::CreateTexture(Texture* rawImage)
+unsigned int ViewOpenGL::BindTexture(Texture* rawImage)
 {
  //image* texture=loadTextureRaw(filename);
         if(!rawImage)
 		  return -1;
-m_numTextures++;
+	m_numTextures++;
 
 	  //unsigned int texID;
 	  	glEnable(GL_TEXTURE_2D);
    // glGenTextures(1, &texID);
 		 glGenTextures(1, &m_numTextures);
 
-glBindTexture(GL_TEXTURE_2D, m_numTextures); 
+	glBindTexture(GL_TEXTURE_2D, m_numTextures); 
     
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR ); 
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR ); 
-	glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,rawImage->getWidth(),rawImage->getHeight(),0,GL_RGB,GL_UNSIGNED_BYTE,rawImage->getData());
+	glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,rawImage->GetWidth(),rawImage->GetHeight(),0,GL_RGB,GL_UNSIGNED_BYTE,rawImage->GetData());
 	glBindTexture(GL_TEXTURE_2D, m_numTextures); 
 	//delete texture;
 	//texture=NULL;
+	return m_numTextures;
+}
+
+unsigned int ViewOpenGL::CreateNewTexture(Texture* rawImage)
+{
+	m_numTextures++;
+ glGenTextures( 1, &m_numTextures);
+ glEnable( GL_TEXTURE_2D );
+  glBindTexture( GL_TEXTURE_2D, m_numTextures);
+
+
+
+ glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_REPEAT);
+ glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+ glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S, GL_REPEAT);
+ glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+
+ glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );		
+ glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR );
+//   int iType=texture.GetBPP();
+  //				if( iType==24 )
+int					iType= GL_RGB;
+	//			else
+//	int				iType= GL_RGBA;
+			//create a mipmapped texture
+	
+			//gluBuild2DMipmaps( GL_TEXTURE_2D, iType, texture.GetWidth(), texture.GetHeight(), iType, GL_UNSIGNED_BYTE, texture.GetData() );
+				gluBuild2DMipmaps( GL_TEXTURE_2D, iType, rawImage->GetWidth(), rawImage->GetHeight(), iType, GL_UNSIGNED_BYTE, rawImage );
+			//textureSet=true;
+glBindTexture( GL_TEXTURE_2D, m_numTextures);
+
 	return m_numTextures;
 }
