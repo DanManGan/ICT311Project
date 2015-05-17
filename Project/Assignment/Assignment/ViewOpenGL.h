@@ -30,7 +30,8 @@
 #define VIEWOPENGL_H
 
 #include "Vector3D.h"
-#include "textureHandler\image.h"
+//#include "textureHandler\image.h"
+#include "AssetManagement/Texture.h"
 
 class ViewOpenGL
 {
@@ -310,7 +311,7 @@ public:
 	void LoadIdentity();
 	void SwapBuffers();
 
-	unsigned int CreateTexture(image* rawImage);
+	unsigned int CreateTexture(Texture* rawImage);
 
 private:
 

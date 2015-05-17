@@ -27,11 +27,11 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
-#include "textureHandler\textureGenerator.h"
-#include "textureHandler\image.h"
+#include "AssetManagement/textureGenerator.h"
+#include "AssetManagement/Texture.h"
 #include "Vector3D.h"
 #include "TerrainLighting.h"
-#include "GameAsset.h"
+#include "AssetManagement/GameAsset.h"
 
 
 class Terrain : public GameAsset

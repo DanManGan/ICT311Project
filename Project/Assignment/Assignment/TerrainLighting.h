@@ -30,7 +30,7 @@
 #ifndef TERRAINLIGHTING_H
 #define TERRAINLIGHTING_H
 
-#include "textureHandler/image.h"
+#include "AssetManagement/Texture.h"
 
 /** 
   * @brief Lighting type

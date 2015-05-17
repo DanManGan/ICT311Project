@@ -26,15 +26,15 @@
 #define SINGLETONS_H
 
 #include "Singleton.h"
-#include "textureHandler/textureManager.h"
+//#include "textureHandler/textureManager.h"
 #include "GameWorld.h"
 #include "ViewOpenGL.h"
 #include "InputGLFW.h"
 #include "AudioEngine.h"
-#include "GameAssetManager.h"
+#include "AssetManagement/GameAssetManager.h"
 
-typedef Singleton<textureManager> textureMan;
-#define texManager textureMan::GetInstance()
+//typedef Singleton<textureManager> textureMan;
+//#define texManager textureMan::GetInstance()
 
 typedef Singleton<GameWorld> theWorld;
 #define gameWorld theWorld::GetInstance()

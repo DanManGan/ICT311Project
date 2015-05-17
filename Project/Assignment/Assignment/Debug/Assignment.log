@@ -1,49 +1,52 @@
-﻿Build started 15/05/2015 2:30:30 PM.
+﻿Build started 17/05/2015 4:52:59 PM.
      1>Project "C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Assignment\Assignment.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Touching "Debug\Assignment.unsuccessfulbuild".
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GameAssetFactory.cpp
-         GameAssetFactory.cpp
-       ManifestResourceCompile:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\Assignment.exe.embed.manifest.res" Debug\Assignment_manifest.rc 
-       Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.exe" /INCREMENTAL /NOLOGO irrKlang.lib OpenGL32.lib freeglut.lib SDL2.lib SDL2main.lib glew32.lib SOIL.lib OpenGL32.lib freeglut.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Assignment.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.lib" /MACHINE:X86 Debug\Assignment.exe.embed.manifest.res
-         Debug\AudioEngine.obj
-         Debug\BruteForce.obj
-         Debug\Camera.obj
-         Debug\GameAsset.obj
-         Debug\GameAssetFactory.obj
-         Debug\GameAssetManager.obj
-         Debug\InputGLFW.obj
-         Debug\MainGame.obj
-         Debug\main.obj
-         Debug\TerrainLighting.obj
-         Debug\Texture.obj
-         Debug\ViewOpenGL.obj
-         Debug\Terrain.obj
-         Debug\bmpLoader.obj
-         Debug\imageFactory.obj
-         Debug\multitexture.obj
-         Debug\pcx.obj
-         Debug\textureGenerator.obj
-         Debug\textureManager.obj
-         Debug\tgaLoader.obj
-         Debug\Vector3D.obj
-         Debug\GameWorld.obj
-         LINK : C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.exe not found or not built by the last incremental link; performing full link
-     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\Assignment.exe.embed.manifest" /manifest Debug\Assignment.exe.intermediate.manifest
-         All outputs are up-to-date.
-       LinkEmbedManifest:
-         All outputs are up-to-date.
-         Assignment.vcxproj -> C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.exe
-       FinalizeBuildStatus:
-         Deleting file "Debug\Assignment.unsuccessfulbuild".
-         Touching "Debug\Assignment.lastbuildstate".
-     1>Done Building Project "C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Assignment\Assignment.vcxproj" (build target(s)).
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt MainGame.cpp Terrain.cpp ViewOpenGL.cpp
+         ViewOpenGL.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\viewopengl.cpp(7): fatal error C1083: Cannot open include file: 'multitexture.h': No such file or directory
+         Terrain.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(60): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(196): warning C4244: 'return' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(207): warning C4244: 'return' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(220): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(220): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(223): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(223): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(224): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(224): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(225): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(225): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(226): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(226): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(263): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(325): error C2065: 'texManager' : undeclared identifier
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(325): error C2227: left of '->loadTexture' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(341): error C2664: 'textureGenerator::addTexture' : cannot convert parameter 1 from 'char *' to 'Texture *'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(348): error C2065: 'texManager' : undeclared identifier
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(348): error C2227: left of '->loadTexture' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(404): warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(405): warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(406): warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(413): error C2065: 'texManager' : undeclared identifier
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(413): error C2227: left of '->createNewTexture' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+         MainGame.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\maingame.cpp(49): error C2065: 'texManager' : undeclared identifier
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\maingame.cpp(49): error C2227: left of '->loadTexture' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\maingame.cpp(162): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\maingame.cpp(175): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\maingame.cpp(188): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\maingame.cpp(201): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\maingame.cpp(252): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         Generating Code...
+     1>Done Building Project "C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Assignment\Assignment.vcxproj" (build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:01.48
+Time Elapsed 00:00:01.44

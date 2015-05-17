@@ -4,7 +4,7 @@
 
 #include "Singletons.h"
 #include "ViewOpenGL.h"
-#include "multitexture.h"
+#include "AssetManagement/multitexture.h"
 
 #include <gl/glfw.h>
 
@@ -402,7 +402,7 @@ void ViewOpenGL::DrawTree(double baseRadius, double topRadius, double height, in
 	PopMatrix();
 }
 
-unsigned int ViewOpenGL::CreateTexture(image* rawImage)
+unsigned int ViewOpenGL::CreateTexture(Texture* rawImage)
 {
  //image* texture=loadTextureRaw(filename);
         if(!rawImage)

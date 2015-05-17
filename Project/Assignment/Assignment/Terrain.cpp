@@ -1,7 +1,7 @@
 
 #include "Terrain.h"
 #include "Singletons.h"
-#include "multitexture.h"
+#include "AssetManagement/multitexture.h"
 
 #include <iostream>
 #include <fstream>
@@ -73,60 +73,60 @@ bool Terrain::LoadHeightfield(char *file, const int size)
 /// NOT WORKING NEEDS FIXING
 bool Terrain::LoadHeightfield(char* file)
 {
-	std::cout << "Loading Terrain" << std::endl;
-	image* heightmap = texManager->loadTextureRaw(file);
-	//heightmap->SetFile(sFilepath);
-	//heightmap->Load();
+	//std::cout << "Loading Terrain" << std::endl;
+	//Texture* heightmap = texManager->loadTextureRaw(file);
+	////heightmap->SetFile(sFilepath);
+	////heightmap->Load();
 
-	int width = heightmap->getWidth();
-	int length = heightmap->getHeight();
+	//int width = heightmap->GetWidth();
+	//int length = heightmap->GetHeight();
 
-	if(width != length)
-		return false;
-	// terrain exists delete existing
-	if(m_terrainData)
-		delete[] m_terrainData;
-	// allocate memory for new terrain
-	if(width > 0)
-		m_terrainData = new unsigned char[width * width];
-	// if failed to assign memory return false
-	if(m_terrainData == nullptr)
-		return false;
+	//if(width != length)
+	//	return false;
+	//// terrain exists delete existing
+	//if(m_terrainData)
+	//	delete[] m_terrainData;
+	//// allocate memory for new terrain
+	//if(width > 0)
+	//	m_terrainData = new unsigned char[width * width];
+	//// if failed to assign memory return false
+	//if(m_terrainData == nullptr)
+	//	return false;
 
-	////pHeights = new float*[iLength];
-	//for(int i = 0; i < iLength; i++)
-	//{
-	//	pHeights[i] = new float[iWidth];
-	//}
+	//////pHeights = new float*[iLength];
+	////for(int i = 0; i < iLength; i++)
+	////{
+	////	pHeights[i] = new float[iWidth];
+	////}
 
-	//vNormals = new Vector3D*[iLength];
-	//for(int i = 0; i < iLength; i++)
-	//{
-	//	vNormals[i] = new Vector3D[iWidth];
-	//}
+	////vNormals = new Vector3D*[iLength];
+	////for(int i = 0; i < iLength; i++)
+	////{
+	////	vNormals[i] = new Vector3D[iWidth];
+	////}
 
-	//for(int y = 0; y < width; y++)
-	//{
-	//	for(int x = 0; x < width; x++)
+	////for(int y = 0; y < width; y++)
+	////{
+	////	for(int x = 0; x < width; x++)
+	////	{
+	////		unsigned char color = heightmap->getData()[3 * (y * width + x)];
+	////		//float h = fScale * ((color / 255.0f) - 0.5f);
+	////		SetHeightAtPoint(color, x, y);
+	////	}
+	////}
+	//
+	//	int verticeCount = width * width;
+	//	//unsigned char *d = new unsigned char[m_textureX * m_textureY];
+	//	//m_imageData = d;
+	//	int count = 0;
+	//	for (int i = 0; i < verticeCount * 3; i+=3 )
 	//	{
-	//		unsigned char color = heightmap->getData()[3 * (y * width + x)];
-	//		//float h = fScale * ((color / 255.0f) - 0.5f);
-	//		SetHeightAtPoint(color, x, y);
+	//		m_terrainData[count] = heightmap->getData()[i];
+	//		count++;
 	//	}
-	//}
-	
-		int verticeCount = width * width;
-		//unsigned char *d = new unsigned char[m_textureX * m_textureY];
-		//m_imageData = d;
-		int count = 0;
-		for (int i = 0; i < verticeCount * 3; i+=3 )
-		{
-			m_terrainData[count] = heightmap->getData()[i];
-			count++;
-		}
 
-	delete heightmap;
-	//ComputeNormals();
+	//delete heightmap;
+	////ComputeNormals();
 	return true;
 }
 
@@ -316,6 +316,22 @@ bool Terrain::GenFaultFormation(int iterations, int size, int minHeight,
 	delete[] heights;
 
 	return true;
+}
+
+//--------------------------------------------------------------------------------------
+
+bool Terrain::LoadTexture(char* file)
+{
+	int temp = texManager->loadTexture(file);
+
+	if(temp > 0) {
+		m_texMapNormalID = (unsigned int) temp;
+		m_texMapProcedural = false;;
+		m_texMapNormal = true;
+		return true;
+	}
+
+	return false;
 }
 
 //--------------------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 #include "GameWorld.h"
 #include "Singletons.h"
 
-#include "Texture.h"
+#include "AssetManagement/Texture.h"
 
 //--------------------------------------------------------------------------------------
 
@@ -33,13 +33,13 @@ void GameWorld::LoadWorldTexture()
 {
 	//Procedural terrain only works correctly with TGA files currently
 
-	assetManager->LoadTexture("graphics/grass.bmp");
+	assetManager->Load("graphics/grass.bmp");
 	//assetManager->Load(MESH, "graphics/detailmap.tga");
 	//std::cout << "asset" << assetManager->GetAsset("graphics/grass.tga") << std::endl;
 	//m_terrain.LoadTexture("graphics/grass.bmp");
 	Texture* tex = (Texture*)assetManager->GetAsset("graphics/grass.bmp");
-	
-	m_terrain.SetTexture(tex->Get());
+	graphics->CreateTexture(tex->GetImage());
+	m_terrain.SetTexture(graphics->CreateTexture(tex->GetImage()));
 	/*m_terrain.SetTexture((Texture*)assetManager->GetAsset("graphics/grass.bmp")->Get());*/
 	m_terrain.LoadProceduralTexture("graphics/lowestTile.tga");
 	m_terrain.LoadProceduralTexture("graphics/lowTile.tga");
