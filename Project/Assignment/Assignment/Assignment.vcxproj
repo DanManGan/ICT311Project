@@ -86,6 +86,9 @@
     <ClInclude Include="AssetManagement\GameAsset.h" />
     <ClInclude Include="AssetManagement\GameAssetFactory.h" />
     <ClInclude Include="AssetManagement\GameAssetManager.h" />
+    <ClInclude Include="AssetManagement\md2.h" />
+    <ClInclude Include="AssetManagement\md2Header.h" />
+    <ClInclude Include="AssetManagement\md2Loader.h" />
     <ClInclude Include="AssetManagement\multitexture.h" />
     <ClInclude Include="AssetManagement\pcx.h" />
     <ClInclude Include="AssetManagement\pcxLoader.h" />
@@ -98,15 +101,16 @@
     <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="BruteForce.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Extras\MathExtra.h" />
+    <ClInclude Include="Extras\timer.h" />
+    <ClInclude Include="Extras\Vector3D.h" />
     <ClInclude Include="InputGLFW.h" />
     <ClInclude Include="MainGame.h" />
-    <ClInclude Include="MathExtra.h" />
     <ClInclude Include="TerrainLighting.h" />
     <ClInclude Include="ViewOpenGL.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Singletons.h" />
     <ClInclude Include="Terrain.h" />
-    <ClInclude Include="Vector3D.h" />
     <ClInclude Include="GameWorld.h" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +119,9 @@
     <ClCompile Include="AssetManagement\GameAsset.cpp" />
     <ClCompile Include="AssetManagement\GameAssetFactory.cpp" />
     <ClCompile Include="AssetManagement\GameAssetManager.cpp" />
+    <ClCompile Include="AssetManagement\md2.cpp" />
+    <ClCompile Include="AssetManagement\md2Header.cpp" />
+    <ClCompile Include="AssetManagement\md2Loader.cpp" />
     <ClCompile Include="AssetManagement\multitexture.cpp" />
     <ClCompile Include="AssetManagement\pcx.cpp" />
     <ClCompile Include="AssetManagement\pcxLoader.cpp" />
@@ -127,13 +134,13 @@
     <ClCompile Include="AudioEngine.cpp" />
     <ClCompile Include="BruteForce.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Extras\Vector3D.cpp" />
     <ClCompile Include="InputGLFW.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TerrainLighting.cpp" />
     <ClCompile Include="ViewOpenGL.cpp" />
     <ClCompile Include="Terrain.cpp" />
-    <ClCompile Include="Vector3D.cpp" />
     <ClCompile Include="GameWorld.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

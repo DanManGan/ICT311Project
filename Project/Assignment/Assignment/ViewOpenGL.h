@@ -29,7 +29,7 @@
 #ifndef VIEWOPENGL_H
 #define VIEWOPENGL_H
 
-#include "Vector3D.h"
+#include "Extras/Vector3D.h"
 //#include "textureHandler\image.h"
 #include "AssetManagement/Texture.h"
 
@@ -310,12 +310,15 @@ public:
 	void PopMatrix();
 	void LoadIdentity();
 	void SwapBuffers();
-
+/////////////////////////////////////////////////////////////////////////////////////
 	unsigned int BindTexture(Texture* rawImage);
 
-	unsigned int CreateNewTexture(Texture* rawImage);
+	unsigned int CreateNewTexture(unsigned char* tex,int width,int height);
 
-	unsigned int aCreateNewTexture(unsigned char* tex,int width,int height);
+	void LightOn(GLenum Light);
+
+	void LightOff(GLenum Light);
+
 
 private:
 

@@ -2,12 +2,13 @@
 #include "GameWorld.h"
 #include "Singletons.h"
 #include "AssetManagement/Texture.h"
-
+#include "AssetManagement/md2.h"
 #include <iostream>
 
 //--------------------------------------------------------------------------------------
 
-GameWorld::GameWorld()
+GameWorld::GameWorld() :
+	ogro(nullptr)
 {
 	BruteForce();
 	LoadWorld();
@@ -55,7 +56,7 @@ void GameWorld::LoadWorldTexture()
 	m_terrain.CreateProceduralTexture();
 	//assetManager->Load(m_terrain.GetProceduralTexture("ProceduralTexture"));
 	//m_terrain.SetTexture(graphics->BindTexture(m_terrain.GetProceduralTexture()));
-	m_terrain.SetTexture(graphics->aCreateNewTexture(m_terrain.GetProTexData(), m_terrain.GetProTexWidth(), m_terrain.GetProTexHeight()));
+	m_terrain.SetTexture(graphics->CreateNewTexture(m_terrain.GetProTexData(), m_terrain.GetProTexWidth(), m_terrain.GetProTexHeight()));
 	m_terrain.SetNumTerrainTexRepeat(1);
 	//m_terrain.LoadDetailMap("Textures/detailmap.tga");
 	m_terrain.SetNumDetailMapRepeat(8);
@@ -63,6 +64,13 @@ void GameWorld::LoadWorldTexture()
 	m_terrain.SetLightingColor(1.0f, 1.0f, 1.0f);
 	m_terrain.SetSlopeLightingParams( 1, 1, 0.2f, 0.9f, 10.0f );
 	m_terrain.CreateSlopeLighting();
+
+	assetManager->Load("Models/Ogro/Tris.md2");
+	assetManager->Load("Models/Ogro/Ogrobase.pcx");
+
+	ogro = (md2*)assetManager->GetAsset("Models/Ogro/Tris.md2");
+	ogro->SetSkin(graphics->BindTexture((Texture*)assetManager->GetAsset("Models/Ogro/Ogrobase.pcx")));
+
 }
 
 //--------------------------------------------------------------------------------------
@@ -70,6 +78,27 @@ void GameWorld::LoadWorldTexture()
 void GameWorld::Render()
 {
 	m_terrain.Render();
+
+	graphics->PushMatrix();
+	graphics->LightOn(GL_LIGHT0);
+	//m_terrain.GetHeightAverage();
+	//std::cout << "height scaled: " << m_terrain.GetHeightScaled(70, 93) << std::endl;
+	//float modelHeight = ((float)m_model.GetHeight() * 0.25f) * 0.25f;
+	//graphics->Translate(52,m_terrain.GetHeightAverage(52,92) + modelHeight,92);
+	graphics->Translate(52,m_terrain.GetHeightAverage(52,92),92);
+	//glRotatef(45,0,1,0);
+	graphics->Scale(0.25f,0.25f,0.25f);
+	//if(m_animate)
+	//{		 
+		//m_model.animate(m_animateStartFrame,m_animateEndFrame);
+	//}
+	//else
+	//{
+		ogro->render();
+	//}
+
+	graphics->LightOff(GL_LIGHT0);
+	graphics->PopMatrix();
 }
 
 //--------------------------------------------------------------------------------------

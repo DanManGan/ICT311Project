@@ -4,6 +4,7 @@
 #include "pcxLoader.h"
 #include "bmpLoader.h"
 #include "tgaLoader.h"
+#include "md2Loader.h"
 
 
 #include <algorithm>
@@ -19,6 +20,7 @@ GameAssetFactory::GameAssetFactory() :
 	m_manager.Register(new bmpLoader());
 	m_manager.Register(new tgaLoader());
 	m_manager.Register(new pcxLoader());
+	m_manager.Register(new md2Loader());
 }
 
 GameAssetFactory::~GameAssetFactory()

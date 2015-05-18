@@ -19,15 +19,18 @@
     <Filter Include="Source Files\AssetManagement">
       <UniqueIdentifier>{a8dcd2ee-76d9-40bf-b3ce-3edcabb01ef3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Extras">
+      <UniqueIdentifier>{2c187d0c-b07a-4c45-a6c8-6803e01cac29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Extras">
+      <UniqueIdentifier>{59c2a708-dc64-4bca-b764-231052185a37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BruteForce.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MathExtra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
@@ -55,9 +58,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AudioEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AssetManagement\bmp.h">
@@ -102,6 +102,24 @@
     <ClInclude Include="AssetManagement\pcxLoader.h">
       <Filter>Header Files\AssetManagement</Filter>
     </ClInclude>
+    <ClInclude Include="AssetManagement\md2Header.h">
+      <Filter>Header Files\AssetManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManagement\md2Loader.h">
+      <Filter>Header Files\AssetManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Extras\MathExtra.h">
+      <Filter>Header Files\Extras</Filter>
+    </ClInclude>
+    <ClInclude Include="Extras\timer.h">
+      <Filter>Header Files\Extras</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManagement\md2.h">
+      <Filter>Header Files\AssetManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Extras\Vector3D.h">
+      <Filter>Header Files\Extras</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BruteForce.cpp">
@@ -132,9 +150,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AudioEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AssetManagement\bmp.cpp">
@@ -178,6 +193,18 @@
     </ClCompile>
     <ClCompile Include="AssetManagement\pcxLoader.cpp">
       <Filter>Source Files\AssetManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManagement\md2Header.cpp">
+      <Filter>Source Files\AssetManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManagement\md2Loader.cpp">
+      <Filter>Source Files\AssetManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManagement\md2.cpp">
+      <Filter>Source Files\AssetManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Extras\Vector3D.cpp">
+      <Filter>Source Files\Extras</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

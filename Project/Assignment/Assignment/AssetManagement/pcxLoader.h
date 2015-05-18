@@ -14,7 +14,13 @@ public:
 	virtual const char* GetExtension();
 
 private:
-	bool TexMapScalePow2(unsigned char* data, int& width, int& height);
+
+	bool TexMapScalePow2();
+
+	unsigned int bpp; 
+	int width; 
+	int height;
+	unsigned char *imageData; 
 	
 };
 

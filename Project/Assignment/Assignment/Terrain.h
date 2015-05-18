@@ -31,7 +31,7 @@
 
 #include "AssetManagement/textureGenerator.h"
 #include "AssetManagement/Texture.h"
-#include "Vector3D.h"
+#include "Extras/Vector3D.h"
 #include "TerrainLighting.h"
 #include "AssetManagement/GameAsset.h"
 #include "AssetManagement/Texture.h"

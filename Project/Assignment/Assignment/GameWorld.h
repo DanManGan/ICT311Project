@@ -27,6 +27,7 @@
 #define GAMEWORLD_H
 
 #include "bruteforce.h"
+#include "AssetManagement/md2.h"
 
 class GameWorld
 {
@@ -245,6 +246,8 @@ private:
 	  * @post 
 	  */
 	GameWorld& operator=(const GameWorld&);
+
+	md2* ogro;
 };
 
 

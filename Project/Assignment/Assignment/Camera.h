@@ -26,7 +26,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "Vector3D.h"
+#include "Extras/Vector3D.h"
 
 class Camera
 {
