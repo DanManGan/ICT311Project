@@ -20,7 +20,7 @@ GameAsset* tgaLoader::Create(char *filePath)
 		return nullptr;
 	}   
 
-	return new tga(filePath, iData->Data, iData->Width, iData->Height, iData->BytesPerPixel*8);
+	return new tga(filePath, iData->Data, iData->Width, iData->Height, iData->BytesPerPixel);
 }
 
 const char* tgaLoader::GetExtension() 

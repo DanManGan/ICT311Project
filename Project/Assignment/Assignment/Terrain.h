@@ -14,10 +14,12 @@
   * @date 20.04.15
   * @status under construction
   * 
-  * @author 
-  * @version 
-  * @date 
-  * @status 
+  * @author Justin Pettit
+  * @version 02
+  * @date 18.05.15
+  * @status updated for project
+  * new Set and Get methods added
+  * Procedural Texture Generation passed to 'textureGenerator' class
   * 
   * @todo 
   * 
@@ -33,8 +35,6 @@
 #include "TerrainLighting.h"
 #include "AssetManagement/GameAsset.h"
 #include "AssetManagement/Texture.h"
-
-#include "textureManager.h"
 
 
 class Terrain : public GameAsset
@@ -255,20 +255,60 @@ public:
 ////////////////////  Texture Methods  ////////////////////
 
 	/** 
-	  * @brief Load terrain texture
-	  * @warning None
+	  * @brief Get Procedural texture
+	  * @warning must be created first
 	  * 
-	  * Load terrain texture map from file
+	  * Returns data for the procedural texture created for the terrain
 	  * 
-	  * @param file: char type variable in Terrain class for file name
-	  * @return bool value true if file loaded
+	  * @return unsigned char * value for procedural texture data
 	  * 
 	  * 
 	  * @pre 
 	  * @post 
 	  */ 
-	//bool LoadTexture(char* file);
+	unsigned char* GetProTexData();
 
+	/** 
+	  * @brief Get procedural texture width
+	  * @warning must be created first
+	  * 
+	  * Gets procedural texture width
+	  * 
+	  * @return int value for texture width
+	  * 
+	  * 
+	  * @pre 
+	  * @post 
+	  */ 
+	int GetProTexWidth();
+
+	/** 
+	  * @brief Get procedural texture height
+	  * @warning must be created first
+	  * 
+	  * Gets procedural texture height
+	  * 
+	  * @return int value for texture height
+	  * 
+	  * 
+	  * @pre 
+	  * @post 
+	  */
+	int GetProTexHeight();
+
+	/** 
+	  * @brief Sets terrain texture
+	  * @warning None
+	  * 
+	  * Sets terrain texture map from file
+	  * 
+	  * @param tex: int type variable in Terrain class for texture
+	  * @return bool value true if texture set
+	  * 
+	  * 
+	  * @pre 
+	  * @post 
+	  */ 
 	bool SetTexture(unsigned int tex);
 
 	/** 
@@ -277,8 +317,8 @@ public:
 	  * 
 	  * Load detail map texture from file
 	  * 
-	  * @param file: char type variable in Terrain class for file name
-	  * @return bool value true if file loaded
+	  * @param tex: unsigned int type variable in Terrain class for detail texture
+	  * @return bool value true if texture set
 	  * 
 	  * 
 	  * @pre 
@@ -311,16 +351,14 @@ public:
 	  * @post 
 	  */ 
 	void SetNumDetailMapRepeat(int num);
-
-	Texture* GetProceduralTexture(std::string name);
 		
 	/** 
 	  * @brief Add texture to procedural textures
 	  * @warning None
 	  * 
-	  * Loads and adds a texture in for procedural map creation
+	  * Adds a texture in for procedural map creation
 	  * 
-	  * @param file: char type variable in Terrain class for file name
+	  * @param tex: Texture type variable in Terrain class for texture
 	  * @return bool value true if file loaded
 	  * 
 	  * 
@@ -342,7 +380,7 @@ public:
 	  * @pre 
 	  * @post 
 	  */ 
-	bool CreateProceduralTexture(std::string name);
+	bool CreateProceduralTexture();
 
 ////////////////////  Lighting Methods  ////////////////////
 
@@ -647,7 +685,6 @@ private:
 	  */ 
 	void GetTexCoords(int texNum, unsigned int& x, unsigned int& y);
 	
-	textureManager m_tex;
 };
 
 #endif

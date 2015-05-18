@@ -20,8 +20,7 @@ Terrain::Terrain() :
 	m_texMapDetail(false),
 	m_textureGenerator(textureGenerator()),
 	m_lighting(TerrainLighting()),
-	m_scale(1.0f, 1.0f, 1.0f),
-	m_tex(textureManager())
+	m_scale(1.0f, 1.0f, 1.0f)
 {
 	initMultiTextures();
 }
@@ -319,6 +318,27 @@ bool Terrain::GenFaultFormation(int iterations, int size, int minHeight,
 
 //--------------------------------------------------------------------------------------
 
+unsigned char* Terrain::GetProTexData()
+{
+	return m_textureGenerator.getNewTexData();
+}
+
+//--------------------------------------------------------------------------------------
+
+int Terrain::GetProTexWidth()
+{
+	return m_textureGenerator.getNewTexWidth();
+}
+
+//--------------------------------------------------------------------------------------
+
+int Terrain::GetProTexHeight()
+{
+	return m_textureGenerator.getNewTexHeight();
+}
+
+//--------------------------------------------------------------------------------------
+
 bool Terrain::SetTexture(unsigned int tex)
 {
 	std::cout << "tex" << tex << std::endl;
@@ -359,13 +379,6 @@ void Terrain::SetNumDetailMapRepeat(int num)
 
 //--------------------------------------------------------------------------------------
 
-Texture* Terrain::GetProceduralTexture(std::string name)
-{
-	return m_textureGenerator.GetProceduralTexture(name);
-}
-
-//--------------------------------------------------------------------------------------
-
 bool Terrain::AddProceduralTexture(Texture* tex)
 {
 	return m_textureGenerator.addTexture(tex);
@@ -373,55 +386,9 @@ bool Terrain::AddProceduralTexture(Texture* tex)
 
 //--------------------------------------------------------------------------------------
 
-bool Terrain::CreateProceduralTexture(std::string name)
+bool Terrain::CreateProceduralTexture()
 {
-	return m_textureGenerator.CreateProceduralTexture(name, m_terrainData, m_size);
-
-	//if(!m_terrainData || m_textureGenerator.getNumTextures() == 0)
-	//	return false;
-
-	//unsigned char curHeight; //current height in the heightmap
-	//float weight; //weight of influence of tex to height
-	//unsigned int texX = 0, texZ = 0;
-
-	////setup room for the new texture
-	//m_textureGenerator.setupNewTexture(m_size,m_size);
-	//RGB<unsigned char> color;
-	//RGB<unsigned char> totalColor;
-	//float range = m_textureGenerator.getRange();
-
-	////loop through each value in the heightmap and get height value
-	//for(int z = 0; z < m_size; z++) {
-	//	for(int x = 0; x < m_size; x++) {
-	//		totalColor.reset();
-	//		curHeight=GetHeightColour(x,z); //get unscaled heightmap value
-	//		for(int i = 0; i < m_textureGenerator.getNumTextures(); i++) { 
-	//			// setup texture coords
-	//			texX = x;
-	//			texZ = z;
-	//			GetTexCoords(i, texX, texZ);
-
-	//			//calculate weight for each texture map
-	//			weight = (range-abs((float)curHeight - m_textureGenerator.getTextureMax(i)))/range;
-	//			if(weight  > 0.0) { //texture is influenced by the height, calculate its color weighting
-	//				color = m_textureGenerator.getColor(i, texX, texZ);
-	//				totalColor.r += color.r * weight;
-	//				totalColor.g += color.g * weight;
-	//				totalColor.b += color.b * weight;
-	//			}
-	//		} //add the combined color weightings to the new texture.
-	//		m_textureGenerator.setColor(x, z, totalColor);
-	//	}
-	//}
-	////load the new texture into memory ready for use
-	//m_texMapID = m_tex.createNewTexture(m_textureGenerator.getTex(), m_size, m_size);
-	//
-	//m_texMap = true;
-
-	////dont repeat this texture
-	//m_numTerrainTexRepeat=1;
-
-	//return true;
+	return m_textureGenerator.CreateProceduralTexture(m_terrainData, m_size);
 }
 
 //--------------------------------------------------------------------------------------

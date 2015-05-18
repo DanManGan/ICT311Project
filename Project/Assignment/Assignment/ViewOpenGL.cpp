@@ -450,7 +450,38 @@ int					iType= GL_RGB;
 			//create a mipmapped texture
 	
 			//gluBuild2DMipmaps( GL_TEXTURE_2D, iType, texture.GetWidth(), texture.GetHeight(), iType, GL_UNSIGNED_BYTE, texture.GetData() );
-				gluBuild2DMipmaps( GL_TEXTURE_2D, iType, rawImage->GetWidth(), rawImage->GetHeight(), iType, GL_UNSIGNED_BYTE, rawImage );
+	gluBuild2DMipmaps( GL_TEXTURE_2D, iType, rawImage->GetWidth(), rawImage->GetHeight(), iType, GL_UNSIGNED_BYTE, rawImage->GetData() );
+			//textureSet=true;
+	glBindTexture( GL_TEXTURE_2D, m_numTextures);
+
+	return m_numTextures;
+}
+
+unsigned int ViewOpenGL::aCreateNewTexture(unsigned char* tex,int width,int height)
+{
+	m_numTextures++;
+ glGenTextures( 1, &m_numTextures);
+ glEnable( GL_TEXTURE_2D );
+  glBindTexture( GL_TEXTURE_2D, m_numTextures);
+
+
+
+ glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_REPEAT);
+ glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+ glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S, GL_REPEAT);
+ glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+
+ glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );		
+ glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR );
+//   int iType=texture.GetBPP();
+  //				if( iType==24 )
+int					iType= GL_RGB;
+	//			else
+//	int				iType= GL_RGBA;
+			//create a mipmapped texture
+	
+			//gluBuild2DMipmaps( GL_TEXTURE_2D, iType, texture.GetWidth(), texture.GetHeight(), iType, GL_UNSIGNED_BYTE, texture.GetData() );
+				gluBuild2DMipmaps( GL_TEXTURE_2D, iType, width, height, iType, GL_UNSIGNED_BYTE, tex );
 			//textureSet=true;
 glBindTexture( GL_TEXTURE_2D, m_numTextures);
 

@@ -18,7 +18,6 @@ textureGenerator::textureGenerator()
 	newTexWidth=0;
 	newTexHeight=0;
 	newTexBPP=3;  //24 bit
-	newTexName = "";
 }
 
 textureGenerator::~textureGenerator()
@@ -52,7 +51,6 @@ bool textureGenerator::addTexture(Texture* texture)
 	if(numTextures < 4 && texture) { 
 		numTextures++;
 		if(tex[numTextures-1]=texture) {
-			std::cout << "tex " << numTextures << " loaded" << std::endl;
 			return true;
 		}
 		else
@@ -70,27 +68,25 @@ bool textureGenerator::isLoaded(int index)
 {
 	if(index<4 && index >-1)
 	  return (tex[index]!=NULL);
-
-	return false;
+ return false;
 }
 
 RGB<unsigned char> textureGenerator::getColor(int texNum,int x, int y)
 {
 	RGB<unsigned char> val={0,0,0};
-
 	if(texNum>3 || texNum<0)
 		return val;
-
-	return tex[texNum]->GetColor(x,y);
+ return tex[texNum]->GetColor(x,y);
 }
 
 void textureGenerator::setColor( int x, int y, RGB<unsigned char> color)
 {
-	if( ( x<newTexWidth ) && ( y<newTexHeight ) ) {
-		newTex[( ( y*newTexHeight )+x )*newTexBPP]  = color.r;
-		newTex[( ( y*newTexHeight )+x )*newTexBPP+1]= color.g;
-		newTex[( ( y*newTexHeight )+x )*newTexBPP+2]= color.b;
-	}
+		if( ( x<newTexWidth ) && ( y<newTexHeight ) )
+		{
+			newTex[( ( y*newTexHeight )+x )*newTexBPP]  = color.r;
+			newTex[( ( y*newTexHeight )+x )*newTexBPP+1]= color.g;
+			newTex[( ( y*newTexHeight )+x )*newTexBPP+2]= color.b;
+		}
 }
 
 bool textureGenerator::setupNewTexture(int width, int height)
@@ -99,9 +95,9 @@ bool textureGenerator::setupNewTexture(int width, int height)
 	newTexHeight=height;
 	newTexWidth=width;
 	newTex=new unsigned char[newTexHeight*newTexWidth*newTexBPP];
-	if(!newTex)
-		return false;
-	return true;
+	  if(!newTex)
+		  return false;
+ return true;
 }
 
 float textureGenerator::getRange()
@@ -135,12 +131,12 @@ unsigned int textureGenerator::getTexHeight(int texNo)
 
 //--------------------------------------------------------------------------------------
 
-bool textureGenerator::CreateProceduralTexture(std::string name, unsigned char* terrain, int terrainSize)
+bool textureGenerator::CreateProceduralTexture(unsigned char* terrain, int terrainSize)
 {
 	if(!terrain || numTextures == 0)
 		return false;
 	
-	newTexName = name;
+	//newTexName = name;
 
 	unsigned char curHeight; //current height in the heightmap
 	float weight; //weight of influence of tex to height
@@ -175,27 +171,11 @@ bool textureGenerator::CreateProceduralTexture(std::string name, unsigned char* 
 			setColor(x, z, totalColor);
 		}
 	}
-	//load the new texture into memory ready for use
-	//m_texMapProceduralID = texManager->createNewTexture(getTex(), size, size);
-	//m_texMapNormal = false;
-	//m_texMapProcedural = true;
-
-	//dont repeat this texture
-//	m_numTerrainTexRepeat=1;
-
 
 	return true;
 }
 
-//--------------------------------------------------------------------------------------
-
-Texture* textureGenerator::GetProceduralTexture(std::string name)
-{
-	newTexName = name;
-	return new Texture((char*)newTexName.c_str(), newTex, newTexWidth, newTexHeight, newTexBPP);
-}
-
-//--------------------------------------------------------------------------------------
+////--------------------------------------------------------------------------------------
 
 unsigned char textureGenerator::GetHeightColour(unsigned char* data, int size, int xPos, int zPos)
 {

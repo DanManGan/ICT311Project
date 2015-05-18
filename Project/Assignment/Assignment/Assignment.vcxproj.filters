@@ -102,9 +102,6 @@
     <ClInclude Include="AssetManagement\pcxLoader.h">
       <Filter>Header Files\AssetManagement</Filter>
     </ClInclude>
-    <ClInclude Include="textureManager.h">
-      <Filter>Header Files\AssetManagement</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BruteForce.cpp">
@@ -180,9 +177,6 @@
       <Filter>Source Files\AssetManagement</Filter>
     </ClCompile>
     <ClCompile Include="AssetManagement\pcxLoader.cpp">
-      <Filter>Source Files\AssetManagement</Filter>
-    </ClCompile>
-    <ClCompile Include="textureManager.cpp">
       <Filter>Source Files\AssetManagement</Filter>
     </ClCompile>
   </ItemGroup>

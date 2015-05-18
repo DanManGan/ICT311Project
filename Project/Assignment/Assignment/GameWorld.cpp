@@ -51,10 +51,10 @@ void GameWorld::LoadWorldTexture()
 	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
 	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highTile.tga"));
 	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highestTile.tga"));
-	m_terrain.CreateProceduralTexture("ProceduralTexture");
-	assetManager->Load(m_terrain.GetProceduralTexture("ProceduralTexture"));
+	m_terrain.CreateProceduralTexture();
+	//assetManager->Load(m_terrain.GetProceduralTexture("ProceduralTexture"));
 	//m_terrain.SetTexture(graphics->BindTexture(m_terrain.GetProceduralTexture()));
-	m_terrain.SetTexture(graphics->CreateNewTexture(m_terrain.GetProceduralTexture("ProceduralTexture")));
+	m_terrain.SetTexture(graphics->aCreateNewTexture(m_terrain.GetProTexData(), m_terrain.GetProTexWidth(), m_terrain.GetProTexHeight()));
 	m_terrain.SetNumTerrainTexRepeat(1);
 	//m_terrain.LoadDetailMap("Textures/detailmap.tga");
 	m_terrain.SetNumDetailMapRepeat(8);

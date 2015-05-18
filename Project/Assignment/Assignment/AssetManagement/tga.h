@@ -21,6 +21,8 @@ public:
 
 	//unsigned int GetBPP();
 
+	unsigned int GetBPP();
+
 	RGB<unsigned char> GetColor(int x,int y);
 
 private:

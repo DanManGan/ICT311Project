@@ -25,13 +25,13 @@ bmp::~bmp()
 //	return m_height;
 //}
 //
-//unsigned int bmp::GetBPP()
-//{
-//  return m_BPP;
-//}
-//
-//RGB<unsigned char> bmp::GetColor(int x,int y)
-//{
-//	RGB<unsigned char> color={0,0,0};
-//	return color;
-//}
+unsigned int bmp::GetBPP()
+{
+  return m_BPP;
+}
+
+RGB<unsigned char> bmp::GetColor(int x,int y)
+{
+	RGB<unsigned char> color={0,0,0};
+	return color;
+}

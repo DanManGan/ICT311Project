@@ -1,12 +1,32 @@
-﻿Build started 17/05/2015 10:56:16 PM.
+﻿Build started 18/05/2015 12:31:53 PM.
      1>Project "C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Assignment\Assignment.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\Assignment.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AssetManagement\textureGenerator.cpp AudioEngine.cpp BruteForce.cpp GameWorld.cpp InputGLFW.cpp MainGame.cpp Terrain.cpp ViewOpenGL.cpp
          Terrain.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(58): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(194): warning C4244: 'return' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(205): warning C4244: 'return' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(218): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(218): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(221): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(221): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(222): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(222): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(223): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(223): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(224): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(224): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\terrain.cpp(261): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
          GameWorld.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\gameworld.cpp(62): warning C4244: 'argument' : conversion from 'float' to 'unsigned char', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\gameworld.cpp(62): warning C4244: 'argument' : conversion from 'float' to 'unsigned char', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\gameworld.cpp(62): warning C4244: 'argument' : conversion from 'float' to 'unsigned char', possible loss of data
          textureGenerator.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\assetmanagement\texturegenerator.cpp(171): warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\assetmanagement\texturegenerator.cpp(172): warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\assetmanagement\texturegenerator.cpp(173): warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
          Generating Code...
          Skipping... (no relevant changes detected)
          ViewOpenGL.cpp
@@ -39,7 +59,6 @@
          Debug\MainGame.obj
          Debug\main.obj
          Debug\TerrainLighting.obj
-         Debug\textureManager.obj
          Debug\ViewOpenGL.obj
          Debug\Terrain.obj
          Debug\Vector3D.obj
@@ -57,4 +76,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.02
+Time Elapsed 00:00:02.39

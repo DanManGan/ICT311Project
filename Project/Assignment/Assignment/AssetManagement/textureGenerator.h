@@ -25,15 +25,17 @@ public:
 	bool isLoaded(int index);
 	RGB<unsigned char> getColor(int texNum,int x, int y);
 	void setColor(int x, int y, RGB<unsigned char> color);
-	unsigned char* getTex(){return newTex;}
+	unsigned char* getNewTexData(){return newTex;}
+	int getNewTexWidth(){return newTexWidth;}
+	int getNewTexHeight(){return newTexHeight;}
 	bool setupNewTexture(int width, int height);
 	float getRange();
 	float getTextureMax(int texNum);
 	unsigned int getTexWidth(int texNo);
 	unsigned int getTexHeight(int texNo);
 
-	bool CreateProceduralTexture(std::string name, unsigned char* data, int size);
-	Texture* GetProceduralTexture(std::string name);
+	bool CreateProceduralTexture(unsigned char* data, int size);
+	//Texture* GetProceduralTexture(std::string name);
 
 private:
 	
@@ -51,7 +53,6 @@ private:
 	int newTexBPP;
 	int numTextures;
 
-	std::string newTexName;
 	
 };
 

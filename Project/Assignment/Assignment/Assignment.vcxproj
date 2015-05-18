@@ -102,7 +102,6 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MathExtra.h" />
     <ClInclude Include="TerrainLighting.h" />
-    <ClInclude Include="textureManager.h" />
     <ClInclude Include="ViewOpenGL.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Singletons.h" />
@@ -132,7 +131,6 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TerrainLighting.cpp" />
-    <ClCompile Include="textureManager.cpp" />
     <ClCompile Include="ViewOpenGL.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Vector3D.cpp" />

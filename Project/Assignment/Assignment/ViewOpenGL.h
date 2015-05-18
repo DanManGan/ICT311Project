@@ -315,6 +315,8 @@ public:
 
 	unsigned int CreateNewTexture(Texture* rawImage);
 
+	unsigned int aCreateNewTexture(unsigned char* tex,int width,int height);
+
 private:
 
 	/** 

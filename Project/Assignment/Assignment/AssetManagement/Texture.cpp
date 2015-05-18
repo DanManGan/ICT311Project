@@ -110,8 +110,10 @@ unsigned int Texture::GetTexID()
 
 void Texture::Unload()
 {
-	delete[] m_imageData;
-	m_imageData = nullptr;
+	if(m_imageData) {
+		delete[] m_imageData;
+		m_imageData = nullptr;
+	}
 	m_textureID = 0;
 	m_width = 0;
 	m_height = 0;
@@ -133,13 +135,13 @@ int Texture::GetHeight()
 	return m_height;
 }
 
-unsigned int Texture::GetBPP()
-{
-	return m_BPP;
-}
-
-RGB<unsigned char> Texture::GetColor(int x,int y)
-{
-	RGB<unsigned char> color={0,0,0};
-	return color;
-}
+//unsigned int Texture::GetBPP()
+//{
+//	return m_BPP;
+//}
+//
+//RGB<unsigned char> Texture::GetColor(int x,int y)
+//{
+//	RGB<unsigned char> color={0,0,0};
+//	return color;
+//}

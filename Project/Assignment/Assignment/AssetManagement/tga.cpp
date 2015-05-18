@@ -31,6 +31,11 @@ tga::~tga()
 //	return m_BPP;
 //}
 
+unsigned int tga::GetBPP()
+{
+	return m_BPP * 8;
+}
+
 RGB<unsigned char> tga::GetColor(int x,int y)
 {
 	RGB<unsigned char> color={0,0,0};

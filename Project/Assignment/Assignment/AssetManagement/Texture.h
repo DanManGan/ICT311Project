@@ -63,8 +63,8 @@ public:
 	int GetWidth();
 	int GetHeight();
 	
-	unsigned int GetBPP();
-	RGB<unsigned char> GetColor(int x,int y);
+	virtual unsigned int GetBPP()=0;
+	virtual RGB<unsigned char> GetColor(int x,int y)=0;
 
 protected:
 	
