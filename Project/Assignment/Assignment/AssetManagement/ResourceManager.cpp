@@ -2,16 +2,18 @@
 #include "ResourceManager.h"
 
 #include <algorithm>
+#include <iostream>
 
 ResourceManager::~ResourceManager()
 {
-    ResourceMap::iterator it = m_resources.begin();
-    while (it != m_resources.end()) 
-    {
-        GameAsset * pRes = (*it).second;
-        delete pRes;
-        ++it;
-    }
+  //  ResourceMap::iterator it = m_resources.begin();
+  //  while (it != m_resources.end()) 
+  //  {
+  //      GameAsset * pRes = (*it).second;
+		//std::cout << pRes->GetName() << std::endl;
+  //      delete pRes;
+  //      ++it;
+  //  }
 }
 
 

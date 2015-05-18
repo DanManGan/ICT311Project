@@ -1,8 +1,9 @@
 
 #include "GameWorld.h"
 #include "Singletons.h"
-
 #include "AssetManagement/Texture.h"
+
+#include <iostream>
 
 //--------------------------------------------------------------------------------------
 
@@ -42,8 +43,8 @@ void GameWorld::LoadWorldTexture()
 	//assetManager->Load(MESH, "Textures/detailmap.tga");
 	//std::cout << "asset" << assetManager->GetAsset("Textures/grass.tga") << std::endl;
 	//m_terrain.LoadTexture("Textures/grass.bmp");
-	//Texture* tex = (Texture*)assetManager->GetAsset("Textures/grass.bmp");
-	
+	Texture* tex = (Texture*)assetManager->GetAsset("Textures/detailmap.tga");
+	std::cout << "detail " << tex->GetName() << std::endl;
 	//tex->SetTexID(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
 	//m_terrain.SetTexture(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
 	m_terrain.SetDetailMap(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
