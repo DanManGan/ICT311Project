@@ -3,7 +3,7 @@
 
 #include "MainGame.h"
 #include "Singletons.h"
-#include "ViewOpenGL.h"
+#include "Graphics/ViewOpenGL.h"
 
 #include <iostream>
 #include <iomanip>

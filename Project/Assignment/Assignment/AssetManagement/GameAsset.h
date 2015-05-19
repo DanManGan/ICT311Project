@@ -44,7 +44,7 @@ public:
 
 	GameAsset(std::string name);
 
-	~GameAsset();
+	virtual ~GameAsset();
 
 	//void SetAssetType(GameAssetType type);
 

@@ -28,6 +28,10 @@
 
 #include "bruteforce.h"
 #include "AssetManagement/md2.h"
+#include "GameObjects/GameObject.h"
+
+#include <map>
+#include <string>
 
 class GameWorld
 {
@@ -247,7 +251,14 @@ private:
 	  */
 	GameWorld& operator=(const GameWorld&);
 
-	md2* ogro;
+	//GameObject* ogro;
+
+	//std::map<std::string, GameObject*> m_objects;
+
+	typedef std::map<std::string, GameObject*> objects;
+	typedef objects::iterator objIter;
+
+	objects m_objects;
 };
 
 

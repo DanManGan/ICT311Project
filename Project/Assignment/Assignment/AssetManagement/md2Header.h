@@ -46,6 +46,7 @@ public:
    bool operator=(const md2Header&); 
    friend class md2;
    friend class md2Loader;
+  // friend class md2Model;
 };
 
 #endif

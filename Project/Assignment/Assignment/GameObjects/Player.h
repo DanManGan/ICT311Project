@@ -2,7 +2,7 @@
 #define PLAYER_H
 
 #include "GameObject.h"
-#include "../ViewOpenGL.h"
+#include "../Graphics/ViewOpenGL.h"
 
 class Player :public GameObject
 {

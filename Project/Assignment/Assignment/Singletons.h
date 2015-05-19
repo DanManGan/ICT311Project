@@ -28,7 +28,7 @@
 #include "Singleton.h"
 //#include "textureHandler/textureManager.h"
 #include "GameWorld.h"
-#include "ViewOpenGL.h"
+#include "Graphics/ViewOpenGL.h"
 #include "InputGLFW.h"
 #include "AudioEngine.h"
 #include "AssetManagement/GameAssetManager.h"

@@ -93,7 +93,7 @@ public:
 	  */ 
 	bool LoadHeightfield(char* file, const int size);
 
-	bool LoadHeightfield(char* file);
+	bool LoadHeightfield(Texture* file);
 
 	/** 
 	  * @brief Unload Height field

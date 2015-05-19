@@ -89,6 +89,7 @@
     <ClInclude Include="AssetManagement\md2.h" />
     <ClInclude Include="AssetManagement\md2Header.h" />
     <ClInclude Include="AssetManagement\md2Loader.h" />
+    <ClInclude Include="AssetManagement\Mesh.h" />
     <ClInclude Include="AssetManagement\multitexture.h" />
     <ClInclude Include="AssetManagement\pcx.h" />
     <ClInclude Include="AssetManagement\pcxLoader.h" />
@@ -101,16 +102,19 @@
     <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="BruteForce.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Collision\AABB.h" />
+    <ClInclude Include="Collision\Collision.h" />
     <ClInclude Include="Extras\MathExtra.h" />
     <ClInclude Include="Extras\timer.h" />
     <ClInclude Include="Extras\Vector3D.h" />
     <ClInclude Include="GameObjects\GameObject.h" />
     <ClInclude Include="GameObjects\NPC.h" />
     <ClInclude Include="GameObjects\Player.h" />
+    <ClInclude Include="Graphics\md2Model.h" />
+    <ClInclude Include="Graphics\ViewOpenGL.h" />
     <ClInclude Include="InputGLFW.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="TerrainLighting.h" />
-    <ClInclude Include="ViewOpenGL.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Singletons.h" />
     <ClInclude Include="Terrain.h" />
@@ -125,6 +129,7 @@
     <ClCompile Include="AssetManagement\md2.cpp" />
     <ClCompile Include="AssetManagement\md2Header.cpp" />
     <ClCompile Include="AssetManagement\md2Loader.cpp" />
+    <ClCompile Include="AssetManagement\Mesh.cpp" />
     <ClCompile Include="AssetManagement\multitexture.cpp" />
     <ClCompile Include="AssetManagement\pcx.cpp" />
     <ClCompile Include="AssetManagement\pcxLoader.cpp" />
@@ -137,15 +142,18 @@
     <ClCompile Include="AudioEngine.cpp" />
     <ClCompile Include="BruteForce.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Collision\AABB.cpp" />
+    <ClCompile Include="Collision\Collision.cpp" />
     <ClCompile Include="Extras\Vector3D.cpp" />
     <ClCompile Include="GameObjects\GameObject.cpp" />
     <ClCompile Include="GameObjects\NPC.cpp" />
     <ClCompile Include="GameObjects\Player.cpp" />
+    <ClCompile Include="Graphics\md2Model.cpp" />
+    <ClCompile Include="Graphics\ViewOpenGL.cpp" />
     <ClCompile Include="InputGLFW.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TerrainLighting.cpp" />
-    <ClCompile Include="ViewOpenGL.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="GameWorld.cpp" />
   </ItemGroup>

@@ -10,6 +10,9 @@ public:
 
 	virtual void Initialise();
 	virtual void Update();
+
+	virtual void Render();
+
 protected:
 private:
 	int m_Health;

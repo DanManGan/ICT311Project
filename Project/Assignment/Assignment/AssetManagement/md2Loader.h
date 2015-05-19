@@ -11,7 +11,7 @@
 #define MD2LOADER_H
 
 
-#include "md2.h"
+#include "../Graphics/md2Model.h"
 #include "../Extras/Vector3D.h"
 #include "ResourceLoader.h"
 #include "GameAsset.h"

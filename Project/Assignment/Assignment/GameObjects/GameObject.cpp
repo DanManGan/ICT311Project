@@ -1,26 +1,33 @@
 #include "GameObject.h"
 
-GameObject::GameObject()
+GameObject::GameObject() :
+	m_model(nullptr),
+	m_FileName(""),
+	m_Scale(1.0f),
+	m_Rotation(0.0f),
+	m_ModelSize(0)
 {
-	m_FileName = "";
-	m_Position.x = 0;
-	m_Position.y = 0;
-	m_Position.z = 0;
+	m_Position.Set(0.0f, 0.0f, 0.0f);
 }
 
-GameObject::GameObject(float xPos, float yPos, float zPos)
+GameObject::GameObject(float xPos, float yPos, float zPos) :
+	m_model(nullptr),
+	m_FileName(""),
+	m_Scale(1.0f),
+	m_Rotation(0.0f),
+	m_ModelSize(0)
 {
-	m_Position.x = xPos;
-	m_Position.y = yPos;
-	m_Position.z = zPos;
+	m_Position.Set(xPos, yPos, zPos);
 }
 
 GameObject::GameObject(char* fileName, float xPos, float yPos, float zPos)
 {
-	m_Position.x = xPos;
-	m_Position.y = yPos;
-	m_Position.z = zPos;
 	m_FileName = fileName;
+	m_Position.Set(xPos, yPos, zPos);
+}
+
+GameObject::~GameObject()
+{
 }
 
 void GameObject::SetModelSize(int size)
@@ -38,11 +45,9 @@ void GameObject::SetPosition(Vector3D newPos)
 	m_Position = newPos;
 }
 
-void GameObject::SetPosition(float x, float y, float z)
+void GameObject::SetPosition(float xPos, float yPos, float zPos)
 {
-	m_Position.x = x;
-	m_Position.y = y;
-	m_Position.z = z;
+	m_Position.Set(xPos, yPos, zPos);
 }
 
 void GameObject::ChangePosition(float x, float y, float z)
@@ -60,4 +65,16 @@ char* GameObject::GetAssetFile()
 void GameObject::SetAssetFile(char* file)
 {
 	m_FileName = file;
+}
+
+bool GameObject::SetMesh(GameAsset* mesh)
+{
+	m_model = (Mesh*)mesh;
+
+	return true;
+}
+
+bool GameObject::SetSkin(unsigned int skin)
+{
+	return m_model->SetSkin(skin);
 }

@@ -30,7 +30,7 @@
 
 md2::md2(char* name, md2Header *header, frame* frames,  
 	      triangle* triangles, texCoord* texCoords, vertex* vertices) :
-	GameAsset(name),
+	Mesh(name),
 	m_header(header),
 	m_frames(frames),
 	m_triangles(triangles),
@@ -150,8 +150,8 @@ void md2::render(unsigned int frameNum)
 	glDisable(GL_TEXTURE_2D);
 }
 
-//render frame 0
-void md2::render()
+
+void md2::Render()
 {
 	render(0);
 }
@@ -303,4 +303,9 @@ void md2::setAnimationSpeed(unsigned short speed)
 {
 	if(speed>0 && speed <=50)
 		m_animationSpeed=speed;
+}
+
+int md2::GetNumTriangles()
+{
+	return m_numTriangles;
 }

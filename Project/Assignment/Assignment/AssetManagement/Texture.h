@@ -32,7 +32,7 @@ public:
 
 	//Texture(char* filePath);
 
-	~Texture();
+	virtual ~Texture();
 
 	//void Load(char* filePath);
 

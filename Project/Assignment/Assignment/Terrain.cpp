@@ -69,62 +69,18 @@ bool Terrain::LoadHeightfield(char *file, const int size)
 //--------------------------------------------------------------------------------------
 
 /// NOT WORKING NEEDS FIXING
-bool Terrain::LoadHeightfield(char* file)
+bool Terrain::LoadHeightfield(Texture* file)
 {
-	//std::cout << "Loading Terrain" << std::endl;
-	//Texture* heightmap = texManager->loadTextureRaw(file);
-	////heightmap->SetFile(sFilepath);
-	////heightmap->Load();
+		if(m_terrainData)
+		delete[] m_terrainData;
 
-	//int width = heightmap->GetWidth();
-	//int length = heightmap->GetHeight();
+	m_terrainData = file->GetData();
 
-	//if(width != length)
-	//	return false;
-	//// terrain exists delete existing
-	//if(m_terrainData)
-	//	delete[] m_terrainData;
-	//// allocate memory for new terrain
-	//if(width > 0)
-	//	m_terrainData = new unsigned char[width * width];
-	//// if failed to assign memory return false
-	//if(m_terrainData == nullptr)
-	//	return false;
+	if(file->GetHeight() != file->GetWidth())
+		return false;
 
-	//////pHeights = new float*[iLength];
-	////for(int i = 0; i < iLength; i++)
-	////{
-	////	pHeights[i] = new float[iWidth];
-	////}
+	m_size = file->GetWidth();
 
-	////vNormals = new Vector3D*[iLength];
-	////for(int i = 0; i < iLength; i++)
-	////{
-	////	vNormals[i] = new Vector3D[iWidth];
-	////}
-
-	////for(int y = 0; y < width; y++)
-	////{
-	////	for(int x = 0; x < width; x++)
-	////	{
-	////		unsigned char color = heightmap->getData()[3 * (y * width + x)];
-	////		//float h = fScale * ((color / 255.0f) - 0.5f);
-	////		SetHeightAtPoint(color, x, y);
-	////	}
-	////}
-	//
-	//	int verticeCount = width * width;
-	//	//unsigned char *d = new unsigned char[m_textureX * m_textureY];
-	//	//m_imageData = d;
-	//	int count = 0;
-	//	for (int i = 0; i < verticeCount * 3; i+=3 )
-	//	{
-	//		m_terrainData[count] = heightmap->getData()[i];
-	//		count++;
-	//	}
-
-	//delete heightmap;
-	////ComputeNormals();
 	return true;
 }
 

@@ -19,7 +19,7 @@ using namespace std;
 #include <GL/glu.h>
 #include "../Extras/Vector3D.h"
 #include "ResourceLoader.h"
-#include "GameAsset.h"
+#include "Mesh.h"
 //a single vertex
 struct vertex
 {
@@ -64,7 +64,7 @@ struct frame
 	}
 };
 
-class md2 : public GameAsset
+class md2 : public Mesh
  {
 
 public:
@@ -101,7 +101,7 @@ public:
    //int setTex(char* filename);
    bool SetSkin(unsigned int tex);
    void render(unsigned int frameNum);
-   void render();
+   void Render();
    int animate(unsigned short startFrame, unsigned short endFrame);
    /*****************************************************************************
    *Purpose: cycles through a single animation sequence between startFrame and  *
@@ -120,7 +120,13 @@ public:
    //unsigned short getSkinNumber(){return m_skins[0].texID;}
    void setAnimationSpeed(unsigned short speed);
 
-private:
+   int GetNumTriangles();
+
+   Vector3D calculateTriangleNormal(const Vector3D v1, const Vector3D v2, const Vector3D v3);
+
+//private:
+ protected:
+
 
    md2Header* m_header;
    frame* m_frames;
@@ -129,6 +135,7 @@ private:
    texCoord* m_texCoords;
    vertex* m_vertices;
 
+   int m_numTriangles;
    unsigned int m_lastStart;
    unsigned int	m_lastEnd;	//last start/end params passed to the function
    unsigned int m_lastFrame;	//lastframe rendered
@@ -147,7 +154,8 @@ private:
    //Interpolated vertices
 	
 	CTimer timer;
-	Vector3D calculateTriangleNormal(const Vector3D v1, const Vector3D v2, const Vector3D v3);
+	
   };
 
 #endif
+

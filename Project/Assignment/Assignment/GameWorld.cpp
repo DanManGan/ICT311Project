@@ -3,13 +3,16 @@
 #include "Singletons.h"
 #include "AssetManagement/Texture.h"
 #include "AssetManagement/md2.h"
+#include "AssetManagement/Mesh.h"
+#include "GameObjects/GameObject.h"
+#include "GameObjects/NPC.h"
 #include <iostream>
 
 //--------------------------------------------------------------------------------------
 
-GameWorld::GameWorld() :
-	ogro(nullptr)
+GameWorld::GameWorld() 
 {
+	m_objects.clear();
 	BruteForce();
 	LoadWorld();
 }
@@ -25,7 +28,7 @@ GameWorld::~GameWorld()
 bool GameWorld::LoadWorld()
 {	
 	m_terrain.SetScaleFactor(1.0f,0.2f,1.0f);
-
+	//return true;
 	return m_terrain.LoadHeightfield("Textures/height128.raw",128);
 }
 
@@ -41,13 +44,15 @@ void GameWorld::LoadWorldTexture()
 	assetManager->Load("Textures/highTile.tga");
 	assetManager->Load("Textures/highestTile.tga");
 	assetManager->Load("Textures/detailmap.tga");
+	assetManager->Load("Textures/heightmap.bmp");
 	//assetManager->Load(MESH, "Textures/detailmap.tga");
 	//std::cout << "asset" << assetManager->GetAsset("Textures/grass.tga") << std::endl;
 	//m_terrain.LoadTexture("Textures/grass.bmp");
-	Texture* tex = (Texture*)assetManager->GetAsset("Textures/detailmap.tga");
-	std::cout << "detail " << tex->GetName() << std::endl;
+	//Texture* tex = (Texture*)assetManager->GetAsset("Textures/detailmap.tga");
+	//std::cout << "detail " << tex->GetName() << std::endl;
 	//tex->SetTexID(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
 	//m_terrain.SetTexture(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
+	//m_terrain.LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmap.bmp"));
 	m_terrain.SetDetailMap(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
 	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowestTile.tga"));
 	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
@@ -55,7 +60,6 @@ void GameWorld::LoadWorldTexture()
 	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highestTile.tga"));
 	m_terrain.CreateProceduralTexture();
 	//assetManager->Load(m_terrain.GetProceduralTexture("ProceduralTexture"));
-	//m_terrain.SetTexture(graphics->BindTexture(m_terrain.GetProceduralTexture()));
 	m_terrain.SetTexture(graphics->CreateNewTexture(m_terrain.GetProTexData(), m_terrain.GetProTexWidth(), m_terrain.GetProTexHeight()));
 	m_terrain.SetNumTerrainTexRepeat(1);
 	//m_terrain.LoadDetailMap("Textures/detailmap.tga");
@@ -68,8 +72,9 @@ void GameWorld::LoadWorldTexture()
 	assetManager->Load("Models/Ogro/Tris.md2");
 	assetManager->Load("Models/Ogro/Ogrobase.pcx");
 
-	ogro = (md2*)assetManager->GetAsset("Models/Ogro/Tris.md2");
-	ogro->SetSkin(graphics->BindTexture((Texture*)assetManager->GetAsset("Models/Ogro/Ogrobase.pcx")));
+	m_objects["ogro"] = new NPC();
+	m_objects["ogro"]->SetMesh(assetManager->GetAsset("Models/Ogro/Tris.md2"));
+	m_objects["ogro"]->SetSkin(graphics->BindTexture(assetManager->GetAsset("Models/Ogro/Ogrobase.pcx")));
 
 }
 
@@ -94,7 +99,7 @@ void GameWorld::Render()
 	//}
 	//else
 	//{
-		ogro->render();
+		m_objects["ogro"]->Render();
 	//}
 
 	graphics->LightOff(GL_LIGHT0);

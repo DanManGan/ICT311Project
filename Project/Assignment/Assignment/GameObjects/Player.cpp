@@ -10,6 +10,11 @@ Player::Player()
 	m_PlayerCameraLookAt.z = 0;
 }
 
+Player::~Player()
+{
+
+}
+
 void Player::Initialise()
 {
 
