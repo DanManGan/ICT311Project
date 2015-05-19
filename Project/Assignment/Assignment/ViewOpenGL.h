@@ -32,6 +32,7 @@
 #include "Extras/Vector3D.h"
 //#include "textureHandler\image.h"
 #include "AssetManagement/Texture.h"
+#include <gl/glut.h>
 
 class ViewOpenGL
 {
