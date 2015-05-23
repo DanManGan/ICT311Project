@@ -41,9 +41,10 @@ md2::md2(char* name, md2Header *header, frame* frames,
 	m_lastFrame(0),
 	m_lastInterpol(0.0f),
 	m_timesAnimated(0),
-	m_animationSpeed(10)
-	//m_skinNumber(0)
-
+	m_animationSpeed(10),
+	m_base(0),
+	m_skinID(0),
+	m_scale(1.0f, 1.0f, 1.0f)
 {
 	timer.Init();
 }
@@ -151,10 +152,10 @@ void md2::render(unsigned int frameNum)
 }
 
 
-void md2::Render()
-{
-	render(0);
-}
+//void md2::Render()
+//{
+//	render(0);
+//}
 
 void md2::renderAnimFrame()
 {
@@ -196,52 +197,69 @@ void md2::renderAnimFrame()
 	glDisable(GL_TEXTURE_2D);
 }
 
-int md2::animate(unsigned short startFrame, unsigned short endFrame)
-{	
+void md2::SetAnimation(unsigned short startFrame, unsigned short endFrame)
+{
+	//Prevent invalid frame counts
+	if(endFrame >= (unsigned short)m_header->numFrames||endFrame<0) {
+		m_endFrame = m_header->numFrames-1;
+	}
+	else {
+		m_endFrame = endFrame;
+	}
+
+	if(startFrame > (unsigned short)m_header->numFrames||startFrame<0) {
+		m_startFrame = 0;
+	}
+	else {
+		m_startFrame = startFrame;
+	}
+
+}
+
+void md2::Update(float deltaT)
+{
 	unsigned int msPerFrame = 0;			//number of milliseconds per frame
 	//alloc a place to put the interpolated vertices
 	if(!m_vertices)
 		m_vertices = new vertex[m_header->numVertices];
 
-	//Prevent invalid frame counts
-	if(endFrame >= (unsigned short)m_header->numFrames||endFrame<0)
-		endFrame = m_header->numFrames-1;
-	if(startFrame > (unsigned short)m_header->numFrames||startFrame<0)
-		startFrame = 0;
 
 	//avoid calculating everything every frame
-	if(m_lastStart != startFrame || m_lastEnd != endFrame)
+	if(m_lastStart != m_startFrame || m_lastEnd != m_endFrame)
 	{
-		m_lastStart = startFrame;
-		m_lastEnd = endFrame;
+		m_lastStart = m_startFrame;
+		m_lastEnd = m_endFrame;
 		m_timesAnimated=0;
 	}
+
 		msPerFrame = (unsigned int)(1000/ m_animationSpeed);
 	//Calculate the next frame and the interpolation value
 	unsigned int time = timer.GetMS();
-	std::cout << "time: " << time << std::endl;
+		//unsigned int time = deltaT;
+
+	//std::cout << "time: " << time << std::endl;
 	float interpolVal = ((float) time / msPerFrame) + m_lastInterpol;
 	m_lastInterpol = interpolVal;
 	//If the interpolation value is greater than 1, we must increment the frame counter
 	while(interpolVal > 1.0f)
 	{
 		m_lastFrame ++;
-		if(m_lastFrame<startFrame)
-			m_lastFrame=startFrame;
-		if(m_lastFrame >= endFrame)
+		if(m_lastFrame<m_startFrame)
+			m_lastFrame=m_startFrame;
+		if(m_lastFrame >= m_endFrame)
 		{
 			m_timesAnimated++;
-			m_lastFrame = startFrame;
+			m_lastFrame = m_startFrame;
 		}
 		interpolVal -= 1.0f;
 		m_lastInterpol = 0.0f;
 	}
 	if(m_lastFrame>=m_header->frameSize)
-		m_lastFrame=startFrame;
+		m_lastFrame=m_startFrame;
 	frame* curFrame = &m_frames[m_lastFrame];
 	frame* nextFrame = &m_frames[m_lastFrame+1];
-  	  if(m_lastFrame >= endFrame-1)
-		nextFrame = &m_frames[startFrame];
+  	  if(m_lastFrame >= m_endFrame-1)
+		nextFrame = &m_frames[m_startFrame];
 	//interpolate the vertices
 	for(int i = 0; i < m_header->numVertices; i++)
 	{
@@ -249,9 +267,74 @@ int md2::animate(unsigned short startFrame, unsigned short endFrame)
 		m_vertices[i].y = curFrame->vertices[i].y + (nextFrame->vertices[i].y - curFrame->vertices[i].y) * interpolVal;
 		m_vertices[i].z = curFrame->vertices[i].z + (nextFrame->vertices[i].z - curFrame->vertices[i].z) * interpolVal;
 	}
-    renderAnimFrame();
+    //renderAnimFrame();
+interpolVal++;
+}
+
+//int md2::animate(unsigned short startFrame, unsigned short endFrame)
+int md2::animate()
+{	
+	unsigned int msPerFrame = 0;			//number of milliseconds per frame
+	//alloc a place to put the interpolated vertices
+	if(!m_vertices)
+		m_vertices = new vertex[m_header->numVertices];
+
+
+	//avoid calculating everything every frame
+	if(m_lastStart != m_startFrame || m_lastEnd != m_endFrame)
+	{
+		m_lastStart = m_startFrame;
+		m_lastEnd = m_endFrame;
+		m_timesAnimated=0;
+	}
+
+		msPerFrame = (unsigned int)(1000/ m_animationSpeed);
+	//Calculate the next frame and the interpolation value
+	unsigned int time = timer.GetMS();
+		//unsigned int time = deltaT;
+
+	//std::cout << "time: " << time << std::endl;
+	float interpolVal = ((float) time / msPerFrame) + m_lastInterpol;
+	m_lastInterpol = interpolVal;
+	//If the interpolation value is greater than 1, we must increment the frame counter
+	while(interpolVal > 1.0f)
+	{
+		m_lastFrame ++;
+		if(m_lastFrame<m_startFrame)
+			m_lastFrame=m_startFrame;
+		if(m_lastFrame >= m_endFrame)
+		{
+			m_timesAnimated++;
+			m_lastFrame = m_startFrame;
+		}
+		interpolVal -= 1.0f;
+		m_lastInterpol = 0.0f;
+	}
+	if(m_lastFrame>=m_header->frameSize)
+		m_lastFrame=m_startFrame;
+	frame* curFrame = &m_frames[m_lastFrame];
+	frame* nextFrame = &m_frames[m_lastFrame+1];
+  	  if(m_lastFrame >= m_endFrame-1)
+		nextFrame = &m_frames[m_startFrame];
+	//interpolate the vertices
+	for(int i = 0; i < m_header->numVertices; i++)
+	{
+		m_vertices[i].x = curFrame->vertices[i].x + (nextFrame->vertices[i].x - curFrame->vertices[i].x) * interpolVal;		
+		m_vertices[i].y = curFrame->vertices[i].y + (nextFrame->vertices[i].y - curFrame->vertices[i].y) * interpolVal;
+		m_vertices[i].z = curFrame->vertices[i].z + (nextFrame->vertices[i].z - curFrame->vertices[i].z) * interpolVal;
+	}
+    //renderAnimFrame();
 interpolVal++;
  return m_timesAnimated;
+}
+
+bool md2::SetScale(float xScale, float yScale, float zScale)
+{
+	if(xScale > 0 && yScale > 0 && zScale > 0) {
+		m_scale.Set(xScale, yScale, zScale);
+		return true;
+	}
+	return false;
 }
 
 bool md2::SetSkin(unsigned int tex)
@@ -262,6 +345,40 @@ bool md2::SetSkin(unsigned int tex)
 		return true;
 	}
 	return false;
+}
+
+void md2::CalcBase()
+{
+	float min = 0.0f, max = 0.0f;
+
+	for(int i=0;i<m_header->numFrames;i++) {
+		for(int j=0;j<m_header->numVertices;j++) {
+			if(m_frames[i].vertices[j].y < min) {
+				min = m_frames[i].vertices[j].y;
+			}
+			if(m_frames[i].vertices[j].y > max) {
+				max = m_frames[i].vertices[j].y;
+			}
+		}
+	}
+
+	//m_base = (max-min) * m_scale.y * 0.5f;
+	float ratio = 0.0f;
+	float height = max - min;
+	if(min < 0.0f)
+		ratio = -min/height;
+	else
+		ratio = min/height;
+	m_base = (height * m_scale.y * ratio) - 1.0f; //(max-min);
+	std::cout << "min " << min << " max " << max << " base " << m_base << std::endl;
+
+	//m_base = 8;
+}
+
+float md2::GetBase()
+{
+	CalcBase();
+	return m_base;
 }
 
 
@@ -288,16 +405,16 @@ Vector3D md2::calculateTriangleNormal(const Vector3D v1, const Vector3D v2, cons
 *                 value. Should be set to the same value as startFrame on first
 *                 call to the function.
 *****************************************************************************/ 
-bool md2::animateOnce(unsigned short startFrame, unsigned short endFrame, unsigned short &curFrame)
-{
-	  if(curFrame>endFrame)
-		  return true;
-	  if(curFrame<startFrame)
-		  curFrame=startFrame;
-	animate(startFrame,endFrame);
-	curFrame++;
- return false;
-}
+//bool md2::animateOnce(unsigned short startFrame, unsigned short endFrame, unsigned short &curFrame)
+//{
+//	  if(curFrame>endFrame)
+//		  return true;
+//	  if(curFrame<startFrame)
+//		  curFrame=startFrame;
+//	animate(startFrame,endFrame);
+//	curFrame++;
+// return false;
+//}
 
 void md2::setAnimationSpeed(unsigned short speed)
 {
@@ -305,7 +422,8 @@ void md2::setAnimationSpeed(unsigned short speed)
 		m_animationSpeed=speed;
 }
 
-int md2::GetNumTriangles()
-{
-	return m_numTriangles;
-}
+//int md2::GetNumTriangles()
+//{
+//	return m_numTriangles;
+//}
+

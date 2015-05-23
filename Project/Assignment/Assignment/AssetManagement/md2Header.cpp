@@ -57,6 +57,7 @@ bool md2Header::readHeader(char* buf)
 		return false;
     //read the header from the buffer
 	memcpy(this,buf,sizeof(md2Header));
+
  return true;
 }
 

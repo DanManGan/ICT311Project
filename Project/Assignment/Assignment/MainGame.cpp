@@ -236,21 +236,42 @@ void MainGame::ProcessInput()
 
 void MainGame::GameLoop()
 {
+	//double logicTime0, displayTime0,logicTime1, displayTime1;
+	//double logicFrequency=0.05;  //frequency of logic update - every 20ms
+	//float displayFrequency = 0.02; // 50 fps
+
 	double time0,time1;
 	double frequency=0.05;  //frequency of logic update - every 20ms
 
 	m_running = true;
+	//logicTime0 = displayTime0 = glfwGetTime();
 	time0 = glfwGetTime();
-
+	
 	/***************** main game loop ****************************************/  
 
+	Update(0); // NEED TO LOOK AT REMOVING THIS !!!!!!!!!!
+
 	do { 
+		//logicTime1 = displayTime1 = glfwGetTime();
+		// display update
+		//if(((float)displayTime1 - displayTime0) > displayFrequency) {
+		//	displayTime0 = displayTime1 - displayFrequency;
+		//	ProcessInput();
+		//	Update(displayTime1-displayTime0);
+		//	Display(displayTime1-displayTime0);
+		//}
+		// logic update
 		time1=glfwGetTime();
 		if(((float)time1 - time0) > frequency) {
 			time0 = time1 - frequency;
 			ProcessInput();
-			Display(time1-time0);
+			//Update(time1-time0);
+			//Display(logicTime1-time0);
+			Update(time1-time0);
 		}
+		
+		//Update(time1-time0);
+		Display(time1-time0);
 	  
 		// Check if the window was closed
 		m_running = m_running && glfwGetWindowParam( GLFW_OPENED );	
@@ -259,13 +280,14 @@ void MainGame::GameLoop()
 	glfwTerminate();
 
 	/**************** end game loop  *************************************/
-	}
+}
 
 //--------------------------------------------------------------------------------------
 
 void MainGame::Display(float deltaT)
 {
-	m_camera.Animate(deltaT);
+
+	//m_camera.Animate(deltaT);
 
 	graphics->BeginRendering();
 
@@ -280,4 +302,11 @@ void MainGame::Display(float deltaT)
 		}
 
 	graphics->EndRendering();
+}
+
+void MainGame::Update(float deltaT)
+{
+	
+	m_camera.Animate(deltaT);
+	gameWorld->Update(deltaT);
 }

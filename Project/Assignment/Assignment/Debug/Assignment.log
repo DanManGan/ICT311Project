@@ -1,28 +1,11 @@
-﻿Build started 19/05/2015 8:28:40 PM.
+﻿Build started 23/05/2015 3:51:29 PM.
      1>Project "C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Assignment\Assignment.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Touching "Debug\Assignment.unsuccessfulbuild".
+         Creating "Debug\Assignment.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AssetManagement\GameAssetFactory.cpp AssetManagement\md2.cpp AssetManagement\md2Loader.cpp AssetManagement\textureGenerator.cpp AudioEngine.cpp BruteForce.cpp GameObjects\GameObject.cpp GameObjects\NPC.cpp GameObjects\Player.cpp GameWorld.cpp Graphics\ViewOpenGL.cpp Graphics\md2Model.cpp InputGLFW.cpp MainGame.cpp Terrain.cpp
-         Terrain.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GameObjects\NPC.cpp MainGame.cpp
          MainGame.cpp
-         InputGLFW.cpp
-         md2Model.cpp
-         ViewOpenGL.cpp
-         GameWorld.cpp
-         Player.cpp
          NPC.cpp
-         GameObject.cpp
-         BruteForce.cpp
-         AudioEngine.cpp
-         textureGenerator.cpp
-         md2.cpp
-     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\assetmanagement\md2.cpp(239): warning C4018: '>=' : signed/unsigned mismatch
-     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\assetmanagement\md2.cpp(243): warning C4018: '>=' : signed/unsigned mismatch
-         Generating Code...
-         Compiling...
-         md2Loader.cpp
-         GameAssetFactory.cpp
          Generating Code...
        ManifestResourceCompile:
          All outputs are up-to-date.
@@ -76,4 +59,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:10.40
+Time Elapsed 00:00:01.98

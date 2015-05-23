@@ -403,82 +403,139 @@ void ViewOpenGL::DrawTree(double baseRadius, double topRadius, double height, in
 	PopMatrix();
 }
 
-unsigned int ViewOpenGL::BindTexture(Texture* rawImage)
+unsigned int ViewOpenGL::SetupTextureBasic(Texture* rawImage)
 {
- //image* texture=loadTextureRaw(filename);
-        if(!rawImage)
-		  return -1;
+	if(!rawImage)
+		return -1;
+
 	m_numTextures++;
 
-	  //unsigned int texID;
-	  	glEnable(GL_TEXTURE_2D);
-   // glGenTextures(1, &texID);
-		 glGenTextures(1, &m_numTextures);
+	glGenTextures(1, &m_numTextures);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, m_numTextures); 
 
-	glBindTexture(GL_TEXTURE_2D, m_numTextures); 
-    
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR ); 
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR ); 
-	glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,rawImage->GetWidth(),rawImage->GetHeight(),0,GL_RGB,GL_UNSIGNED_BYTE,rawImage->GetData());
-	glBindTexture(GL_TEXTURE_2D, m_numTextures); 
-	//delete texture;
-	//texture=NULL;
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR ); 
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR ); 
+
+	glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,rawImage->GetWidth(),rawImage->GetHeight(),
+	0,GL_RGB,GL_UNSIGNED_BYTE,rawImage->GetData());
+
+	glDisable(GL_TEXTURE_2D);
+
 	return m_numTextures;
 }
 
-unsigned int ViewOpenGL::BindTexture(GameAsset* asset)
+unsigned int ViewOpenGL::SetupTextureClamp(GameAsset* asset)
 {
- //image* texture=loadTextureRaw(filename);
 	Texture* rawImage = (Texture*)asset;
 
-        if(!rawImage)
-		  return -1;
+    if(!rawImage)
+		return -1;
+
 	m_numTextures++;
 
-	  //unsigned int texID;
-	  	glEnable(GL_TEXTURE_2D);
-   // glGenTextures(1, &texID);
-		 glGenTextures(1, &m_numTextures);
-
+	glGenTextures(1, &m_numTextures);
+	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, m_numTextures); 
     
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR ); 
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR ); 
-	glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,rawImage->GetWidth(),rawImage->GetHeight(),0,GL_RGB,GL_UNSIGNED_BYTE,rawImage->GetData());
-	glBindTexture(GL_TEXTURE_2D, m_numTextures); 
-	//delete texture;
-	//texture=NULL;
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR ); 
+
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); // set to clamp to edges
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+	gluBuild2DMipmaps(GL_TEXTURE_2D,3,rawImage->GetWidth(),rawImage->GetHeight(),
+		GL_RGB,GL_UNSIGNED_BYTE,rawImage->GetData());
+
+	glDisable(GL_TEXTURE_2D);
+
 	return m_numTextures;
 }
 
+unsigned int ViewOpenGL::SetupTextureWrap(GameAsset* asset)
+{
+	Texture* rawImage = (Texture*)asset;
+
+    if(!rawImage)
+		return -1;
+
+	m_numTextures++;
+
+	glGenTextures(1, &m_numTextures);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, m_numTextures); 
+    
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR ); 
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR ); 
+
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // set to clamp to edges
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	gluBuild2DMipmaps(GL_TEXTURE_2D,3,rawImage->GetWidth(),rawImage->GetHeight(),
+		GL_RGB,GL_UNSIGNED_BYTE,rawImage->GetData());
+
+	glDisable(GL_TEXTURE_2D);
+
+	return m_numTextures;
+}
+
+void ViewOpenGL::Tex2DOn(unsigned int tex)
+{
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D,tex);
+}
+
+void ViewOpenGL::Tex2DOff()
+{
+	glDisable(GL_TEXTURE_2D);
+}
+
+void ViewOpenGL::Begin(GLenum action)
+{
+	glBegin(action);
+}
+
+void ViewOpenGL::End()
+{
+	glEnd();
+}
+
+
+void ViewOpenGL::TexCoords(const float* coords)
+{
+	glTexCoord2fv(coords);
+}
+
+void ViewOpenGL::Vertex(float x, float y, float z)
+{
+	glVertex3f(x, y, z);
+}
+
+void ViewOpenGL::Normals(float x, float y, float z)
+{
+	glNormal3f(x, y, z);
+}
 
 unsigned int ViewOpenGL::CreateNewTexture(unsigned char* tex,int width,int height)
 {
+    if(!tex)
+		return -1;
+
 	m_numTextures++;
- glGenTextures( 1, &m_numTextures);
- glEnable( GL_TEXTURE_2D );
-  glBindTexture( GL_TEXTURE_2D, m_numTextures);
-
-
-
- glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_REPEAT);
- glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
- glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S, GL_REPEAT);
- glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-
- glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );		
- glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR );
-//   int iType=texture.GetBPP();
-  //				if( iType==24 )
-int					iType= GL_RGB;
-	//			else
-//	int				iType= GL_RGBA;
-			//create a mipmapped texture
 	
-			//gluBuild2DMipmaps( GL_TEXTURE_2D, iType, texture.GetWidth(), texture.GetHeight(), iType, GL_UNSIGNED_BYTE, texture.GetData() );
-				gluBuild2DMipmaps( GL_TEXTURE_2D, iType, width, height, iType, GL_UNSIGNED_BYTE, tex );
-			//textureSet=true;
-glBindTexture( GL_TEXTURE_2D, m_numTextures);
+	glGenTextures(1, &m_numTextures);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, m_numTextures); 
+
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );		
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR );
+
+	gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGB, width, height, GL_RGB, GL_UNSIGNED_BYTE, tex );
+
+	glDisable(GL_TEXTURE_2D);
 
 	return m_numTextures;
 }

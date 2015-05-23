@@ -8,10 +8,14 @@ class NPC :public GameObject
 public:
 	NPC();
 
-	virtual void Initialise();
-	virtual void Update();
+	NPC(char* objectName, float xPos, 
+			float yPos, float zPos);
 
-	virtual void Render();
+	void Initialise();
+	void Update(float deltaT);
+	void SetAnimation(unsigned short startFrame, unsigned short endFrame);
+
+	void Render();
 
 protected:
 private:

@@ -314,9 +314,15 @@ public:
 	void LoadIdentity();
 	void SwapBuffers();
 /////////////////////////////////////////////////////////////////////////////////////
-	unsigned int BindTexture(Texture* rawImage);
+	unsigned int SetupTextureBasic(Texture* rawImage);
 
-	unsigned int BindTexture(GameAsset* asset);
+	unsigned int SetupTextureClamp(GameAsset* asset);
+	
+	unsigned int SetupTextureWrap(GameAsset* asset);
+
+	void Tex2DOn(unsigned int tex); 
+
+	void Tex2DOff();
 
 	unsigned int CreateNewTexture(unsigned char* tex,int width,int height);
 
@@ -324,8 +330,15 @@ public:
 
 	void LightOff(GLenum Light);
 
-	/*void Render(md2* model);*/
+	void Begin(GLenum action);
 
+	void End();
+
+	void TexCoords(const float* coords);
+
+	void Vertex(float x, float y, float z);
+
+	void Normals(float x, float y, float z);
 
 private:
 

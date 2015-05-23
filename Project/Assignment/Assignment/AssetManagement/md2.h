@@ -10,15 +10,15 @@
 #ifndef MD2_H
 #define MD2_H
 
-#include <iostream>
-#include <fstream>
-using namespace std;
+//#include <iostream>
+//#include <fstream>
+//using namespace std;
 #include "md2Header.h"
-#include "md2Loader.h"
+//#include "md2Loader.h"
 #include "../Extras/timer.h"
-#include <GL/glu.h>
+//#include <GL/glu.h>
 #include "../Extras/Vector3D.h"
-#include "ResourceLoader.h"
+//#include "ResourceLoader.h"
 #include "Mesh.h"
 //a single vertex
 struct vertex
@@ -45,7 +45,7 @@ struct texCoord
 struct skin
 {
 	char filename[64];	//filename
-	GLuint texID;		//Image file ready for texturing
+	unsigned int texID;		//Image file ready for texturing
 };
 
 struct frame
@@ -101,8 +101,9 @@ public:
    //int setTex(char* filename);
    bool SetSkin(unsigned int tex);
    void render(unsigned int frameNum);
-   void Render();
-   int animate(unsigned short startFrame, unsigned short endFrame);
+   virtual void Render()=0;
+   //int animate(unsigned short startFrame, unsigned short endFrame);
+   int animate();
    /*****************************************************************************
    *Purpose: cycles through a single animation sequence between startFrame and  *
    *         endFrame.
@@ -116,11 +117,19 @@ public:
    *                 value. Should be set to the same value as startFrame on first
    *                 call to the function.
    *****************************************************************************/ 
-   bool animateOnce(unsigned short startFrame, unsigned short endFrame, unsigned short &curFrame);
+  // bool animateOnce(unsigned short startFrame, unsigned short endFrame, unsigned short &curFrame);
    //unsigned short getSkinNumber(){return m_skins[0].texID;}
    void setAnimationSpeed(unsigned short speed);
 
-   int GetNumTriangles();
+   void SetAnimation(unsigned short startFrame, unsigned short endFrame);
+
+   bool SetScale(float xScale, float yScale, float zScale);
+
+   void Update(float deltaT);
+
+   void CalcBase();
+
+   float GetBase();
 
    Vector3D calculateTriangleNormal(const Vector3D v1, const Vector3D v2, const Vector3D v3);
 
@@ -134,8 +143,13 @@ public:
    //skin* m_skins;
    texCoord* m_texCoords;
    vertex* m_vertices;
+   int m_base;
 
-   int m_numTriangles;
+   Vector3D m_scale;
+
+   //int m_numTriangles;
+   unsigned int m_startFrame;
+   unsigned int m_endFrame;
    unsigned int m_lastStart;
    unsigned int	m_lastEnd;	//last start/end params passed to the function
    unsigned int m_lastFrame;	//lastframe rendered

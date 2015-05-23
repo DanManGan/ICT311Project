@@ -209,6 +209,10 @@ public:
 	  */ 
 	bool LoadHeightMapTerrain();
 
+/////////////////////////////////////////////////////////////////////////
+
+	void Update(float deltaT);
+
 private:
 
 	/** 

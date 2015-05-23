@@ -1,13 +1,13 @@
 #include "md2Loader.h"
 
-#include "md2Header.h"
+//#include "md2Header.h"
 #include <cstdio>
 #include <iostream>
 #include <fstream>
 //#include "imageLoader/imageFactory.h"
 //#include "imageLoader/imageFactory.h"
-#include <gl\glut.h>
-#include <GL/glfw.h>
+//#include <gl\glut.h>
+//#include <GL/glfw.h>
 
 GameAsset* md2Loader::Create(char* filePath)//, char* skinName)
 {
@@ -57,7 +57,7 @@ GameAsset* md2Loader::Create(char* filePath)//, char* skinName)
 	if(buffer)
 		delete[] buffer;
 
-	return new md2(filePath, header, frames, triangles, texCoords, vertices);
+	return new md2Model(filePath, header, frames, triangles, texCoords, vertices);
 }
 
 const char* md2Loader::GetExtension()

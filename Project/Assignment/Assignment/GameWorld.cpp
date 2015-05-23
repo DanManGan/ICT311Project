@@ -51,9 +51,9 @@ void GameWorld::LoadWorldTexture()
 	//Texture* tex = (Texture*)assetManager->GetAsset("Textures/detailmap.tga");
 	//std::cout << "detail " << tex->GetName() << std::endl;
 	//tex->SetTexID(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
-	//m_terrain.SetTexture(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
+	//m_terrain.SetTexture(graphics->SetupTextureClamp((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
 	//m_terrain.LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmap.bmp"));
-	m_terrain.SetDetailMap(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
+	m_terrain.SetDetailMap(graphics->SetupTextureBasic((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
 	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowestTile.tga"));
 	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
 	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highTile.tga"));
@@ -64,7 +64,7 @@ void GameWorld::LoadWorldTexture()
 	m_terrain.SetNumTerrainTexRepeat(1);
 	//m_terrain.LoadDetailMap("Textures/detailmap.tga");
 	m_terrain.SetNumDetailMapRepeat(8);
-	//m_terrain.SetTexture(graphics->BindTexture((Texture*)assetManager->GetAsset("ProceduralTexture")));
+	//m_terrain.SetTexture(graphics->SetupTextureClamp((Texture*)assetManager->GetAsset("ProceduralTexture")));
 	m_terrain.SetLightingColor(1.0f, 1.0f, 1.0f);
 	m_terrain.SetSlopeLightingParams( 1, 1, 0.2f, 0.9f, 10.0f );
 	m_terrain.CreateSlopeLighting();
@@ -72,9 +72,12 @@ void GameWorld::LoadWorldTexture()
 	assetManager->Load("Models/Ogro/Tris.md2");
 	assetManager->Load("Models/Ogro/Ogrobase.pcx");
 
-	m_objects["ogro"] = new NPC();
+	m_objects["ogro"] = new NPC("ogro",52,m_terrain.GetHeightAverage(52,92),92);
 	m_objects["ogro"]->SetMesh(assetManager->GetAsset("Models/Ogro/Tris.md2"));
-	m_objects["ogro"]->SetSkin(graphics->BindTexture(assetManager->GetAsset("Models/Ogro/Ogrobase.pcx")));
+	m_objects["ogro"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/Ogro/Ogrobase.pcx")));
+	m_objects["ogro"]->SetScale(0.25f, 0.25f, 0.25f);
+	m_objects["ogro"]->SetBase();
+	m_objects["ogro"]->SetAnimation(40, 46);
 
 }
 
@@ -90,9 +93,15 @@ void GameWorld::Render()
 	//std::cout << "height scaled: " << m_terrain.GetHeightScaled(70, 93) << std::endl;
 	//float modelHeight = ((float)m_model.GetHeight() * 0.25f) * 0.25f;
 	//graphics->Translate(52,m_terrain.GetHeightAverage(52,92) + modelHeight,92);
-	graphics->Translate(52,m_terrain.GetHeightAverage(52,92),92);
+	//graphics->Translate(52,m_terrain.GetHeightAverage(52,92),92);
+	Vector3D pos = m_objects["ogro"]->GetPos();
+	//std::cout << "52 " << m_terrain.GetHeightAverage(52,92) << " 92" << std::endl;
+	//std::cout << pos.x << " " << pos.y << " " << pos.z << std::endl;
+	//std::cout << "52 " << m_terrain.GetHeightAverage(pos.x,pos.z) + pos.y << " 92" << std::endl;
+	graphics->Translate(pos.x,
+		m_terrain.GetHeightAverage(pos.x,pos.z) + pos.y, pos.z);
 	//glRotatef(45,0,1,0);
-	graphics->Scale(0.25f,0.25f,0.25f);
+	//graphics->Scale(0.25f,0.25f,0.25f);
 	//if(m_animate)
 	//{		 
 		//m_model.animate(m_animateStartFrame,m_animateEndFrame);
@@ -104,6 +113,13 @@ void GameWorld::Render()
 
 	graphics->LightOff(GL_LIGHT0);
 	graphics->PopMatrix();
+}
+
+//--------------------------------------------------------------------------------------
+
+void GameWorld::Update(float deltaT)
+{
+	m_objects["ogro"]->Update(deltaT);
 }
 
 //--------------------------------------------------------------------------------------
