@@ -13,7 +13,7 @@ public:
 
 	void Initialise();
 	void Update(float deltaT);
-	void SetAnimation(unsigned short startFrame, unsigned short endFrame);
+	void SetAnimation(AnimationState state);
 
 	void Render();
 

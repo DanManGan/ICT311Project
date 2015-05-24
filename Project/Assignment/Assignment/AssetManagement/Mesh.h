@@ -3,6 +3,41 @@
 #define MESH_H
 
 #include "GameAsset.h"
+#include "../Extras/Vector3D.h"
+
+enum AnimationState
+{
+   STAND = 0,
+    RUN,
+    ATTACK,
+    PAIN_A,
+    PAIN_B,
+    PAIN_C,
+    JUMP,
+    FLIP,
+    SALUTE,
+    FALLBACK,
+    WAVE,
+    POINT_AT,
+    CROUCH_STAND,
+    CROUCH_WALK,
+    CROUCH_ATTACK,
+    CROUCH_PAIN,
+    CROUCH_DEATH,
+    DEATH_FALLBACK,
+    DEATH_FALLFORWARD,
+    DEATH_FALLBACKSLOW,
+    BOOM
+};
+
+enum Animate
+{
+	START_FRAME = 0,
+	END_FRAME,
+	ANIMATION_SPEED,
+	MODEL_SPEED
+};
+
 
 enum MeshType 
 {
@@ -20,17 +55,19 @@ public:
 
 	~Mesh();
 
-	virtual void Render() = 0;
+	virtual void Render(Vector3D position, float yaw) = 0;
 
 	virtual void Update(float deltaT) = 0;
 
-	virtual void SetAnimation(unsigned short startFrame, unsigned short endFrame) = 0;
+	virtual void SetAnimation(AnimationState state) = 0;
 
 	virtual bool SetSkin(unsigned int skin) = 0;
 
 	virtual bool SetScale(float scaleX, float scaleY, float scaleZ) = 0;
 
 	virtual float GetBase() = 0;
+
+	virtual float GetModelSpeed() = 0;
 
 private:
 

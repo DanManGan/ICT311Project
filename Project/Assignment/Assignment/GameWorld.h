@@ -213,6 +213,9 @@ public:
 
 	void Update(float deltaT);
 
+	void Left();
+	void Right();
+
 private:
 
 	/** 
@@ -225,7 +228,7 @@ private:
 	  * @pre 
 	  * @post 
 	  */ 
-	BruteForce m_terrain;
+	BruteForce* m_terrain;
 
 	/**
 	  * @brief copy constructor declaration.

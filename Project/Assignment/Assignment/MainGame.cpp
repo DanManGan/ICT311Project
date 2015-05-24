@@ -5,6 +5,8 @@
 #include "Singletons.h"
 #include "Graphics/ViewOpenGL.h"
 
+
+
 #include <iostream>
 #include <iomanip>
 #include <time.h>
@@ -136,6 +138,28 @@ void MainGame::ProcessInput()
 		//	}
 		//	break;
 
+		case 'l':
+		case 'L': 
+			if(input->keyPress && !m_inputOneShot) //{
+				gameWorld->Left();
+			//	m_inputOneShot = true;
+			//} 
+			//else if(input->keyRelease) {
+			//	m_inputOneShot = false;
+			//}
+			break;
+
+		case 'r':
+		case 'R': 
+			if(input->keyPress && !m_inputOneShot) //{
+				gameWorld->Right();
+			//	m_inputOneShot = true;
+			//} 
+			//else if(input->keyRelease) {
+			//	m_inputOneShot = false;
+			//}
+			break;
+
 		case 'm':
 		case 'M': 
 			if(input->keyPress && !m_inputOneShot && !m_showMenu) {
@@ -219,6 +243,8 @@ void MainGame::ProcessInput()
 
 	m_camera.position.y=gameWorld->GetWorldXZHeight(m_camera.position.x,m_camera.position.z)+m_playerHeight;
 	gameWorld->InWorld(m_camera.position.x, m_camera.position.z);
+
+	std::cout << m_camera.position.x << " " << m_camera.position.y << " " << m_camera.position.z << std::endl;
 
 	if(input->mouseLeft) {
 		int deltaX;

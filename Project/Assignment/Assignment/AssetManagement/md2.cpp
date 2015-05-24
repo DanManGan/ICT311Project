@@ -4,8 +4,34 @@
 //#include "imageLoader/imageFactory.h"
 //#include "imageLoader/imageFactory.h"
 #include <gl\glut.h>
+
 #include <GL/glfw.h>
 
+
+int  AnimationValues[21][4] =
+{
+	{   0,  39,  9, 0 },   // STAND
+    {  40,  45, 10, 5 },   // RUN
+    {  46,  53, 10, 0 },   // ATTACK
+    {  54,  57,  7, 0 },   // PAIN_A
+    {  58,  61,  7, 0 },   // PAIN_B
+    {  62,  65,  7, 0 },   // PAIN_C
+    {  66,  71,  7, 0 },   // JUMP
+    {  72,  83,  7, 0 },   // FLIP
+    {  84,  94,  7, 0 },   // SALUTE
+    {  95, 111, 10, 0 },   // FALLBACK
+    { 112, 122,  7, 0 },   // WAVE
+    { 123, 134,  6, 0 },   // POINT
+    { 135, 153, 10, 0 },   // CROUCH_STAND
+    { 154, 159,  7, 2 },   // CROUCH_WALK
+    { 160, 168, 10, 0 },   // CROUCH_ATTACK
+    { 196, 172,  7, 0 },   // CROUCH_PAIN
+    { 173, 177,  5, 0 },   // CROUCH_DEATH
+    { 178, 183,  7, 0 },   // DEATH_FALLBACK
+    { 184, 189,  7, 0 },   // DEATH_FALLFORWARD
+    { 190, 197,  7, 0 },   // DEATH_FALLBACKSLOW
+    { 198, 198,  5, 0 },   // BOOM
+};
 
 //
 //md2::md2() :
@@ -41,7 +67,8 @@ md2::md2(char* name, md2Header *header, frame* frames,
 	m_lastFrame(0),
 	m_lastInterpol(0.0f),
 	m_timesAnimated(0),
-	m_animationSpeed(10),
+	m_animationSpeed(0),
+	m_modelSpeed(0),
 	m_base(0),
 	m_skinID(0),
 	m_scale(1.0f, 1.0f, 1.0f)
@@ -197,22 +224,26 @@ void md2::renderAnimFrame()
 	glDisable(GL_TEXTURE_2D);
 }
 
-void md2::SetAnimation(unsigned short startFrame, unsigned short endFrame)
+void md2::SetAnimation(AnimationState state)
 {
+	m_startFrame = AnimationValues[state][START_FRAME];
+	m_endFrame = AnimationValues[state][END_FRAME];
+	m_animationSpeed = AnimationValues[state][ANIMATION_SPEED];
+	m_modelSpeed = AnimationValues[state][MODEL_SPEED];
 	//Prevent invalid frame counts
-	if(endFrame >= (unsigned short)m_header->numFrames||endFrame<0) {
-		m_endFrame = m_header->numFrames-1;
-	}
-	else {
-		m_endFrame = endFrame;
-	}
+	//if(endFrame >= (unsigned short)m_header->numFrames||endFrame<0) {
+	//	m_endFrame = m_header->numFrames-1;
+	//}
+	//else {
+	//	m_endFrame = endFrame;
+	//}
 
-	if(startFrame > (unsigned short)m_header->numFrames||startFrame<0) {
-		m_startFrame = 0;
-	}
-	else {
-		m_startFrame = startFrame;
-	}
+	//if(startFrame > (unsigned short)m_header->numFrames||startFrame<0) {
+	//	m_startFrame = 0;
+	//}
+	//else {
+	//	m_startFrame = startFrame;
+	//}
 
 }
 
@@ -369,7 +400,7 @@ void md2::CalcBase()
 		ratio = -min/height;
 	else
 		ratio = min/height;
-	m_base = (height * m_scale.y * ratio) - 1.0f; //(max-min);
+	m_base = (height * m_scale.y * ratio) - 1.5f; //(max-min);
 	std::cout << "min " << min << " max " << max << " base " << m_base << std::endl;
 
 	//m_base = 8;
@@ -379,6 +410,11 @@ float md2::GetBase()
 {
 	CalcBase();
 	return m_base;
+}
+
+float md2::GetModelSpeed()
+{
+	return m_modelSpeed;
 }
 
 
@@ -416,11 +452,11 @@ Vector3D md2::calculateTriangleNormal(const Vector3D v1, const Vector3D v2, cons
 // return false;
 //}
 
-void md2::setAnimationSpeed(unsigned short speed)
-{
-	if(speed>0 && speed <=50)
-		m_animationSpeed=speed;
-}
+//void md2::setAnimationSpeed(unsigned short speed)
+//{
+//	if(speed>0 && speed <=50)
+//		m_animationSpeed=speed;
+//}
 
 //int md2::GetNumTriangles()
 //{

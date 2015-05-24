@@ -14,12 +14,15 @@
 //#include <fstream>
 //using namespace std;
 #include "md2Header.h"
+
 //#include "md2Loader.h"
 #include "../Extras/timer.h"
 //#include <GL/glu.h>
 #include "../Extras/Vector3D.h"
 //#include "ResourceLoader.h"
 #include "Mesh.h"
+
+//#include "md2Animation.h"
 //a single vertex
 struct vertex
 {
@@ -63,6 +66,39 @@ struct frame
 			delete[] vertices;
 	}
 };
+//
+//enum AnimationState
+//{
+//   STAND = 0,
+//    RUN,
+//    ATTACK,
+//    PAIN_A,
+//    PAIN_B,
+//    PAIN_C,
+//    JUMP,
+//    FLIP,
+//    SALUTE,
+//    FALLBACK,
+//    WAVE,
+//    POINT_AT,
+//    CROUCH_STAND,
+//    CROUCH_WALK,
+//    CROUCH_ATTACK,
+//    CROUCH_PAIN,
+//    CROUCH_DEATH,
+//    DEATH_FALLBACK,
+//    DEATH_FALLFORWARD,
+//    DEATH_FALLBACKSLOW,
+//    BOOM
+//};
+//
+//enum Animate
+//{
+//	START_FRAME = 0,
+//	END_FRAME,
+//	ANIMATION_SPEED
+//};
+//
 
 class md2 : public Mesh
  {
@@ -101,7 +137,7 @@ public:
    //int setTex(char* filename);
    bool SetSkin(unsigned int tex);
    void render(unsigned int frameNum);
-   virtual void Render()=0;
+   virtual void Render(Vector3D position, float yaw)=0;
    //int animate(unsigned short startFrame, unsigned short endFrame);
    int animate();
    /*****************************************************************************
@@ -119,9 +155,9 @@ public:
    *****************************************************************************/ 
   // bool animateOnce(unsigned short startFrame, unsigned short endFrame, unsigned short &curFrame);
    //unsigned short getSkinNumber(){return m_skins[0].texID;}
-   void setAnimationSpeed(unsigned short speed);
+  // void setAnimationSpeed(unsigned short speed);
 
-   void SetAnimation(unsigned short startFrame, unsigned short endFrame);
+   void SetAnimation(AnimationState state);
 
    bool SetScale(float xScale, float yScale, float zScale);
 
@@ -130,6 +166,8 @@ public:
    void CalcBase();
 
    float GetBase();
+
+   float GetModelSpeed();
 
    Vector3D calculateTriangleNormal(const Vector3D v1, const Vector3D v2, const Vector3D v3);
 
@@ -162,12 +200,14 @@ public:
    void renderAnimFrame();
    int m_timesAnimated;
    unsigned short m_animationSpeed;
+   float m_modelSpeed;
    
    //unsigned short m_skinNumber;   //current skin number
    unsigned int m_skinID;
    //Interpolated vertices
 	
 	CTimer timer;
+
 	
   };
 

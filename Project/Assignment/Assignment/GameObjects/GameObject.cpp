@@ -1,7 +1,9 @@
+
 #include "GameObject.h"
 
-
 #include "../Extras/MathExtra.h"
+
+#include <iostream>
 
 GameObject::GameObject() :
 	m_model(nullptr),
@@ -9,7 +11,8 @@ GameObject::GameObject() :
 	m_Scale(1.0f),
 	m_Rotation(0.0f),
 	m_ModelSize(0),
-	m_yaw(0.0f)
+	m_yaw(0.0f),
+	m_base(0)
 {
 	m_Position.Set(0.0f, 0.0f, 0.0f);
 	m_velocity.Set(0.0f, 0.0f, 0.0f);
@@ -21,7 +24,8 @@ GameObject::GameObject(float xPos, float yPos, float zPos) :
 	m_Scale(1.0f),
 	m_Rotation(0.0f),
 	m_ModelSize(0),
-	m_yaw(0.0f)
+	m_yaw(0.0f),
+	m_base(0)
 {
 	m_Position.Set(xPos, yPos, zPos);
 	m_velocity.Set(0.0f, 0.0f, 0.0f);
@@ -32,7 +36,8 @@ GameObject::GameObject(char* name, float xPos, float yPos, float zPos) :
 	m_Scale(1.0f),
 	m_Rotation(0.0f),
 	m_ModelSize(0),
-	m_yaw(0.0f)
+	m_yaw(0.0f),
+	m_base(0)
 {
 	m_name = name;
 	m_Position.Set(xPos, yPos, zPos);
@@ -48,25 +53,36 @@ void GameObject::SetModelSize(int size)
 	m_ModelSize = size;
 }
 
-Vector3D GameObject::GetPosition()
+void GameObject::SetX(float x)
 {
-	return m_Position;
+	m_Position.x = x;
 }
 
-void GameObject::SetPosition(Vector3D newPos)
+void GameObject::SetY(float y)
+{
+	m_Position.y = y + m_base;
+}
+
+void GameObject::SetZ(float z)
+{
+	m_Position.z = z;
+}
+
+void GameObject::SetPos(Vector3D newPos)
 {
 	m_Position = newPos;
+	m_Position.y += m_base;
 }
 
-void GameObject::SetPosition(float xPos, float yPos, float zPos)
+void GameObject::SetPos(float xPos, float yPos, float zPos)
 {
-	m_Position.Set(xPos, yPos, zPos);
+	m_Position.Set(xPos, yPos + m_base, zPos);
 }
 
 void GameObject::ChangePosition(float x, float y, float z)
 {
 	m_Position.x += x;
-	m_Position.y += y;
+	m_Position.y += (y + m_base);
 	m_Position.z += z;
 }
 
@@ -92,6 +108,11 @@ bool GameObject::SetSkin(unsigned int skin)
 	return m_model->SetSkin(skin);
 }
 
+void GameObject::SetAnimation(AnimationState state)
+{
+	m_model->SetAnimation(state);
+}
+
 bool GameObject::SetScale(float scaleX, float scaleY, float scaleZ)
 {
 	return m_model->SetScale(scaleX, scaleY, scaleZ);
@@ -100,7 +121,7 @@ bool GameObject::SetScale(float scaleX, float scaleY, float scaleZ)
 void GameObject::SetBase()
 {
 	/*m_Position.y = m_model->GetBase();*/
-	m_Position.y = m_model->GetBase();
+	m_base = m_model->GetBase();
 }
 
 float GameObject::GetX()
@@ -152,14 +173,39 @@ void GameObject::UpdatePosition(float deltaT)
      if (strafeSpeed < -5.0f)
           strafeSpeed = -5.0f;
 
-	// calculate new position of camera
-     m_Position.x += float(cos(DEG_TO_RAD(m_yaw + 90.0f)))*strafeSpeed;
-     m_Position.z += float(sin(DEG_TO_RAD(m_yaw + 90.0f)))*strafeSpeed;
+	// calculate new position of model
+     //m_Position.x += float(cos(DEG_TO_RAD(m_yaw + 90.0f)))*strafeSpeed;
+     //m_Position.z += float(sin(DEG_TO_RAD(m_yaw + 90.0f)))*strafeSpeed;
+     //m_Position.x += float(cosYaw)*speed;
+     //m_Position.z += float(sinYaw)*speed;
+
+	// calculate new position of model
+
+//	 std::cout << "yaw " << float(cos(DEG_TO_RAD(m_yaw + 90.0f)))*strafeSpeed << std::endl;
+//	 std::cout << "NO yaw " << float(cos(DEG_TO_RAD(90.0f)))*strafeSpeed << std::endl;
+
+     m_Position.x += float(cos(DEG_TO_RAD(m_yaw)))*strafeSpeed;
+     m_Position.z += float(sin(DEG_TO_RAD(m_yaw)))*strafeSpeed;
      m_Position.x += float(cosYaw)*speed;
-     m_Position.z += float(sinYaw)*speed;
+     m_Position.z += float(sinYaw)*speed;	
 
 	//// calculate lookAt based on new position
  //    lookAt.x = float(position.x + cosYaw);
  //    lookAt.y = float(position.y + sinPitch);
  //    lookAt.z = float(position.z + sinYaw);
+}
+
+void GameObject::Left()
+{
+	m_yaw -= 1.0f;
+}
+
+void GameObject::Right()
+{
+	m_yaw += 1.0f;
+}
+
+float GameObject::GetYaw()
+{
+	return m_yaw;
 }

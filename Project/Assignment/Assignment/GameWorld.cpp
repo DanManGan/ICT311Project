@@ -13,7 +13,7 @@
 GameWorld::GameWorld() 
 {
 	m_objects.clear();
-	BruteForce();
+	m_terrain = new BruteForce();
 	LoadWorld();
 }
 
@@ -21,15 +21,17 @@ GameWorld::GameWorld()
 
 GameWorld::~GameWorld()
 {
+	delete m_terrain;
+	m_terrain = nullptr;
 }
 
 //--------------------------------------------------------------------------------------
 
 bool GameWorld::LoadWorld()
 {	
-	m_terrain.SetScaleFactor(1.0f,0.2f,1.0f);
+	m_terrain->SetScaleFactor(1.0f,0.2f,1.0f);
 	//return true;
-	return m_terrain.LoadHeightfield("Textures/height128.raw",128);
+	return m_terrain->LoadHeightfield("Textures/height128.raw",128);
 }
 
 //--------------------------------------------------------------------------------------
@@ -53,73 +55,75 @@ void GameWorld::LoadWorldTexture()
 	//tex->SetTexID(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
 	//m_terrain.SetTexture(graphics->SetupTextureClamp((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
 	//m_terrain.LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmap.bmp"));
-	m_terrain.SetDetailMap(graphics->SetupTextureBasic((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
-	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowestTile.tga"));
-	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
-	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highTile.tga"));
-	m_terrain.AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highestTile.tga"));
-	m_terrain.CreateProceduralTexture();
+	m_terrain->SetDetailMap(graphics->SetupTextureBasic((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
+	m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowestTile.tga"));
+	m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
+	m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highTile.tga"));
+	m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highestTile.tga"));
+	m_terrain->CreateProceduralTexture();
 	//assetManager->Load(m_terrain.GetProceduralTexture("ProceduralTexture"));
-	m_terrain.SetTexture(graphics->CreateNewTexture(m_terrain.GetProTexData(), m_terrain.GetProTexWidth(), m_terrain.GetProTexHeight()));
-	m_terrain.SetNumTerrainTexRepeat(1);
+	m_terrain->SetTexture(graphics->CreateNewTexture(m_terrain->GetProTexData(), m_terrain->GetProTexWidth(), m_terrain->GetProTexHeight()));
+	m_terrain->SetNumTerrainTexRepeat(1);
 	//m_terrain.LoadDetailMap("Textures/detailmap.tga");
-	m_terrain.SetNumDetailMapRepeat(8);
+	m_terrain->SetNumDetailMapRepeat(8);
 	//m_terrain.SetTexture(graphics->SetupTextureClamp((Texture*)assetManager->GetAsset("ProceduralTexture")));
-	m_terrain.SetLightingColor(1.0f, 1.0f, 1.0f);
-	m_terrain.SetSlopeLightingParams( 1, 1, 0.2f, 0.9f, 10.0f );
-	m_terrain.CreateSlopeLighting();
+	m_terrain->SetLightingColor(1.0f, 1.0f, 1.0f);
+	m_terrain->SetSlopeLightingParams( 1, 1, 0.2f, 0.9f, 10.0f );
+	m_terrain->CreateSlopeLighting();
 
 	assetManager->Load("Models/Ogro/Tris.md2");
 	assetManager->Load("Models/Ogro/Ogrobase.pcx");
 
-	m_objects["ogro"] = new NPC("ogro",52,m_terrain.GetHeightAverage(52,92),92);
+	assetManager->Load("Models/insane/tris.md2");
+	assetManager->Load("Models/insane/i_skin.pcx");
+
+	m_objects["ogro"] = new NPC("ogro",52,m_terrain->GetHeightAverage(52,92),92);
 	m_objects["ogro"]->SetMesh(assetManager->GetAsset("Models/Ogro/Tris.md2"));
 	m_objects["ogro"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/Ogro/Ogrobase.pcx")));
 	m_objects["ogro"]->SetScale(0.25f, 0.25f, 0.25f);
 	m_objects["ogro"]->SetBase();
-	m_objects["ogro"]->SetAnimation(40, 46);
-
+	m_objects["ogro"]->SetAnimation(RUN);
+	
+	m_objects["insane"] = new NPC("insane",29,m_terrain->GetHeightAverage(29,93),93);
+	m_objects["insane"]->SetMesh(assetManager->GetAsset("Models/insane/tris.md2"));
+	m_objects["insane"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/insane/i_skin.pcx")));
+	m_objects["insane"]->SetScale(0.25f, 0.25f, 0.25f);
+	m_objects["insane"]->SetBase();
+	m_objects["insane"]->SetAnimation(RUN);
 }
 
 //--------------------------------------------------------------------------------------
 
 void GameWorld::Render()
 {
-	m_terrain.Render();
+	m_terrain->Render();
 
-	graphics->PushMatrix();
-	graphics->LightOn(GL_LIGHT0);
-	//m_terrain.GetHeightAverage();
-	//std::cout << "height scaled: " << m_terrain.GetHeightScaled(70, 93) << std::endl;
-	//float modelHeight = ((float)m_model.GetHeight() * 0.25f) * 0.25f;
-	//graphics->Translate(52,m_terrain.GetHeightAverage(52,92) + modelHeight,92);
-	//graphics->Translate(52,m_terrain.GetHeightAverage(52,92),92);
-	Vector3D pos = m_objects["ogro"]->GetPos();
-	//std::cout << "52 " << m_terrain.GetHeightAverage(52,92) << " 92" << std::endl;
-	//std::cout << pos.x << " " << pos.y << " " << pos.z << std::endl;
-	//std::cout << "52 " << m_terrain.GetHeightAverage(pos.x,pos.z) + pos.y << " 92" << std::endl;
-	graphics->Translate(pos.x,
-		m_terrain.GetHeightAverage(pos.x,pos.z) + pos.y, pos.z);
-	//glRotatef(45,0,1,0);
-	//graphics->Scale(0.25f,0.25f,0.25f);
-	//if(m_animate)
-	//{		 
-		//m_model.animate(m_animateStartFrame,m_animateEndFrame);
-	//}
-	//else
-	//{
-		m_objects["ogro"]->Render();
-	//}
+	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
+		it->second->SetY(m_terrain->GetHeightAverage(it->second->GetX(), it->second->GetZ()));
+		it->second->Render();
+	}
 
-	graphics->LightOff(GL_LIGHT0);
-	graphics->PopMatrix();
 }
 
 //--------------------------------------------------------------------------------------
 
 void GameWorld::Update(float deltaT)
 {
-	m_objects["ogro"]->Update(deltaT);
+	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
+		it->second->Update(deltaT);
+	}
+}
+
+//--------------------------------------------------------------------------------------
+
+void GameWorld::Left()
+{
+	m_objects["ogro"]->Left();
+}
+
+void GameWorld::Right()
+{
+	m_objects["ogro"]->Right();
 }
 
 //--------------------------------------------------------------------------------------
@@ -130,8 +134,8 @@ bool GameWorld::InWorld(float& x, float& z)
 		x=0;
 		return false;
 	}
-	else if(x>m_terrain.GetSize()) {
-		x=(float)m_terrain.GetSize();
+	else if(x>m_terrain->GetSize()) {
+		x=(float)m_terrain->GetSize();
 		return false;
 	}
 
@@ -139,8 +143,8 @@ bool GameWorld::InWorld(float& x, float& z)
 		z=0;
 		return false;
 	}
-	else if(z>m_terrain.GetSize()) {
-		z=(float)m_terrain.GetSize();
+	else if(z>m_terrain->GetSize()) {
+		z=(float)m_terrain->GetSize();
 		return false;
 	}
 
@@ -151,14 +155,14 @@ bool GameWorld::InWorld(float& x, float& z)
 
 float GameWorld::GetWorldXZHeight(float x, float z)
 {
-	return m_terrain.GetHeightAverage(x,z);
+	return m_terrain->GetHeightAverage(x,z);
 }
 
 //--------------------------------------------------------------------------------------
 
 float GameWorld::GetWorldSize()
 {
-	return (float)m_terrain.GetSize();
+	return (float)m_terrain->GetSize();
 }
 
 //--------------------------------------------------------------------------------------
