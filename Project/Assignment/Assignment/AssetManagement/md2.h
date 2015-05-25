@@ -26,8 +26,8 @@
 //a single vertex
 struct vertex
 {
- float x,y,z;
- unsigned char normIndex;  //unused
+	float x,y,z;
+	unsigned char normIndex;  //unused
 };
 
 // single MD2 triangle
@@ -66,39 +66,15 @@ struct frame
 			delete[] vertices;
 	}
 };
-//
-//enum AnimationState
-//{
-//   STAND = 0,
-//    RUN,
-//    ATTACK,
-//    PAIN_A,
-//    PAIN_B,
-//    PAIN_C,
-//    JUMP,
-//    FLIP,
-//    SALUTE,
-//    FALLBACK,
-//    WAVE,
-//    POINT_AT,
-//    CROUCH_STAND,
-//    CROUCH_WALK,
-//    CROUCH_ATTACK,
-//    CROUCH_PAIN,
-//    CROUCH_DEATH,
-//    DEATH_FALLBACK,
-//    DEATH_FALLFORWARD,
-//    DEATH_FALLBACKSLOW,
-//    BOOM
-//};
-//
-//enum Animate
-//{
-//	START_FRAME = 0,
-//	END_FRAME,
-//	ANIMATION_SPEED
-//};
-//
+
+
+/* GL command packet */
+struct md2_glcmd_t
+{
+  float s;                    /* s texture coord. */
+  float t;                    /* t texture coord. */
+  int index;                  /* vertex index */
+};
 
 class md2 : public Mesh
  {
@@ -169,7 +145,14 @@ public:
 
    float GetModelSpeed();
 
+   int GetNumFrames();
+
+   int GetNumVertices();
+
+   frame* GetFrames();
+
    Vector3D calculateTriangleNormal(const Vector3D v1, const Vector3D v2, const Vector3D v3);
+
 
 //private:
  protected:

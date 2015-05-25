@@ -363,6 +363,14 @@ bool md2::SetScale(float xScale, float yScale, float zScale)
 {
 	if(xScale > 0 && yScale > 0 && zScale > 0) {
 		m_scale.Set(xScale, yScale, zScale);
+
+		for(int i=0;i<m_header->numFrames;i++) {
+			for(int j=0;j<m_header->numVertices;j++) {
+				m_frames[i].vertices[j].x *= m_scale.x;
+				m_frames[i].vertices[j].y *= m_scale.y;
+				m_frames[i].vertices[j].z *= m_scale.z;
+				}
+			}
 		return true;
 	}
 	return false;
@@ -382,25 +390,26 @@ void md2::CalcBase()
 {
 	float min = 0.0f, max = 0.0f;
 
-	for(int i=0;i<m_header->numFrames;i++) {
+	//for(int i=0;i<m_header->numFrames;i++) {
 		for(int j=0;j<m_header->numVertices;j++) {
-			if(m_frames[i].vertices[j].y < min) {
-				min = m_frames[i].vertices[j].y;
+			if(m_frames[0].vertices[j].y < min) {
+				min = m_frames[0].vertices[j].y;
 			}
-			if(m_frames[i].vertices[j].y > max) {
-				max = m_frames[i].vertices[j].y;
+			if(m_frames[0].vertices[j].y > max) {
+				max = m_frames[0].vertices[j].y;
 			}
 		}
-	}
+	//}
 
 	//m_base = (max-min) * m_scale.y * 0.5f;
-	float ratio = 0.0f;
-	float height = max - min;
-	if(min < 0.0f)
-		ratio = -min/height;
-	else
-		ratio = min/height;
-	m_base = (height * m_scale.y * ratio) - 1.5f; //(max-min);
+	//float ratio = 0.0f;
+	//float height = max - min;
+	//if(min < 0.0f)
+	//	ratio = -min/height;
+	//else
+	//	ratio = min/height;
+	//m_base = (height * ratio) - 1.5f; //(max-min);
+		m_base = (max - min) / 2;
 	std::cout << "min " << min << " max " << max << " base " << m_base << std::endl;
 
 	//m_base = 8;
@@ -417,6 +426,20 @@ float md2::GetModelSpeed()
 	return m_modelSpeed;
 }
 
+int md2::GetNumFrames()
+{
+	return m_header->numFrames;
+}
+
+int md2::GetNumVertices()
+{
+	return m_header->numVertices;
+}
+
+frame* md2::GetFrames()
+{
+	return m_frames;
+}
 
 Vector3D md2::calculateTriangleNormal(const Vector3D v1, const Vector3D v2, const Vector3D v3)
 {

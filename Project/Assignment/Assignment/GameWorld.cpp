@@ -74,22 +74,24 @@ void GameWorld::LoadWorldTexture()
 	assetManager->Load("Models/Ogro/Tris.md2");
 	assetManager->Load("Models/Ogro/Ogrobase.pcx");
 
-	assetManager->Load("Models/insane/tris.md2");
-	assetManager->Load("Models/insane/i_skin.pcx");
+	assetManager->Load("Models/berserk/tris.md2");
+	assetManager->Load("Models/berserk/skin.pcx");
 
 	m_objects["ogro"] = new NPC("ogro",52,m_terrain->GetHeightAverage(52,92),92);
 	m_objects["ogro"]->SetMesh(assetManager->GetAsset("Models/Ogro/Tris.md2"));
 	m_objects["ogro"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/Ogro/Ogrobase.pcx")));
 	m_objects["ogro"]->SetScale(0.25f, 0.25f, 0.25f);
 	m_objects["ogro"]->SetBase();
+	m_objects["ogro"]->SetAABB();
 	m_objects["ogro"]->SetAnimation(RUN);
 	
-	m_objects["insane"] = new NPC("insane",29,m_terrain->GetHeightAverage(29,93),93);
-	m_objects["insane"]->SetMesh(assetManager->GetAsset("Models/insane/tris.md2"));
-	m_objects["insane"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/insane/i_skin.pcx")));
-	m_objects["insane"]->SetScale(0.25f, 0.25f, 0.25f);
-	m_objects["insane"]->SetBase();
-	m_objects["insane"]->SetAnimation(RUN);
+	m_objects["berserk"] = new NPC("berserk",29,m_terrain->GetHeightAverage(29,93),93);
+	m_objects["berserk"]->SetMesh(assetManager->GetAsset("Models/berserk/tris.md2"));
+	m_objects["berserk"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/berserk/skin.pcx")));
+	m_objects["berserk"]->SetScale(0.25f, 0.25f, 0.25f);
+	m_objects["berserk"]->SetBase();
+	m_objects["berserk"]->SetAABB();
+	m_objects["berserk"]->SetAnimation(RUN);
 }
 
 //--------------------------------------------------------------------------------------
@@ -101,6 +103,7 @@ void GameWorld::Render()
 	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
 		it->second->SetY(m_terrain->GetHeightAverage(it->second->GetX(), it->second->GetZ()));
 		it->second->Render();
+		it->second->DrawAABB();
 	}
 
 }

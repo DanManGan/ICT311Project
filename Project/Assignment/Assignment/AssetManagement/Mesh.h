@@ -71,6 +71,7 @@ public:
 
 private:
 
+
 	//unsigned int m_skinID;
 };
 

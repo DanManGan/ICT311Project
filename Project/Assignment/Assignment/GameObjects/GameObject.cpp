@@ -3,7 +3,10 @@
 
 #include "../Extras/MathExtra.h"
 
+#include "../Singletons.h"
+
 #include <iostream>
+#include <algorithm>
 
 GameObject::GameObject() :
 	m_model(nullptr),
@@ -14,6 +17,7 @@ GameObject::GameObject() :
 	m_yaw(0.0f),
 	m_base(0)
 {
+	AABB();
 	m_Position.Set(0.0f, 0.0f, 0.0f);
 	m_velocity.Set(0.0f, 0.0f, 0.0f);
 }
@@ -122,6 +126,37 @@ void GameObject::SetBase()
 {
 	/*m_Position.y = m_model->GetBase();*/
 	m_base = m_model->GetBase();
+}
+
+void GameObject::SetAABB()
+{
+	m_boundingBox.CreateAABB(m_model);
+}
+
+void GameObject::DrawAABB()
+{
+	Vector3D min = m_boundingBox.GetMin();
+	Vector3D max = m_boundingBox.GetMax();
+	graphics->PushMatrix();
+		graphics->Translate(m_Position.x, m_Position.y, m_Position.z);
+		graphics->Rotate(-m_yaw, 0.0f, 1.0f, 0.0f);
+			glEnable(GL_COLOR);
+			glLineWidth(2.5);
+			glColor3f(1.0, 0.0, 0.0);
+			graphics->Begin(GL_LINES);
+			glVertex3f(min.x, max.y, min.z);
+			glVertex3f(min.x, min.y, min.z);
+
+			glVertex3f(max.x, max.y, min.z);
+			glVertex3f(max.x, min.y,min.z);
+
+			glVertex3f(min.x,max.y, max.z);
+			glVertex3f(min.x, min.y, max.z);
+
+			glVertex3f(max.x, max.y, max.z);
+			glVertex3f(max.x, min.y, max.z);
+			graphics->End();
+		graphics->PopMatrix();
 }
 
 float GameObject::GetX()

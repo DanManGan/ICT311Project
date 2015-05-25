@@ -244,7 +244,7 @@ void MainGame::ProcessInput()
 	m_camera.position.y=gameWorld->GetWorldXZHeight(m_camera.position.x,m_camera.position.z)+m_playerHeight;
 	gameWorld->InWorld(m_camera.position.x, m_camera.position.z);
 
-	std::cout << m_camera.position.x << " " << m_camera.position.y << " " << m_camera.position.z << std::endl;
+//	std::cout << m_camera.position.x << " " << m_camera.position.y << " " << m_camera.position.z << std::endl;
 
 	if(input->mouseLeft) {
 		int deltaX;
@@ -278,16 +278,19 @@ void MainGame::GameLoop()
 	Update(0); // NEED TO LOOK AT REMOVING THIS !!!!!!!!!!
 
 	do { 
-		//logicTime1 = displayTime1 = glfwGetTime();
-		// display update
-		//if(((float)displayTime1 - displayTime0) > displayFrequency) {
-		//	displayTime0 = displayTime1 - displayFrequency;
-		//	ProcessInput();
-		//	Update(displayTime1-displayTime0);
-		//	Display(displayTime1-displayTime0);
-		//}
-		// logic update
-		time1=glfwGetTime();
+		  time1=glfwGetTime();
+//////////////////////////////////////////////////////////////////
+		 // while(((float)time1 - time0) > frequency)
+		 // { 
+			//ProcessInput();
+			////Update(time1-time0);
+			////Display(logicTime1-time0);
+			//Update(time1-time0);
+			//  time0+=frequency;
+   //		  }
+		 // if(((float)time1 - time0) > frequency)
+			//  time0 = time1 - frequency;
+///////////////////////////////////////////////////////////////////
 		if(((float)time1 - time0) > frequency) {
 			time0 = time1 - frequency;
 			ProcessInput();

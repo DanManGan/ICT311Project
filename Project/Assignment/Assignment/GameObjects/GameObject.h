@@ -4,7 +4,7 @@
 
 #include "../Extras/Vector3D.h"
 #include "../AssetManagement/Mesh.h"
-
+#include "../Collision/AABB.h"
 
 class GameObject
 {
@@ -36,6 +36,8 @@ public:
 	bool SetScale(float scaleX, float scaleY, float scaleZ);
 	void SetBase();
 
+	void SetAABB();
+
 	float GetX();
 	float GetY();
 	float GetZ();
@@ -53,6 +55,8 @@ public:
 	void Right();
 
 	float GetYaw();
+
+	void DrawAABB();
 	
 protected:
 	Vector3D m_Position;
@@ -60,6 +64,8 @@ protected:
 	float m_yaw;
 	Mesh* m_model;
 	float m_base;
+	AABB m_boundingBox;
+
 private:
 	
 	int m_ModelSize;

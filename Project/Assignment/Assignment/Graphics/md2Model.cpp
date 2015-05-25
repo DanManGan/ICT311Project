@@ -15,6 +15,7 @@ md2Model::~md2Model()
 
 }
 
+
 void md2Model::Render(Vector3D position, float yaw)
 {
 	Vector3D v1,v2,v3;
@@ -28,7 +29,7 @@ void md2Model::Render(Vector3D position, float yaw)
 			graphics->Tex2DOn(m_skinID);
 		}
 
-		graphics->Scale(m_scale.x, m_scale.y, m_scale.z);
+		//graphics->Scale(m_scale.x, m_scale.y, m_scale.z);
 		graphics->Begin(GL_TRIANGLES);
 
 		for(int i = 0; i < m_header->numTriangles; i++) {
@@ -64,7 +65,7 @@ void md2Model::Render(Vector3D position, float yaw)
 
 		graphics->End();	
 		graphics->Tex2DOff();
-
+		
 		graphics->LightOff(GL_LIGHT0);
 	graphics->PopMatrix();
 }
