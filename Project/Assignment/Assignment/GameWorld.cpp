@@ -110,11 +110,13 @@ void GameWorld::Render()
 
 //--------------------------------------------------------------------------------------
 
-void GameWorld::Update(float deltaT)
+void GameWorld::Animate(float deltaT)
 {
 	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
-		it->second->Update(deltaT);
+		it->second->Animate(deltaT);
 	}
+
+
 }
 
 //--------------------------------------------------------------------------------------

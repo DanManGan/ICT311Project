@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{ac85e547-3bb0-4a64-bf01-3e65ed674d9a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\AI">
+      <UniqueIdentifier>{9a102f0e-f040-4abf-b37b-c96a6de219cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI">
+      <UniqueIdentifier>{fc3a9708-8f23-4014-b468-3df2f998cd78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BruteForce.h">
@@ -150,14 +156,14 @@
     <ClInclude Include="Collision\AABB.h">
       <Filter>Header Files\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Collision\Collision.h">
-      <Filter>Header Files\Collision</Filter>
-    </ClInclude>
     <ClInclude Include="Graphics\ViewOpenGL.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\md2Model.h">
       <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\Movement.h">
+      <Filter>Header Files\AI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -257,14 +263,14 @@
     <ClCompile Include="Collision\AABB.cpp">
       <Filter>Source Files\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Collision\Collision.cpp">
-      <Filter>Source Files\Collision</Filter>
-    </ClCompile>
     <ClCompile Include="Graphics\ViewOpenGL.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\md2Model.cpp">
       <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\Movement.cpp">
+      <Filter>Source Files\AI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

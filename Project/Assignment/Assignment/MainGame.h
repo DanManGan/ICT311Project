@@ -120,7 +120,7 @@ private:
 	  */ 
 	void Display(float deltaT);
 
-	void Update(float deltaT);
+	void Animate(float deltaT);
 
 	/** 
 	  * @brief Camera object

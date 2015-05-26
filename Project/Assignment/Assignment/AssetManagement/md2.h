@@ -137,7 +137,7 @@ public:
 
    bool SetScale(float xScale, float yScale, float zScale);
 
-   void Update(float deltaT);
+   void Animate(float deltaT);
 
    void CalcBase();
 

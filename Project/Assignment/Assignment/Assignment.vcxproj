@@ -81,6 +81,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AI\Movement.h" />
     <ClInclude Include="AssetManagement\bmp.h" />
     <ClInclude Include="AssetManagement\bmpLoader.h" />
     <ClInclude Include="AssetManagement\GameAsset.h" />
@@ -103,7 +104,6 @@
     <ClInclude Include="BruteForce.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collision\AABB.h" />
-    <ClInclude Include="Collision\Collision.h" />
     <ClInclude Include="Extras\MathExtra.h" />
     <ClInclude Include="Extras\timer.h" />
     <ClInclude Include="Extras\Vector3D.h" />
@@ -121,6 +121,7 @@
     <ClInclude Include="GameWorld.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AI\Movement.cpp" />
     <ClCompile Include="AssetManagement\bmp.cpp" />
     <ClCompile Include="AssetManagement\bmpLoader.cpp" />
     <ClCompile Include="AssetManagement\GameAsset.cpp" />
@@ -143,7 +144,6 @@
     <ClCompile Include="BruteForce.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collision\AABB.cpp" />
-    <ClCompile Include="Collision\Collision.cpp" />
     <ClCompile Include="Extras\Vector3D.cpp" />
     <ClCompile Include="GameObjects\GameObject.cpp" />
     <ClCompile Include="GameObjects\NPC.cpp" />

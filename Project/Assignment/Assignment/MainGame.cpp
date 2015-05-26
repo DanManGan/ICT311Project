@@ -267,7 +267,8 @@ void MainGame::GameLoop()
 	//float displayFrequency = 0.02; // 50 fps
 
 	double time0,time1;
-	double frequency=0.05;  //frequency of logic update - every 20ms
+	double frequency=0.1;  //frequency of logic update - every 20ms
+	//double frequency=0.03;   // lowest good for display
 
 	m_running = true;
 	//logicTime0 = displayTime0 = glfwGetTime();
@@ -275,33 +276,36 @@ void MainGame::GameLoop()
 	
 	/***************** main game loop ****************************************/  
 
-	Update(0); // NEED TO LOOK AT REMOVING THIS !!!!!!!!!!
+	Animate(0); // NEED TO LOOK AT REMOVING THIS !!!!!!!!!!
 
 	do { 
 		  time1=glfwGetTime();
 //////////////////////////////////////////////////////////////////
+		////  // NEED TO GET THIS WORKING
 		 // while(((float)time1 - time0) > frequency)
 		 // { 
 			//ProcessInput();
-			////Update(time1-time0);
-			////Display(logicTime1-time0);
-			//Update(time1-time0);
+
 			//  time0+=frequency;
+			//std::cout << "Logic" << std::endl;
    //		  }
 		 // if(((float)time1 - time0) > frequency)
 			//  time0 = time1 - frequency;
 ///////////////////////////////////////////////////////////////////
+		  // THIS DOESN"T WORK !!!!
 		if(((float)time1 - time0) > frequency) {
 			time0 = time1 - frequency;
 			ProcessInput();
-			//Update(time1-time0);
+			//Animate(time1-time0);
 			//Display(logicTime1-time0);
-			Update(time1-time0);
+			std::cout << "Logic" << std::endl;
 		}
 		
-		//Update(time1-time0);
+		Animate(time1-time0);
 		Display(time1-time0);
-	  
+		std::cout << "Display" << std::endl;
+
+
 		// Check if the window was closed
 		m_running = m_running && glfwGetWindowParam( GLFW_OPENED );	
 	} while (m_running);
@@ -333,9 +337,9 @@ void MainGame::Display(float deltaT)
 	graphics->EndRendering();
 }
 
-void MainGame::Update(float deltaT)
+void MainGame::Animate(float deltaT)
 {
 	
 	m_camera.Animate(deltaT);
-	gameWorld->Update(deltaT);
+	gameWorld->Animate(deltaT);
 }

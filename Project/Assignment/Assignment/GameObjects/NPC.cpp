@@ -4,7 +4,8 @@
 
 NPC::NPC() :
 	GameObject(),
-	m_Health(0)
+	m_Health(0),
+	m_move(Movement())
 {
 }
 
@@ -25,12 +26,15 @@ void NPC::SetAnimation(AnimationState state)
 	m_model->SetAnimation(state);
 }
 
-void NPC::Update(float deltaT)
+void NPC::Animate(float deltaT)
 {
-	m_velocity.z = m_model->GetModelSpeed(); ///////////////////////// Set speed
-	m_yaw -= 0.5f; /////////////////////////////// Set rotation
-	m_model->Update(deltaT);
-	UpdatePosition(deltaT);
+	//m_velocity.z = m_model->GetModelSpeed(); ///////////////////////// Set speed
+	//m_yaw -= 0.5f; /////////////////////////////// Set rotation
+
+	Vector3D temp(0, 0, 0);
+	m_model->Animate(deltaT);
+	m_move.MoveTo(m_Position, temp, m_velocity, deltaT);
+	//UpdatePosition(deltaT);
 }
 
 void NPC::Render()

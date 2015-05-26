@@ -111,6 +111,20 @@ public:
 	void Set(float* values);
 
 	/** 
+	  * @brief Test memebrs == 0
+	  * @warning None
+	  * 
+	  * tests all members to see if they equal zero
+	  * 
+	  * @return bool value true if all 0
+	  * 
+	  * 
+	  * @pre 
+	  * @post 
+	  */ 
+	bool IsZero();
+
+	/** 
 	  * @brief overloaded '-' operator
 	  * @warning None
 	  * 

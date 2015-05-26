@@ -17,7 +17,7 @@ public:
 	virtual ~GameObject();
 
 	virtual void Initialise() { };
-	virtual void Update(float deltaT) = 0;
+	virtual void Animate(float deltaT) = 0;
 	virtual void Render()=0;
 	
 
@@ -57,6 +57,8 @@ public:
 	float GetYaw();
 
 	void DrawAABB();
+
+	void TestCollision(GameObject* obj);
 	
 protected:
 	Vector3D m_Position;

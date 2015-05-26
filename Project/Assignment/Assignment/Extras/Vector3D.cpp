@@ -52,6 +52,13 @@ void Vector3D::Set(float* values)
 
 //--------------------------------------------------------------------------------------
 
+bool Vector3D::IsZero()
+{
+	return (x == 0 && y == 0 && z == 0);
+}
+
+//--------------------------------------------------------------------------------------
+
 const Vector3D Vector3D::operator -  (const float scalar) const
 {
 	//overloaded '-' operator, vector - scalar

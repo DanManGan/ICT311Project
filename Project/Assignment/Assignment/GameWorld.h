@@ -211,7 +211,7 @@ public:
 
 /////////////////////////////////////////////////////////////////////////
 
-	void Update(float deltaT);
+	void Animate(float deltaT);
 
 	void Left();
 	void Right();

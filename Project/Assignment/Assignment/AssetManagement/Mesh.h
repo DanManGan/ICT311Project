@@ -57,7 +57,7 @@ public:
 
 	virtual void Render(Vector3D position, float yaw) = 0;
 
-	virtual void Update(float deltaT) = 0;
+	virtual void Animate(float deltaT) = 0;
 
 	virtual void SetAnimation(AnimationState state) = 0;
 

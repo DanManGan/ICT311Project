@@ -247,7 +247,7 @@ void md2::SetAnimation(AnimationState state)
 
 }
 
-void md2::Update(float deltaT)
+void md2::Animate(float deltaT)
 {
 	unsigned int msPerFrame = 0;			//number of milliseconds per frame
 	//alloc a place to put the interpolated vertices
@@ -266,7 +266,7 @@ void md2::Update(float deltaT)
 		msPerFrame = (unsigned int)(1000/ m_animationSpeed);
 	//Calculate the next frame and the interpolation value
 	unsigned int time = timer.GetMS();
-		//unsigned int time = deltaT;
+	//	unsigned int time = deltaT;
 
 	//std::cout << "time: " << time << std::endl;
 	float interpolVal = ((float) time / msPerFrame) + m_lastInterpol;

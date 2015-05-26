@@ -244,3 +244,9 @@ float GameObject::GetYaw()
 {
 	return m_yaw;
 }
+
+void GameObject::TestCollision(GameObject* obj)
+{
+	if(m_boundingBox.CheckCollision(m_Position, obj->m_boundingBox, obj->m_Position))
+		std::cout << "Fuck Yeah" << std::endl;
+}

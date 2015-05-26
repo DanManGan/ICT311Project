@@ -79,7 +79,7 @@ AABB AABB::CreateWorldAABB(AABB aabb,Vector3D worldXYZ)
     return worldAABB;
 }
 
-bool AABB::CheckCollisonWithPoint(Vector3D &point,Vector3D worldXYZ)
+bool AABB::CheckCollisionWithPoint(Vector3D &point,Vector3D worldXYZ)
 {
      AABB worldAABB=CreateWorldAABB(*this,worldXYZ);
      return((point.x>= worldAABB.m_min.x)&&(point.x<=worldAABB.m_max.x)&&
@@ -88,14 +88,14 @@ bool AABB::CheckCollisonWithPoint(Vector3D &point,Vector3D worldXYZ)
 }
 
 
-bool AABB::CheckCollisonWithPoint(Vector3D &point,AABB &aabb)
+bool AABB::CheckCollisionWithPoint(Vector3D &point,AABB &aabb)
 {
      return((point.x>= aabb.m_min.x)&&(point.x<=aabb.m_max.x)&&
 	   (point.y>= aabb.m_min.y)&&(point.y<=aabb.m_max.y)&&
 	   (point.z>= aabb.m_min.z)&&(point.z<=aabb.m_max.z));
 }
 
-bool AABB::CheckCollison(Vector3D worldXYZ,AABB &aabb2,Vector3D worldXYZ2)
+bool AABB::CheckCollision(Vector3D worldXYZ,AABB &aabb2,Vector3D worldXYZ2)
 {
     AABB obj1=CreateWorldAABB(*this,worldXYZ);
     AABB obj2=CreateWorldAABB(aabb2,worldXYZ2);
@@ -112,7 +112,7 @@ bool AABB::CheckCollison(Vector3D worldXYZ,AABB &aabb2,Vector3D worldXYZ2)
 
 	for(int i=0;i<8;i++)
     {
-		if(CheckCollisonWithPoint(p[i],obj2))
+		if(CheckCollisionWithPoint(p[i],obj2))
 			  return  true;
 	}
     return false;
