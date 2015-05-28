@@ -81,3 +81,10 @@ int Player::GetHealth()
 {
 	return m_Health;
 }
+
+void Player::ChangeState(State *newState) 
+{
+	m_CurrentState->Exit(this);
+	m_CurrentState = newState;
+	m_CurrentState->Enter(this);
+}

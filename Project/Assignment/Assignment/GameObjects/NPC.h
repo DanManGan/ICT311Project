@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "../AI/Movement.h"
+#include "../AI/State.h"
 
 class NPC :public GameObject
 {
@@ -15,7 +16,7 @@ public:
 	void Initialise();
 	void Animate(float deltaT);
 	void SetAnimation(AnimationState state);
-
+	void ChangeState(State *newState);
 	void Render();
 
 
@@ -26,6 +27,7 @@ protected:
 
 private:
 	int m_Health;
+	State *m_CurrentState;
 };
 
 #endif

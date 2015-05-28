@@ -42,3 +42,9 @@ void NPC::Render()
 	m_model->Render(m_Position, m_yaw);
 }
 
+void NPC::ChangeState(State *newState)
+{
+	m_CurrentState->Exit(this);
+	m_CurrentState = newState;
+	m_CurrentState->Enter(this);
+}

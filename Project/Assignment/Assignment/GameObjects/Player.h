@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "../Graphics/ViewOpenGL.h"
+#include "../AI/State.h"
 
 class Player :public GameObject
 {
@@ -16,6 +17,7 @@ public:
 	Vector3D GetPlayerCameraPosition();
 	Vector3D GetPlayerLookAt();
 	int GetHealth();
+	void ChangeState(State *newState);
 
 	virtual void Initialise();
 	virtual void Update();
@@ -25,6 +27,7 @@ private:
 	Vector3D m_PlayerCameraPosition;
 	Vector3D m_PlayerCameraLookAt;
 	int m_Health;
+	State *m_CurrentState;
 };
 
 #endif 
