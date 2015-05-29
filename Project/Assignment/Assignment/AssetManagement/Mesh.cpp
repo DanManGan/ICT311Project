@@ -1,12 +1,15 @@
 
 #include "Mesh.h"
 
-Mesh::Mesh()
+Mesh::Mesh() :
+	m_scale(1.0f, 1.0f, 1.0f)
 {
+
 }
 
 Mesh::Mesh(char* name) :
-	GameAsset(name)
+	GameAsset(name),
+	m_scale(1.0f, 1.0f, 1.0f)
 {
 }
 
@@ -14,3 +17,11 @@ Mesh::~Mesh()
 {
 }
 
+//bool Mesh::SetScale(float scaleX, float scaleY, float scaleZ);
+//{
+//	if(scaleX && scaleY && scaleZ) {
+//		m_scale.Set(scaleX, scaleY, scaleZ);
+//		return true;
+//	}
+//	return false;
+//}

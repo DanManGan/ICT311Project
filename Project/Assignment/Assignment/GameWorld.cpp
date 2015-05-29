@@ -4,8 +4,10 @@
 #include "AssetManagement/Texture.h"
 #include "AssetManagement/md2.h"
 #include "AssetManagement/Mesh.h"
+#include "AssetManagement/obj.h"
 #include "GameObjects/GameObject.h"
 #include "GameObjects/NPC.h"
+#include "GameObjects/Model.h"
 #include <iostream>
 
 //--------------------------------------------------------------------------------------
@@ -77,6 +79,9 @@ void GameWorld::LoadWorldTexture()
 	assetManager->Load("Models/berserk/tris.md2");
 	assetManager->Load("Models/berserk/skin.pcx");
 
+	assetManager->Load("Models/soldier/tris.md2");
+	assetManager->Load("Models/soldier/skin.pcx");
+
 	m_objects["ogro"] = new NPC("ogro",52,m_terrain->GetHeightAverage(52,92),92);
 	m_objects["ogro"]->SetMesh(assetManager->GetAsset("Models/Ogro/Tris.md2"));
 	m_objects["ogro"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/Ogro/Ogrobase.pcx")));
@@ -92,6 +97,22 @@ void GameWorld::LoadWorldTexture()
 	m_objects["berserk"]->SetBase();
 	m_objects["berserk"]->SetAABB();
 	m_objects["berserk"]->SetAnimation(RUN);
+
+	m_objects["soldier"] = new NPC("soldier",20,m_terrain->GetHeightAverage(20,20),20);
+	m_objects["soldier"]->SetMesh(assetManager->GetAsset("Models/soldier/tris.md2"));
+	m_objects["soldier"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/soldier/skin.pcx")));
+	m_objects["soldier"]->SetScale(0.25f, 0.25f, 0.25f);
+	m_objects["soldier"]->SetBase();
+	m_objects["soldier"]->SetAABB();
+	m_objects["soldier"]->SetAnimation(RUN);
+
+	assetManager->Load("Models/house1/house1.obj");
+	assetManager->Load("Models/bananaTree/bananaTree.obj");
+
+	m_objects["house1"] = new Model("house1", 85, m_terrain->GetHeightAverage(85,15),15);
+	m_objects["house1"]->SetMesh(assetManager->GetAsset("Models/house1/house1.obj"));
+	m_objects["house1"]->SetScale(0.25f, 0.25f, 0.25f);
+	m_objects["house1"]->SetAABB();
 }
 
 //--------------------------------------------------------------------------------------
@@ -100,12 +121,28 @@ void GameWorld::Render()
 {
 	m_terrain->Render();
 
+
+
 	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
 		it->second->SetY(m_terrain->GetHeightAverage(it->second->GetX(), it->second->GetZ()));
 		it->second->Render();
 		it->second->DrawAABB();
 	}
 
+}
+
+//--------------------------------------------------------------------------------------
+
+void GameWorld::Update()
+{
+	//std::cout << "START OF COLLISION TEST" << std::endl;
+	for(objIter it1 = m_objects.begin(); it1 != m_objects.end(); it1++) {
+		for(objIter it2 = it1; it2 != m_objects.end(); it2++) {
+			if(it1 != it2) {
+				it1->second->TestCollision(it2->second);
+			}
+		}
+	}
 }
 
 //--------------------------------------------------------------------------------------

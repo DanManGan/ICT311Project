@@ -35,6 +35,7 @@ private:
 	//gameAssets m_gameAssets;
 	
 	ResourceManager m_manager;
+
 };
 
 #endif

@@ -94,6 +94,8 @@
     <ClInclude Include="AssetManagement\md2Loader.h" />
     <ClInclude Include="AssetManagement\Mesh.h" />
     <ClInclude Include="AssetManagement\multitexture.h" />
+    <ClInclude Include="AssetManagement\obj.h" />
+    <ClInclude Include="AssetManagement\objLoader.h" />
     <ClInclude Include="AssetManagement\pcx.h" />
     <ClInclude Include="AssetManagement\pcxLoader.h" />
     <ClInclude Include="AssetManagement\ResourceLoader.h" />
@@ -102,6 +104,7 @@
     <ClInclude Include="AssetManagement\textureGenerator.h" />
     <ClInclude Include="AssetManagement\tga.h" />
     <ClInclude Include="AssetManagement\tgaLoader.h" />
+    <ClInclude Include="AssetManagement\tiny_obj_loader.h" />
     <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="BruteForce.h" />
     <ClInclude Include="Camera.h" />
@@ -112,7 +115,9 @@
     <ClInclude Include="GameObjects\GameObject.h" />
     <ClInclude Include="GameObjects\NPC.h" />
     <ClInclude Include="GameObjects\Player.h" />
+    <ClInclude Include="GameObjects\Model.h" />
     <ClInclude Include="Graphics\md2Model.h" />
+    <ClInclude Include="Graphics\objModel.h" />
     <ClInclude Include="Graphics\ViewOpenGL.h" />
     <ClInclude Include="InputGLFW.h" />
     <ClInclude Include="MainGame.h" />
@@ -134,6 +139,8 @@
     <ClCompile Include="AssetManagement\md2Loader.cpp" />
     <ClCompile Include="AssetManagement\Mesh.cpp" />
     <ClCompile Include="AssetManagement\multitexture.cpp" />
+    <ClCompile Include="AssetManagement\obj.cpp" />
+    <ClCompile Include="AssetManagement\objLoader.cpp" />
     <ClCompile Include="AssetManagement\pcx.cpp" />
     <ClCompile Include="AssetManagement\pcxLoader.cpp" />
     <ClCompile Include="AssetManagement\ResourceLoader.cpp" />
@@ -142,15 +149,18 @@
     <ClCompile Include="AssetManagement\textureGenerator.cpp" />
     <ClCompile Include="AssetManagement\tga.cpp" />
     <ClCompile Include="AssetManagement\tgaLoader.cpp" />
+    <ClCompile Include="AssetManagement\tiny_obj_loader.cc" />
     <ClCompile Include="AudioEngine.cpp" />
     <ClCompile Include="BruteForce.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collision\AABB.cpp" />
     <ClCompile Include="Extras\Vector3D.cpp" />
     <ClCompile Include="GameObjects\GameObject.cpp" />
+    <ClCompile Include="GameObjects\Model.cpp" />
     <ClCompile Include="GameObjects\NPC.cpp" />
     <ClCompile Include="GameObjects\Player.cpp" />
     <ClCompile Include="Graphics\md2Model.cpp" />
+    <ClCompile Include="Graphics\objModel.cpp" />
     <ClCompile Include="Graphics\ViewOpenGL.cpp" />
     <ClCompile Include="InputGLFW.cpp" />
     <ClCompile Include="MainGame.cpp" />

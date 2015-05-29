@@ -5,7 +5,6 @@
 #include <iostream>
 #include <fstream>
 //#include "imageLoader/imageFactory.h"
-//#include "imageLoader/imageFactory.h"
 //#include <gl\glut.h>
 //#include <GL/glfw.h>
 

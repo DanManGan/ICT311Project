@@ -162,6 +162,13 @@ void ViewOpenGL::SetColour(unsigned char r, unsigned char g, unsigned char b)
 
 //--------------------------------------------------------------------------------------
 
+void ViewOpenGL::SetColour(float r, float g, float b)
+{
+	glColor3f(r, g, b);
+}
+
+//--------------------------------------------------------------------------------------
+
 void ViewOpenGL::SetWireframeView()
 {
 	glPolygonMode( GL_FRONT_AND_BACK, GL_LINE ); // set to wireframe
@@ -490,7 +497,7 @@ void ViewOpenGL::Tex2DOff()
 	glDisable(GL_TEXTURE_2D);
 }
 
-void ViewOpenGL::Begin(GLenum action)
+void ViewOpenGL::Begin(GraphicStates action)
 {
 	glBegin(action);
 }
@@ -542,7 +549,7 @@ unsigned int ViewOpenGL::CreateNewTexture(unsigned char* tex,int width,int heigh
 
 //--------------------------------------------------------------------------------------
 
-void ViewOpenGL::LightOn(GLenum Light)
+void ViewOpenGL::LightOn(GraphicStates Light)
 {
 	glEnable(GL_LIGHTING); // as in turn on power for all lights
 	glEnable(Light); // as in flip on the light switch
@@ -550,51 +557,42 @@ void ViewOpenGL::LightOn(GLenum Light)
 
 //--------------------------------------------------------------------------------------
 
-void ViewOpenGL::LightOff(GLenum Light)
+void ViewOpenGL::LightOff(GraphicStates Light)
 {
 	glDisable(Light); // as in flip on the light switch
 	glDisable(GL_LIGHTING); // as in turn on power for all lights
 }
 
-//void ViewOpenGL::Render(md2* model)
-//{
-//		Vector3D v1,v2,v3;
-//	  if(m_skinID)
-//	  {
-//	   glEnable(GL_TEXTURE_2D);
-//	   //glBindTexture(GL_TEXTURE_2D,m_skins[m_skinNumber].texID);
-//	   glBindTexture(GL_TEXTURE_2D,m_skinID);
-//	  }
-//	glBegin(GL_TRIANGLES);
-//	
-//	  for(int i = 0; i < model->GetNumTriangles(); i++)
-//	  {
-//		  v1.Set(m_frames[frameNum].vertices[m_triangles[i].vertIndices[0]].x,
-//		        m_frames[frameNum].vertices[m_triangles[i].vertIndices[0]].y,
-//				m_frames[frameNum].vertices[m_triangles[i].vertIndices[0]].z);
-//		  v2.Set(m_frames[frameNum].vertices[m_triangles[i].vertIndices[1]].x,
-//		        m_frames[frameNum].vertices[m_triangles[i].vertIndices[1]].y,
-//				m_frames[frameNum].vertices[m_triangles[i].vertIndices[1]].z);
-//		  v3.Set(m_frames[frameNum].vertices[m_triangles[i].vertIndices[2]].x,
-//		        m_frames[frameNum].vertices[m_triangles[i].vertIndices[2]].y,
-//				m_frames[frameNum].vertices[m_triangles[i].vertIndices[2]].z);
-//		  Vector3D n1=model->calculateTriangleNormal(v1,v2,v3);
-//
-//		glNormal3f(n1.x,n1.y,n1.z);
-//
-//		   if(m_skinID)
-//				glTexCoord2fv(m_texCoords[m_triangles[i].texIndices[0]].tex);		       
-//				glVertex3f(v1.x,v1.y,v1.z);
-//
-//			if(m_skinID)
-//				glTexCoord2fv(m_texCoords[m_triangles[i].texIndices[1]].tex);		  
-//				glVertex3f(v2.x,v2.y,v2.z);
-//
-//			if(m_skinID)
-//				glTexCoord2fv(m_texCoords[m_triangles[i].texIndices[2]].tex);		  
-//				glVertex3f(v3.x,v3.y,v3.z);
-//	   
-//	  }  
-//	glEnd();	
-//	glDisable(GL_TEXTURE_2D);
-//}
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::EnableClientState(GraphicStates state)
+{
+	glEnableClientState(state);
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::DisableClientState(GraphicStates state)
+{
+	glDisableClientState(state);
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::VAvertex(float* vertices)
+{
+	glVertexPointer(3, GL_FLOAT, 0, vertices);
+}
+
+//--------------------------------------------------------------------------------------
+void ViewOpenGL::VAtexCoord(float* texCoords)
+{
+	glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::VAdrawTriangles(int size, unsigned int* indices)
+{
+	glDrawElements(GL_TRIANGLES, size, GL_UNSIGNED_INT, indices);
+}

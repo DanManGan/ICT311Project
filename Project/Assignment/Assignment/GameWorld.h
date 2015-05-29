@@ -213,6 +213,8 @@ public:
 
 	void Animate(float deltaT);
 
+	void Update();
+
 	void Left();
 	void Right();
 

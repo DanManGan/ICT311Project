@@ -6,6 +6,8 @@
 #include "../AssetManagement/Mesh.h"
 #include "../Collision/AABB.h"
 
+#include <vector>
+
 class GameObject
 {
 public:
@@ -16,7 +18,7 @@ public:
 
 	virtual ~GameObject();
 
-	virtual void Initialise() { };
+	virtual void Initialise() = 0;
 	virtual void Animate(float deltaT) = 0;
 	virtual void Render()=0;
 	
@@ -31,7 +33,7 @@ public:
 ////////////////////////////////////////////////////////////
 	bool SetMesh(GameAsset* mesh);
 	bool SetSkin(unsigned int skin);
-	void SetAnimation(AnimationState state);
+	virtual void SetAnimation(AnimationState state) = 0;
 
 	bool SetScale(float scaleX, float scaleY, float scaleZ);
 	void SetBase();

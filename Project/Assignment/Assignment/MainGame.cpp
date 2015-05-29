@@ -296,15 +296,16 @@ void MainGame::GameLoop()
 		if(((float)time1 - time0) > frequency) {
 			time0 = time1 - frequency;
 			ProcessInput();
+			Update();
 			//Animate(time1-time0);
 			//Display(logicTime1-time0);
-			std::cout << "Logic" << std::endl;
+			//std::cout << "Logic" << std::endl;
 		}
 		
 		Animate(time1-time0);
 		//Animate(time1);
 		Display(time1-time0);
-		std::cout << "Display" << std::endl;
+		//std::cout << "Display" << std::endl;
 
 
 		// Check if the window was closed
@@ -314,6 +315,13 @@ void MainGame::GameLoop()
 	glfwTerminate();
 
 	/**************** end game loop  *************************************/
+}
+
+//--------------------------------------------------------------------------------------
+
+void MainGame::Update()
+{
+	gameWorld->Update();
 }
 
 //--------------------------------------------------------------------------------------

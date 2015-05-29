@@ -14,7 +14,7 @@ GameAsset* tgaLoader::Create(char *filePath)
 
 	GLFWimage* iData=new GLFWimage();
 
-  	if(glfwReadImage(filePath, iData, GL_RGB )==GL_FALSE) {
+  	if(glfwReadImage(filePath, iData, GL_RGB || GLFW_ORIGIN_UL_BIT )==GL_FALSE) {
 		std::cout << "glfwReadImage Failed: " << filePath << std::endl;
 		iData = nullptr;
 		return nullptr;

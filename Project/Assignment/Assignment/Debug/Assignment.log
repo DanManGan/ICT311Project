@@ -1,4 +1,4 @@
-﻿Build started 29/05/2015 8:06:35 AM.
+﻿Build started 29/05/2015 10:28:23 PM.
      1>Project "C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Assignment\Assignment.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\Assignment.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -20,6 +20,8 @@
          Debug\md2Loader.obj
          Debug\Mesh.obj
          Debug\multitexture.obj
+         Debug\obj.obj
+         Debug\objLoader.obj
          Debug\pcx.obj
          Debug\pcxLoader.obj
          Debug\ResourceLoader.obj
@@ -28,15 +30,18 @@
          Debug\textureGenerator.obj
          Debug\tga.obj
          Debug\tgaLoader.obj
+         Debug\tiny_obj_loader.obj
          Debug\AudioEngine.obj
          Debug\BruteForce.obj
          Debug\Camera.obj
          Debug\AABB.obj
          Debug\Vector3D.obj
          Debug\GameObject.obj
+         Debug\Model.obj
          Debug\NPC.obj
          Debug\Player.obj
          Debug\md2Model.obj
+         Debug\objModel.obj
          Debug\ViewOpenGL.obj
          Debug\InputGLFW.obj
          Debug\MainGame.obj
@@ -57,4 +62,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.12
+Time Elapsed 00:00:01.82

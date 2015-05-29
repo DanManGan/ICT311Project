@@ -166,7 +166,7 @@ public:
    vertex* m_vertices;
    int m_base;
 
-   Vector3D m_scale;
+   
 
    //int m_numTriangles;
    unsigned int m_startFrame;

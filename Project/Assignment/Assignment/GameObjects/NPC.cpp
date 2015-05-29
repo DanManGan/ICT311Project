@@ -1,12 +1,12 @@
+
 #include "NPC.h"
 
-#include "../AssetManagement/md2.h"
 #include "../Singletons.h"
 
 NPC::NPC() :
 	GameObject(),
-	m_Health(0)/*,
-	m_move(Movement())*/
+	m_Health(0),
+	m_move(new Movement())
 {
 	m_velocity.Set(0.0f, 0.5f, 0.0f);
 }
@@ -14,9 +14,16 @@ NPC::NPC() :
 NPC::NPC(char* objectName, float xPos, 
 			float yPos, float zPos) :
 	GameObject(objectName, xPos, yPos, zPos),
-	m_Health(0)
+	m_Health(0),
+	m_move(new Movement())
 {
 	m_velocity.Set(0.0f, 0.5f, 0.0f);
+}
+
+NPC::~NPC()
+{
+	delete m_move;
+	m_move = nullptr;
 }
 
 void NPC::Initialise()
@@ -40,13 +47,13 @@ void NPC::Animate(float deltaT)
 	m_model->Animate(deltaT);
 	//m_yaw = 0.0f;
 	//
-	move->MoveTo(m_Position, temp, m_velocity, deltaT);
+	m_move->MoveTo(m_Position, temp, m_velocity, deltaT);
 
 	Vector3D pos = temp - m_Position;
 	//m_velocity.Print();
-		m_yaw = move->CalcYaw(m_Position, temp, m_velocity);
+		m_yaw = m_move->CalcYaw(m_Position, temp, m_velocity);
 		
-		std::cout << "yaw: " << m_yaw << std::endl;
+		//std::cout << "yaw: " << m_yaw << std::endl;
 	//getchar();
 
 	//m_velocity.z = 0.5f;

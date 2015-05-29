@@ -69,9 +69,9 @@ public:
 
 	virtual float GetModelSpeed() = 0;
 
-private:
+protected:
 
-
+	Vector3D m_scale;
 	//unsigned int m_skinID;
 };
 

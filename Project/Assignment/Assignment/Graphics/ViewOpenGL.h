@@ -36,6 +36,14 @@
 
 #include <gl/glut.h>
 
+ enum GraphicStates {
+	TRIANGLES = GL_TRIANGLES,
+	LIGHT0 = GL_LIGHT0,
+	VERTEX_ARRAY = GL_VERTEX_ARRAY,
+	TEXTURE_COORD_ARRAY = GL_TEXTURE_COORD_ARRAY,
+	LINES = GL_LINES
+};
+
 class ViewOpenGL
 {
 public:
@@ -218,6 +226,22 @@ public:
 	void SetColour(unsigned char r, unsigned char g, unsigned char b);
 
 	/** 
+	  * @brief Sets the current colour
+	  * @warning None
+	  * 
+	  * Sets the current colour to be used when rendering based on the
+	  * r,g,b values passed in
+	  * 
+	  * @param r: float type variable in ViewOpenGL class for red value
+	  * @param g: float type variable in ViewOpenGL class for green value
+	  * @param b: float type variable in ViewOpenGL class for blue value
+	  * 
+	  * @pre 
+	  * @post 
+	  */ 
+	void SetColour(float r, float g, float b);
+
+	/** 
 	  * @brief Set wireframe view
 	  * @warning None
 	  * 
@@ -326,11 +350,11 @@ public:
 
 	unsigned int CreateNewTexture(unsigned char* tex,int width,int height);
 
-	void LightOn(GLenum Light);
+	void LightOn(GraphicStates Light);
 
-	void LightOff(GLenum Light);
+	void LightOff(GraphicStates Light);
 
-	void Begin(GLenum action);
+	void Begin(GraphicStates action);
 
 	void End();
 
@@ -339,6 +363,16 @@ public:
 	void Vertex(float x, float y, float z);
 
 	void Normals(float x, float y, float z);
+
+	void EnableClientState(GraphicStates state);
+
+	void DisableClientState(GraphicStates state);
+
+	void VAvertex(float* vertices);
+
+	void VAtexCoord(float* texCoords);
+
+	void VAdrawTriangles(int size, unsigned int* indices);
 
 private:
 

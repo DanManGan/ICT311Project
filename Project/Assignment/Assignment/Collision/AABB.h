@@ -4,6 +4,7 @@
 #include "../Extras/Vector3D.h"
 #include "../AssetManagement/Mesh.h"
 #include "../AssetManagement/md2.h"
+#include "../AssetManagement/obj.h"
 
 class AABB
 {
@@ -35,6 +36,7 @@ private:
 ////////////////////////////////////////////////////////////////
    void CreateAABB(md2* model);
 
+   void CreateAABB(obj* model);
 };
 
 #endif

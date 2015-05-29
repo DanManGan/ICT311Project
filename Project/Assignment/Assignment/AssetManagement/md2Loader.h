@@ -12,7 +12,7 @@
 
 //#include "md2.h"
 #include "../Graphics/md2Model.h"
-#include "../Extras/Vector3D.h"
+//#include "../Extras/Vector3D.h"
 #include "ResourceLoader.h"
 #include "GameAsset.h"
 
@@ -38,10 +38,10 @@ public:
 private:
 
  
-   struct frame* readFrames(md2Header* head, char* buf);
-   struct triangle* readTriangles(md2Header* head, char* buf);
- struct   texCoord* readTextures(md2Header* head, char* buf);
-     bool validFile(md2Header* head);
+	struct frame* readFrames(md2Header* head, char* buf);
+	struct triangle* readTriangles(md2Header* head, char* buf);
+	struct   texCoord* readTextures(md2Header* head, char* buf);
+	bool validFile(md2Header* head);
 
   };
 

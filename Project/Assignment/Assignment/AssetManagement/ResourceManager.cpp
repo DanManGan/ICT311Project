@@ -59,11 +59,11 @@ GameAsset * ResourceManager::LoadResource(const std::string filename)
     FILE * fin = fopen(filename.c_str(), "rt");
 
     if (loader && fin) {    
-   // GameAsset * pRes = loader->Create(fin);
-		GameAsset * pRes = loader->Create((char*)filename.c_str());
-    fclose(fin);
+	   // GameAsset * pRes = loader->Create(fin);
+			GameAsset * pRes = loader->Create((char*)filename.c_str());
+		fclose(fin);
         
-    return pRes;
+		return pRes;
 	}
 
 	return nullptr;

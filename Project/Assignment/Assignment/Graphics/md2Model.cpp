@@ -21,7 +21,7 @@ void md2Model::Render(Vector3D position, float yaw)
 	Vector3D v1,v2,v3;
 
 	graphics->PushMatrix();
-		graphics->LightOn(GL_LIGHT0);
+		graphics->LightOn(LIGHT0);
 		graphics->Translate(position.x, position.y, position.z);
 		graphics->Rotate(-yaw, 0.0f, 1.0f, 0.0f);
 
@@ -30,7 +30,7 @@ void md2Model::Render(Vector3D position, float yaw)
 		}
 
 		//graphics->Scale(m_scale.x, m_scale.y, m_scale.z);
-		graphics->Begin(GL_TRIANGLES);
+		graphics->Begin(TRIANGLES);
 
 		for(int i = 0; i < m_header->numTriangles; i++) {
 			v1.Set(m_vertices[m_triangles[i].vertIndices[0]].x,
@@ -66,7 +66,7 @@ void md2Model::Render(Vector3D position, float yaw)
 		graphics->End();	
 		graphics->Tex2DOff();
 		
-		graphics->LightOff(GL_LIGHT0);
+		graphics->LightOff(LIGHT0);
 	graphics->PopMatrix();
 }
 

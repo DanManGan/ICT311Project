@@ -107,6 +107,8 @@ private:
 	  */ 
 	void ProcessInput();
 
+	void Update();
+
 	/** 
 	  * @brief Render everything to window
 	  * @warning None
@@ -121,6 +123,7 @@ private:
 	void Display(float deltaT);
 
 	void Animate(float deltaT);
+
 
 	/** 
 	  * @brief Camera object

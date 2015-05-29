@@ -32,7 +32,6 @@
 #include "InputGLFW.h"
 #include "AudioEngine.h"
 #include "AssetManagement/GameAssetManager.h"
-#include "AI/Movement.h"
 
 //typedef Singleton<textureManager> textureMan;
 //#define texManager textureMan::GetInstance()
@@ -52,7 +51,5 @@ typedef Singleton<AudioEngine> audioEngine;
 typedef Singleton<GameAssetManager> gameAssetManager;
 #define assetManager gameAssetManager::GetInstance()
 
-typedef Singleton<Movement> objectMover;
-#define move objectMover::GetInstance()
 
 #endif

@@ -15,11 +15,11 @@ GameObject::GameObject() :
 	m_Rotation(0.0f),
 	m_ModelSize(0),
 	m_yaw(0.0f),
-	m_base(0)
+	m_base(0),
+	m_Position(0.0f, 0.0f, 0.0f),
+	m_velocity(0.0f, 0.0f, 0.0f),
+	m_boundingBox(AABB())
 {
-	AABB();
-	m_Position.Set(0.0f, 0.0f, 0.0f);
-	m_velocity.Set(0.0f, 0.0f, 0.0f);
 }
 
 GameObject::GameObject(float xPos, float yPos, float zPos) :
@@ -29,27 +29,31 @@ GameObject::GameObject(float xPos, float yPos, float zPos) :
 	m_Rotation(0.0f),
 	m_ModelSize(0),
 	m_yaw(0.0f),
-	m_base(0)
+	m_base(0),
+	m_Position(xPos, yPos, zPos),
+	m_velocity(0.0f, 0.0f, 0.0f),
+	m_boundingBox(AABB())
 {
-	m_Position.Set(xPos, yPos, zPos);
-	m_velocity.Set(0.0f, 0.0f, 0.0f);
 }
 
 GameObject::GameObject(char* name, float xPos, float yPos, float zPos) :
 	m_model(nullptr),
+	m_name(name),
 	m_Scale(1.0f),
 	m_Rotation(0.0f),
 	m_ModelSize(0),
 	m_yaw(0.0f),
-	m_base(0)
+	m_base(0),
+	m_Position(xPos, yPos, zPos),
+	m_velocity(0.0f, 0.0f, 0.0f),
+	m_boundingBox(AABB())
 {
-	m_name = name;
-	m_Position.Set(xPos, yPos, zPos);
-	m_velocity.Set(0.0f, 0.0f, 0.0f);
 }
 
 GameObject::~GameObject()
 {
+	delete m_model;
+	m_model = nullptr;
 }
 
 void GameObject::SetModelSize(int size)
@@ -112,10 +116,10 @@ bool GameObject::SetSkin(unsigned int skin)
 	return m_model->SetSkin(skin);
 }
 
-void GameObject::SetAnimation(AnimationState state)
-{
-	m_model->SetAnimation(state);
-}
+//void GameObject::SetAnimation(AnimationState state)
+//{
+//	m_model->SetAnimation(state);
+//}
 
 bool GameObject::SetScale(float scaleX, float scaleY, float scaleZ)
 {
@@ -140,23 +144,24 @@ void GameObject::DrawAABB()
 	graphics->PushMatrix();
 		graphics->Translate(m_Position.x, m_Position.y, m_Position.z);
 		graphics->Rotate(-m_yaw, 0.0f, 1.0f, 0.0f);
-			glEnable(GL_COLOR);
-			glLineWidth(2.5);
-			glColor3f(1.0, 0.0, 0.0);
-			graphics->Begin(GL_LINES);
-			glVertex3f(min.x, max.y, min.z);
-			glVertex3f(min.x, min.y, min.z);
+		glEnable(GL_COLOR);
+		glLineWidth(2.5);
+		glColor3f(1.0, 0.0, 0.0);
+		graphics->Begin(LINES);
+		glVertex3f(min.x, max.y, min.z);
+		glVertex3f(min.x, min.y, min.z);
 
-			glVertex3f(max.x, max.y, min.z);
-			glVertex3f(max.x, min.y,min.z);
+		glVertex3f(max.x, max.y, min.z);
+		glVertex3f(max.x, min.y,min.z);
 
-			glVertex3f(min.x,max.y, max.z);
-			glVertex3f(min.x, min.y, max.z);
+		glVertex3f(min.x,max.y, max.z);
+		glVertex3f(min.x, min.y, max.z);
 
-			glVertex3f(max.x, max.y, max.z);
-			glVertex3f(max.x, min.y, max.z);
-			graphics->End();
+		glVertex3f(max.x, max.y, max.z);
+		glVertex3f(max.x, min.y, max.z);
+		graphics->End();
 		graphics->PopMatrix();
+	glColor3f(1.0f, 1.0f, 1.0f);
 }
 
 float GameObject::GetX()
@@ -247,6 +252,13 @@ float GameObject::GetYaw()
 
 void GameObject::TestCollision(GameObject* obj)
 {
-	if(m_boundingBox.CheckCollision(m_Position, obj->m_boundingBox, obj->m_Position))
-		std::cout << "Fuck Yeah" << std::endl;
+	//std::cout << "Collision Test: " << this->m_name << " " << obj->m_name << std::endl;
+	//this->m_Position.Print();
+	//obj->m_Position.Print();
+	if(m_boundingBox.CheckCollision(m_Position, obj->m_boundingBox, obj->m_Position)) {
+		//std::cout << "Fuck Yeah" << std::endl;
+		this->m_Position.Set(100.0f, 0.0f, 100.0f);
+		obj->m_Position.Set(20.0f, 0.0f, 20.0f);
+	}
+
 }

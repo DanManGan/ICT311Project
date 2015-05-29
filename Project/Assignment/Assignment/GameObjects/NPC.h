@@ -2,7 +2,7 @@
 #define NPC_H
 
 #include "GameObject.h"
-//#include "../AI/Movement.h"
+#include "../AI/Movement.h"
 #include "../AI/State.h"
 
 class NPC :public GameObject
@@ -12,6 +12,8 @@ public:
 
 	NPC(char* objectName, float xPos, 
 			float yPos, float zPos);
+
+	~NPC();
 
 	void Initialise();
 	void Animate(float deltaT);
@@ -23,7 +25,7 @@ public:
 
 protected:
 
-	//Movement m_move;
+	Movement* m_move;
 
 private:
 	int m_Health;
