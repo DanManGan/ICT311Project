@@ -302,6 +302,7 @@ void MainGame::GameLoop()
 		}
 		
 		Animate(time1-time0);
+		//Animate(time1);
 		Display(time1-time0);
 		std::cout << "Display" << std::endl;
 

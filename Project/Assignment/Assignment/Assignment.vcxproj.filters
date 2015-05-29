@@ -165,6 +165,12 @@
     <ClInclude Include="AI\Movement.h">
       <Filter>Header Files\AI</Filter>
     </ClInclude>
+    <ClInclude Include="AI\State.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\StateMachine.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BruteForce.cpp">

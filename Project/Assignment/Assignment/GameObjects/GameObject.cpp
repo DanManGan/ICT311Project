@@ -200,7 +200,7 @@ void GameObject::UpdatePosition(float deltaT)
 
 	// speed limit
      if (speed > 5.0f)
-          speed = 5.0f;
+          speed = 5.0f; 
      if (strafeSpeed > 5.0f)
           strafeSpeed = 5.0f;
      if (speed < -5.0f)

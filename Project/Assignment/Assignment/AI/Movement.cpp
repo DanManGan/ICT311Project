@@ -3,6 +3,18 @@
 #include "../Extras/MathExtra.h"
 
 #include <iomanip>
+
+#include <iostream>
+
+Movement::Movement() :
+	m_wanderRadius(0),
+	m_wanderDistance(0),
+	m_wanderJitter(0)
+{
+
+}
+
+
 /*********************************************************************************************
 * Moves an object located at curpos and travelling at curVelocity towards targetPos. This    *
 * function changes the curPos and curVelocity to steer it towards targetPos over time. The   *
@@ -19,35 +31,95 @@
 *********************************************************************************************/
 bool Movement::MoveTo(Vector3D &curPos, const Vector3D& targetPos,Vector3D& curVelocity, float timeElapsed,float offset)
 { 
-// calculate the heading from the character position to target
-Vector3D toTarget = targetPos - curPos;
-toTarget.Normalise();
-if (toTarget.IsZero())
-return true;
-// calculate new velocity and new character position
-curVelocity = toTarget * curVelocity.Length();
-Vector3D displacement = curVelocity*timeElapsed;
-Vector3D newPos = curPos+displacement;
-// calculate real target position
-Vector3D realTargetPos = targetPos - toTarget * offset;
-// calculate the direction from newPos to realTargetPos
-Vector3D toRealTarget = realTargetPos - newPos;
-toRealTarget.Normalise();
-if (toRealTarget.IsZero()) {
-curPos = realTargetPos;
-return true;
-}
-// check to see whether newPos has gone passed the realTargetPos
-float dp = toRealTarget.DotProduct(toTarget); // dot product of two vectors
-if (dp<0.0F) { // newPos has passed realTargetPos, as their angle >90 degree
-curPos = realTargetPos; // step back to realTargetPos
-return true;
-}
-// newPos has not yet passed realTargetPos
-curPos = newPos; // update character position
-return false;
+	//std::cout << " MOVE TO START" << std::endl;
+	//std::cout << "curPos" << std::endl;
+	//curPos.Print();
+	//std::cout << "curVelocity" << std::endl;
+	//curVelocity.Print();
+	//std::cout << "time: " << timeElapsed << std::endl;
+	// calculate the heading from the character position to target
+	Vector3D toTarget = targetPos - curPos;
+	
+	//std::cout << "toTarget" << std::endl;
+	//toTarget.Print();
+	//std::cout << "target x: " << toTarget.x << " y: " << toTarget.y << " z: " << toTarget.z << std::endl;
+	toTarget.Normalise();
+
+	//std::cout << "toTarget normalised" << std::endl;
+	//toTarget.Print();
+	if (toTarget.IsZero())
+		return true;
+	// calculate new velocity and new character position
+	curVelocity = toTarget * curVelocity.Length();
+
+	Vector3D displacement = curVelocity*timeElapsed;
+	Vector3D newPos = curPos+displacement;
+	//std::cout << "newPos x: " << newPos.x << " y: " << newPos.y << " z: " << newPos.z << std::endl;
+	// calculate real target position
+	Vector3D realTargetPos = targetPos - toTarget * offset;
+	// calculate the direction from newPos to realTargetPos
+	//std::cout << "toRealTarget" << std::endl;
+	Vector3D toRealTarget = realTargetPos - newPos;
+	//toRealTarget.Print();
+	//std::cout << "toRealTarget x: " << toRealTarget.x << " y: " << toRealTarget.y << " z: " << toRealTarget.z << std::endl;
+
+	//Vector3D test(12, 12, 12);
+	//std::cout << "test" << std::endl;
+	//test.Print();
+	//test.Normalise();
+	//std::cout << "test normalised" << std::endl;
+	//test.Print();
+
+	//std::cout << "toRealTarget normalise" << std::endl;
+	toRealTarget.Normalise();
+	if (toRealTarget.IsZero()) {
+		curPos = realTargetPos;
+		return true;
+	}
+	// check to see whether newPos has gone passed the realTargetPos
+	float dp = toRealTarget.DotProduct(toTarget); // dot product of two vectors
+	if (dp<0.0F) { // newPos has passed realTargetPos, as their angle >90 degree
+		curPos = realTargetPos; // step back to realTargetPos
+		return true;
+	}
+	// newPos has not yet passed realTargetPos
+	curPos = newPos; // update character position
+	//std::cout << "new x: " << curPos.x << " y: " << curPos.y << " z: " << curPos.z << std::endl;
+	return false;
 
 }
+
+//bool Movement::MoveTo(Vector3D* curPos, const Vector3D& targetPos,Vector3D* curVelocity, float timeElapsed,float offset)
+//{ 
+//// calculate the heading from the character position to target
+//Vector3D toTarget = targetPos - curPos;
+//toTarget.Normalise();
+//if (toTarget.IsZero())
+//return true;
+//// calculate new velocity and new character position
+//curVelocity = toTarget * curVelocity->Length();
+//Vector3D displacement = curVelocity*timeElapsed;
+//Vector3D newPos = curPos+displacement;
+//// calculate real target position
+//Vector3D realTargetPos = targetPos - toTarget * offset;
+//// calculate the direction from newPos to realTargetPos
+//Vector3D toRealTarget = realTargetPos - newPos;
+//toRealTarget.Normalise();
+//if (toRealTarget.IsZero()) {
+//*curPos = realTargetPos;
+//return true;
+//}
+//// check to see whether newPos has gone passed the realTargetPos
+//float dp = toRealTarget.DotProduct(toTarget); // dot product of two vectors
+//if (dp<0.0F) { // newPos has passed realTargetPos, as their angle >90 degree
+//curPos = realTargetPos; // step back to realTargetPos
+//return true;
+//}
+//// newPos has not yet passed realTargetPos
+//curPos = newPos; // update character position
+//return false;
+//
+//}
 
 bool Movement::Flee(Vector3D &curPos, const Vector3D& pursuerPos,Vector3D& curVelocity,  float fleeSpeed, float timeElapsed)
 { 
@@ -170,3 +242,53 @@ bool Movement::Wander( Vector3D &position, Vector3D &velocity,float deltaT)
   MoveTo(position, targetWorld,velocity, deltaT,0);
 return true;
 }
+
+float Movement::CalcYaw(Vector3D patroller, Vector3D target, Vector3D patrollerVel)
+{
+	//std::cout << "patroller" << std::endl;
+	//patroller.Print();
+	//std::cout << "target" << std::endl;
+	//target.Print();
+	//std::cout << "velocity" << std::endl;
+	//patrollerVel.Print();
+	//patrollerVel.Normalise();
+	//std::cout << "patrollerVel normalise" << std::endl;
+	//patrollerVel.Print();
+	//vector between patroller and target
+	Vector3D toTarget = target-patroller;
+	//Vector3D toTarget = patroller-target;
+	//distance between patroller and target
+	//std::cout << "toTarget" << std::endl;
+	//toTarget.Print();
+
+	//get heading to target
+	//toTarget.Normalise();
+	//Vector3D patrollerHeading=patrollerVel;
+	//get patrollers current heading
+	
+
+	//std::cout << "patroller" << std::endl;
+	//patroller.Print();
+	//std::cout << "toTarget" << std::endl;
+	//toTarget.Print();
+
+	////compute angle between patroller and target
+	//float angle=(float)patrollerVel.DotProduct(toTarget);
+	//std::cout << "angle: " << angle <<  std::endl;
+	//  //getting some precision problem ensure cos angle is in -1.0 to 1.0
+	//  if(angle>1.0)
+	//	  angle=1.0;
+	//  else if(angle<-1.0)
+	//      angle=-1.0;
+ //   angle=RAD_TO_DEG(acos(angle)); //get heading in degrees
+
+	//float angle = patrollerVel.AngleInDegrees(toTarget);
+	
+	//float angle = toTarget.GetHeadingDegrees();
+	float angle = patrollerVel.GetHeadingDegrees();
+
+//getchar();
+	return angle;
+}
+
+

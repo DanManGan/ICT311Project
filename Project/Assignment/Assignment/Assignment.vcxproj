@@ -82,6 +82,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AI\Movement.h" />
+    <ClInclude Include="AI\State.h" />
+    <ClInclude Include="AI\StateMachine.h" />
     <ClInclude Include="AssetManagement\bmp.h" />
     <ClInclude Include="AssetManagement\bmpLoader.h" />
     <ClInclude Include="AssetManagement\GameAsset.h" />

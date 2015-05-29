@@ -504,6 +504,15 @@ public:
 	  */ 
 	float z;
 
+	void Print();
+
+	     // return angle between two vectors in radians
+     const float AngleInRadians(Vector3D& normalVec) const;
+	 // return angle between two vectors in degrees
+     const float AngleInDegrees(Vector3D& normalVec) const;
+
+	 float GetHeadingDegrees();
+
 private:
 
 };
