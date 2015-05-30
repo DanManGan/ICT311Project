@@ -11,7 +11,8 @@
 
 //--------------------------------------------------------------------------------------
 
-GameWorld::GameWorld() 
+GameWorld::GameWorld() :
+	m_objFactory(GameObjectFactory())
 {
 	m_objects.clear();
 	m_terrain = new BruteForce();
@@ -87,15 +88,29 @@ void GameWorld::LoadWorldTexture()
 	assetManager->Load("Models/soldier/tris.md2");
 	assetManager->Load("Models/soldier/skin.pcx");
 
-	m_objects["ogro"] = new NPC("ogro",52,m_terrain->GetHeightAverage(52,92),92);
+	assetManager->Load("Models/tank/tris.md2");
+	assetManager->Load("Models/tank/skin.pcx");
+
+	m_objects["ogro"] = m_objFactory.Create("npc");
+	m_objects["ogro"]->SetPos(52,m_terrain->GetHeightAverage(52,92),92);
 	m_objects["ogro"]->SetMesh(assetManager->GetAsset("Models/Ogro/Tris.md2"));
 	m_objects["ogro"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/Ogro/Ogrobase.pcx")));
 	m_objects["ogro"]->SetScale(0.25f, 0.25f, 0.25f);
 	m_objects["ogro"]->SetBase();
 	m_objects["ogro"]->SetAABB();
 	m_objects["ogro"]->SetAnimation(RUN);
+
+	m_objects["tank"] = m_objFactory.Create("npc");
+	m_objects["tank"]->SetMesh(assetManager->GetAsset("Models/tank/tris.md2"));
+	m_objects["tank"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/tank/skin.pcx")));
+	m_objects["tank"]->SetPos(15,m_terrain->GetHeightAverage(15,15),15);
+	m_objects["tank"]->SetScale(0.25f, 0.25f, 0.25f);
+	m_objects["tank"]->SetBase();
+	m_objects["tank"]->SetAABB();
+	m_objects["tank"]->SetAnimation(RUN);
 	
-	m_objects["berserk"] = new NPC("berserk",29,m_terrain->GetHeightAverage(29,93),93);
+	m_objects["berserk"] = m_objFactory.Create("npc");
+	m_objects["berserk"]->SetPos(29,m_terrain->GetHeightAverage(29,93),93);
 	m_objects["berserk"]->SetMesh(assetManager->GetAsset("Models/berserk/tris.md2"));
 	m_objects["berserk"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/berserk/skin.pcx")));
 	m_objects["berserk"]->SetScale(0.25f, 0.25f, 0.25f);
@@ -103,7 +118,8 @@ void GameWorld::LoadWorldTexture()
 	m_objects["berserk"]->SetAABB();
 	m_objects["berserk"]->SetAnimation(RUN);
 
-	m_objects["soldier"] = new NPC("soldier",20,m_terrain->GetHeightAverage(20,20),20);
+	m_objects["soldier"] = m_objFactory.Create("npc");
+	m_objects["soldier"]->SetPos(20,m_terrain->GetHeightAverage(20,20),20);
 	m_objects["soldier"]->SetMesh(assetManager->GetAsset("Models/soldier/tris.md2"));
 	m_objects["soldier"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/soldier/skin.pcx")));
 	m_objects["soldier"]->SetScale(0.25f, 0.25f, 0.25f);
@@ -115,18 +131,21 @@ void GameWorld::LoadWorldTexture()
 	assetManager->Load("Models/bananaTree/bananaTree.obj");
 	assetManager->Load("Models/tree1/tree1.obj");
 
-	m_objects["house1"] = new Model("house1", 85, m_terrain->GetHeightAverage(85,15),15);
+	m_objects["house1"] = m_objFactory.Create("model");
+	m_objects["house1"]->SetPos(85, m_terrain->GetHeightAverage(85,15),15);
 	m_objects["house1"]->SetMesh(assetManager->GetAsset("Models/house1/house1.obj"));
 	m_objects["house1"]->SetScale(0.25f, 0.25f, 0.25f);
 	m_objects["house1"]->SetAABB();
 
-	m_objects["bananaTree"] = new Model("bananaTree", 15, m_terrain->GetHeightAverage(15,85),85);
+	m_objects["bananaTree"] = m_objFactory.Create("model");
+	m_objects["bananaTree"]->SetPos(15, m_terrain->GetHeightAverage(15,85),85);
 	m_objects["bananaTree"]->SetMesh(assetManager->GetAsset("Models/bananaTree/bananaTree.obj"));
 	m_objects["bananaTree"]->SetScale(0.025f, 0.025f, 0.025f);
 	m_objects["bananaTree"]->SetAABB();
 
 
-	m_objects["tree1"] = new Model("tree1", 65, m_terrain->GetHeightAverage(65,65),65);
+	m_objects["tree1"] = m_objFactory.Create("model");
+	m_objects["tree1"]->SetPos(65, m_terrain->GetHeightAverage(65,65),65);
 	m_objects["tree1"]->SetMesh(assetManager->GetAsset("Models/tree1/tree1.obj"));
 	m_objects["tree1"]->SetScale(0.025f, 0.025f, 0.025f);
 	m_objects["tree1"]->SetAABB();

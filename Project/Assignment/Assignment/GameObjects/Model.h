@@ -15,7 +15,7 @@ public:
 
 	~Model();
 
-	CLASS_TYPE(Model);
+	CLASS_TYPE(MODEL);
 
 	void Initialise() { };
 	void Animate(float deltaT) {};

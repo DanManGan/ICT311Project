@@ -29,6 +29,7 @@
 #include "bruteforce.h"
 #include "AssetManagement/md2.h"
 #include "GameObjects/GameObject.h"
+#include "GameObjects/GameObjectFactory.h"
 
 #include <map>
 #include <string>
@@ -268,6 +269,8 @@ private:
 	typedef objects::iterator objIter;
 
 	objects m_objects;
+
+	GameObjectFactory m_objFactory;
 };
 
 

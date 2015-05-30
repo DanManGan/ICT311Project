@@ -13,7 +13,12 @@
         virtual const char * GetObjectType() { return GetClassType(); } \
         static const char * GetClassType() { return #classname; }
 
-
+//enum ObjectType
+//{
+//	MODEL_OBJECT = 0,
+//	PLAYER_OBJECT,
+//	NPC_OBJECT
+//};
 
 class GameObject
 {
@@ -38,7 +43,7 @@ public:
 	void SetModelSize(int size);
 	void SetAssetFile(char* file);
 
-	void ChangePosition(float x, float y, float z);
+	void SetPosition(float x, float y, float z);
 ////////////////////////////////////////////////////////////
 	bool SetMesh(GameAsset* mesh);
 	bool SetSkin(unsigned int skin);

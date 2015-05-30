@@ -11,7 +11,7 @@ public:
 	Player();
 	~Player();
 
-	CLASS_TYPE(Player);
+	CLASS_TYPE(PLAYER);
 
 	void SetPlayerCameraPosition(Vector3D pos);
 	void SetPlayerCameraLookAt(Vector3D lookAt);

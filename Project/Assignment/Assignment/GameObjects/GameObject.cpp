@@ -88,7 +88,7 @@ void GameObject::SetPos(float xPos, float yPos, float zPos)
 	m_Position.Set(xPos, yPos + m_base, zPos);
 }
 
-void GameObject::ChangePosition(float x, float y, float z)
+void GameObject::SetPosition(float x, float y, float z)
 {
 	m_Position.x += x;
 	m_Position.y += (y + m_base);
