@@ -1,7 +1,7 @@
 
 #include "objLoader.h"
 
-//#include "../SOIL.h"
+#include "SOIL.h"
 
 #include "tiny_obj_loader.h"
 #include "../Graphics/objModel.h"
@@ -82,9 +82,9 @@ GameAsset* objLoader::Create(char* filePath)
 			std::cout << " tempstr " << texFilePath << std::endl;	
 			std::cout << "texname " << texname << std::endl;
 		}
-		assetManager->Load(texFilePath);
-		unsigned int tex = graphics->SetupTextureClamp(assetManager->GetAsset(texFilePath));
-		//tex = LoadTexWrap(texFilePath.c_str());
+		//assetManager->Load(texFilePath);
+		//unsigned int tex = graphics->SetupTextureClamp(assetManager->GetAsset(texFilePath));
+		unsigned int tex = LoadTexWrap(texFilePath.c_str());
 		textures.push_back(tex);
 		//tex = LoadTexWrap(texfile); 
 		//m_textures.push_back(tex); // add to texture vector
@@ -103,24 +103,24 @@ const char* objLoader::GetExtension()
 
 
 //--------------------------------------------------------------------------------------
-//
-//unsigned int objLoader::LoadTexWrap(const char * filename)
-//{
-//    GLuint texture;
-//
-//	texture = SOIL_load_OGL_texture( filename, SOIL_LOAD_AUTO,
-//		SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y);
-//
-//	if(texture == 0)
-//		cout << "*** Can't open input file - please check file name typed! " << filename << endl;
-//
-//    glBindTexture( GL_TEXTURE_2D, texture ); //bind the texture to its array
-//
-//    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_LINEAR );
-//	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
-//
-//    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT ); //setting the parameter to repeat the texture instead of clamping the texture
-//    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
-//
-//    return texture;
-//}
+
+unsigned int objLoader::LoadTexWrap(const char * filename)
+{
+    GLuint texture;
+
+	texture = SOIL_load_OGL_texture( filename, SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y);
+
+	if(texture == 0)
+		cout << "*** Can't open input file - please check file name typed! " << filename << endl;
+
+    glBindTexture( GL_TEXTURE_2D, texture ); //bind the texture to its array
+
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_LINEAR );
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
+
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT ); //setting the parameter to repeat the texture instead of clamping the texture
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
+
+    return texture;
+}

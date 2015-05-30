@@ -6,6 +6,14 @@
 #include "../AssetManagement/md2.h"
 #include "../AssetManagement/obj.h"
 
+#include <vector>
+//
+//struct BoundingBox
+//{
+//	Vector3D min;
+//	Vector3D max;
+//};
+
 class AABB
 {
 
@@ -30,6 +38,8 @@ public:
 private:
 	Vector3D m_min;
 	Vector3D m_max;
+
+	//std::vector<BoundingBox> m_boxes;
 	AABB CreateWorldAABB(AABB aabb,Vector3D worldXYZ);
 	bool CheckCollisionWithPoint(Vector3D &point,AABB &aabb);
 

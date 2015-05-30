@@ -5,22 +5,30 @@
 #include "../Graphics/ViewOpenGL.h"
 #include "../AI/State.h"
 
-class Player :public GameObject
+class Player : public GameObject
 {
 public:
 	Player();
 	~Player();
+
+	CLASS_TYPE(Player);
+
 	void SetPlayerCameraPosition(Vector3D pos);
 	void SetPlayerCameraLookAt(Vector3D lookAt);
 	void SetHealth(int health);
-	virtual void SetPosition(Vector3D newPos);
+	void SetPosition(Vector3D newPos);
 	Vector3D GetPlayerCameraPosition();
 	Vector3D GetPlayerLookAt();
 	int GetHealth();
 	void ChangeState(State *newState);
 
-	virtual void Initialise();
-	virtual void Update();
+	void Initialise();
+	void Update();
+
+	void Animate(float deltaT) {};
+	void Render() {};
+	void SetAnimation(AnimationState state) {};
+	
 
 protected:
 private:

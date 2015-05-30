@@ -8,6 +8,13 @@
 
 #include <vector>
 
+#define CLASS_TYPE(classname) \
+    public: \
+        virtual const char * GetObjectType() { return GetClassType(); } \
+        static const char * GetClassType() { return #classname; }
+
+
+
 class GameObject
 {
 public:
@@ -21,7 +28,9 @@ public:
 	virtual void Initialise() = 0;
 	virtual void Animate(float deltaT) = 0;
 	virtual void Render()=0;
-	
+	virtual void SetAnimation(AnimationState state) = 0;
+	virtual const char * GetObjectType() = 0;
+
 
 	const float* GetModel();
 	const int GetModelSize();
@@ -33,7 +42,7 @@ public:
 ////////////////////////////////////////////////////////////
 	bool SetMesh(GameAsset* mesh);
 	bool SetSkin(unsigned int skin);
-	virtual void SetAnimation(AnimationState state) = 0;
+	
 
 	bool SetScale(float scaleX, float scaleY, float scaleZ);
 	void SetBase();
@@ -71,7 +80,7 @@ protected:
 	AABB m_boundingBox;
 
 private:
-	
+
 	int m_ModelSize;
 	float m_Scale;
 	float m_Rotation;

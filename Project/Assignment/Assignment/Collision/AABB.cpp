@@ -152,6 +152,7 @@ void AABB::CreateAABB(md2* model)
 				m_max.z = model->GetFrames()[0].vertices[j].z;
 			}
 		}
+
 	//}
 }
 
@@ -167,12 +168,14 @@ Vector3D AABB::GetMax()
 
 void AABB::CreateAABB(obj* model)
 {
+	float maxY = 5.0f;
 	std::vector<tinyobj::shape_t> temp = model->GetShapes();
+
+
 	// load bounding box values for use in main world based on each shape
 	for (size_t i = 0; i < temp.size(); i++) 
 	{
 		size_t index = temp[i].mesh.indices[0];
-
 		//m_box.xMax = m_box.xMin = (m_shapes[i].mesh.positions[3*index + 0]);
 		//m_box.yMax = m_box.yMin = (m_shapes[i].mesh.positions[3*index + 1]);
 		//m_box.zMax = m_box.zMin = (m_shapes[i].mesh.positions[3*index + 2]);
@@ -183,9 +186,11 @@ void AABB::CreateAABB(obj* model)
 			{
 				size_t offset = temp[i].mesh.indices[f + v];
 
-				if( (temp[i].mesh.positions[3*offset + 0]) > m_max.x)
+				if( (temp[i].mesh.positions[3*offset + 0]) > m_max.x
+					&& temp[i].mesh.positions[3*offset + 1] < maxY)
 					m_max.x = temp[i].mesh.positions[3*offset + 0];
-				if( temp[i].mesh.positions[3*offset + 0] < m_min.x)
+				if( temp[i].mesh.positions[3*offset + 0] < m_min.x
+					&& temp[i].mesh.positions[3*offset + 1] < maxY)
 					m_min.x = temp[i].mesh.positions[3*offset + 0];
 
 				if( temp[i].mesh.positions[3*offset + 1] > m_max.y)
@@ -193,13 +198,15 @@ void AABB::CreateAABB(obj* model)
 				if( temp[i].mesh.positions[3*offset + 1] < m_min.y)
 					m_min.y = temp[i].mesh.positions[3*offset + 1];
 
-				if( temp[i].mesh.positions[3*offset + 2] > m_max.z)
+				if( temp[i].mesh.positions[3*offset + 2] > m_max.z
+					&& temp[i].mesh.positions[3*offset + 1] < maxY)
 					m_max.z = temp[i].mesh.positions[3*offset + 2];
-				if( temp[i].mesh.positions[3*offset + 2] < m_min.z)
+				if( temp[i].mesh.positions[3*offset + 2] < m_min.z
+					&& temp[i].mesh.positions[3*offset + 1] < maxY)
 					m_min.z = temp[i].mesh.positions[3*offset + 2];
 			}
 		}
-		//m_boundingBox.push_back(m_box); // load into AABB vector for model
+
 	}
 
 	//if(DEBUG)

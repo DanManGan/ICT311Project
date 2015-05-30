@@ -109,10 +109,12 @@
     <ClInclude Include="BruteForce.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collision\AABB.h" />
+    <ClInclude Include="Extras\ExtensibleFactory.h" />
     <ClInclude Include="Extras\MathExtra.h" />
     <ClInclude Include="Extras\timer.h" />
     <ClInclude Include="Extras\Vector3D.h" />
     <ClInclude Include="GameObjects\GameObject.h" />
+    <ClInclude Include="GameObjects\GameObjectFactory.h" />
     <ClInclude Include="GameObjects\NPC.h" />
     <ClInclude Include="GameObjects\Player.h" />
     <ClInclude Include="GameObjects\Model.h" />
@@ -156,6 +158,7 @@
     <ClCompile Include="Collision\AABB.cpp" />
     <ClCompile Include="Extras\Vector3D.cpp" />
     <ClCompile Include="GameObjects\GameObject.cpp" />
+    <ClCompile Include="GameObjects\GameObjectFactory.cpp" />
     <ClCompile Include="GameObjects\Model.cpp" />
     <ClCompile Include="GameObjects\NPC.cpp" />
     <ClCompile Include="GameObjects\Player.cpp" />

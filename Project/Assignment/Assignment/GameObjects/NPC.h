@@ -1,3 +1,4 @@
+
 #ifndef NPC_H
 #define NPC_H
 
@@ -5,7 +6,7 @@
 #include "../AI/Movement.h"
 #include "../AI/State.h"
 
-class NPC :public GameObject
+class NPC : public GameObject
 {
 public:
 	NPC();
@@ -14,6 +15,8 @@ public:
 			float yPos, float zPos);
 
 	~NPC();
+
+	CLASS_TYPE(NPC);
 
 	void Initialise();
 	void Animate(float deltaT);
