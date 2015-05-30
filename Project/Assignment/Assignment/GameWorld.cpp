@@ -1,11 +1,10 @@
 
 #include "GameWorld.h"
 #include "Singletons.h"
-#include "AssetManagement/Texture.h"
-#include "AssetManagement/md2.h"
-#include "AssetManagement/Mesh.h"
-#include "AssetManagement/obj.h"
-#include "GameObjects/GameObject.h"
+//#include "AssetManagement/Texture.h"
+//#include "AssetManagement/md2.h"
+//#include "AssetManagement/Mesh.h"
+//#include "AssetManagement/obj.h"
 #include "GameObjects/NPC.h"
 #include "GameObjects/Model.h"
 #include <iostream>
@@ -25,6 +24,12 @@ GameWorld::~GameWorld()
 {
 	delete m_terrain;
 	m_terrain = nullptr;
+
+	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
+		delete it->second;
+		it->second = nullptr;
+	}
+	m_objects.clear();
 }
 
 //--------------------------------------------------------------------------------------
@@ -108,11 +113,23 @@ void GameWorld::LoadWorldTexture()
 
 	assetManager->Load("Models/house1/house1.obj");
 	assetManager->Load("Models/bananaTree/bananaTree.obj");
+	assetManager->Load("Models/tree1/tree1.obj");
 
 	m_objects["house1"] = new Model("house1", 85, m_terrain->GetHeightAverage(85,15),15);
 	m_objects["house1"]->SetMesh(assetManager->GetAsset("Models/house1/house1.obj"));
 	m_objects["house1"]->SetScale(0.25f, 0.25f, 0.25f);
 	m_objects["house1"]->SetAABB();
+
+	m_objects["bananaTree"] = new Model("bananaTree", 15, m_terrain->GetHeightAverage(15,85),85);
+	m_objects["bananaTree"]->SetMesh(assetManager->GetAsset("Models/bananaTree/bananaTree.obj"));
+	m_objects["bananaTree"]->SetScale(0.025f, 0.025f, 0.025f);
+	m_objects["bananaTree"]->SetAABB();
+
+
+	m_objects["tree1"] = new Model("tree1", 65, m_terrain->GetHeightAverage(65,65),65);
+	m_objects["tree1"]->SetMesh(assetManager->GetAsset("Models/tree1/tree1.obj"));
+	m_objects["tree1"]->SetScale(0.025f, 0.025f, 0.025f);
+	m_objects["tree1"]->SetAABB();
 }
 
 //--------------------------------------------------------------------------------------

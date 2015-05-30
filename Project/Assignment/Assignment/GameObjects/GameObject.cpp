@@ -8,6 +8,7 @@
 #include <iostream>
 #include <algorithm>
 
+
 GameObject::GameObject() :
 	m_model(nullptr),
 	m_name(""),
@@ -160,7 +161,7 @@ void GameObject::DrawAABB()
 		glVertex3f(max.x, max.y, max.z);
 		glVertex3f(max.x, min.y, max.z);
 		graphics->End();
-		graphics->PopMatrix();
+	graphics->PopMatrix();
 	glColor3f(1.0f, 1.0f, 1.0f);
 }
 
