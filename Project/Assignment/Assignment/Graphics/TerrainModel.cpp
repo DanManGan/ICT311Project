@@ -1,22 +1,22 @@
 
-#include "BruteForce.h"
-#include "Singletons.h"
+#include "TerrainModel.h"
+#include "../Singletons.h"
 
 //--------------------------------------------------------------------------------------
 
-BruteForce::BruteForce()
+TerrainModel::TerrainModel()
 {
 }
 
 //--------------------------------------------------------------------------------------
 
-BruteForce::~BruteForce()
+TerrainModel::~TerrainModel()
 {
 }
 
 //--------------------------------------------------------------------------------------
 
-void BruteForce::Render()
+void TerrainModel::Render()
 {
 	//if(m_texMap) {
 	graphics->RenderTriangleStrips(m_terrainData, m_size, m_texMapID, m_numTerrainTexRepeat,

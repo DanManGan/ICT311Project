@@ -88,7 +88,12 @@ void GameObject::SetPos(float xPos, float yPos, float zPos)
 	m_Position.Set(xPos, yPos + m_base, zPos);
 }
 
-void GameObject::ChangePosition(float x, float y, float z)
+void GameObject::SetVelocity(float velX, float velY, float velZ)
+{
+	m_velocity = Vector3D(velX, velY, velZ);
+}
+
+void GameObject::SetPosition(float x, float y, float z)
 {
 	m_Position.x += x;
 	m_Position.y += (y + m_base);
@@ -142,6 +147,13 @@ void GameObject::DrawAABB()
 {
 	Vector3D min = m_boundingBox.GetMin();
 	Vector3D max = m_boundingBox.GetMax();
+
+	//if(GetObjectType() == "PLAYER") {
+	//	std::cout << "DrawAABB" << std::endl;
+	//	min.Print();
+	//	max.Print();
+	//}
+
 	graphics->PushMatrix();
 		graphics->Translate(m_Position.x, m_Position.y, m_Position.z);
 		graphics->Rotate(-m_yaw, 0.0f, 1.0f, 0.0f);
@@ -236,19 +248,14 @@ void GameObject::UpdatePosition(float deltaT)
  //    lookAt.z = float(position.z + sinYaw);
 }
 
-void GameObject::Left()
-{
-	m_yaw -= 1.0f;
-}
-
-void GameObject::Right()
-{
-	m_yaw += 1.0f;
-}
-
 float GameObject::GetYaw()
 {
 	return m_yaw;
+}
+
+void GameObject::SetYaw(float yaw)
+{
+	m_yaw = yaw;
 }
 
 void GameObject::TestCollision(GameObject* obj)

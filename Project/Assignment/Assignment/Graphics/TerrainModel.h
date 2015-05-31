@@ -23,12 +23,12 @@
   * @bugs 
   */ 
 
-#ifndef BRUTEFORCE_H
-#define BRUTEFORCE_H
+#ifndef TERRAINMODEL_H
+#define TERRAINMODEL_H
 
-#include "Terrain.h"
+#include "../GameObjects/Terrain.h"
 
-class BruteForce : public Terrain
+class TerrainModel : public Terrain
 {
 public:
 	/** 
@@ -41,7 +41,7 @@ public:
 	  * @pre 
 	  * @post 
 	  */
-	BruteForce();
+	TerrainModel();
 
 	/** 
 	  * @brief Default destructor
@@ -53,7 +53,7 @@ public:
 	  * @pre 
 	  * @post 
 	  */
-	~BruteForce();
+	~TerrainModel();
 
 	/** 
 	  * @brief Render method

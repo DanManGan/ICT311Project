@@ -1,4 +1,6 @@
 
+#pragma comment(lib,"SOIL.lib")
+
 #include "objLoader.h"
 
 #include "SOIL.h"

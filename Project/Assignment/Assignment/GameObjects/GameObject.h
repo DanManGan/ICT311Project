@@ -13,7 +13,12 @@
         virtual const char * GetObjectType() { return GetClassType(); } \
         static const char * GetClassType() { return #classname; }
 
-
+//enum ObjectType
+//{
+//	MODEL_OBJECT = 0,
+//	PLAYER_OBJECT,
+//	NPC_OBJECT
+//};
 
 class GameObject
 {
@@ -25,7 +30,6 @@ public:
 
 	virtual ~GameObject();
 
-	virtual void Initialise() = 0;
 	virtual void Animate(float deltaT) = 0;
 	virtual void Render()=0;
 	virtual void SetAnimation(AnimationState state) = 0;
@@ -38,7 +42,7 @@ public:
 	void SetModelSize(int size);
 	void SetAssetFile(char* file);
 
-	void ChangePosition(float x, float y, float z);
+	void SetPosition(float x, float y, float z);
 ////////////////////////////////////////////////////////////
 	bool SetMesh(GameAsset* mesh);
 	bool SetSkin(unsigned int skin);
@@ -57,15 +61,15 @@ public:
 	void SetX(float x);
 	void SetY(float y);
 	void SetZ(float z);
-	void SetPos(Vector3D newPos);
-	void SetPos(float x, float y, float z);
+	virtual void SetPos(Vector3D newPos);
+	virtual void SetPos(float x, float y, float z);
+
+	void SetVelocity(float velX, float velY, float velZ);
 
 	void UpdatePosition(float deltaT);
 
-	void Left();
-	void Right();
-
 	float GetYaw();
+	void SetYaw(float yaw);
 
 	void DrawAABB();
 

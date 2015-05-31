@@ -48,17 +48,38 @@ void AABB::CreateAABB(Vector3D vertices[], int numVertices)
 			 m_max.z = vertices[i].z;
 		 }
 	 }
+	 //std::cout << "min " << std::endl;
+	 //m_min.Print();
+	 //std::cout << "max " << std::endl;
+	 //m_max.Print();
 }
 
 void AABB::CreateAABB(Mesh* model)
 {
-	std::string extension = model->GetName().substr(model->GetName().find_last_of(".")); //Get the extension
-	std::transform(extension.begin(), extension.end(), extension.begin(), ::tolower);
+	if(!model) {
+		Vector3D model[8];
+		//would normally load a model from file.
+		model[0].Set(-2.0f,0.0f,-2.0f);  //front face
+		model[1].Set(0.25f,0.0f,-2.0f);
+		model[2].Set(0.25f,15.0f,-2.0f);
+		model[3].Set(-2.0f,15.0f,-2.0f);
 
-	if(extension == ".md2")
-		CreateAABB((md2*)model);
-	else if(extension == ".obj")
-		CreateAABB((obj*)model);
+		model[4].Set(-2.0f,0.0f,2.0f);  //rear face
+		model[5].Set(2.0f,0.0f,2.0f);
+		model[6].Set(2.0f,15.0f,2.0f);
+		model[7].Set(-2.0f,15.0f,2.0f);
+
+		CreateAABB(model,8);
+	}
+	else {
+		std::string extension = model->GetName().substr(model->GetName().find_last_of(".")); //Get the extension
+		std::transform(extension.begin(), extension.end(), extension.begin(), ::tolower);
+
+		if(extension == ".md2")
+			CreateAABB((md2*)model);
+		else if(extension == ".obj")
+			CreateAABB((obj*)model);
+	}
 }
 
 AABB AABB::CreateWorldAABB(AABB aabb,Vector3D worldXYZ)

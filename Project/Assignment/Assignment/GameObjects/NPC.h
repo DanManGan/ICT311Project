@@ -18,7 +18,6 @@ public:
 
 	CLASS_TYPE(NPC);
 
-	void Initialise();
 	void Animate(float deltaT);
 	void SetAnimation(AnimationState state);
 	void ChangeState(State *newState);

@@ -26,9 +26,10 @@
 #ifndef GAMEWORLD_H
 #define GAMEWORLD_H
 
-#include "bruteforce.h"
+#include "Graphics/TerrainModel.h"
 #include "AssetManagement/md2.h"
 #include "GameObjects/GameObject.h"
+#include "GameObjects/GameObjectFactory.h"
 
 #include <map>
 #include <string>
@@ -86,7 +87,7 @@ public:
 	  * @pre 
 	  * @post 
 	  */ 
-	void LoadWorldTexture();
+	void LoadWorldTexture(GameObject* obj);
 
 	/** 
 	  * @brief Call object render functions
@@ -117,6 +118,10 @@ public:
 	  * @post 
 	  */ 
 	bool InWorld(float& x, float& z);
+
+	bool InWorld(GameObject* obj);
+
+	GameObject* GetPlayer();
 
 	/** 
 	  * @brief Gets Terrain height at point
@@ -215,9 +220,6 @@ public:
 
 	void Update();
 
-	void Left();
-	void Right();
-
 private:
 
 	/** 
@@ -230,7 +232,7 @@ private:
 	  * @pre 
 	  * @post 
 	  */ 
-	BruteForce* m_terrain;
+	TerrainModel* m_terrain;
 
 	/**
 	  * @brief copy constructor declaration.
@@ -268,6 +270,9 @@ private:
 	typedef objects::iterator objIter;
 
 	objects m_objects;
+
+	GameObjectFactory m_objFactory;
+
 };
 
 

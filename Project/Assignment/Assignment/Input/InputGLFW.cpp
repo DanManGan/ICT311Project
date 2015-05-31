@@ -2,7 +2,7 @@
 #pragma comment(lib,"glfw.lib")
 
 #include "InputGLFW.h"
-#include "Singletons.h"
+#include "../Singletons.h"
 
 #include <gl/glfw.h>
 

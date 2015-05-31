@@ -1,7 +1,7 @@
 
 #include "Terrain.h"
-#include "Singletons.h"
-#include "AssetManagement/multitexture.h"
+#include "../Singletons.h"
+#include "../AssetManagement/multitexture.h"
 
 #include <iostream>
 #include <fstream>

@@ -29,15 +29,14 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
-#include "AssetManagement/textureGenerator.h"
-#include "AssetManagement/Texture.h"
-#include "Extras/Vector3D.h"
-#include "TerrainLighting.h"
-#include "AssetManagement/GameAsset.h"
-#include "AssetManagement/Texture.h"
 
+#include "../AssetManagement/Texture.h"
+#include "../AssetManagement/textureGenerator.h"
+#include "../AssetManagement/TerrainLighting.h"
+#include "../Extras/Vector3D.h"
+#include "GameObject.h"
 
-class Terrain : public GameAsset
+class Terrain : public GameObject
 {
 public:
 ////////////////////  Terrain Methods  ////////////////////
@@ -65,6 +64,8 @@ public:
 	  */
 	~Terrain();
 
+	CLASS_TYPE(TERRAIN);
+
 	/** 
 	  * @brief Virtual Render method
 	  * @warning None
@@ -76,6 +77,9 @@ public:
 	  * @post 
 	  */ 
 	virtual void Render() = 0;
+
+	void Animate(float deltaT) {};
+	void SetAnimation(AnimationState state) {};
 
 	/** 
 	  * @brief Load heightfield map for terrain

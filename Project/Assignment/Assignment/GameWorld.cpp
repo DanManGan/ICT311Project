@@ -7,14 +7,16 @@
 //#include "AssetManagement/obj.h"
 #include "GameObjects/NPC.h"
 #include "GameObjects/Model.h"
+#include "GameObjects/Player.h"
 #include <iostream>
 
 //--------------------------------------------------------------------------------------
 
-GameWorld::GameWorld() 
+GameWorld::GameWorld() :
+	m_objFactory(GameObjectFactory())
 {
 	m_objects.clear();
-	m_terrain = new BruteForce();
+	m_terrain = new TerrainModel();
 	LoadWorld();
 }
 
@@ -26,10 +28,15 @@ GameWorld::~GameWorld()
 	m_terrain = nullptr;
 
 	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
-		delete it->second;
-		it->second = nullptr;
+		//if(it->first != "player") {
+			delete it->second;
+			it->second = nullptr;
+		//}
 	}
 	m_objects.clear();
+
+	//delete m_player;
+	//m_player = nullptr;
 }
 
 //--------------------------------------------------------------------------------------
@@ -43,7 +50,7 @@ bool GameWorld::LoadWorld()
 
 //--------------------------------------------------------------------------------------
 
-void GameWorld::LoadWorldTexture()
+void GameWorld::LoadWorldTexture(GameObject* obj)
 {
 	//Procedural terrain only works correctly with TGA files currently
 
@@ -87,15 +94,29 @@ void GameWorld::LoadWorldTexture()
 	assetManager->Load("Models/soldier/tris.md2");
 	assetManager->Load("Models/soldier/skin.pcx");
 
-	m_objects["ogro"] = new NPC("ogro",52,m_terrain->GetHeightAverage(52,92),92);
+	assetManager->Load("Models/tank/tris.md2");
+	assetManager->Load("Models/tank/skin.pcx");
+
+	m_objects["ogro"] = m_objFactory.Create("npc");
+	m_objects["ogro"]->SetPos(52,m_terrain->GetHeightAverage(52,92),92);
 	m_objects["ogro"]->SetMesh(assetManager->GetAsset("Models/Ogro/Tris.md2"));
 	m_objects["ogro"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/Ogro/Ogrobase.pcx")));
 	m_objects["ogro"]->SetScale(0.25f, 0.25f, 0.25f);
 	m_objects["ogro"]->SetBase();
 	m_objects["ogro"]->SetAABB();
 	m_objects["ogro"]->SetAnimation(RUN);
+
+	//m_objects["tank"] = m_objFactory.Create("npc");
+	//m_objects["tank"]->SetMesh(assetManager->GetAsset("Models/tank/tris.md2"));
+	//m_objects["tank"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/tank/skin.pcx")));
+	//m_objects["tank"]->SetPos(15,m_terrain->GetHeightAverage(15,15),15);
+	//m_objects["tank"]->SetScale(0.25f, 0.25f, 0.25f);
+	//m_objects["tank"]->SetBase();
+	//m_objects["tank"]->SetAABB();
+	//m_objects["tank"]->SetAnimation(RUN);
 	
-	m_objects["berserk"] = new NPC("berserk",29,m_terrain->GetHeightAverage(29,93),93);
+	m_objects["berserk"] = m_objFactory.Create("npc");
+	m_objects["berserk"]->SetPos(29,m_terrain->GetHeightAverage(29,93),93);
 	m_objects["berserk"]->SetMesh(assetManager->GetAsset("Models/berserk/tris.md2"));
 	m_objects["berserk"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/berserk/skin.pcx")));
 	m_objects["berserk"]->SetScale(0.25f, 0.25f, 0.25f);
@@ -103,7 +124,8 @@ void GameWorld::LoadWorldTexture()
 	m_objects["berserk"]->SetAABB();
 	m_objects["berserk"]->SetAnimation(RUN);
 
-	m_objects["soldier"] = new NPC("soldier",20,m_terrain->GetHeightAverage(20,20),20);
+	m_objects["soldier"] = m_objFactory.Create("npc");
+	m_objects["soldier"]->SetPos(20,m_terrain->GetHeightAverage(20,20),20);
 	m_objects["soldier"]->SetMesh(assetManager->GetAsset("Models/soldier/tris.md2"));
 	m_objects["soldier"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/soldier/skin.pcx")));
 	m_objects["soldier"]->SetScale(0.25f, 0.25f, 0.25f);
@@ -115,35 +137,56 @@ void GameWorld::LoadWorldTexture()
 	assetManager->Load("Models/bananaTree/bananaTree.obj");
 	assetManager->Load("Models/tree1/tree1.obj");
 
-	m_objects["house1"] = new Model("house1", 85, m_terrain->GetHeightAverage(85,15),15);
+	m_objects["house1"] = m_objFactory.Create("model");
+	m_objects["house1"]->SetPos(85, m_terrain->GetHeightAverage(85,15),15);
 	m_objects["house1"]->SetMesh(assetManager->GetAsset("Models/house1/house1.obj"));
 	m_objects["house1"]->SetScale(0.25f, 0.25f, 0.25f);
 	m_objects["house1"]->SetAABB();
 
-	m_objects["bananaTree"] = new Model("bananaTree", 15, m_terrain->GetHeightAverage(15,85),85);
+	m_objects["bananaTree"] = m_objFactory.Create("model");
+	m_objects["bananaTree"]->SetPos(15, m_terrain->GetHeightAverage(15,85),85);
 	m_objects["bananaTree"]->SetMesh(assetManager->GetAsset("Models/bananaTree/bananaTree.obj"));
 	m_objects["bananaTree"]->SetScale(0.025f, 0.025f, 0.025f);
 	m_objects["bananaTree"]->SetAABB();
 
 
-	m_objects["tree1"] = new Model("tree1", 65, m_terrain->GetHeightAverage(65,65),65);
-	m_objects["tree1"]->SetMesh(assetManager->GetAsset("Models/tree1/tree1.obj"));
-	m_objects["tree1"]->SetScale(0.025f, 0.025f, 0.025f);
-	m_objects["tree1"]->SetAABB();
+	//m_objects["tree1"] = m_objFactory.Create("model");
+	//m_objects["tree1"]->SetPos(65, m_terrain->GetHeightAverage(65,65),65);
+	//m_objects["tree1"]->SetMesh(assetManager->GetAsset("Models/tree1/tree1.obj"));
+	//m_objects["tree1"]->SetScale(0.025f, 0.025f, 0.025f);
+	//m_objects["tree1"]->SetAABB();
+
+	//m_objects["player"] = obj;
+	m_objects["player"] = m_objFactory.Create("player");
+	m_objects["player"]->SetPos(m_terrain->GetSize()/2,
+		m_terrain->GetHeightAverage(m_terrain->GetSize()/2, m_terrain->GetSize()-20),
+		m_terrain->GetSize()-20);
+	m_objects["player"]->SetAABB();
+}
+
+//--------------------------------------------------------------------------------------
+
+GameObject* GameWorld::GetPlayer()
+{
+	return m_objects["player"];
 }
 
 //--------------------------------------------------------------------------------------
 
 void GameWorld::Render()
 {
+		m_objects["player"]->Render();
+		m_objects["player"]->DrawAABB();
+		graphics->ClearColour(0.75f,0.75f,1.0f,1.0f);
+
 	m_terrain->Render();
 
-
-
 	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
-		it->second->SetY(m_terrain->GetHeightAverage(it->second->GetX(), it->second->GetZ()));
-		it->second->Render();
-		it->second->DrawAABB();
+		if(it->second->GetObjectType() != "PLAYER") {
+			it->second->SetY(m_terrain->GetHeightAverage(it->second->GetX(), it->second->GetZ()));
+			it->second->Render();
+			it->second->DrawAABB();
+		}
 	}
 
 }
@@ -152,7 +195,10 @@ void GameWorld::Render()
 
 void GameWorld::Update()
 {
+	//Player* temp =	(Player*)m_objects["AAplayer"];
+	//m_player->UpdateCamera(camVelocity, camYaw, camPitch);
 	//std::cout << "START OF COLLISION TEST" << std::endl;
+//	m_objects["player"] = obj;
 	for(objIter it1 = m_objects.begin(); it1 != m_objects.end(); it1++) {
 		for(objIter it2 = it1; it2 != m_objects.end(); it2++) {
 			if(it1 != it2) {
@@ -160,6 +206,7 @@ void GameWorld::Update()
 			}
 		}
 	}
+//	m_objects.erase("player");
 }
 
 //--------------------------------------------------------------------------------------
@@ -171,18 +218,6 @@ void GameWorld::Animate(float deltaT)
 	}
 
 
-}
-
-//--------------------------------------------------------------------------------------
-
-void GameWorld::Left()
-{
-	m_objects["ogro"]->Left();
-}
-
-void GameWorld::Right()
-{
-	m_objects["ogro"]->Right();
 }
 
 //--------------------------------------------------------------------------------------
@@ -204,6 +239,31 @@ bool GameWorld::InWorld(float& x, float& z)
 	}
 	else if(z>m_terrain->GetSize()) {
 		z=(float)m_terrain->GetSize();
+		return false;
+	}
+
+ return true;
+}
+
+//--------------------------------------------------------------------------------------
+
+bool GameWorld::InWorld(GameObject* obj)
+{
+	if(obj->GetX() < 5.0f) {
+		obj->SetX(5.0f);
+		return false;
+	}
+	else if(obj->GetX() > m_terrain->GetSize()-5.0f) {
+		obj->SetX((float)m_terrain->GetSize()-5.0f);
+		return false;
+	}
+
+	if(obj->GetZ() < 5.0f) {
+		obj->SetZ(5.0f);
+		return false;
+	}
+	else if(obj->GetZ() > m_terrain->GetSize()-5.0f) {
+		obj->SetZ((float)m_terrain->GetSize()-5.0f);
 		return false;
 	}
 
