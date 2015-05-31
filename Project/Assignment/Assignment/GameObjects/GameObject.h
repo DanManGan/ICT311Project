@@ -62,7 +62,7 @@ public:
 	void SetX(float x);
 	void SetY(float y);
 	void SetZ(float z);
-	void SetPos(Vector3D newPos);
+	virtual void SetPos(Vector3D newPos);
 	void SetPos(float x, float y, float z);
 
 	void UpdatePosition(float deltaT);

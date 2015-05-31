@@ -1,16 +1,35 @@
 #include "Skybox.h"
 #include "ViewOpenGL.h"
-#include <gl\glext.h>
+#include <gl/glut.h>
 #include "..\Singletons.h"
 
-bool Skybox::LoadTexture(int size, char* filename) {
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+#define GL_CLAMP_TO_EDGE 0x812F
 
-	if(!graphics->SetupTextureClamp(assetManager->GetAsset(filename)))
+bool Skybox::LoadTexture(int size, char* filename) {
+	// This is done in graphics->SetupTextureClamp
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+	// need to add image to game assets
+	assetManager->Load(filename);
+
+	// this will load set the texture twice in OpenGL
+	//if(!graphics->SetupTextureClamp(assetManager->GetAsset(filename)))
+	//	return false;
+
+	//m_textureIDs[size] = graphics->SetupTextureClamp(assetManager->GetAsset(filename));
+
+
+	// I think this is a better way to do it
+	// setup the texture in OpenGL with clamped edges and set to temp var for testing
+	unsigned int tex = graphics->SetupTextureClamp(assetManager->GetAsset(filename));
+	
+	if(!tex)
 		return false;
 
-	m_textureIDs[size] = graphics->SetupTextureClamp(assetManager->GetAsset(filename));
+	// then add it to the texture array NOTE: should 'size' be 'side'???
+	m_textureIDs[size] = tex;
+
 	return true;
 }
 

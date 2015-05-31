@@ -4,11 +4,13 @@
 #include "GameObject.h"
 #include "../Graphics/ViewOpenGL.h"
 #include "../AI/State.h"
+#include "../Graphics/CameraModel.h"
 
 class Player : public GameObject
 {
 public:
 	Player();
+
 	~Player();
 
 	CLASS_TYPE(PLAYER);
@@ -25,15 +27,37 @@ public:
 	void Initialise();
 	void Update();
 
-	void Animate(float deltaT) {};
-	void Render() {};
+	void Animate(float deltaT);
+	void Render();
 	void SetAnimation(AnimationState state) {};
+
+	void UpdatePitch(float pitch);
+
+	void UpdateYaw(float yaw);
+
+	void SetPos(float posX, float posY, float posZ);
 	
+	void UpdateVelocity(Vector3D camVelocity);
+
+	void UpdateVelocity(float velX, float velY, float velZ);
+
+	void SetVelocity(float velX, float velY, float velZ);
 
 protected:
+
+	CameraModel m_camera;
+
+	float m_cameraHeight;
+
+	//float m_pitch;
+	//Vector3D m_PlayerCameraPosition;
+	//Vector3D m_PlayerCameraLookAt;
+	//Vector3D m_velocity;
+	//float m_yaw;
+
 private:
-	Vector3D m_PlayerCameraPosition;
-	Vector3D m_PlayerCameraLookAt;
+
+
 	int m_Health;
 	State *m_CurrentState;
 };

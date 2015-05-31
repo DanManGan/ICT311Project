@@ -119,6 +119,8 @@ public:
 	  */ 
 	bool InWorld(float& x, float& z);
 
+	bool InWorld(GameObject* obj);
+
 	/** 
 	  * @brief Gets Terrain height at point
 	  * @warning None
@@ -271,6 +273,7 @@ private:
 	objects m_objects;
 
 	GameObjectFactory m_objFactory;
+
 };
 
 

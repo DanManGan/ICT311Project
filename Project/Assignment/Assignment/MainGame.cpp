@@ -4,7 +4,7 @@
 #include "MainGame.h"
 #include "Singletons.h"
 #include "Graphics/ViewOpenGL.h"
-
+#include "GameObjects/Player.h"
 
 
 #include <iostream>
@@ -19,9 +19,9 @@ MainGame::MainGame() :
 	m_showMenu(false),
 	m_wireframe(false),
 	m_menu(0),
-	m_playerHeight(15.0f),
 	m_mouseSensitivity(0.25f),
-	m_running(false)
+	m_running(false),
+	m_player(new Player())
 {
 	Init();
 }
@@ -30,13 +30,15 @@ MainGame::MainGame() :
 
 MainGame::~MainGame()
 {
+	delete m_player;
+	m_player = nullptr;
 }
 
 //--------------------------------------------------------------------------------------
 
 void MainGame::Init()
 {
-	Camera();
+	//Camera();
 	m_winWidth = 800;
 	m_winHeight = 600;
 	m_oldX=m_winWidth/2;
@@ -55,13 +57,19 @@ void MainGame::Init()
 	audio->SetVolume(0.1f);
 	//audio->Play2D("sounds/MF-W-90.XM", true);
 
-	m_camera.MoveToNow(gameWorld->GetWorldSize()/2,
-		gameWorld->GetWorldXZHeight
-			(gameWorld->GetWorldSize()/2, gameWorld->GetWorldSize()-20)+m_playerHeight,
-		gameWorld->GetWorldSize()-20);
+	//m_camera.MoveToNow(gameWorld->GetWorldSize()/2,
+	//	gameWorld->GetWorldXZHeight
+	//		(gameWorld->GetWorldSize()/2, gameWorld->GetWorldSize()-20)+m_playerHeight,
+	//	gameWorld->GetWorldSize()-20);
 
-	m_camera.yaw=0;
-	m_camera.pitch=-75;
+	//m_camera.yaw=0.0f;
+	//m_camera.pitch=-75.0f;
+
+	//m_player = new Player();
+	m_player->SetPos(gameWorld->GetWorldSize()/2,
+		gameWorld->GetWorldXZHeight
+			(gameWorld->GetWorldSize()/2, gameWorld->GetWorldSize()-20),
+		gameWorld->GetWorldSize()-20);
 }
 
 //--------------------------------------------------------------------------------------
@@ -183,12 +191,14 @@ void MainGame::ProcessInput()
 		case 'a' :
 		case 'A' :
 			if(input->keyPress) {
-				m_camera.velocity+=Vector3D(-0.1,0,0);
+				//m_camera.velocity+=Vector3D(-0.1f,0.0f,0.0f);
+				m_player->UpdateVelocity(-0.1f,0.0f,0.0f);
 				if(audio->GetIsPlaying("sounds/walking.wav") == false)
 					audio->Play2D("sounds/walking.wav", false);
 			}
 			else {
-				m_camera.velocity=Vector3D(0,0,0);
+				//m_camera.velocity=Vector3D(0.0f,0.0f,0.0f);
+				m_player->SetVelocity(0.0f, 0.0f, 0.0f);
 				audio->Stop("sounds/walking.wav");
 			}
 			break;
@@ -196,12 +206,14 @@ void MainGame::ProcessInput()
 		case 'd' :
 		case 'D' :
 			if(input->keyPress)	{
-				m_camera.velocity+=Vector3D(0.1,0,0);
+				//m_camera.velocity+=Vector3D(0.1f,0.0f,0.0f);
+				m_player->UpdateVelocity(0.1f,0.0f,0.0f);
 				if(audio->GetIsPlaying("sounds/walking.wav") == false)
 					audio->Play2D("sounds/walking.wav", false);
 			}
 			else {
-				m_camera.velocity=Vector3D(0,0,0);
+				//m_camera.velocity=Vector3D(0.0f,0.0f,0.0f);
+				m_player->SetVelocity(0.0f, 0.0f, 0.0f);
 				audio->Stop("sounds/walking.wav");
 			}
 			break;
@@ -209,12 +221,14 @@ void MainGame::ProcessInput()
 		case 'w' :
 		case 'W' :
 			if(input->keyPress) {
-				m_camera.velocity+=Vector3D(0,0,0.1);
+				//m_camera.velocity+=Vector3D(0.0f,0.0f,0.1f);
+				m_player->UpdateVelocity(0.0f,0.0f,0.1f);
 				if(audio->GetIsPlaying("sounds/walking.wav") == false)
 					audio->Play2D("sounds/walking.wav", false);
 			}
 			else {
-				m_camera.velocity=Vector3D(0,0,0);
+				//m_camera.velocity=Vector3D(0.0f,0.0f,0.0f);
+				m_player->SetVelocity(0.0f, 0.0f, 0.0f);
 				audio->Stop("sounds/walking.wav");
 			}
 			break;
@@ -222,12 +236,14 @@ void MainGame::ProcessInput()
 		case 's' :
 		case 'S' :
 			if(input->keyPress)	{
-				m_camera.velocity+=Vector3D(0,0,-0.1);
+				//m_camera.velocity+=Vector3D(0.0f,0.0f,-0.1f);
+				m_player->UpdateVelocity(0.0f,0.0f,-0.1f);
 				if(audio->GetIsPlaying("sounds/walking.wav") == false)
 					audio->Play2D("sounds/walking.wav", false);
 			}
 			else {
-				m_camera.velocity=Vector3D(0,0,0);
+				//m_camera.velocity=Vector3D(0.0f,0.0f,0.0f);
+				m_player->SetVelocity(0.0f, 0.0f, 0.0f);
 				audio->Stop("sounds/walking.wav");
 			}
 			break;
@@ -237,25 +253,38 @@ void MainGame::ProcessInput()
 			break;
 
 		default:
-			m_camera.velocity = Vector3D(0.0f, 0.0f, 0.0f);
+			//m_camera.velocity = Vector3D(0.0f, 0.0f, 0.0f);
+			m_player->SetVelocity(0.0f, 0.0f, 0.0f);
 			break;
 	}
+	//m_player->UpdateVelocity(m_camVelocity);
+	//gameWorld->InWorld(m_player->GetX(), m_player->GetZ());
+	gameWorld->InWorld(m_player);
+	m_player->SetY(gameWorld->GetWorldXZHeight(m_player->GetX(),m_player->GetZ()));
+	
+	
 
-	m_camera.position.y=gameWorld->GetWorldXZHeight(m_camera.position.x,m_camera.position.z)+m_playerHeight;
-	gameWorld->InWorld(m_camera.position.x, m_camera.position.z);
+	//m_camera.position.y=gameWorld->GetWorldXZHeight(m_camera.position.x,m_camera.position.z)+m_playerHeight;
+	//gameWorld->InWorld(m_camera.position.x, m_camera.position.z);
 
 //	std::cout << m_camera.position.x << " " << m_camera.position.y << " " << m_camera.position.z << std::endl;
-
+	//m_camVelocity = m_camera.velocity;
 	if(input->mouseLeft) {
 		int deltaX;
 		int deltaY;
 		deltaY = m_oldY-input->mouseY;
 		deltaX = m_oldX-input->mouseX;
-		m_camera.yaw -= deltaX * m_mouseSensitivity;
-		m_camera.pitch += deltaY * m_mouseSensitivity;
+		//m_camera.yaw -= deltaX * m_mouseSensitivity;
+		m_player->UpdateYaw(deltaX * m_mouseSensitivity);
+		//m_camera.pitch += deltaY * m_mouseSensitivity;
+		m_player->UpdatePitch(deltaY * m_mouseSensitivity);
 	}
 	m_oldX = input->mouseX;
 	m_oldY = input->mouseY;
+
+	//m_player->UpdateYaw(m_camYaw);
+	//m_player->UpdatePitch(m_camPitch);
+	//player = nullptr;
 }
 
 //--------------------------------------------------------------------------------------
@@ -292,7 +321,7 @@ void MainGame::GameLoop()
 		 // if(((float)time1 - time0) > frequency)
 			//  time0 = time1 - frequency;
 ///////////////////////////////////////////////////////////////////
-		  // THIS DOESN"T WORK !!!!
+		  // THIS DOESN"T WORK AS A PROPER GAME LOOP!!!!
 		if(((float)time1 - time0) > frequency) {
 			time0 = time1 - frequency;
 			ProcessInput();
@@ -329,11 +358,9 @@ void MainGame::Update()
 void MainGame::Display(float deltaT)
 {
 
-	//m_camera.Animate(deltaT);
-
 	graphics->BeginRendering();
 
-		graphics->UpdateCamera(m_camera.position, m_camera.lookAt);
+		m_player->Render();
 		graphics->ClearColour(0.75f,0.75f,1.0f,1.0f);
 
 		gameWorld->Render();
@@ -349,6 +376,7 @@ void MainGame::Display(float deltaT)
 void MainGame::Animate(float deltaT)
 {
 	
-	m_camera.Animate(deltaT);
+	m_player->Animate(deltaT);
 	gameWorld->Animate(deltaT);
+	//getchar();
 }

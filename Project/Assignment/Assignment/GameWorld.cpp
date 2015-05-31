@@ -7,6 +7,7 @@
 //#include "AssetManagement/obj.h"
 #include "GameObjects/NPC.h"
 #include "GameObjects/Model.h"
+#include "GameObjects/Player.h"
 #include <iostream>
 
 //--------------------------------------------------------------------------------------
@@ -31,6 +32,9 @@ GameWorld::~GameWorld()
 		it->second = nullptr;
 	}
 	m_objects.clear();
+
+	//delete m_player;
+	//m_player = nullptr;
 }
 
 //--------------------------------------------------------------------------------------
@@ -118,14 +122,14 @@ void GameWorld::LoadWorldTexture()
 	m_objects["berserk"]->SetAABB();
 	m_objects["berserk"]->SetAnimation(RUN);
 
-	m_objects["soldier"] = m_objFactory.Create("npc");
-	m_objects["soldier"]->SetPos(20,m_terrain->GetHeightAverage(20,20),20);
-	m_objects["soldier"]->SetMesh(assetManager->GetAsset("Models/soldier/tris.md2"));
-	m_objects["soldier"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/soldier/skin.pcx")));
-	m_objects["soldier"]->SetScale(0.25f, 0.25f, 0.25f);
-	m_objects["soldier"]->SetBase();
-	m_objects["soldier"]->SetAABB();
-	m_objects["soldier"]->SetAnimation(RUN);
+	//m_objects["soldier"] = m_objFactory.Create("npc");
+	//m_objects["soldier"]->SetPos(20,m_terrain->GetHeightAverage(20,20),20);
+	//m_objects["soldier"]->SetMesh(assetManager->GetAsset("Models/soldier/tris.md2"));
+	//m_objects["soldier"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/soldier/skin.pcx")));
+	//m_objects["soldier"]->SetScale(0.25f, 0.25f, 0.25f);
+	//m_objects["soldier"]->SetBase();
+	//m_objects["soldier"]->SetAABB();
+	//m_objects["soldier"]->SetAnimation(RUN);
 
 	assetManager->Load("Models/house1/house1.obj");
 	assetManager->Load("Models/bananaTree/bananaTree.obj");
@@ -144,19 +148,25 @@ void GameWorld::LoadWorldTexture()
 	m_objects["bananaTree"]->SetAABB();
 
 
-	m_objects["tree1"] = m_objFactory.Create("model");
-	m_objects["tree1"]->SetPos(65, m_terrain->GetHeightAverage(65,65),65);
-	m_objects["tree1"]->SetMesh(assetManager->GetAsset("Models/tree1/tree1.obj"));
-	m_objects["tree1"]->SetScale(0.025f, 0.025f, 0.025f);
-	m_objects["tree1"]->SetAABB();
+	//m_objects["tree1"] = m_objFactory.Create("model");
+	//m_objects["tree1"]->SetPos(65, m_terrain->GetHeightAverage(65,65),65);
+	//m_objects["tree1"]->SetMesh(assetManager->GetAsset("Models/tree1/tree1.obj"));
+	//m_objects["tree1"]->SetScale(0.025f, 0.025f, 0.025f);
+	//m_objects["tree1"]->SetAABB();
+
+
 }
 
 //--------------------------------------------------------------------------------------
 
 void GameWorld::Render()
 {
+		//m_player->Render();
+		//graphics->ClearColour(0.75f,0.75f,1.0f,1.0f);
+
 	m_terrain->Render();
 
+		//graphics->UpdateCamera(m_camera.position, m_camera.lookAt);
 
 
 	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
@@ -171,6 +181,8 @@ void GameWorld::Render()
 
 void GameWorld::Update()
 {
+	//Player* temp =	(Player*)m_objects["AAplayer"];
+	//m_player->UpdateCamera(camVelocity, camYaw, camPitch);
 	//std::cout << "START OF COLLISION TEST" << std::endl;
 	for(objIter it1 = m_objects.begin(); it1 != m_objects.end(); it1++) {
 		for(objIter it2 = it1; it2 != m_objects.end(); it2++) {
@@ -223,6 +235,31 @@ bool GameWorld::InWorld(float& x, float& z)
 	}
 	else if(z>m_terrain->GetSize()) {
 		z=(float)m_terrain->GetSize();
+		return false;
+	}
+
+ return true;
+}
+
+//--------------------------------------------------------------------------------------
+
+bool GameWorld::InWorld(GameObject* obj)
+{
+	if(obj->GetX() < 0.0f) {
+		obj->SetX(0.0f);
+		return false;
+	}
+	else if(obj->GetX() > m_terrain->GetSize()) {
+		obj->SetX((float)m_terrain->GetSize());
+		return false;
+	}
+
+	if(obj->GetZ() < 0.0f) {
+		obj->SetZ(0.0f);
+		return false;
+	}
+	else if(obj->GetZ() > m_terrain->GetSize()) {
+		obj->SetZ((float)m_terrain->GetSize());
 		return false;
 	}
 

@@ -86,6 +86,7 @@
     <ClInclude Include="AI\StateMachine.h" />
     <ClInclude Include="AssetManagement\bmp.h" />
     <ClInclude Include="AssetManagement\bmpLoader.h" />
+    <ClInclude Include="AssetManagement\Camera.h" />
     <ClInclude Include="AssetManagement\GameAsset.h" />
     <ClInclude Include="AssetManagement\GameAssetFactory.h" />
     <ClInclude Include="AssetManagement\GameAssetManager.h" />
@@ -107,7 +108,6 @@
     <ClInclude Include="AssetManagement\tiny_obj_loader.h" />
     <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="BruteForce.h" />
-    <ClInclude Include="Camera.h" />
     <ClInclude Include="Collision\AABB.h" />
     <ClInclude Include="Extras\ExtensibleFactory.h" />
     <ClInclude Include="Extras\MathExtra.h" />
@@ -118,8 +118,10 @@
     <ClInclude Include="GameObjects\NPC.h" />
     <ClInclude Include="GameObjects\Player.h" />
     <ClInclude Include="GameObjects\Model.h" />
+    <ClInclude Include="Graphics\CameraModel.h" />
     <ClInclude Include="Graphics\md2Model.h" />
     <ClInclude Include="Graphics\objModel.h" />
+    <ClInclude Include="Graphics\Skybox.h" />
     <ClInclude Include="Graphics\ViewOpenGL.h" />
     <ClInclude Include="InputGLFW.h" />
     <ClInclude Include="MainGame.h" />
@@ -133,6 +135,7 @@
     <ClCompile Include="AI\Movement.cpp" />
     <ClCompile Include="AssetManagement\bmp.cpp" />
     <ClCompile Include="AssetManagement\bmpLoader.cpp" />
+    <ClCompile Include="AssetManagement\Camera.cpp" />
     <ClCompile Include="AssetManagement\GameAsset.cpp" />
     <ClCompile Include="AssetManagement\GameAssetFactory.cpp" />
     <ClCompile Include="AssetManagement\GameAssetManager.cpp" />
@@ -154,7 +157,6 @@
     <ClCompile Include="AssetManagement\tiny_obj_loader.cc" />
     <ClCompile Include="AudioEngine.cpp" />
     <ClCompile Include="BruteForce.cpp" />
-    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collision\AABB.cpp" />
     <ClCompile Include="Extras\Vector3D.cpp" />
     <ClCompile Include="GameObjects\GameObject.cpp" />
@@ -162,8 +164,10 @@
     <ClCompile Include="GameObjects\Model.cpp" />
     <ClCompile Include="GameObjects\NPC.cpp" />
     <ClCompile Include="GameObjects\Player.cpp" />
+    <ClCompile Include="Graphics\CameraModel.cpp" />
     <ClCompile Include="Graphics\md2Model.cpp" />
     <ClCompile Include="Graphics\objModel.cpp" />
+    <ClCompile Include="Graphics\Skybox.cpp" />
     <ClCompile Include="Graphics\ViewOpenGL.cpp" />
     <ClCompile Include="InputGLFW.cpp" />
     <ClCompile Include="MainGame.cpp" />

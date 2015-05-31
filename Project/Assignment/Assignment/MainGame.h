@@ -26,7 +26,9 @@
 #ifndef MAINGAME_H
 #define MAINGAME_H
 
-#include "Camera.h"
+//#include "Camera.h"
+#include "GameObjects/GameObject.h"
+#include "GameObjects/Player.h"
 
 class MainGame
 {
@@ -124,7 +126,6 @@ private:
 
 	void Animate(float deltaT);
 
-
 	/** 
 	  * @brief Camera object
 	  * @warning None
@@ -133,7 +134,10 @@ private:
 	  * @pre 
 	  * @post 
 	  */ 
-	Camera m_camera;
+	//Camera m_camera;
+
+	//GameObject* m_player;
+	Player* m_player;
 
 	/** 
 	  * @brief Window width
@@ -222,17 +226,6 @@ private:
 	  * @post 
 	  */ 
 	unsigned int m_menu;
-	
-	
-	/** 
-	  * @brief Player height in world
-	  * @warning None
-	  * 
-	  * 
-	  * @pre 
-	  * @post 
-	  */ 
-	float m_playerHeight;
 
 	/** 
 	  * @brief Mouse movement sensitivity
