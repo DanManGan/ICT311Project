@@ -44,8 +44,8 @@ GameWorld::~GameWorld()
 bool GameWorld::LoadWorld()
 {	
 	m_terrain->SetScaleFactor(1.0f,0.2f,1.0f);
-	//return true;
-	return m_terrain->LoadHeightfield("Textures/height128.raw",128);
+	return true;
+	//return m_terrain->LoadHeightfield("Textures/height128.raw",128);
 }
 
 //--------------------------------------------------------------------------------------
@@ -68,7 +68,8 @@ void GameWorld::LoadWorldTexture(GameObject* obj)
 	//std::cout << "detail " << tex->GetName() << std::endl;
 	//tex->SetTexID(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
 	//m_terrain.SetTexture(graphics->SetupTextureClamp((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
-	//m_terrain.LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmap.bmp"));
+	m_terrain->LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmap.bmp"));
+	//m_terrain->GenFaultFormation(100, 512,1,125,0.1f,false);
 	m_terrain->SetDetailMap(graphics->SetupTextureBasic((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
 	m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowestTile.tga"));
 	m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
@@ -79,10 +80,10 @@ void GameWorld::LoadWorldTexture(GameObject* obj)
 	m_terrain->SetTexture(graphics->CreateNewTexture(m_terrain->GetProTexData(), m_terrain->GetProTexWidth(), m_terrain->GetProTexHeight()));
 	m_terrain->SetNumTerrainTexRepeat(1);
 	//m_terrain.LoadDetailMap("Textures/detailmap.tga");
-	m_terrain->SetNumDetailMapRepeat(8);
+	m_terrain->SetNumDetailMapRepeat(12);
 	//m_terrain.SetTexture(graphics->SetupTextureClamp((Texture*)assetManager->GetAsset("ProceduralTexture")));
 	m_terrain->SetLightingColor(1.0f, 1.0f, 1.0f);
-	m_terrain->SetSlopeLightingParams( 1, 1, 0.2f, 0.9f, 10.0f );
+	m_terrain->SetSlopeLightingParams( 0, 0, 0.5f, 1.0f, 100.0f );
 	m_terrain->CreateSlopeLighting();
 
 	assetManager->Load("Models/Ogro/Tris.md2");
@@ -182,7 +183,7 @@ void GameWorld::Render()
 	m_terrain->Render();
 
 	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
-		if(it->second->GetObjectType() != "PLAYER") {
+		if(it->second->GetObjectType() != "PLAYER" && it->second->GetObjectType() != "TERRAIN") {
 			it->second->SetY(m_terrain->GetHeightAverage(it->second->GetX(), it->second->GetZ()));
 			it->second->Render();
 			it->second->DrawAABB();

@@ -129,7 +129,7 @@ RGB<float> TerrainLighting::GetLightmapColour()
 
 float TerrainLighting::GetValueAtPoint(unsigned char* verts, int size, int xPos, int zPos)
 {
-		return verts[(zPos*size)+xPos];
+		return verts[(zPos*size)+xPos];//////////////////////////////////////////////////////
 }
 
 //--------------------------------------------------------------------------------------

@@ -71,15 +71,30 @@ bool Terrain::LoadHeightfield(char *file, const int size)
 /// NOT WORKING NEEDS FIXING
 bool Terrain::LoadHeightfield(Texture* file)
 {
-		if(m_terrainData)
+	if(m_terrainData)
 		delete[] m_terrainData;
-
-	m_terrainData = file->GetData();
 
 	if(file->GetHeight() != file->GetWidth())
 		return false;
 
 	m_size = file->GetWidth();
+
+	int verticeCount = m_size * m_size;
+
+	unsigned char *d = new unsigned char[verticeCount];
+	
+	int count = 0;
+	for (int i = 0; i < verticeCount * 3; i+=3 )
+	{
+		d[count] = file->GetData()[i];
+		count++;
+	}
+	m_terrainData = d;
+	//m_terrainData = file->GetData();
+
+
+
+	//m_size = file->GetWidth();
 
 	return true;
 }
