@@ -4,7 +4,9 @@
 
 Player::Player() :
 	m_camera(CameraModel()),
-	m_cameraHeight(15.0f)
+		m_lookAt(10.0f, 10.0f, 10.0f),
+	m_cameraHeight(15.0f),
+	m_pitch(0.0f)
 {
 	//m_PlayerCameraPosition.x = 0.0f;
 	//m_PlayerCameraPosition.y = 0.0f;
@@ -24,64 +26,62 @@ void Player::Initialise()
 {
 
 }
-
-void Player::SetPosition(Vector3D newPos)
-{
-	float lastX, lastY, lastZ;
-	lastX = m_camera.position.x;
-	lastY = m_camera.position.y;
-	lastZ = m_camera.position.z;
-
-	m_camera.position = newPos;
-	m_camera.lookAt.x += (m_camera.position.x - lastX);
-	m_camera.lookAt.y += (m_camera.position.y - lastY);
-	m_camera.lookAt.z += (m_camera.position.z - lastZ);
-
-	float x, y, z;
-	x = (newPos.x - m_Position.x);
-	y = (newPos.y - m_Position.y);
-	z = (newPos.z - m_Position.z);
-
-	m_Position = newPos;
-}
-
-void Player::SetPos(float posX, float posY, float posZ)
-{
-	m_Position.Set(posX, posY, posZ);
-
-	m_camera.position = m_Position;
-}
+//
+//void Player::SetPosition(Vector3D newPos)
+//{
+//	float lastX, lastY, lastZ;
+//	lastX = m_Position.x;
+//	lastY = m_Position.y;
+//	lastZ = m_Position.z;
+//
+//	m_Position = newPos;
+//	m_lookAt.x += (m_Position.x - lastX);
+//	m_lookAt.y += (m_Position.y - lastY);
+//	m_lookAt.z += (m_Position.z - lastZ);
+//
+//	float x, y, z;
+//	x = (newPos.x - m_Position.x);
+//	y = (newPos.y - m_Position.y);
+//	z = (newPos.z - m_Position.z);
+//
+//	m_Position = newPos;
+//}
+//
+//void Player::SetPos(float posX, float posY, float posZ)
+//{
+//	m_Position.Set(posX, posY, posZ);
+//}
 
 void Player::Update()
 {
 	float lastX, lastY, lastZ;
-	lastX = m_camera.position.x;
-	lastY = m_camera.position.y;
-	lastZ = m_camera.position.z;
+	lastX = m_Position.x;
+	lastY = m_Position.y;
+	lastZ = m_Position.z;
 
-	m_camera.lookAt.x += (m_camera.position.x - lastX);
-	m_camera.lookAt.y += (m_camera.position.y - lastY);
-	m_camera.lookAt.z += (m_camera.position.z - lastZ);
+	m_lookAt.x += (m_Position.x - lastX);
+	m_lookAt.y += (m_Position.y - lastY);
+	m_lookAt.z += (m_Position.z - lastZ);
 }
 
 void Player::SetPlayerCameraLookAt(Vector3D lookAt)
 {
-	m_camera.lookAt = lookAt;
+	m_lookAt = lookAt;
 }
 
-void Player::SetPlayerCameraPosition(Vector3D pos)
-{
-	m_camera.position = pos;
-}
-
-Vector3D Player::GetPlayerCameraPosition()
-{
-	return m_camera.position;
-}
+//void Player::SetPlayerCameraPosition(Vector3D pos)
+//{
+//	m_Position = pos;
+//}
+//
+//Vector3D Player::GetPlayerCameraPosition()
+//{
+//	return m_Position;
+//}
 
 Vector3D Player::GetPlayerLookAt()
 {
-	return m_camera.lookAt;
+	return m_lookAt;
 }
 
 void Player::SetHealth(int health)
@@ -104,43 +104,70 @@ void Player::ChangeState(State *newState)
 void Player::Animate(float deltaT)
 {
 	//m_camera.position.y  += m_cameraHeight;
-	m_camera.position.y = m_Position.y + m_cameraHeight;
+	m_Position.y += m_cameraHeight;
+	std::cout << " Before Animate" << std::endl;
+	m_Position.Print();
+	m_velocity.Print();
+	m_lookAt.Print();
 
+	
+	m_camera.position = m_Position;
+	m_camera.velocity = m_velocity;
+	m_camera.lookAt = m_lookAt;
+	m_camera.yaw = m_yaw;
+	m_camera.pitch = m_pitch;
+
+	//m_camera.Animate(deltaT);
 	m_camera.Animate(deltaT);
 
 	m_Position = m_camera.position;
+	m_velocity = m_camera.velocity;
+	m_lookAt = m_camera.lookAt;
+	//m_yaw = m_camera.yaw;
+	//m_pitch = m_camera.pitch;
+
+	std::cout << " After Animate" << std::endl;
+	m_Position.Print();
+	m_velocity.Print();
+	m_lookAt.Print();
+
+	//m_Position = m_camera.position;
+	m_Position.y -= m_cameraHeight;
 }
 
 void Player::UpdatePitch(float pitch)
 {
-	m_camera.pitch += pitch;
+	m_pitch += pitch;
 }
 
 void Player::UpdateYaw(float yaw)
 {
 	//m_yaw -= yaw;
-	m_camera.yaw -= yaw;
+	//m_camera.yaw = m_yaw;
+	m_yaw -= yaw;
 }
-
-void Player::UpdateVelocity(Vector3D camVelocity)
-{
-	m_camera.velocity = camVelocity;
-
-}
+//
+//void Player::UpdateVelocity(Vector3D camVelocity)
+//{
+//	m_velocity = camVelocity;
+//}
 
 void Player::UpdateVelocity(float velX, float velY, float velZ)
 {
-	m_camera.velocity += Vector3D(velX, velY, velZ);
-
-}
-
-void Player::SetVelocity(float velX, float velY, float velZ)
-{
-	m_camera.velocity = Vector3D(velX, velY, velZ);
-
+	m_velocity += Vector3D(velX, velY, velZ);
 }
 
 void Player::Render()
 {
-	m_camera.Render();
+	m_camera.Render(m_camera.position, m_camera.lookAt);
+}
+
+float Player::GetPitch()
+{
+	return m_pitch;
+}
+
+void Player::SetPitch(float pitch)
+{
+	m_pitch = pitch;
 }

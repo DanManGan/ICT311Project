@@ -87,7 +87,7 @@ public:
 	  * @pre 
 	  * @post 
 	  */ 
-	void LoadWorldTexture();
+	void LoadWorldTexture(GameObject* obj);
 
 	/** 
 	  * @brief Call object render functions
@@ -120,6 +120,8 @@ public:
 	bool InWorld(float& x, float& z);
 
 	bool InWorld(GameObject* obj);
+
+	GameObject* GetPlayer();
 
 	/** 
 	  * @brief Gets Terrain height at point
@@ -217,9 +219,6 @@ public:
 	void Animate(float deltaT);
 
 	void Update();
-
-	void Left();
-	void Right();
 
 private:
 

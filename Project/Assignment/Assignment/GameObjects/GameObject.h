@@ -63,14 +63,14 @@ public:
 	void SetY(float y);
 	void SetZ(float z);
 	virtual void SetPos(Vector3D newPos);
-	void SetPos(float x, float y, float z);
+	virtual void SetPos(float x, float y, float z);
+
+	void SetVelocity(float velX, float velY, float velZ);
 
 	void UpdatePosition(float deltaT);
 
-	void Left();
-	void Right();
-
 	float GetYaw();
+	void SetYaw(float yaw);
 
 	void DrawAABB();
 

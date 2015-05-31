@@ -2,6 +2,8 @@
 #include "camera.h"
 #include "../Extras/MathExtra.h"
 
+#include <iostream>
+
 //--------------------------------------------------------------------------------------
 
 Camera::Camera()
@@ -61,14 +63,17 @@ void Camera::Animate(float deltaTime)
      float strafeSpeed = velocity.x * deltaTime;
 
 	// speed limit
-     if (speed > 10.0f)
-          speed = 10.0f;
-     if (strafeSpeed > 10.0f)
-          strafeSpeed = 10.0f;
-     if (speed < -10.0f)
-          speed = -10.0f;
-     if (strafeSpeed < -10.0f)
-          strafeSpeed = -10.0f;
+     if (speed > 1.0f)
+          speed = 1.0f;
+     if (strafeSpeed > 1.0f)
+          strafeSpeed = 1.0f;
+     if (speed < -1.0f)
+          speed = -1.0f;
+     if (strafeSpeed < -1.0f)
+          strafeSpeed = -1.0f;
+
+	 //std::cout << "Speed: " << speed << std::endl;
+	 //std::cout << "StrafeSpeed: " << strafeSpeed << std::endl;
 
 	// calculate new position of camera
      position.x += float(cos(DEG_TO_RAD(yaw + 90.0f)))*strafeSpeed;

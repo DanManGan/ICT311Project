@@ -21,7 +21,8 @@ MainGame::MainGame() :
 	m_menu(0),
 	m_mouseSensitivity(0.25f),
 	m_running(false),
-	m_player(new Player())
+	//m_player(new Player())
+	m_player(nullptr)
 {
 	Init();
 }
@@ -30,7 +31,7 @@ MainGame::MainGame() :
 
 MainGame::~MainGame()
 {
-	delete m_player;
+	//delete m_player;
 	m_player = nullptr;
 }
 
@@ -48,7 +49,9 @@ void MainGame::Init()
 	graphics->SetWindowPosition(500, 100);
 	graphics->SetWindowTitle("ICT311 Assignemnt");
 	graphics->Init();
-	gameWorld->LoadWorldTexture();
+	gameWorld->LoadWorldTexture(m_player);
+
+	m_player = (Player*)gameWorld->GetPlayer();
 
 	//m_menu = texManager->loadTexture("Textures/menu.bmp");
 	//if(!m_menu)
@@ -66,10 +69,11 @@ void MainGame::Init()
 	//m_camera.pitch=-75.0f;
 
 	//m_player = new Player();
-	m_player->SetPos(gameWorld->GetWorldSize()/2,
-		gameWorld->GetWorldXZHeight
-			(gameWorld->GetWorldSize()/2, gameWorld->GetWorldSize()-20),
-		gameWorld->GetWorldSize()-20);
+	//m_player->SetPos(gameWorld->GetWorldSize()/2,
+	//	gameWorld->GetWorldXZHeight
+	//		(gameWorld->GetWorldSize()/2, gameWorld->GetWorldSize()-20),
+	//	gameWorld->GetWorldSize()-20);
+	//m_player->SetAABB();
 }
 
 //--------------------------------------------------------------------------------------
@@ -146,27 +150,6 @@ void MainGame::ProcessInput()
 		//	}
 		//	break;
 
-		case 'l':
-		case 'L': 
-			if(input->keyPress && !m_inputOneShot) //{
-				gameWorld->Left();
-			//	m_inputOneShot = true;
-			//} 
-			//else if(input->keyRelease) {
-			//	m_inputOneShot = false;
-			//}
-			break;
-
-		case 'r':
-		case 'R': 
-			if(input->keyPress && !m_inputOneShot) //{
-				gameWorld->Right();
-			//	m_inputOneShot = true;
-			//} 
-			//else if(input->keyRelease) {
-			//	m_inputOneShot = false;
-			//}
-			break;
 
 		case 'm':
 		case 'M': 
@@ -262,6 +245,7 @@ void MainGame::ProcessInput()
 	gameWorld->InWorld(m_player);
 	m_player->SetY(gameWorld->GetWorldXZHeight(m_player->GetX(),m_player->GetZ()));
 	
+/////////////////////////////////////////////////////////////////////////	
 	
 
 	//m_camera.position.y=gameWorld->GetWorldXZHeight(m_camera.position.x,m_camera.position.z)+m_playerHeight;
@@ -360,8 +344,9 @@ void MainGame::Display(float deltaT)
 
 	graphics->BeginRendering();
 
-		m_player->Render();
-		graphics->ClearColour(0.75f,0.75f,1.0f,1.0f);
+		//m_player->Render();
+		//m_player->DrawAABB();
+		//graphics->ClearColour(0.75f,0.75f,1.0f,1.0f);
 
 		gameWorld->Render();
 
@@ -376,7 +361,7 @@ void MainGame::Display(float deltaT)
 void MainGame::Animate(float deltaT)
 {
 	
-	m_player->Animate(deltaT);
+	//m_player->Animate(deltaT);
 	gameWorld->Animate(deltaT);
 	//getchar();
 }
