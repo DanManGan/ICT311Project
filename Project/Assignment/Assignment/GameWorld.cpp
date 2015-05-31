@@ -16,7 +16,7 @@ GameWorld::GameWorld() :
 	m_objFactory(GameObjectFactory())
 {
 	m_objects.clear();
-	m_terrain = new BruteForce();
+	m_terrain = new TerrainModel();
 	LoadWorld();
 }
 

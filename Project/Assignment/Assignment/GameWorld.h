@@ -26,7 +26,7 @@
 #ifndef GAMEWORLD_H
 #define GAMEWORLD_H
 
-#include "bruteforce.h"
+#include "Graphics/TerrainModel.h"
 #include "AssetManagement/md2.h"
 #include "GameObjects/GameObject.h"
 #include "GameObjects/GameObjectFactory.h"
@@ -232,7 +232,7 @@ private:
 	  * @pre 
 	  * @post 
 	  */ 
-	BruteForce* m_terrain;
+	TerrainModel* m_terrain;
 
 	/**
 	  * @brief copy constructor declaration.

@@ -24,7 +24,6 @@ public:
 	int GetHealth();
 	void ChangeState(State *newState);
 
-	void Initialise();
 	void Update();
 
 	void Animate(float deltaT);

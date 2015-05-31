@@ -26,10 +26,6 @@ NPC::~NPC()
 	m_move = nullptr;
 }
 
-void NPC::Initialise()
-{
-
-}
 
 void NPC::SetAnimation(AnimationState state)
 {

@@ -22,10 +22,6 @@ Player::~Player()
 
 }
 
-void Player::Initialise()
-{
-
-}
 //
 //void Player::SetPosition(Vector3D newPos)
 //{
@@ -105,10 +101,10 @@ void Player::Animate(float deltaT)
 {
 	//m_camera.position.y  += m_cameraHeight;
 	m_Position.y += m_cameraHeight;
-	std::cout << " Before Animate" << std::endl;
-	m_Position.Print();
-	m_velocity.Print();
-	m_lookAt.Print();
+	//std::cout << " Before Animate" << std::endl;
+	//m_Position.Print();
+	//m_velocity.Print();
+	//m_lookAt.Print();
 
 	
 	m_camera.position = m_Position;
@@ -126,10 +122,10 @@ void Player::Animate(float deltaT)
 	//m_yaw = m_camera.yaw;
 	//m_pitch = m_camera.pitch;
 
-	std::cout << " After Animate" << std::endl;
-	m_Position.Print();
-	m_velocity.Print();
-	m_lookAt.Print();
+	//std::cout << " After Animate" << std::endl;
+	//m_Position.Print();
+	//m_velocity.Print();
+	//m_lookAt.Print();
 
 	//m_Position = m_camera.position;
 	m_Position.y -= m_cameraHeight;

@@ -25,11 +25,11 @@
 #ifndef SINGLETONS_H
 #define SINGLETONS_H
 
-#include "Singleton.h"
+#include "Extras/Singleton.h"
 //#include "textureHandler/textureManager.h"
 #include "GameWorld.h"
 #include "Graphics/ViewOpenGL.h"
-#include "InputGLFW.h"
+#include "Input/InputGLFW.h"
 #include "AudioEngine.h"
 #include "AssetManagement/GameAssetManager.h"
 

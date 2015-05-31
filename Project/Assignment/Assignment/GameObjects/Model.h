@@ -17,7 +17,6 @@ public:
 
 	CLASS_TYPE(MODEL);
 
-	void Initialise() { };
 	void Animate(float deltaT) {};
 	void SetAnimation(AnimationState state){};
 	void Render();
