@@ -4,6 +4,7 @@
 #include "Model.h"
 #include "NPC.h"
 #include "Player.h"
+//#include "Terrain.h"
 
 #include <algorithm>
 #include <iostream>
@@ -13,6 +14,7 @@ GameObjectFactory::GameObjectFactory()
     m_factory.Register(new FactoryMaker<Model, GameObject>);
     m_factory.Register(new FactoryMaker<NPC, GameObject>);
     m_factory.Register(new FactoryMaker<Player, GameObject>);
+//	m_factory.Register(new FactoryMaker<Terrain, GameObject>);
 }
 
 GameObjectFactory::~GameObjectFactory()
@@ -20,6 +22,7 @@ GameObjectFactory::~GameObjectFactory()
 	m_factory.Unregister(Model::GetClassType());
 	m_factory.Unregister(NPC::GetClassType());
 	m_factory.Unregister(Player::GetClassType());
+//	m_factory.Unregister(Terrain::GetClassType());
 }
 
 GameObject* GameObjectFactory::Create(std::string object)
