@@ -49,7 +49,7 @@ void MainGame::Init()
 	graphics->SetWindowPosition(500, 100);
 	graphics->SetWindowTitle("ICT311 Assignemnt");
 	graphics->Init();
-	gameWorld->LoadWorldTexture(m_player);
+	gameWorld->CreateObjects();
 
 	m_player = (Player*)gameWorld->GetPlayer();
 

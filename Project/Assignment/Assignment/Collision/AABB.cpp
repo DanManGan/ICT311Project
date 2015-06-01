@@ -59,15 +59,15 @@ void AABB::CreateAABB(Mesh* model)
 	if(!model) {
 		Vector3D model[8];
 		//would normally load a model from file.
-		model[0].Set(-2.0f,0.0f,-2.0f);  //front face
-		model[1].Set(0.25f,0.0f,-2.0f);
-		model[2].Set(0.25f,15.0f,-2.0f);
-		model[3].Set(-2.0f,15.0f,-2.0f);
+		model[0].Set(-2.5f,0.0f,-2.5f);  //front face
+		model[1].Set(2.5f,0.0f,-2.5f);
+		model[2].Set(2.5f,15.0f,-2.5f);
+		model[3].Set(-2.5f,15.0f,-2.5f);
 
-		model[4].Set(-2.0f,0.0f,2.0f);  //rear face
-		model[5].Set(2.0f,0.0f,2.0f);
-		model[6].Set(2.0f,15.0f,2.0f);
-		model[7].Set(-2.0f,15.0f,2.0f);
+		model[4].Set(-2.5f,0.0f,2.5f);  //rear face
+		model[5].Set(2.5f,0.0f,2.5f);
+		model[6].Set(2.5f,15.0f,2.5f);
+		model[7].Set(-2.5f,15.0f,2.5f);
 
 		CreateAABB(model,8);
 	}

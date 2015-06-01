@@ -8,16 +8,18 @@
 #include "GameObjects/NPC.h"
 #include "GameObjects/Model.h"
 #include "GameObjects/Player.h"
+#include "GameObjects/Terrain.h"
 #include <iostream>
 
 //--------------------------------------------------------------------------------------
 
 GameWorld::GameWorld() :
-	m_objFactory(GameObjectFactory())
+	m_objFactory(GameObjectFactory()),
+	m_terrain(new TerrainModel())
 {
 	m_objects.clear();
-	m_terrain = new TerrainModel();
-	LoadWorld();
+	LoadAssets();
+	CreateTerrain();
 }
 
 //--------------------------------------------------------------------------------------
@@ -41,50 +43,18 @@ GameWorld::~GameWorld()
 
 //--------------------------------------------------------------------------------------
 
-bool GameWorld::LoadWorld()
-{	
-	m_terrain->SetScaleFactor(1.0f,0.2f,1.0f);
-	return true;
-	//return m_terrain->LoadHeightfield("Textures/height128.raw",128);
-}
-
-//--------------------------------------------------------------------------------------
-
-void GameWorld::LoadWorldTexture(GameObject* obj)
+void GameWorld::LoadAssets()
 {
+	
 	//Procedural terrain only works correctly with TGA files currently
 
-	assetManager->Load("Textures/grass.bmp");
+	//assetManager->Load("Textures/grass.bmp");
 	assetManager->Load("Textures/lowestTile.tga");
 	assetManager->Load("Textures/lowTile.tga");
 	assetManager->Load("Textures/highTile.tga");
 	assetManager->Load("Textures/highestTile.tga");
 	assetManager->Load("Textures/detailmap.tga");
 	assetManager->Load("Textures/heightmap.bmp");
-	//assetManager->Load(MESH, "Textures/detailmap.tga");
-	//std::cout << "asset" << assetManager->GetAsset("Textures/grass.tga") << std::endl;
-	//m_terrain.LoadTexture("Textures/grass.bmp");
-	//Texture* tex = (Texture*)assetManager->GetAsset("Textures/detailmap.tga");
-	//std::cout << "detail " << tex->GetName() << std::endl;
-	//tex->SetTexID(graphics->BindTexture((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
-	//m_terrain.SetTexture(graphics->SetupTextureClamp((Texture*)assetManager->GetAsset("Textures/grass.bmp")));
-	m_terrain->LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmap.bmp"));
-	//m_terrain->GenFaultFormation(100, 512,1,125,0.1f,false);
-	m_terrain->SetDetailMap(graphics->SetupTextureBasic((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
-	m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowestTile.tga"));
-	m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
-	m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highTile.tga"));
-	m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highestTile.tga"));
-	m_terrain->CreateProceduralTexture();
-	//assetManager->Load(m_terrain.GetProceduralTexture("ProceduralTexture"));
-	m_terrain->SetTexture(graphics->CreateNewTexture(m_terrain->GetProTexData(), m_terrain->GetProTexWidth(), m_terrain->GetProTexHeight()));
-	m_terrain->SetNumTerrainTexRepeat(1);
-	//m_terrain.LoadDetailMap("Textures/detailmap.tga");
-	m_terrain->SetNumDetailMapRepeat(12);
-	//m_terrain.SetTexture(graphics->SetupTextureClamp((Texture*)assetManager->GetAsset("ProceduralTexture")));
-	m_terrain->SetLightingColor(1.0f, 1.0f, 1.0f);
-	m_terrain->SetSlopeLightingParams( 0, 0, 0.5f, 1.0f, 100.0f );
-	m_terrain->CreateSlopeLighting();
 
 	assetManager->Load("Models/Ogro/Tris.md2");
 	assetManager->Load("Models/Ogro/Ogrobase.pcx");
@@ -98,6 +68,45 @@ void GameWorld::LoadWorldTexture(GameObject* obj)
 	assetManager->Load("Models/tank/tris.md2");
 	assetManager->Load("Models/tank/skin.pcx");
 
+	assetManager->Load("Models/house1/house1.obj");
+
+	assetManager->Load("Models/bananaTree/bananaTree.obj");
+
+	assetManager->Load("Models/tree1/tree1.obj");
+
+
+}
+
+//--------------------------------------------------------------------------------------
+
+bool GameWorld::CreateTerrain()
+{	
+	m_terrain->SetScaleFactor(1.0f,0.25f,1.0f);
+	//m_terrain->GenFaultFormation(100, 512,1,125,0.1f,false);
+	if(m_terrain->LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmap.bmp"))) {
+		m_terrain->SetDetailMap(graphics->SetupTextureBasic((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
+		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowestTile.tga"));
+		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
+		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highTile.tga"));
+		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highestTile.tga"));
+		m_terrain->CreateProceduralTexture();
+		m_terrain->SetTexture(graphics->CreateNewTexture(m_terrain->GetProTexData(), m_terrain->GetProTexWidth(), m_terrain->GetProTexHeight()));
+		m_terrain->SetNumTerrainTexRepeat(1);
+		m_terrain->SetNumDetailMapRepeat(12);
+		m_terrain->SetLightingColor(1.0f, 1.0f, 1.0f);
+		m_terrain->SetSlopeLightingParams( 0, 0, 0.5f, 1.0f, 10.0f );
+		m_terrain->CreateSlopeLighting();
+
+		return true;
+	}
+	return false;
+	//return m_terrain->LoadHeightfield("Textures/height128.raw",128);
+}
+
+//--------------------------------------------------------------------------------------
+
+void GameWorld::CreateObjects()
+{
 	m_objects["ogro"] = m_objFactory.Create("npc");
 	m_objects["ogro"]->SetPos(52,m_terrain->GetHeightAverage(52,92),92);
 	m_objects["ogro"]->SetMesh(assetManager->GetAsset("Models/Ogro/Tris.md2"));
@@ -110,7 +119,7 @@ void GameWorld::LoadWorldTexture(GameObject* obj)
 	//m_objects["tank"] = m_objFactory.Create("npc");
 	//m_objects["tank"]->SetMesh(assetManager->GetAsset("Models/tank/tris.md2"));
 	//m_objects["tank"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/tank/skin.pcx")));
-	//m_objects["tank"]->SetPos(15,m_terrain->GetHeightAverage(15,15),15);
+	//m_objects["tank"]->SetPos(15,terrain->GetHeightAverage(15,15),15);
 	//m_objects["tank"]->SetScale(0.25f, 0.25f, 0.25f);
 	//m_objects["tank"]->SetBase();
 	//m_objects["tank"]->SetAABB();
@@ -134,10 +143,6 @@ void GameWorld::LoadWorldTexture(GameObject* obj)
 	m_objects["soldier"]->SetAABB();
 	m_objects["soldier"]->SetAnimation(RUN);
 
-	assetManager->Load("Models/house1/house1.obj");
-	assetManager->Load("Models/bananaTree/bananaTree.obj");
-	assetManager->Load("Models/tree1/tree1.obj");
-
 	m_objects["house1"] = m_objFactory.Create("model");
 	m_objects["house1"]->SetPos(85, m_terrain->GetHeightAverage(85,15),15);
 	m_objects["house1"]->SetMesh(assetManager->GetAsset("Models/house1/house1.obj"));
@@ -152,7 +157,7 @@ void GameWorld::LoadWorldTexture(GameObject* obj)
 
 
 	//m_objects["tree1"] = m_objFactory.Create("model");
-	//m_objects["tree1"]->SetPos(65, m_terrain->GetHeightAverage(65,65),65);
+	//m_objects["tree1"]->SetPos(65, terrain->GetHeightAverage(65,65),65);
 	//m_objects["tree1"]->SetMesh(assetManager->GetAsset("Models/tree1/tree1.obj"));
 	//m_objects["tree1"]->SetScale(0.025f, 0.025f, 0.025f);
 	//m_objects["tree1"]->SetAABB();
@@ -163,6 +168,7 @@ void GameWorld::LoadWorldTexture(GameObject* obj)
 		m_terrain->GetHeightAverage(m_terrain->GetSize()/2, m_terrain->GetSize()-20),
 		m_terrain->GetSize()-20);
 	m_objects["player"]->SetAABB();
+
 }
 
 //--------------------------------------------------------------------------------------
@@ -176,14 +182,14 @@ GameObject* GameWorld::GetPlayer()
 
 void GameWorld::Render()
 {
-		m_objects["player"]->Render();
-		m_objects["player"]->DrawAABB();
-		graphics->ClearColour(0.75f,0.75f,1.0f,1.0f);
+	m_objects["player"]->Render();
+	m_objects["player"]->DrawAABB();
+	graphics->ClearColour(0.75f,0.75f,1.0f,1.0f);
 
 	m_terrain->Render();
 
 	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
-		if(it->second->GetObjectType() != "PLAYER" && it->second->GetObjectType() != "TERRAIN") {
+		if(it->second->GetObjectType() != "PLAYER") {
 			it->second->SetY(m_terrain->GetHeightAverage(it->second->GetX(), it->second->GetZ()));
 			it->second->Render();
 			it->second->DrawAABB();
@@ -284,21 +290,3 @@ float GameWorld::GetWorldSize()
 {
 	return (float)m_terrain->GetSize();
 }
-
-//--------------------------------------------------------------------------------------
-//
-//bool GameWorld::GenFaultFormTerrain()
-//{
-//	return m_terrain.GenFaultFormation(100, 128,1,125,0.1f,false) &&
-//		m_terrain.CreateProceduralTexture("faultformTex") && m_terrain.CreateSlopeLighting();
-//}
-//
-////--------------------------------------------------------------------------------------
-//
-//bool GameWorld::LoadHeightMapTerrain()
-//{
-//	return m_terrain.LoadHeightfield("Textures/height128.raw",128) &&
-//			m_terrain.CreateProceduralTexture("heightmapTex") && m_terrain.CreateSlopeLighting();
-//}
-//
-////--------------------------------------------------------------------------------------
