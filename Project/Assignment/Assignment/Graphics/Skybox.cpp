@@ -46,7 +46,7 @@ void Skybox::Render() {
 			glTexCoord2f(1.0f, 1.0f); glVertex3f(m_vecMax.x, m_vecMax.y, m_vecMax.z);
 			glTexCoord2f(1.0f, 0.0f); glVertex3f(m_vecMax.x, m_vecMin.y, m_vecMax.z);
 			glTexCoord2f(0.0f, 0.0f); glVertex3f(m_vecMin.x, m_vecMin.y, m_vecMax.z);
-			glTexCoord2f(0.0f, 1.0f); glVertex3f(m_vecMin.x, m_vecMin.y, m_vecMin.z);
+			glTexCoord2f(0.0f, 1.0f); glVertex3f(m_vecMin.x, m_vecMax.y, m_vecMax.z);
 		glEnd();
 
 		//back face

@@ -74,7 +74,12 @@ void GameWorld::LoadAssets()
 
 	assetManager->Load("Models/tree1/tree1.obj");
 
-
+	m_skybox.LoadTexture(SB_FRONT, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTexture(SB_BACK, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTexture(SB_BOTTOM, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTexture(SB_TOP, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTexture(SB_LEFT, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTexture(SB_RIGHT, "Texture/SkyboxFront.tga");
 }
 
 //--------------------------------------------------------------------------------------
@@ -187,6 +192,9 @@ void GameWorld::Render()
 	graphics->ClearColour(0.75f,0.75f,1.0f,1.0f);
 
 	m_terrain->Render();
+
+	m_skybox.Set(0.0f, 0.0f, 0.0f, 1024.0f);
+	m_skybox.Render();
 
 	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
 		if(it->second->GetObjectType() != "PLAYER") {

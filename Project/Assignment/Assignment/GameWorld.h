@@ -30,6 +30,7 @@
 #include "AssetManagement/md2.h"
 #include "GameObjects/GameObject.h"
 #include "GameObjects/GameObjectFactory.h"
+#include "Graphics/Skybox.h"
 
 #include <map>
 #include <string>
@@ -214,7 +215,7 @@ private:
 	objects m_objects;
 
 	GameObjectFactory m_objFactory;
-
+	Skybox m_skybox; 
 };
 
 
