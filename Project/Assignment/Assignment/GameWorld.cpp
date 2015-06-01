@@ -48,13 +48,20 @@ void GameWorld::LoadAssets()
 	
 	//Procedural terrain only works correctly with TGA files currently
 
+	m_skybox.LoadTexture(SB_FRONT, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTexture(SB_BACK, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTexture(SB_BOTTOM, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTexture(SB_TOP, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTexture(SB_LEFT, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTexture(SB_RIGHT, "Texture/SkyboxFront.tga");
+
 	//assetManager->Load("Textures/grass.bmp");
 	assetManager->Load("Textures/lowestTile.tga");
 	assetManager->Load("Textures/lowTile.tga");
 	assetManager->Load("Textures/highTile.tga");
 	assetManager->Load("Textures/highestTile.tga");
 	assetManager->Load("Textures/detailmap.tga");
-	assetManager->Load("Textures/heightmap.bmp");
+	assetManager->Load("Textures/heightmapa.bmp");
 
 	assetManager->Load("Models/Ogro/Tris.md2");
 	assetManager->Load("Models/Ogro/Ogrobase.pcx");
@@ -73,22 +80,15 @@ void GameWorld::LoadAssets()
 	assetManager->Load("Models/bananaTree/bananaTree.obj");
 
 	assetManager->Load("Models/tree1/tree1.obj");
-
-	m_skybox.LoadTexture(SB_FRONT, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_BACK, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_BOTTOM, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_TOP, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_LEFT, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_RIGHT, "Texture/SkyboxFront.tga");
 }
 
 //--------------------------------------------------------------------------------------
 
 bool GameWorld::CreateTerrain()
 {	
-	m_terrain->SetScaleFactor(1.0f,0.25f,1.0f);
+	m_terrain->SetScaleFactor(1.0f,0.5f,1.0f);
 	//m_terrain->GenFaultFormation(100, 512,1,125,0.1f,false);
-	if(m_terrain->LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmap.bmp"))) {
+	if(m_terrain->LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmapa.bmp"))) {
 		m_terrain->SetDetailMap(graphics->SetupTextureBasic((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
 		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowestTile.tga"));
 		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
