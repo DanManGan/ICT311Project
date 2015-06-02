@@ -31,6 +31,7 @@
 #include "GameObjects/GameObject.h"
 #include "GameObjects/GameObjectFactory.h"
 #include "Graphics/Skybox.h"
+#include "Graphics\Water.h"
 
 #include <map>
 #include <string>
@@ -216,6 +217,7 @@ private:
 
 	GameObjectFactory m_objFactory;
 	Skybox m_skybox; 
+	Water m_water;
 };
 
 

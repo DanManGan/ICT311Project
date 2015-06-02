@@ -71,3 +71,4 @@ void NPC::ChangeState(State *newState)
 	m_CurrentState = newState;
 	m_CurrentState->Enter(this);
 }
+

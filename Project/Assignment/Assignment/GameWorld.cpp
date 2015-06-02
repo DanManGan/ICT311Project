@@ -48,12 +48,13 @@ void GameWorld::LoadAssets()
 	
 	//Procedural terrain only works correctly with TGA files currently
 
-	m_skybox.LoadTexture(SB_FRONT, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_BACK, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_BOTTOM, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_TOP, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_LEFT, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_RIGHT, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTexture(SB_FRONT, "Texture/front.bmp");
+	m_skybox.LoadTexture(SB_BACK, "Texture/back.bmp");
+	m_skybox.LoadTexture(SB_BOTTOM, "Texture/bottom.bmp");
+	m_skybox.LoadTexture(SB_TOP, "Texture/top.bmp");
+	m_skybox.LoadTexture(SB_LEFT, "Texture/left.bmp");
+	m_skybox.LoadTexture(SB_RIGHT, "Texture/right.bmp");
+	m_water.LoadReflectionMap("Texture/reflection_map.tga");
 
 	//assetManager->Load("Textures/grass.bmp");
 	assetManager->Load("Textures/lowestTile.tga");
@@ -61,7 +62,7 @@ void GameWorld::LoadAssets()
 	assetManager->Load("Textures/highTile.tga");
 	assetManager->Load("Textures/highestTile.tga");
 	assetManager->Load("Textures/detailmap.tga");
-	assetManager->Load("Textures/heightmapa.bmp");
+	assetManager->Load("Textures/heightmap.bmp");
 
 	assetManager->Load("Models/Ogro/Tris.md2");
 	assetManager->Load("Models/Ogro/Ogrobase.pcx");
@@ -80,15 +81,19 @@ void GameWorld::LoadAssets()
 	assetManager->Load("Models/bananaTree/bananaTree.obj");
 
 	assetManager->Load("Models/tree1/tree1.obj");
+
+	assetManager->Load("Models/chapel/chapel.obj");
+
+	assetManager->Load("Models/ruralStall/ruralStall.obj");
 }
 
 //--------------------------------------------------------------------------------------
 
 bool GameWorld::CreateTerrain()
 {	
-	m_terrain->SetScaleFactor(1.0f,0.5f,1.0f);
+	m_terrain->SetScaleFactor(1.0f,0.25f,1.0f);
 	//m_terrain->GenFaultFormation(100, 512,1,125,0.1f,false);
-	if(m_terrain->LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmapa.bmp"))) {
+	if(m_terrain->LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmap.bmp"))) {
 		m_terrain->SetDetailMap(graphics->SetupTextureBasic((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
 		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowestTile.tga"));
 		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
@@ -149,30 +154,50 @@ void GameWorld::CreateObjects()
 	m_objects["soldier"]->SetAnimation(RUN);
 
 	m_objects["house1"] = m_objFactory.Create("model");
-	m_objects["house1"]->SetPos(85, m_terrain->GetHeightAverage(85,15),15);
+	m_objects["house1"]->SetPos(200, m_terrain->GetHeightAverage(200, 150), 150);
 	m_objects["house1"]->SetMesh(assetManager->GetAsset("Models/house1/house1.obj"));
 	m_objects["house1"]->SetScale(0.25f, 0.25f, 0.25f);
 	m_objects["house1"]->SetAABB();
 
 	m_objects["bananaTree"] = m_objFactory.Create("model");
-	m_objects["bananaTree"]->SetPos(15, m_terrain->GetHeightAverage(15,85),85);
+	m_objects["bananaTree"]->SetPos(210, m_terrain->GetHeightAverage(210,180),180);
 	m_objects["bananaTree"]->SetMesh(assetManager->GetAsset("Models/bananaTree/bananaTree.obj"));
-	m_objects["bananaTree"]->SetScale(0.025f, 0.025f, 0.025f);
+	m_objects["bananaTree"]->SetScale(0.025f, 0.05f, 0.025f);
 	m_objects["bananaTree"]->SetAABB();
 
+	m_objects["bananaTree2"] = m_objFactory.Create("model");
+	m_objects["bananaTree2"]->SetPos(190, m_terrain->GetHeightAverage(190,180),180);
+	m_objects["bananaTree2"]->SetMesh(assetManager->GetAsset("Models/bananaTree/bananaTree.obj"));
+	m_objects["bananaTree2"]->SetAABB();
 
-	//m_objects["tree1"] = m_objFactory.Create("model");
-	//m_objects["tree1"]->SetPos(65, terrain->GetHeightAverage(65,65),65);
-	//m_objects["tree1"]->SetMesh(assetManager->GetAsset("Models/tree1/tree1.obj"));
-	//m_objects["tree1"]->SetScale(0.025f, 0.025f, 0.025f);
-	//m_objects["tree1"]->SetAABB();
+	m_objects["chapel"] = m_objFactory.Create("model");
+	m_objects["chapel"]->SetPos(250, m_terrain->GetHeightAverage(250,200)+10,200);
+	m_objects["chapel"]->SetMesh(assetManager->GetAsset("Models/chapel/chapel.obj"));
+	m_objects["chapel"]->SetScale(0.025f, 0.025f, 0.025f);
+	m_objects["chapel"]->SetAABB();
+
+	m_objects["ruralStall"] = m_objFactory.Create("model");
+	m_objects["ruralStall"]->SetPos(230, m_terrain->GetHeightAverage(230, 250), 250);
+	m_objects["ruralStall"]->SetMesh(assetManager->GetAsset("Models/ruralStall/ruralStall.obj"));
+	m_objects["ruralStall"]->SetScale(0.05f, 0.05f, 0.05f);
+	m_objects["ruralStall"]->SetAABB();
+
+	m_objects["tree1"] = m_objFactory.Create("model");
+	m_objects["tree1"]->SetPos(250, m_terrain->GetHeightAverage(250,450),450);
+	m_objects["tree1"]->SetMesh(assetManager->GetAsset("Models/tree1/tree1.obj"));
+	m_objects["tree1"]->SetScale(0.025f, 0.025f, 0.025f);
+	m_objects["tree1"]->SetAABB();
 
 	//m_objects["player"] = obj;
+	
 	m_objects["player"] = m_objFactory.Create("player");
 	m_objects["player"]->SetPos(m_terrain->GetSize()/2,
 		m_terrain->GetHeightAverage(m_terrain->GetSize()/2, m_terrain->GetSize()-20),
 		m_terrain->GetSize()-20);
 	m_objects["player"]->SetAABB();
+
+	m_water.Init(1024.0f);
+	m_water.SetColour(0.0f, 1.0f, 1.0, 0.8f);
 
 }
 
@@ -196,6 +221,10 @@ void GameWorld::Render()
 	m_skybox.Set(0.0f, 0.0f, 0.0f, 1024.0f);
 	m_skybox.Render();
 
+	m_water.Render(true);
+	m_water.CalcNormals();
+	m_water.Update(100.0f);
+
 	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
 		if(it->second->GetObjectType() != "PLAYER") {
 			it->second->SetY(m_terrain->GetHeightAverage(it->second->GetX(), it->second->GetZ()));
@@ -217,7 +246,13 @@ void GameWorld::Update()
 	for(objIter it1 = m_objects.begin(); it1 != m_objects.end(); it1++) {
 		for(objIter it2 = it1; it2 != m_objects.end(); it2++) {
 			if(it1 != it2) {
-				it1->second->TestCollision(it2->second);
+				if(it1->second->TestCollision(it2->second)){
+					if(it1->second->GetObjectType() != "npc")
+						it1->second->SetX(it2->second->GetX()+10);
+					
+					
+				}
+				//it1->second->TestCollision(it2->second);
 			}
 		}
 	}

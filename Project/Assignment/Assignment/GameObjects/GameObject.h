@@ -1,6 +1,5 @@
 #ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
-
+#define GAMEOBJECT_H 
 
 #include "../Extras/Vector3D.h"
 #include "../AssetManagement/Mesh.h"
@@ -73,8 +72,8 @@ public:
 
 	void DrawAABB();
 
-	void TestCollision(GameObject* obj);
-	
+	bool TestCollision(GameObject* obj);
+
 protected:
 	Vector3D m_Position;
 	Vector3D m_velocity;
