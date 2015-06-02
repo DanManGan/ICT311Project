@@ -68,7 +68,6 @@ bool Terrain::LoadHeightfield(char *file, const int size)
 
 //--------------------------------------------------------------------------------------
 
-/// NOT WORKING NEEDS FIXING
 bool Terrain::LoadHeightfield(Texture* file)
 {
 	if(m_terrainData)
@@ -90,11 +89,6 @@ bool Terrain::LoadHeightfield(Texture* file)
 		count++;
 	}
 	m_terrainData = d;
-	//m_terrainData = file->GetData();
-
-
-
-	//m_size = file->GetWidth();
 
 	return true;
 }
@@ -402,7 +396,7 @@ void Terrain::SetSlopeLightingParams(int dirx,int dirz,float minB,float maxB,flo
 bool Terrain::CreateSlopeLighting()
 {
 	m_lighting.SetLightingType(SLOPE_LIGHT);
-	return m_lighting.CreateSlopeLighting(m_terrainData, m_size);
+	return m_lighting.CreateSlopeLighting(m_terrainData, m_size+20);
 }
 
 //--------------------------------------------------------------------------------------

@@ -253,6 +253,7 @@ bool TerrainLighting::CreateSlopeLighting(unsigned char *heightmap, int mapSize)
 {
 	float fShade;
 	int x, z;
+	int count = 0;
 
 	//if using light map or height map empty
 	if(!heightmap || m_lightingType == LIGHTMAP)
@@ -280,11 +281,13 @@ bool TerrainLighting::CreateSlopeLighting(unsigned char *heightmap, int mapSize)
 						- GetValueAtPoint(heightmap, mapSize, x, z)) / m_softness;
 			}
 
-			if( fShade<m_minBrightness )
+			if( fShade < m_minBrightness ) {
 				fShade= m_minBrightness;
+			}
 			if( fShade>m_maxBrightness )
 				fShade= m_maxBrightness;
 			SetBrightnessAtPoint( x, z, ( unsigned char )( fShade*255 ) );
+			count++;
 		}
 	}
 
