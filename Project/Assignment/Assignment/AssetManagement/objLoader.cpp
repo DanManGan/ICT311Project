@@ -11,7 +11,7 @@
 
 #include <string>
 #include <iostream>
-
+//////////////////////////////////////////////////////
 
 GameAsset* objLoader::Create(char* filePath)
 {
