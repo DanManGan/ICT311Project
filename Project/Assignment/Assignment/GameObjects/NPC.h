@@ -23,6 +23,8 @@ public:
 	void ChangeState(State *newState);
 	void Render();
 
+
+
 protected:
 
 	Movement* m_move;
