@@ -35,6 +35,9 @@
 #include <map>
 #include <string>
 
+#include <lua/lua.hpp>
+#include <luabind/luabind.hpp>
+
 class GameWorld
 {
 public:
@@ -90,6 +93,8 @@ public:
 	bool CreateTerrain();
 
 	void CreateObjects();
+
+	void LoadScripts();
 
 	/** 
 	  * @brief Call object render functions
@@ -216,6 +221,8 @@ private:
 
 	GameObjectFactory m_objFactory;
 	Skybox m_skybox; 
+
+	lua_State* lState;
 };
 
 

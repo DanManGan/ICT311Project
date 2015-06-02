@@ -396,7 +396,7 @@ void Terrain::SetSlopeLightingParams(int dirx,int dirz,float minB,float maxB,flo
 bool Terrain::CreateSlopeLighting()
 {
 	m_lighting.SetLightingType(SLOPE_LIGHT);
-	return m_lighting.CreateSlopeLighting(m_terrainData, m_size+20);
+	return m_lighting.CreateSlopeLighting(m_terrainData, m_size);
 }
 
 //--------------------------------------------------------------------------------------

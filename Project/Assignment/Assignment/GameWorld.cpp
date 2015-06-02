@@ -99,7 +99,7 @@ bool GameWorld::CreateTerrain()
 		m_terrain->SetNumTerrainTexRepeat(1);
 		m_terrain->SetNumDetailMapRepeat(12);
 		m_terrain->SetLightingColor(1.0f, 1.0f, 1.0f);
-		m_terrain->SetSlopeLightingParams( 1, 1, 0.5f, 1.0f, 500.0f );
+		m_terrain->SetSlopeLightingParams( 1, 1, 0.5f, 1.0f, 100.0f );
 		m_terrain->CreateSlopeLighting();
 
 		return true;
