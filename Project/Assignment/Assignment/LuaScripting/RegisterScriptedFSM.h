@@ -8,7 +8,9 @@
 #include "../GameObjects/Player.h"
 #include "../GameObjects/NPC.h"
 
+//#include <lua/lua.hpp>
 #include <lua/lua.hpp>
+//#include <luabind/luabind.hpp>
 #include <luabind/luabind.hpp>
 
 

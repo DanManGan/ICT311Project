@@ -3,8 +3,11 @@
 #define NPC_H
 
 #include "GameObject.h"
+#include "../Extras/Vector3D.h"
 #include "../AI/Movement.h"
-#include "../AI/State.h"
+#include "../AI/Waypoint.h"
+#include "../AI/StateMachine.h"
+
 
 class NPC : public GameObject
 {
@@ -20,8 +23,21 @@ public:
 
 	void Animate(float deltaT);
 	void SetAnimation(AnimationState state);
-	void ChangeState(State *newState);
+	//void ChangeState(State *newState);
 	void Render();
+/////////////////////////////////////////////////////////
+	StateMachine<NPC>* m_npcFSM;
+	StateMachine<NPC>* GetFSM()const;
+	void SetCurrentState(const luabind::object &state);
+
+	void AddWaypoints(Waypoint<Vector3D> wp);
+	void AddWaypoint(const Vector3D& wayPt);
+	void AssignPatroller();
+	void UpdateAI(float timeElapsed);
+	void WaypointFollow();
+    //vector2D getWaypoint(unsigned short wayPointNo);
+	int GetNumWaypoints();
+	void SetCurwayPointNo(int num);
 
 
 
@@ -31,7 +47,10 @@ protected:
 
 private:
 	int m_Health;
-	State *m_CurrentState;
+	//State *m_CurrentState;
+	Waypoint<Vector3D> m_waypoints;
+	int m_curwayPointNo;
+	float m_aiTime;
 };
 
 #endif

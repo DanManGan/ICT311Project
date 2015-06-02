@@ -74,6 +74,9 @@ public:
 	void DrawAABB();
 
 	void TestCollision(GameObject* obj);
+
+	void SetID(int id);
+	int GetID();
 	
 protected:
 	Vector3D m_Position;
@@ -82,7 +85,7 @@ protected:
 	Mesh* m_model;
 	float m_base;
 	AABB m_boundingBox;
-
+	int m_id;
 private:
 
 	int m_ModelSize;
