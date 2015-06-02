@@ -30,6 +30,7 @@
 #include "AssetManagement/md2.h"
 #include "GameObjects/GameObject.h"
 #include "GameObjects/GameObjectFactory.h"
+#include "Graphics/Skybox.h"
 
 #include <map>
 #include <string>
@@ -62,6 +63,17 @@ public:
 	  */
 	~GameWorld();
 
+    /** 
+	  * @brief Load world object textures
+	  * @warning None
+	  * 
+	  * Loads the textures to be used for the world objects
+	  * 
+	  * 
+	  * @pre 
+	  * @post 
+	  */ 
+	void LoadAssets();
 
 	/** 
 	  * @brief Load World objects
@@ -75,19 +87,9 @@ public:
 	  * @pre 
 	  * @post 
 	  */ 
-	bool LoadWorld();
+	bool CreateTerrain();
 
-    /** 
-	  * @brief Load world object textures
-	  * @warning None
-	  * 
-	  * Loads the textures to be used for the world objects
-	  * 
-	  * 
-	  * @pre 
-	  * @post 
-	  */ 
-	void LoadWorldTexture(GameObject* obj);
+	void CreateObjects();
 
 	/** 
 	  * @brief Call object render functions
@@ -153,66 +155,7 @@ public:
 	  * @post 
 	  */ 
 	float GetWorldSize();
-	
-	/** 
-	  * @brief Apply normal texture map to terrain
-	  * @warning None
-	  * 
-	  * Applies a normal texture map to the terrain instead of
-	  * a procedural texture
-	  * 
-	  * @return bool value true to indicate success
-	  * 
-	  * 
-	  * @pre 
-	  * @post 
-	  */ 
-	bool TextureMapNormal();
 
-	/** 
-	  * @brief Apply procedural texture map to terrain
-	  * @warning None
-	  * 
-	  * Applies a procedural texture map to the terrain instead of
-	  * a normal texture
-	  * 
-	  * @return bool value true to indicate success
-	  * 
-	  * 
-	  * @pre 
-	  * @post 
-	  */ 
-	bool TextureMapProcedural();
-
-	/** 
-	  * @brief Load Fault Formation Terrian
-	  * @warning None
-	  * 
-	  * Loads a new terrain created by the fault formation algorithm in
-	  * the terrain class
-	  * 
-	  * @return bool value true to indicate success
-	  * 
-	  * 
-	  * @pre 
-	  * @post 
-	  */ 
-	bool GenFaultFormTerrain();
-
-	/** 
-	  * @brief Load Height map Terrian
-	  * @warning None
-	  * 
-	  * Loads a new terrain defined by a height map in
-	  * the terrain class
-	  * 
-	  * @return bool value true to indicate success
-	  * 
-	  * 
-	  * @pre 
-	  * @post 
-	  */ 
-	bool LoadHeightMapTerrain();
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -272,7 +215,7 @@ private:
 	objects m_objects;
 
 	GameObjectFactory m_objFactory;
-
+	Skybox m_skybox; 
 };
 
 
