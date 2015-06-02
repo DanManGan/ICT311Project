@@ -22,7 +22,7 @@ void md2Model::Render(Vector3D position, float yaw)
 
 	graphics->PushMatrix();
 		graphics->LightOn(LIGHT0);
-		graphics->Translate(position.x, position.y, position.z);
+		graphics->Translate(position.x, position.y+m_base, position.z);
 		graphics->Rotate(-yaw, 0.0f, 1.0f, 0.0f);
 
 		if(m_skinID) {

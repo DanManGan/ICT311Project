@@ -9,7 +9,14 @@
 #include "GameObjects/Model.h"
 #include "GameObjects/Player.h"
 #include "GameObjects/Terrain.h"
+#include "LuaScripting/RegisterScriptedFSM.h"
+#include "AI/Waypoint.h"
+
 #include <iostream>
+
+#include <luabind/adopt_policy.hpp>
+#include <lua/lua.hpp>
+#include <luabind/luabind.hpp>
 
 //--------------------------------------------------------------------------------------
 
@@ -39,6 +46,7 @@ GameWorld::~GameWorld()
 
 	//delete m_player;
 	//m_player = nullptr;
+	lua_close(lState);
 }
 
 //--------------------------------------------------------------------------------------
@@ -112,6 +120,13 @@ bool GameWorld::CreateTerrain()
 
 void GameWorld::CreateObjects()
 {
+	Waypoint<Vector3D> waypoints;
+
+	waypoints.AddWaypoint(Vector3D(200.0f ,m_terrain->GetHeightAverage(200.0f,200.0f), 200.0f));
+	waypoints.AddWaypoint(Vector3D(250.0f, m_terrain->GetHeightAverage(250.0f,250.0f), 250.0f));
+	waypoints.AddWaypoint(Vector3D(20.0f, m_terrain->GetHeightAverage(20.0f,250.0f), 250.0f));
+	waypoints.AddWaypoint(Vector3D(250.0f, m_terrain->GetHeightAverage(250.0f,20.0f), 20.0f));
+
 	m_objects["ogro"] = m_objFactory.Create("npc");
 	m_objects["ogro"]->SetPos(52,m_terrain->GetHeightAverage(52,92),92);
 	m_objects["ogro"]->SetMesh(assetManager->GetAsset("Models/Ogro/Tris.md2"));
@@ -120,6 +135,7 @@ void GameWorld::CreateObjects()
 	m_objects["ogro"]->SetBase();
 	m_objects["ogro"]->SetAABB();
 	m_objects["ogro"]->SetAnimation(RUN);
+	((NPC*)m_objects["ogro"])->AddWaypoints(waypoints);
 
 	//m_objects["tank"] = m_objFactory.Create("npc");
 	//m_objects["tank"]->SetMesh(assetManager->GetAsset("Models/tank/tris.md2"));
@@ -138,6 +154,7 @@ void GameWorld::CreateObjects()
 	m_objects["berserk"]->SetBase();
 	m_objects["berserk"]->SetAABB();
 	m_objects["berserk"]->SetAnimation(RUN);
+	((NPC*)m_objects["berserk"])->AddWaypoints(waypoints);
 
 	m_objects["soldier"] = m_objFactory.Create("npc");
 	m_objects["soldier"]->SetPos(20,m_terrain->GetHeightAverage(20,20),20);
@@ -174,6 +191,56 @@ void GameWorld::CreateObjects()
 		m_terrain->GetSize()-20);
 	m_objects["player"]->SetAABB();
 
+}
+
+//--------------------------------------------------------------------------------------
+
+void GameWorld::LoadScripts()
+{
+
+
+ lState = lua_open();
+//  //open the libraries
+ luaL_openlibs(lState);
+
+  luabind::open(lState);
+  RegisterScriptedStateMachine(lState);
+  RegisterNPC(lState);
+////  registerPlayer(lState);
+////  registerVector2D(lState);
+////  registerMessage(lState);
+////registerTelegram(lState);
+//  //load and run the script
+  luaL_dofile(lState, "LuaScripting/statemachine.lua");
+
+  try{
+	//luabind::globals(lState)["dude"] = dude;
+  
+ // lua_dostring(lState,"dude:getFSM():setCurrentState(state_idle)\n");
+  //dude->updateAI(5);
+  }catch(luabind::error)
+{
+	std::cout << "error trying to call lua function" << std::endl;
+}
+  catch(const std::exception &TheError) {
+    std::cout << TheError.what() << std::endl;
+  }
+  ////////luabind::object   stat = luabind::get_globals(lState);
+ luabind::object   state = luabind::globals(lState);
+  
+
+	((NPC*)m_objects["ogro"])->GetFSM()->SetCurrentState(luabind::object_cast<luabind::object>(state["state_idle"]));
+ // dude->getFSM()->setGlobalState(luabind::object_cast<luabind::object>(stat["state_global"]));
+
+ // patroller->getFSM()->setCurrentState(luabind::object_cast<luabind::object>(stat["state_patrol"]));
+ // patroller->getFSM()->setGlobalState(luabind::object_cast<luabind::object>(stat["state_global"]));
+
+ //sentry->getFSM()->setCurrentState(luabind::object_cast<luabind::object>(stat["state_patrol"]));
+ // sentry->getFSM()->setGlobalState(luabind::object_cast<luabind::object>(stat["state_global"]));
+
+// return true;
+//	getchar();
+  
 }
 
 //--------------------------------------------------------------------------------------

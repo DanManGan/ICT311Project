@@ -13,14 +13,14 @@ void RegisterScriptedStateMachine(lua_State* lState)
     luabind::module(lState)
     [
 		luabind::class_<StateMachine<NPC> >("StateMachine")
-		.def("ChangeState", &StateMachine<NPC>::ChangeState)
-        .def("SetCurrentState", &StateMachine<NPC>::SetCurrentState)
-		.def("SetPreviousState",&StateMachine<NPC>::SetPreviousState)
-		.def("SetGlobalState",&StateMachine<NPC>::SetGlobalState)
-        .def("GetCurrentState", &StateMachine<NPC>::GetCurrentState)
-		.def("GetPreviousState",&StateMachine<NPC>::GetPreviousState)
-		.def("GetGlobalState",&StateMachine<NPC>::GetGlobalState)
-		.def("RevertToPreviousState",&StateMachine<NPC>::RevertToPreviousState)
+		.def("ChangeState", &StateMachine<NPC>::ChangeState)//
+        .def("SetCurrentState", &StateMachine<NPC>::SetCurrentState)//
+		.def("SetPreviousState",&StateMachine<NPC>::SetPreviousState)//
+		.def("SetGlobalState",&StateMachine<NPC>::SetGlobalState)//
+        .def("GetCurrentState", &StateMachine<NPC>::GetCurrentState)//
+		.def("GetPreviousState",&StateMachine<NPC>::GetPreviousState)//
+		.def("GetGlobalState",&StateMachine<NPC>::GetGlobalState)//
+		.def("RevertToPreviousState",&StateMachine<NPC>::RevertToPreviousState)//
     ]; 
 }
 

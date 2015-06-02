@@ -159,11 +159,11 @@ void AABB::CreateAABB(md2* model)
 				m_max.x = model->GetFrames()[0].vertices[j].x;
 			}
 
-			if(model->GetFrames()[0].vertices[j].y < m_min.y) {
-				m_min.y = model->GetFrames()[0].vertices[j].y;
+			if(model->GetFrames()[0].vertices[j].y+model->GetBase() < m_min.y) {
+				m_min.y = model->GetFrames()[0].vertices[j].y+model->GetBase();
 			}
-			if(model->GetFrames()[0].vertices[j].y > m_max.y) {
-				m_max.y = model->GetFrames()[0].vertices[j].y;
+			if(model->GetFrames()[0].vertices[j].y+model->GetBase() > m_max.y) {
+				m_max.y = model->GetFrames()[0].vertices[j].y+model->GetBase();
 			}
 
 			if(model->GetFrames()[0].vertices[j].z < m_min.z) {

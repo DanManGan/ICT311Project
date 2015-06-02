@@ -36,34 +36,33 @@ NPC::~NPC()
 void NPC::SetAnimation(AnimationState state)
 {
 	m_model->SetAnimation(state);
-	//m_velocity.z = m_model->GetModelSpeed(); ///////////////////////// Set speed
+	//m_velocity.Set(m_model->GetModelSpeed(), 0.0f, m_model->GetModelSpeed());
+	m_velocity.z = m_model->GetModelSpeed(); ///////////////////////// Set speed
 	
 }
 
 void NPC::Animate(float deltaT)
 {
 
-	Vector3D temp(50, 50, 50);
+	//Vector3D temp(50, 50, 50);
 	//Vector3D temp(111, 111, 111);
-
+	m_aiTime = deltaT;
 	m_model->Animate(deltaT);
 	//m_yaw = 0.0f;
 	//
-	m_move->MoveTo(m_Position, temp, m_velocity, deltaT);
+	//m_move->MoveTo(m_Position, temp, m_velocity, deltaT);
 
-	Vector3D pos = temp - m_Position;
+
+	m_npcFSM->Update();
+
+	//Vector3D pos = temp - m_Position;
 	//m_velocity.Print();
-		m_yaw = m_move->CalcYaw(m_Position, temp, m_velocity);
+		m_yaw = m_move->CalcYaw(m_Position, 
+			m_waypoints.GetWaypoint(m_curwayPointNo), m_velocity);
 		
 		//std::cout << "yaw: " << m_yaw << std::endl;
 	//getchar();
 
-	//m_velocity.z = 0.5f;
-	//m_velocity.x = 0.5f;
-	//m_velocity.Print();
-	//m_velocity.z = m_model->GetModelSpeed(); ///////////////////////// Set speed
-	//m_yaw -= 0.5f; /////////////////////////////// Set rotation
-	//UpdatePosition(deltaT);
 }
 
 void NPC::Render()
@@ -114,6 +113,11 @@ void NPC::UpdateAI(float timeElapsed)
 
 void NPC::WaypointFollow()
 {
+	std::cout << "NPC Position: ";
+	m_Position.Print();
+	std::cout << "NPC Waypoint: ";
+	m_waypoints.GetWaypoint(m_curwayPointNo).Print();
+
 	if(m_move->MoveTo(m_Position, m_waypoints.GetWaypoint(m_curwayPointNo), m_velocity, m_aiTime, 0))
 	{ 
 		if(m_curwayPointNo== m_waypoints.GetNumWaypoints()-1)

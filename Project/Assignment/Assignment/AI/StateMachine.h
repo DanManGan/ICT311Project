@@ -13,6 +13,8 @@ class StateMachine
 public:
 	StateMachine(T* obj)
 	{
+		std::cout << "StateMachine constructor" << std::endl;
+	//getchar();
 		m_Object = obj;
 	};
 
@@ -28,10 +30,14 @@ public:
 	
 	void Update()
 	{
+		std::cout << "Update Called" << std::endl;
 		if(m_GlobalState.is_valid())
 			m_GlobalState["Execute"](m_Object);
-		if(m_CurrentState.is_valid())
+		
+		if(m_CurrentState.is_valid()) {
 			m_CurrentState["Execute"](m_Object);
+			std::cout << "State Valid" << std::endl;
+		}
 	}
 
 	void ChangeState(const luabind::object& newState)

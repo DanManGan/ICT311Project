@@ -69,7 +69,7 @@ void GameObject::SetX(float x)
 
 void GameObject::SetY(float y)
 {
-	m_Position.y = y + m_base;
+	m_Position.y = y;// + m_base;
 }
 
 void GameObject::SetZ(float z)
@@ -80,12 +80,12 @@ void GameObject::SetZ(float z)
 void GameObject::SetPos(Vector3D newPos)
 {
 	m_Position = newPos;
-	m_Position.y += m_base;
+	//m_Position.y += m_base;
 }
 
 void GameObject::SetPos(float xPos, float yPos, float zPos)
 {
-	m_Position.Set(xPos, yPos + m_base, zPos);
+	m_Position.Set(xPos, yPos/* + m_base*/, zPos);
 }
 
 void GameObject::SetVelocity(float velX, float velY, float velZ)
@@ -96,7 +96,7 @@ void GameObject::SetVelocity(float velX, float velY, float velZ)
 void GameObject::SetPosition(float x, float y, float z)
 {
 	m_Position.x += x;
-	m_Position.y += (y + m_base);
+	m_Position.y += y;//(y + m_base);
 	m_Position.z += z;
 }
 

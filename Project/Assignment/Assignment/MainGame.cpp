@@ -50,6 +50,7 @@ void MainGame::Init()
 	graphics->SetWindowTitle("ICT311 Assignemnt");
 	graphics->Init();
 	gameWorld->CreateObjects();
+	gameWorld->LoadScripts();
 
 	m_player = (Player*)gameWorld->GetPlayer();
 

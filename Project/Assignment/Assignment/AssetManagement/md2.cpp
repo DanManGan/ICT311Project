@@ -69,7 +69,6 @@ md2::md2(char* name, md2Header *header, frame* frames,
 	m_timesAnimated(0),
 	m_animationSpeed(0),
 	m_modelSpeed(0),
-	m_base(0),
 	m_skinID(0)
 {
 	timer.Init();
