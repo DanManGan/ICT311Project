@@ -1,7 +1,10 @@
 #ifndef STATEMACHINE_H
 #define STATEMACHINE_H
 
-#include <lua.h>
+//#include <lua.hpp>
+//#include <luabind\luabind.hpp>
+
+#include <lua\lua.hpp>
 #include <luabind\luabind.hpp>
 
 template <class T>
@@ -18,8 +21,10 @@ public:
 		m_Object = NULL;
 	}
 
-	void SetCurrentState(const luabind::object* state { m_CurrentState = state; }
-	void SetGlobalState(const luabind::object* state { m_GlobalState = state; m_GlobalState["Enter"](m_Object); }
+	//use the following methods to intialise the FSM
+	void SetPreviousState(const luabind::object& state){m_PreviousState=state;} 
+	void SetCurrentState(const luabind::object& state) { m_CurrentState = state; }
+	void SetGlobalState(const luabind::object& state) { m_GlobalState = state; /*m_GlobalState["Enter"](m_Object);*/ }
 	
 	void Update()
 	{

@@ -6,16 +6,22 @@
 NPC::NPC() :
 	GameObject(),
 	m_Health(0),
-	m_move(new Movement())
+	m_move(new Movement()),
+	m_curwayPointNo(0),
+	m_aiTime(0.0f)
 {
+	m_npcFSM=new StateMachine<NPC>(this);
 	m_velocity.Set(0.0f, 0.5f, 0.0f);
+	m_waypoints.ClearAllWaypoints();
 }
 
 NPC::NPC(char* objectName, float xPos, 
 			float yPos, float zPos) :
 	GameObject(objectName, xPos, yPos, zPos),
 	m_Health(0),
-	m_move(new Movement())
+	m_move(new Movement()),
+	m_curwayPointNo(0),
+	m_aiTime(0.0f)
 {
 	m_velocity.Set(0.0f, 0.5f, 0.0f);
 }
@@ -65,9 +71,64 @@ void NPC::Render()
 	m_model->Render(m_Position, m_yaw);
 }
 
-void NPC::ChangeState(State *newState)
+//void NPC::ChangeState(State *newState)
+//{
+//	m_CurrentState->Exit(this);
+//	m_CurrentState = newState;
+//	m_CurrentState->Enter(this);
+//}
+
+StateMachine<NPC>* NPC::GetFSM()const
 {
-	m_CurrentState->Exit(this);
-	m_CurrentState = newState;
-	m_CurrentState->Enter(this);
+	return m_npcFSM;
+}
+
+void NPC::SetCurrentState(const luabind::object &state)
+{
+	m_npcFSM->SetCurrentState(state);
+}
+
+void NPC::AddWaypoints(Waypoint<Vector3D> wp)
+{
+	m_waypoints = wp;
+	std::cout << "Waypoints Added" << std::endl;
+	std::cout << m_waypoints << std::endl;
+}
+
+void NPC::AddWaypoint(const Vector3D& wayPt)
+{
+	m_waypoints.AddWaypoint(wayPt);
+	
+}
+
+void NPC::AssignPatroller()
+{
+
+}
+
+void NPC::UpdateAI(float timeElapsed)
+{
+	m_aiTime = timeElapsed;
+	//m_npcFSM->Update();
+}
+
+void NPC::WaypointFollow()
+{
+	if(m_move->MoveTo(m_Position, m_waypoints.GetWaypoint(m_curwayPointNo), m_velocity, m_aiTime, 0))
+	{ 
+		if(m_curwayPointNo== m_waypoints.GetNumWaypoints()-1)
+			m_curwayPointNo = 0;
+		else
+		    m_curwayPointNo++;    
+	}
+}
+
+int NPC::GetNumWaypoints()
+{
+	return m_waypoints.GetNumWaypoints();
+}
+
+void NPC::SetCurwayPointNo(int num)
+{
+	m_curwayPointNo = num;
 }

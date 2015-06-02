@@ -270,3 +270,14 @@ void GameObject::TestCollision(GameObject* obj)
 	}
 
 }
+
+void GameObject::SetID(int id)
+{
+	if(id > 0)
+		m_id = id;
+}
+
+int GameObject::GetID()
+{
+	return m_id;
+}
