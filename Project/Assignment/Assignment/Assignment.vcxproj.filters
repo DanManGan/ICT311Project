@@ -55,6 +55,12 @@
     <Filter Include="Source Files\Input">
       <UniqueIdentifier>{e3531f85-6f73-4674-9358-1119ebdabbe7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\LuaScripting">
+      <UniqueIdentifier>{00e11d19-182f-4749-8856-35f156cc6b69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LuaScripting">
+      <UniqueIdentifier>{ab8f6774-e843-4063-9bbd-709ae0a79c7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Singletons.h">
@@ -204,6 +210,12 @@
     <ClInclude Include="GameObjects\Terrain.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="LuaScripting\RegisterScriptedFSM.h">
+      <Filter>Header Files\LuaScripting</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\Waypoint.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -334,6 +346,9 @@
     </ClCompile>
     <ClCompile Include="GameObjects\Terrain.cpp">
       <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaScripting\RegisterScriptedFSM.cpp">
+      <Filter>Source Files\LuaScripting</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

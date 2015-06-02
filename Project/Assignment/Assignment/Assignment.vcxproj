@@ -84,6 +84,7 @@
     <ClInclude Include="AI\Movement.h" />
     <ClInclude Include="AI\State.h" />
     <ClInclude Include="AI\StateMachine.h" />
+    <ClInclude Include="AI\Waypoint.h" />
     <ClInclude Include="AssetManagement\bmp.h" />
     <ClInclude Include="AssetManagement\bmpLoader.h" />
     <ClInclude Include="AssetManagement\Camera.h" />
@@ -127,6 +128,7 @@
     <ClInclude Include="Graphics\TerrainModel.h" />
     <ClInclude Include="Graphics\ViewOpenGL.h" />
     <ClInclude Include="Input\InputGLFW.h" />
+    <ClInclude Include="LuaScripting\RegisterScriptedFSM.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Singletons.h" />
     <ClInclude Include="GameWorld.h" />
@@ -172,6 +174,7 @@
     <ClCompile Include="Graphics\TerrainModel.cpp" />
     <ClCompile Include="Graphics\ViewOpenGL.cpp" />
     <ClCompile Include="Input\InputGLFW.cpp" />
+    <ClCompile Include="LuaScripting\RegisterScriptedFSM.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="GameWorld.cpp" />
