@@ -22,9 +22,12 @@
   */
 
 #include "MainGame.h"
+#include <gl/glut.h>
 
-int main()
+int main(int argc, char **argv)
 {
+	//glutInit(&argc, argv); // this is needed for screen text
+
 	MainGame game; // create instance
 
 	game.Run(); // run game

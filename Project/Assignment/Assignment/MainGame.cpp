@@ -57,8 +57,10 @@ void MainGame::Init()
 
 	m_player = (Player*)gameWorld->GetPlayer();
 
-	m_menu = assetManager->Load("Textures/menu.bmp");
-	m_exitID = assetManager->Load("Textures/exitScreen.bmp");
+	//m_menu = assetManager->Load("Textures/menu.bmp");
+	//m_exitID = assetManager->Load("Textures/exitScreen.bmp");
+	m_menu = graphics->SetupTextureClamp(assetManager->GetAsset("Textures/menu.bmp"));
+	m_exitID = graphics->SetupTextureClamp(assetManager->GetAsset("Textures/exitScreen.bmp"));
 	//if(!m_menu)
 	//	std::cout << "Error Loading menu texture" << std::endl;
 	

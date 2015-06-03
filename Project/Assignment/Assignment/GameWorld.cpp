@@ -80,8 +80,8 @@ void GameWorld::LoadAssets()
 	assetManager->Load("Models/soldier/tris.md2");
 	assetManager->Load("Models/soldier/skin.pcx");
 
-	assetManager->Load("Models/tank/tris.md2");
-	assetManager->Load("Models/tank/skin.pcx");
+	assetManager->Load("Models/mutant/tris.md2");
+	assetManager->Load("Models/mutant/skin.pcx");
 
 	assetManager->Load("Models/house1/house1.obj");
 
@@ -97,6 +97,9 @@ void GameWorld::LoadAssets()
 	assetManager->Load("Models/number_3/number_3.obj");
 	assetManager->Load("Models/number_4/number_4.obj");
 	assetManager->Load("Models/number_5/number_5.obj");
+
+	assetManager->Load("Textures/menu.bmp");
+	assetManager->Load("Textures/exitScreen.bmp");
 }
 
 //--------------------------------------------------------------------------------------
@@ -149,14 +152,24 @@ void GameWorld::CreateObjects()
 	m_objects["ogro"]->SetAnimation(RUN);
 	((NPC*)m_objects["ogro"])->AddWaypoints(waypoints);
 
-	//m_objects["tank"] = m_objFactory.Create("npc");
-	//m_objects["tank"]->SetMesh(assetManager->GetAsset("Models/tank/tris.md2"));
-	//m_objects["tank"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/tank/skin.pcx")));
-	//m_objects["tank"]->SetPos(15,terrain->GetHeightAverage(15,15),15);
-	//m_objects["tank"]->SetScale(0.25f, 0.25f, 0.25f);
-	//m_objects["tank"]->SetBase();
-	//m_objects["tank"]->SetAABB();
-	//m_objects["tank"]->SetAnimation(RUN);
+
+	waypoints.ClearAllWaypoints();
+	waypoints.AddWaypoint(Vector3D(210.0f, m_terrain->GetHeightAverage(210.0f,270.0f), 270.0f));
+	waypoints.AddWaypoint(Vector3D(405.0f, m_terrain->GetHeightAverage(405.0f,95.0f), 95.0f));
+	waypoints.AddWaypoint(Vector3D(110.0f, m_terrain->GetHeightAverage(110.0f,425.0f), 425.0f));
+	waypoints.AddWaypoint(Vector3D(360.0f, m_terrain->GetHeightAverage(360.0f,405.0f), 405.0f));
+	waypoints.AddWaypoint(Vector3D(210.0f, m_terrain->GetHeightAverage(210.0f,270.0f), 270.0f));
+	waypoints.AddWaypoint(Vector3D(50.0f ,m_terrain->GetHeightAverage(50.0f,70.0f), 70.0f));
+
+	m_objects["mutant"] = m_objFactory.Create("npc");
+	m_objects["mutant"]->SetMesh(assetManager->GetAsset("Models/mutant/tris.md2"));
+	m_objects["mutant"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/mutant/skin.pcx")));
+	m_objects["mutant"]->SetPos(215,m_terrain->GetHeightAverage(215,215),215);
+	m_objects["mutant"]->SetScale(0.25f, 0.25f, 0.25f);
+	m_objects["mutant"]->SetBase();
+	m_objects["mutant"]->SetAABB();
+	m_objects["mutant"]->SetAnimation(RUN);
+	((NPC*)m_objects["mutant"])->AddWaypoints(waypoints);
 
 	waypoints.ClearAllWaypoints();
 	waypoints.AddWaypoint(Vector3D(110.0f, m_terrain->GetHeightAverage(110.0f,425.0f), 425.0f));
@@ -266,18 +279,18 @@ void GameWorld::LoadScripts()
 //  //load and run the script
   luaL_dofile(lState, "LuaScripting/statemachine.lua");
 
-  try{
-	//luabind::globals(lState)["dude"] = dude;
-  
- // lua_dostring(lState,"dude:getFSM():setCurrentState(state_idle)\n");
-  //dude->updateAI(5);
-  }catch(luabind::error)
-{
-	std::cout << "error trying to call lua function" << std::endl;
-}
-  catch(const std::exception &TheError) {
-    std::cout << TheError.what() << std::endl;
-  }
+//  try{
+//	//luabind::globals(lState)["dude"] = dude;
+//  
+// // lua_dostring(lState,"dude:getFSM():setCurrentState(state_idle)\n");
+//  //dude->updateAI(5);
+//  }catch(luabind::error)
+//{
+//	std::cout << "error trying to call lua function" << std::endl;
+//}
+//  catch(const std::exception &TheError) {
+//    std::cout << TheError.what() << std::endl;
+//  }
   ////////luabind::object   stat = luabind::get_globals(lState);
  luabind::object   state = luabind::globals(lState);
  // getchar();
@@ -331,7 +344,7 @@ void GameWorld::Render()
 		if(it->second->GetObjectType() != "PLAYER") {
 			it->second->SetY(m_terrain->GetHeightAverage(it->second->GetX(), it->second->GetZ()));
 			it->second->Render();
-			it->second->DrawAABB();
+			//it->second->DrawAABB();
 		}
 	}
 
