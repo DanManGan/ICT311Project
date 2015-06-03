@@ -12,11 +12,13 @@ NPC::NPC() :
 	m_idleTime(0.0f),
 	m_idleStart(0.0f),
 	m_waypointCycles(0),
+	m_wanderTime(0),
 	m_targetPos(0.0f, 0.0f, 0.0f)
 {
 	m_npcFSM=new StateMachine<NPC>(this);
 	m_velocity.Set(0.0f, 0.5f, 0.0f);
 	m_waypoints.ClearAllWaypoints();
+	m_move->SetWander(5.0f, 5.0f, 2.0f);
 }
 
 NPC::NPC(char* objectName, float xPos, 
@@ -29,9 +31,11 @@ NPC::NPC(char* objectName, float xPos,
 	m_idleTime(0.0f),
 	m_idleStart(0.0f),
 	m_waypointCycles(0),
+	m_wanderTime(0),
 	m_targetPos(0.0f, 0.0f, 0.0f)
 {
 	m_velocity.Set(0.0f, 0.5f, 0.0f);
+	m_move->SetWander(5.0f, 5.0f, 2.0f);
 }
 
 NPC::~NPC()
@@ -188,6 +192,38 @@ bool NPC::IdleStateDone()
 	return false;
 }
 
+
+bool NPC::ProcessCollision()
+{
+		std::cout << "in ProcessCollision state" << std::endl;
+		std::cout << "ai: " << m_aiTime << " start: " << m_idleStart << " idle time: " << m_idleTime << std::endl;
+	//getchar();
+	if(m_idleStart >= m_idleTime) {
+		m_idleStart = 0.0f;
+		//m_yaw +=180.0f;
+		//m_curWaypointNo++;
+		m_Position.x += 5.0f;
+		m_Position.z += 5.0f;
+		m_velocity.z += 0.02f;
+		return true;
+	}
+	m_idleStart += m_aiTime;
+	return false;
+}
+
+bool NPC::Wander(float wanderTime)
+{
+	m_wanderTime += m_aiTime;
+
+	if(m_wanderTime >= wanderTime) {
+		m_wanderTime = 0.0f;
+		return true;
+	}
+	m_move->Wander(m_Position, m_velocity, m_aiTime);
+	
+		std::cout << "m_wanderTime: " << m_wanderTime << " m_aiTime: " << m_aiTime << std::endl;
+	return false;
+}
 
 void NPC::SetAnimationLua(int stateNum)
 {

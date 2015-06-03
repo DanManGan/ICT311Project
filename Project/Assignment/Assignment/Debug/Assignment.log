@@ -1,15 +1,136 @@
-﻿Build started 3/06/2015 3:50:44 PM.
+﻿Build started 3/06/2015 6:31:41 PM.
      1>Project "C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Assignment\Assignment.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\Assignment.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         All outputs are up-to-date.
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D LUABIND_DYNAMIC_LINK /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GameObjects\NPC.cpp
+         NPC.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\ai\waypoint.h(23): warning C4018: '<' : signed/unsigned mismatch
+                 c:\users\justin\uni\github\ict311project\project\assignment\assignment\ai\waypoint.h(21) : while compiling class template member function 'std::ostream &operator <<(std::ostream &,Waypoint<vectorType> &)'
+                 with
+                 [
+                     vectorType=Vector3D
+                 ]
+                 c:\users\justin\uni\github\ict311project\project\assignment\assignment\gameobjects\npc.h(59) : see reference to class template instantiation 'Waypoint<vectorType>' being compiled
+                 with
+                 [
+                     vectorType=Vector3D
+                 ]
        ManifestResourceCompile:
          All outputs are up-to-date.
        Link:
-         All outputs are up-to-date.
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.exe" /INCREMENTAL /NOLOGO irrKlang.lib lua5.1.lib luabindd.lib SOIL.lib OpenGL32.lib freeglut.lib SDL2.lib SDL2main.lib glew32.lib SOIL.lib OpenGL32.lib freeglut.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Assignment.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.lib" /MACHINE:X86 Debug\Assignment.exe.embed.manifest.res
+         Debug\Movement.obj
+         Debug\bmp.obj
+         Debug\bmpLoader.obj
+         Debug\Camera.obj
+         Debug\GameAsset.obj
+         Debug\GameAssetFactory.obj
+         Debug\GameAssetManager.obj
+         Debug\md2.obj
+         Debug\md2Header.obj
+         Debug\md2Loader.obj
+         Debug\Mesh.obj
+         Debug\multitexture.obj
+         Debug\obj.obj
+         Debug\objLoader.obj
+         Debug\pcx.obj
+         Debug\pcxLoader.obj
+         Debug\ResourceLoader.obj
+         Debug\ResourceManager.obj
+         Debug\TerrainLighting.obj
+         Debug\Texture.obj
+         Debug\textureGenerator.obj
+         Debug\tga.obj
+         Debug\tgaLoader.obj
+         Debug\tiny_obj_loader.obj
+         Debug\AudioEngine.obj
+         Debug\AABB.obj
+         Debug\Vector3D.obj
+         Debug\GameObject.obj
+         Debug\GameObjectFactory.obj
+         Debug\Model.obj
+         Debug\NPC.obj
+         Debug\Player.obj
+         Debug\Terrain.obj
+         Debug\CameraModel.obj
+         Debug\md2Model.obj
+         Debug\objModel.obj
+         Debug\Skybox.obj
+         Debug\TerrainModel.obj
+         Debug\ViewOpenGL.obj
+         Debug\InputGLFW.obj
+         Debug\RegisterScriptedFSM.obj
+         Debug\MainGame.obj
+         Debug\main.obj
+         Debug\GameWorld.obj
        Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\Assignment.exe.embed.manifest" /manifest Debug\Assignment.exe.intermediate.manifest
          All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         Assignment.vcxproj -> C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.exe
        FinalizeBuildStatus:
          Deleting file "Debug\Assignment.unsuccessfulbuild".
          Touching "Debug\Assignment.lastbuildstate".
@@ -17,4 +138,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.24
+Time Elapsed 00:00:04.69

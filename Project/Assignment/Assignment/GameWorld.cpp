@@ -167,7 +167,7 @@ void GameWorld::CreateObjects()
 	waypoints.AddWaypoint(Vector3D(50.0f ,m_terrain->GetHeightAverage(50.0f,70.0f), 70.0f));
 	
 	m_objects["berserk"] = m_objFactory.Create("npc");
-	m_objects["berserk"]->SetPos(290,m_terrain->GetHeightAverage(290,93),93);
+	m_objects["berserk"]->SetPos(400,m_terrain->GetHeightAverage(400,400),400);
 	m_objects["berserk"]->SetMesh(assetManager->GetAsset("Models/berserk/tris.md2"));
 	m_objects["berserk"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/berserk/skin.pcx")));
 	m_objects["berserk"]->SetScale(0.25f, 0.25f, 0.25f);
@@ -283,10 +283,10 @@ void GameWorld::LoadScripts()
  // getchar();
  	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
 		if(it->second->GetObjectType() == "NPC") {
-			//NPC * temp = (NPC*)it->second;
-			//temp->GetFSM()->SetCurrentState(luabind::object_cast<luabind::object>(state["state_patrol"]));
-			((NPC*)it->second)->GetFSM()->SetCurrentState(luabind::object_cast<luabind::object>(state["state_patrol"]));
-			((NPC*)it->second)->GetFSM()->SetGlobalState(luabind::object_cast<luabind::object>(state["state_global"]));
+			((NPC*)it->second)->GetFSM()->
+				SetCurrentState(luabind::object_cast<luabind::object>(state["state_patrol"]));
+			((NPC*)it->second)->GetFSM()->
+				SetGlobalState(luabind::object_cast<luabind::object>(state["state_global"]));
 			//temp = nullptr;
 		}
 	}
@@ -341,10 +341,6 @@ void GameWorld::Render()
 
 void GameWorld::Update()
 {
-	//Player* temp =	(Player*)m_objects["AAplayer"];
-	//m_player->UpdateCamera(camVelocity, camYaw, camPitch);
-	//std::cout << "START OF COLLISION TEST" << std::endl;
-//	m_objects["player"] = obj;
 	for(objIter it1 = m_objects.begin(); it1 != m_objects.end(); it1++) {
 		for(objIter it2 = it1; it2 != m_objects.end(); it2++) {
 			if(it1 != it2) {
@@ -353,7 +349,7 @@ void GameWorld::Update()
 			}
 		}
 	}
-//	m_objects.erase("player");
+
 }
 
 //--------------------------------------------------------------------------------------

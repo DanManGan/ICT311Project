@@ -44,7 +44,10 @@ public:
 	void SetWaypointCycles(int num);
 	int GetWaypointCycles();
 
+	//bool SeePlayer();
+	bool ProcessCollision();
 
+	bool Wander(float wanderTime);
 
 protected:
 
@@ -61,6 +64,7 @@ private:
 	float m_idleTime;
 	float m_idleStart;
 	int m_waypointCycles;
+	float m_wanderTime;
 
 };
 

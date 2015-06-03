@@ -24,6 +24,36 @@
 --    BOOM = 20
 
 
+-------------------------------------------------------------------------------
+
+-- create the global state
+
+-------------------------------------------------------------------------------
+state_global = {}
+
+
+state_global["Enter"] = function(NPC)
+
+
+
+end
+
+
+state_global["Execute"] = function(NPC)
+
+	if(NPC:Collision()) then
+		print("global collision")
+		NPC:GetFSM():ChangeState(state_collision)
+	end
+
+end
+
+  
+state_global["Exit"] = function(NPC)
+
+
+
+end
 
 -------------------------------------------------------------------------------
 
@@ -107,36 +137,6 @@ state_patrol["Exit"] = function(NPC)
 end
 
 
--------------------------------------------------------------------------------
-
--- create the global state
-
--------------------------------------------------------------------------------
-state_global = {}
-
-
-state_global["Enter"] = function(NPC)
-
-
-
-end
-
-
-state_global["Execute"] = function(NPC)
-
-	if(NPC:Collision()) then
-		print("stuck in global")
-		NPC:GetFSM():ChangeState(state_collision)
-	end
-
-end
-
-  
-state_global["Exit"] = function(NPC)
-
-
-
-end
 
 
 -------------------------------------------------------------------------------
@@ -150,14 +150,14 @@ state_collision = {}
 state_collision["Enter"] = function(NPC)
 
 	NPC:SetAnimationLua(9)
-
+print ("collision Entered")
 end
 
 
 state_collision["Execute"] = function(NPC)
 	print ("collision execute")
-	if(NPC:IdleStateDone()) then
-		NPC:GetFSM():RevertToPreviousState()
+	if(NPC:ProcessCollision()) then
+		NPC:GetFSM():ChangeState(state_wander)
 		print ("collision execute complete")
 	end
 		
@@ -168,5 +168,40 @@ end
 state_collision["Exit"] = function(NPC)
 
 	print ("collision exit called")
+
+end
+
+
+-------------------------------------------------------------------------------
+
+-- create the wander state
+
+-------------------------------------------------------------------------------
+state_wander = {}
+
+
+state_wander["Enter"] = function(NPC)
+
+	NPC:SetAnimationLua(1)
+print ("wander Entered")
+end
+
+
+state_wander["Execute"] = function(NPC)
+	print ("wander execute")
+	if(NPC:Wander(5.0)) then
+		--NPC:GetFSM():RevertToPreviousState()
+		--NPC:SetCurWaypoint(3)
+		NPC:GetFSM():ChangeState(state_patrol)
+		print ("wander execute complete")
+	end
+		
+
+end
+
+  
+state_wander["Exit"] = function(NPC)
+
+	print ("wander exit called")
 
 end

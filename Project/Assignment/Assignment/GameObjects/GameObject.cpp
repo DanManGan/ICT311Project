@@ -243,7 +243,9 @@ bool GameObject::TestCollision(GameObject* obj)
 
 bool GameObject::Collision()
 {
-	bool temp = m_collision;
-	m_collision = false;
-	return temp;
+	if(m_collision) {
+		m_collision = false;
+		return true;
+	}
+	return false;
 }
