@@ -10,6 +10,7 @@
 
 int  AnimationValues[21][4] =
 {
+// {start frame, end frame, animation speed, model speed in world}
 	{   0,  39,  9, 0 },   // STAND
     {  40,  45, 10, 5 },   // RUN
     {  46,  53, 10, 0 },   // ATTACK
@@ -408,7 +409,7 @@ void md2::CalcBase()
 	//	ratio = min/height;
 	//m_base = (height * ratio) - 1.5f; //(max-min);
 		m_base = (max - min) / 2;
-	std::cout << "min " << min << " max " << max << " base " << m_base << std::endl;
+//	std::cout << "min " << min << " max " << max << " base " << m_base << std::endl;
 
 	//m_base = 8;
 }
@@ -437,6 +438,11 @@ int md2::GetNumVertices()
 frame* md2::GetFrames()
 {
 	return m_frames;
+}
+
+int md2::GetAnimationSpeed()
+{
+	return (int)m_animationSpeed;
 }
 
 Vector3D md2::calculateTriangleNormal(const Vector3D v1, const Vector3D v2, const Vector3D v3)

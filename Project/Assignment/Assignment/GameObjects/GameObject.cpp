@@ -19,6 +19,7 @@ GameObject::GameObject() :
 	m_base(0),
 	m_Position(0.0f, 0.0f, 0.0f),
 	m_velocity(0.0f, 0.0f, 0.0f),
+	m_collision(false),
 	m_boundingBox(AABB())
 {
 }
@@ -33,6 +34,7 @@ GameObject::GameObject(float xPos, float yPos, float zPos) :
 	m_base(0),
 	m_Position(xPos, yPos, zPos),
 	m_velocity(0.0f, 0.0f, 0.0f),
+	m_collision(false),
 	m_boundingBox(AABB())
 {
 }
@@ -47,6 +49,7 @@ GameObject::GameObject(char* name, float xPos, float yPos, float zPos) :
 	m_base(0),
 	m_Position(xPos, yPos, zPos),
 	m_velocity(0.0f, 0.0f, 0.0f),
+	m_collision(false),
 	m_boundingBox(AABB())
 {
 }
@@ -265,10 +268,21 @@ void GameObject::TestCollision(GameObject* obj)
 	//obj->m_Position.Print();
 	if(m_boundingBox.CheckCollision(m_Position, obj->m_boundingBox, obj->m_Position)) {
 		//std::cout << "Fuck Yeah" << std::endl;
-		this->m_Position.Set(100.0f, 0.0f, 100.0f);
-		obj->m_Position.Set(20.0f, 0.0f, 20.0f);
+		this->m_collision = true;
+		obj->m_collision = true;
 	}
+	//else {
+	//	this->m_collision = false;
+	//	obj->m_collision = false;
+	//}
 
+}
+
+bool GameObject::Collision()
+{
+	bool temp = m_collision;
+	m_collision = false;
+	return temp;
 }
 
 void GameObject::SetID(int id)

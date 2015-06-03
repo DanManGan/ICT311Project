@@ -176,7 +176,7 @@ void MainGame::ProcessInput()
 		case 'A' :
 			if(input->keyPress) {
 				//m_camera.velocity+=Vector3D(-0.1f,0.0f,0.0f);
-				m_player->UpdateVelocity(-0.1f,0.0f,0.0f);
+				m_player->UpdateVelocity(-0.2f,0.0f,0.0f);
 				if(audio->GetIsPlaying("sounds/walking.wav") == false)
 					audio->Play2D("sounds/walking.wav", false);
 			}
@@ -191,7 +191,7 @@ void MainGame::ProcessInput()
 		case 'D' :
 			if(input->keyPress)	{
 				//m_camera.velocity+=Vector3D(0.1f,0.0f,0.0f);
-				m_player->UpdateVelocity(0.1f,0.0f,0.0f);
+				m_player->UpdateVelocity(0.2f,0.0f,0.0f);
 				if(audio->GetIsPlaying("sounds/walking.wav") == false)
 					audio->Play2D("sounds/walking.wav", false);
 			}
@@ -206,7 +206,7 @@ void MainGame::ProcessInput()
 		case 'W' :
 			if(input->keyPress) {
 				//m_camera.velocity+=Vector3D(0.0f,0.0f,0.1f);
-				m_player->UpdateVelocity(0.0f,0.0f,0.1f);
+				m_player->UpdateVelocity(0.0f,0.0f,0.2f);
 				if(audio->GetIsPlaying("sounds/walking.wav") == false)
 					audio->Play2D("sounds/walking.wav", false);
 			}
@@ -221,7 +221,7 @@ void MainGame::ProcessInput()
 		case 'S' :
 			if(input->keyPress)	{
 				//m_camera.velocity+=Vector3D(0.0f,0.0f,-0.1f);
-				m_player->UpdateVelocity(0.0f,0.0f,-0.1f);
+				m_player->UpdateVelocity(0.0f,0.0f,-0.2f);
 				if(audio->GetIsPlaying("sounds/walking.wav") == false)
 					audio->Play2D("sounds/walking.wav", false);
 			}

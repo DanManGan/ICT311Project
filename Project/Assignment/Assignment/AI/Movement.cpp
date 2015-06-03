@@ -245,49 +245,11 @@ return true;
 
 float Movement::CalcYaw(Vector3D patroller, Vector3D target, Vector3D patrollerVel)
 {
-	//std::cout << "patroller" << std::endl;
-	//patroller.Print();
-	//std::cout << "target" << std::endl;
-	//target.Print();
-	//std::cout << "velocity" << std::endl;
-	//patrollerVel.Print();
-	//patrollerVel.Normalise();
-	//std::cout << "patrollerVel normalise" << std::endl;
-	//patrollerVel.Print();
-	//vector between patroller and target
+
 	Vector3D toTarget = target-patroller;
-	//Vector3D toTarget = patroller-target;
-	//distance between patroller and target
-	//std::cout << "toTarget" << std::endl;
-	//toTarget.Print();
 
-	//get heading to target
-	//toTarget.Normalise();
-	//Vector3D patrollerHeading=patrollerVel;
-	//get patrollers current heading
-	
-
-	//std::cout << "patroller" << std::endl;
-	//patroller.Print();
-	//std::cout << "toTarget" << std::endl;
-	//toTarget.Print();
-
-	////compute angle between patroller and target
-	//float angle=(float)patrollerVel.DotProduct(toTarget);
-	//std::cout << "angle: " << angle <<  std::endl;
-	//  //getting some precision problem ensure cos angle is in -1.0 to 1.0
-	//  if(angle>1.0)
-	//	  angle=1.0;
-	//  else if(angle<-1.0)
-	//      angle=-1.0;
- //   angle=RAD_TO_DEG(acos(angle)); //get heading in degrees
-
-	//float angle = patrollerVel.AngleInDegrees(toTarget);
-	
-	//float angle = toTarget.GetHeadingDegrees();
 	float angle = patrollerVel.GetHeadingDegrees();
 
-//getchar();
 	return angle;
 }
 

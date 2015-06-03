@@ -69,6 +69,8 @@ public:
 
 	virtual float GetModelSpeed() = 0;
 
+	virtual int GetAnimationSpeed();
+
 protected:
 
 	Vector3D m_scale;

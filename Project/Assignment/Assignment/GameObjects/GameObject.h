@@ -34,7 +34,7 @@ public:
 	virtual void Render()=0;
 	virtual void SetAnimation(AnimationState state) = 0;
 	virtual const char * GetObjectType() = 0;
-
+	
 
 	const float* GetModel();
 	const int GetModelSize();
@@ -61,8 +61,8 @@ public:
 	void SetX(float x);
 	void SetY(float y);
 	void SetZ(float z);
-	virtual void SetPos(Vector3D newPos);
-	virtual void SetPos(float x, float y, float z);
+	void SetPos(Vector3D newPos);
+	void SetPos(float x, float y, float z);
 
 	void SetVelocity(float velX, float velY, float velZ);
 
@@ -74,6 +74,7 @@ public:
 	void DrawAABB();
 
 	void TestCollision(GameObject* obj);
+	bool Collision();
 
 	void SetID(int id);
 	int GetID();
@@ -86,6 +87,7 @@ protected:
 	float m_base;
 	AABB m_boundingBox;
 	int m_id;
+	bool m_collision;
 private:
 
 	int m_ModelSize;

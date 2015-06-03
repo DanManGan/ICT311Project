@@ -63,14 +63,14 @@ void Camera::Animate(float deltaTime)
      float strafeSpeed = velocity.x * deltaTime;
 
 	// speed limit
-     if (speed > 1.0f)
-          speed = 1.0f;
-     if (strafeSpeed > 1.0f)
-          strafeSpeed = 1.0f;
-     if (speed < -1.0f)
-          speed = -1.0f;
-     if (strafeSpeed < -1.0f)
-          strafeSpeed = -1.0f;
+     if (speed > 2.0f)
+          speed = 2.0f;
+     if (strafeSpeed > 2.0f)
+          strafeSpeed = 2.0f;
+     if (speed < -2.0f)
+          speed = -2.0f;
+     if (strafeSpeed < -2.0f)
+          strafeSpeed = -2.0f;
 
 	 //std::cout << "Speed: " << speed << std::endl;
 	 //std::cout << "StrafeSpeed: " << strafeSpeed << std::endl;

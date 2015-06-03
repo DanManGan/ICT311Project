@@ -119,11 +119,11 @@ void Player::Animate(float deltaT)
 	m_Position = m_camera.position;
 	m_velocity = m_camera.velocity;
 	m_lookAt = m_camera.lookAt;
-	//m_yaw = m_camera.yaw;
-	//m_pitch = m_camera.pitch;
+	m_yaw = m_camera.yaw;
+	m_pitch = m_camera.pitch;
 
 	//std::cout << " After Animate" << std::endl;
-	//m_Position.Print();
+	m_Position.Print();
 	//m_velocity.Print();
 	//m_lookAt.Print();
 

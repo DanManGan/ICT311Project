@@ -17,6 +17,10 @@ Mesh::~Mesh()
 {
 }
 
+int Mesh::GetAnimationSpeed()
+{
+	return 0;
+}
 //bool Mesh::SetScale(float scaleX, float scaleY, float scaleZ);
 //{
 //	if(scaleX && scaleY && scaleZ) {

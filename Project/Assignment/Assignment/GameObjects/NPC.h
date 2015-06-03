@@ -37,7 +37,12 @@ public:
 	void WaypointFollow();
     //vector2D getWaypoint(unsigned short wayPointNo);
 	int GetNumWaypoints();
-	void SetCurwayPointNo(int num);
+	void SetCurWaypoint(int num);
+	int GetCurWaypoint();
+	bool IdleStateDone();
+	void SetAnimationLua(int stateNum);
+	void SetWaypointCycles(int num);
+	int GetWaypointCycles();
 
 
 
@@ -49,8 +54,14 @@ private:
 	int m_Health;
 	//State *m_CurrentState;
 	Waypoint<Vector3D> m_waypoints;
-	int m_curwayPointNo;
+
+	Vector3D m_targetPos;
+	int m_curWaypointNo;
 	float m_aiTime;
+	float m_idleTime;
+	float m_idleStart;
+	int m_waypointCycles;
+
 };
 
 #endif

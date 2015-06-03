@@ -151,6 +151,8 @@ public:
 
    frame* GetFrames();
 
+   int GetAnimationSpeed();
+
    Vector3D calculateTriangleNormal(const Vector3D v1, const Vector3D v2, const Vector3D v3);
 
 

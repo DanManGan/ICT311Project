@@ -122,10 +122,13 @@ void GameWorld::CreateObjects()
 {
 	Waypoint<Vector3D> waypoints;
 
-	waypoints.AddWaypoint(Vector3D(200.0f ,m_terrain->GetHeightAverage(200.0f,200.0f), 200.0f));
-	waypoints.AddWaypoint(Vector3D(250.0f, m_terrain->GetHeightAverage(250.0f,250.0f), 250.0f));
-	waypoints.AddWaypoint(Vector3D(20.0f, m_terrain->GetHeightAverage(20.0f,250.0f), 250.0f));
-	waypoints.AddWaypoint(Vector3D(250.0f, m_terrain->GetHeightAverage(250.0f,20.0f), 20.0f));
+	waypoints.ClearAllWaypoints();
+	waypoints.AddWaypoint(Vector3D(50.0f ,m_terrain->GetHeightAverage(50.0f,70.0f), 70.0f));
+	waypoints.AddWaypoint(Vector3D(110.0f, m_terrain->GetHeightAverage(110.0f,425.0f), 425.0f));
+	waypoints.AddWaypoint(Vector3D(210.0f, m_terrain->GetHeightAverage(210.0f,270.0f), 270.0f));
+	waypoints.AddWaypoint(Vector3D(360.0f, m_terrain->GetHeightAverage(360.0f,405.0f), 405.0f));
+	waypoints.AddWaypoint(Vector3D(405.0f, m_terrain->GetHeightAverage(405.0f,95.0f), 95.0f));
+	waypoints.AddWaypoint(Vector3D(210.0f, m_terrain->GetHeightAverage(210.0f,270.0f), 270.0f));
 
 	m_objects["ogro"] = m_objFactory.Create("npc");
 	m_objects["ogro"]->SetPos(52,m_terrain->GetHeightAverage(52,92),92);
@@ -145,9 +148,17 @@ void GameWorld::CreateObjects()
 	//m_objects["tank"]->SetBase();
 	//m_objects["tank"]->SetAABB();
 	//m_objects["tank"]->SetAnimation(RUN);
+
+	waypoints.ClearAllWaypoints();
+	waypoints.AddWaypoint(Vector3D(110.0f, m_terrain->GetHeightAverage(110.0f,425.0f), 425.0f));
+	waypoints.AddWaypoint(Vector3D(210.0f, m_terrain->GetHeightAverage(210.0f,270.0f), 270.0f));
+	waypoints.AddWaypoint(Vector3D(405.0f, m_terrain->GetHeightAverage(405.0f,95.0f), 95.0f));
+	waypoints.AddWaypoint(Vector3D(360.0f, m_terrain->GetHeightAverage(360.0f,405.0f), 405.0f));
+	waypoints.AddWaypoint(Vector3D(210.0f, m_terrain->GetHeightAverage(210.0f,270.0f), 270.0f));
+	waypoints.AddWaypoint(Vector3D(50.0f ,m_terrain->GetHeightAverage(50.0f,70.0f), 70.0f));
 	
 	m_objects["berserk"] = m_objFactory.Create("npc");
-	m_objects["berserk"]->SetPos(29,m_terrain->GetHeightAverage(29,93),93);
+	m_objects["berserk"]->SetPos(290,m_terrain->GetHeightAverage(290,93),93);
 	m_objects["berserk"]->SetMesh(assetManager->GetAsset("Models/berserk/tris.md2"));
 	m_objects["berserk"]->SetSkin(graphics->SetupTextureClamp(assetManager->GetAsset("Models/berserk/skin.pcx")));
 	m_objects["berserk"]->SetScale(0.25f, 0.25f, 0.25f);
@@ -155,6 +166,15 @@ void GameWorld::CreateObjects()
 	m_objects["berserk"]->SetAABB();
 	m_objects["berserk"]->SetAnimation(RUN);
 	((NPC*)m_objects["berserk"])->AddWaypoints(waypoints);
+
+
+	waypoints.ClearAllWaypoints();
+	waypoints.AddWaypoint(Vector3D(360.0f, m_terrain->GetHeightAverage(360.0f,405.0f), 405.0f));
+	waypoints.AddWaypoint(Vector3D(405.0f, m_terrain->GetHeightAverage(405.0f,95.0f), 95.0f));
+	waypoints.AddWaypoint(Vector3D(210.0f, m_terrain->GetHeightAverage(210.0f,270.0f), 270.0f));
+	waypoints.AddWaypoint(Vector3D(50.0f ,m_terrain->GetHeightAverage(50.0f,70.0f), 70.0f));
+	waypoints.AddWaypoint(Vector3D(110.0f, m_terrain->GetHeightAverage(110.0f,425.0f), 425.0f));
+	waypoints.AddWaypoint(Vector3D(210.0f, m_terrain->GetHeightAverage(210.0f,270.0f), 270.0f));
 
 	m_objects["soldier"] = m_objFactory.Create("npc");
 	m_objects["soldier"]->SetPos(20,m_terrain->GetHeightAverage(20,20),20);
@@ -164,6 +184,7 @@ void GameWorld::CreateObjects()
 	m_objects["soldier"]->SetBase();
 	m_objects["soldier"]->SetAABB();
 	m_objects["soldier"]->SetAnimation(RUN);
+	((NPC*)m_objects["soldier"])->AddWaypoints(waypoints);
 
 	m_objects["house1"] = m_objFactory.Create("model");
 	m_objects["house1"]->SetPos(85, m_terrain->GetHeightAverage(85,15),15);
@@ -187,8 +208,8 @@ void GameWorld::CreateObjects()
 	//m_objects["player"] = obj;
 	m_objects["player"] = m_objFactory.Create("player");
 	m_objects["player"]->SetPos(m_terrain->GetSize()/2,
-		m_terrain->GetHeightAverage(m_terrain->GetSize()/2, m_terrain->GetSize()-20),
-		m_terrain->GetSize()-20);
+		m_terrain->GetHeightAverage(m_terrain->GetSize()/2, m_terrain->GetSize()/2),
+		m_terrain->GetSize()/2);
 	m_objects["player"]->SetAABB();
 
 }
@@ -227,9 +248,20 @@ void GameWorld::LoadScripts()
   }
   ////////luabind::object   stat = luabind::get_globals(lState);
  luabind::object   state = luabind::globals(lState);
-  
+ // getchar();
+ 	for(objIter it = m_objects.begin(); it != m_objects.end(); it++) {
+		if(it->second->GetObjectType() == "NPC") {
+			//NPC * temp = (NPC*)it->second;
+			//temp->GetFSM()->SetCurrentState(luabind::object_cast<luabind::object>(state["state_patrol"]));
+			((NPC*)it->second)->GetFSM()->SetCurrentState(luabind::object_cast<luabind::object>(state["state_patrol"]));
+			((NPC*)it->second)->GetFSM()->SetGlobalState(luabind::object_cast<luabind::object>(state["state_global"]));
+			//temp = nullptr;
+		}
+	}
 
-	((NPC*)m_objects["ogro"])->GetFSM()->SetCurrentState(luabind::object_cast<luabind::object>(state["state_idle"]));
+	//((NPC*)m_objects["ogro"])->GetFSM()->SetCurrentState(luabind::object_cast<luabind::object>(state["state_patrol"]));
+	//((NPC*)m_objects["berserk"])->GetFSM()->SetCurrentState(luabind::object_cast<luabind::object>(state["state_patrol"]));
+	//((NPC*)m_objects["soldier"])->GetFSM()->SetCurrentState(luabind::object_cast<luabind::object>(state["state_patrol"]));
  // dude->getFSM()->setGlobalState(luabind::object_cast<luabind::object>(stat["state_global"]));
 
  // patroller->getFSM()->setCurrentState(luabind::object_cast<luabind::object>(stat["state_patrol"]));

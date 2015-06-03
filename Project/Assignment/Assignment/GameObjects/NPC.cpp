@@ -7,8 +7,12 @@ NPC::NPC() :
 	GameObject(),
 	m_Health(0),
 	m_move(new Movement()),
-	m_curwayPointNo(0),
-	m_aiTime(0.0f)
+	m_curWaypointNo(0),
+	m_aiTime(0.0f),
+	m_idleTime(0.0f),
+	m_idleStart(0.0f),
+	m_waypointCycles(0),
+	m_targetPos(0.0f, 0.0f, 0.0f)
 {
 	m_npcFSM=new StateMachine<NPC>(this);
 	m_velocity.Set(0.0f, 0.5f, 0.0f);
@@ -20,8 +24,12 @@ NPC::NPC(char* objectName, float xPos,
 	GameObject(objectName, xPos, yPos, zPos),
 	m_Health(0),
 	m_move(new Movement()),
-	m_curwayPointNo(0),
-	m_aiTime(0.0f)
+	m_curWaypointNo(0),
+	m_aiTime(0.0f),
+	m_idleTime(0.0f),
+	m_idleStart(0.0f),
+	m_waypointCycles(0),
+	m_targetPos(0.0f, 0.0f, 0.0f)
 {
 	m_velocity.Set(0.0f, 0.5f, 0.0f);
 }
@@ -36,9 +44,19 @@ NPC::~NPC()
 void NPC::SetAnimation(AnimationState state)
 {
 	m_model->SetAnimation(state);
-	//m_velocity.Set(m_model->GetModelSpeed(), 0.0f, m_model->GetModelSpeed());
-	m_velocity.z = m_model->GetModelSpeed(); ///////////////////////// Set speed
-	
+
+
+	//if(state != STAND && state != SALUTE && state != WAVE && state != BOOM) {
+	//	m_velocity.z = m_model->GetModelSpeed(); ///////////////////////// Set speed
+	//}
+	if(m_model->GetModelSpeed()) {
+		m_velocity.z = m_model->GetModelSpeed();
+	}
+	else {
+		m_velocity.Set(0.0f, 0.0f, 0.0f);
+		m_idleTime = m_model->GetAnimationSpeed();
+		//m_idleStart = m_aiTime;
+	}
 }
 
 void NPC::Animate(float deltaT)
@@ -57,8 +75,9 @@ void NPC::Animate(float deltaT)
 
 	//Vector3D pos = temp - m_Position;
 	//m_velocity.Print();
-		m_yaw = m_move->CalcYaw(m_Position, 
-			m_waypoints.GetWaypoint(m_curwayPointNo), m_velocity);
+	if(!m_velocity.IsZero()) {
+		m_yaw = m_move->CalcYaw(m_Position, m_targetPos, m_velocity);
+	}
 		
 		//std::cout << "yaw: " << m_yaw << std::endl;
 	//getchar();
@@ -113,17 +132,21 @@ void NPC::UpdateAI(float timeElapsed)
 
 void NPC::WaypointFollow()
 {
-	std::cout << "NPC Position: ";
-	m_Position.Print();
-	std::cout << "NPC Waypoint: ";
-	m_waypoints.GetWaypoint(m_curwayPointNo).Print();
+	//std::cout << "NPC Position: ";
+	//m_Position.Print();
+	//std::cout << "NPC Waypoint: ";
+	//m_waypoints.GetWaypoint(m_curWaypointNo).Print();
 
-	if(m_move->MoveTo(m_Position, m_waypoints.GetWaypoint(m_curwayPointNo), m_velocity, m_aiTime, 0))
+	if(m_move->MoveTo(m_Position, m_waypoints.GetWaypoint(m_curWaypointNo), m_velocity, m_aiTime, 0))
 	{ 
-		if(m_curwayPointNo== m_waypoints.GetNumWaypoints()-1)
-			m_curwayPointNo = 0;
-		else
-		    m_curwayPointNo++;    
+		m_targetPos = m_waypoints.GetWaypoint(m_curWaypointNo);
+		if(m_curWaypointNo == m_waypoints.GetNumWaypoints()-1) {
+			m_curWaypointNo = 0;
+		}
+		else {
+		    m_curWaypointNo++;   
+		}
+		m_waypointCycles++;
 	}
 }
 
@@ -132,7 +155,111 @@ int NPC::GetNumWaypoints()
 	return m_waypoints.GetNumWaypoints();
 }
 
-void NPC::SetCurwayPointNo(int num)
+void NPC::SetCurWaypoint(int num)
 {
-	m_curwayPointNo = num;
+	m_curWaypointNo = num;
+}
+
+int NPC::GetCurWaypoint()
+{
+	return m_curWaypointNo;
+}
+
+void NPC::SetWaypointCycles(int num)
+{
+	m_waypointCycles = num;
+}
+
+int NPC::GetWaypointCycles()
+{
+	return m_waypointCycles;
+}
+
+bool NPC::IdleStateDone()
+{
+		std::cout << "in Idle state" << std::endl;
+		std::cout << "ai: " << m_aiTime << " start: " << m_idleStart << " idle time: " << m_idleTime << std::endl;
+	//getchar();
+	if(m_idleStart >= m_idleTime) {
+		m_idleStart = 0.0f;
+		return true;
+	}
+	m_idleStart += m_aiTime;
+	return false;
+}
+
+
+void NPC::SetAnimationLua(int stateNum)
+{
+	AnimationState state;
+
+	switch(stateNum)
+	{
+		case 0:
+		   state = STAND;
+		break;
+		case 1:
+			state = RUN;
+		break;
+		case 2:
+			state = ATTACK;
+		break;
+		case 3:
+			state = PAIN_A;
+		break;
+		case 4:
+			state = PAIN_B;
+		break;
+		case 5:
+			state = PAIN_C;
+		break;
+		case 6:
+			state = JUMP;
+		break;
+		case 7:
+			state = FLIP;
+		break;
+		case 8:
+			state = SALUTE;
+		break;
+		case 9:
+			state = FALLBACK;
+		break;
+		case 10:
+			state = WAVE;
+		break;
+		case 11:
+			state = POINT_AT;
+		break;
+		case 12:
+			state = CROUCH_STAND;
+		break;
+		case 13:
+			state = CROUCH_WALK;
+		break;
+		case 14:
+			state = CROUCH_ATTACK;
+		break;
+		case 15:
+			state = CROUCH_PAIN;
+		break;
+		case 16:
+			state = CROUCH_DEATH;
+		break;
+		case 17:
+			state = DEATH_FALLBACK;
+		break;
+		case 18:
+			state = DEATH_FALLFORWARD;
+		break;
+		case 19:
+			state = DEATH_FALLBACKSLOW;
+		break;
+		case 20:
+			state = BOOM;
+		break;
+		default:
+			state = STAND;
+	}
+	SetAnimation(state);
 }
