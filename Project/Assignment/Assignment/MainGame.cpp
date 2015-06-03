@@ -18,9 +18,12 @@ MainGame::MainGame() :
 	m_inputOneShot(false),
 	m_showMenu(false),
 	m_wireframe(false),
+	m_showExit(false),
 	m_menu(0),
+	m_exitID(0),
 	m_mouseSensitivity(0.25f),
 	m_running(false),
+	m_count(0),
 	//m_player(new Player())
 	m_player(nullptr)
 {
@@ -47,19 +50,20 @@ void MainGame::Init()
 		
 	graphics->OpenWindow(m_winWidth, m_winHeight);
 	graphics->SetWindowPosition(500, 100);
-	graphics->SetWindowTitle("ICT311 Assignemnt");
+	graphics->SetWindowTitle("Maths Burst");
 	graphics->Init();
 	gameWorld->CreateObjects();
 	gameWorld->LoadScripts();
 
 	m_player = (Player*)gameWorld->GetPlayer();
 
-	//m_menu = texManager->loadTexture("Textures/menu.bmp");
+	m_menu = assetManager->Load("Textures/menu.bmp");
+	m_exitID = assetManager->Load("Textures/exitScreen.bmp");
 	//if(!m_menu)
 	//	std::cout << "Error Loading menu texture" << std::endl;
 	
 	audio->SetVolume(0.1f);
-	//audio->Play2D("sounds/MF-W-90.XM", true);
+	audio->Play2D("sounds/MF-W-90.XM", true);
 
 	//m_camera.MoveToNow(gameWorld->GetWorldSize()/2,
 	//	gameWorld->GetWorldXZHeight
@@ -169,7 +173,11 @@ void MainGame::ProcessInput()
 
 		case 'x':
 		case 'X':
-			m_running = false;
+			if(input->keyPress) {
+				m_showExit = true;
+				m_count++;
+			}
+		//	m_running=false;
 			break;
 
 		case 'a' :
@@ -233,7 +241,11 @@ void MainGame::ProcessInput()
 			break;
 
 		case GLFW_KEY_ESC:
-			m_running=false;
+			if(input->keyPress) {
+				m_showExit = true;
+				m_count++;
+			}
+		//	m_running=false;
 			break;
 
 		default:
@@ -255,6 +267,9 @@ void MainGame::ProcessInput()
 //	std::cout << m_camera.position.x << " " << m_camera.position.y << " " << m_camera.position.z << std::endl;
 	//m_camVelocity = m_camera.velocity;
 	if(input->mouseLeft) {
+		if(m_count > 0){
+			m_running = false;
+		}
 		int deltaX;
 		int deltaY;
 		deltaY = m_oldY-input->mouseY;
@@ -353,6 +368,10 @@ void MainGame::Display(float deltaT)
 
 		if(m_showMenu) {
 			graphics->Render2D(m_menu, 50.0f, (float)m_winWidth-50,
+							(float)m_winHeight-50, 50.0f);
+		}
+		if(m_showExit) {
+			graphics->Render2D(m_exitID, 50.0f, (float)m_winWidth-50,
 							(float)m_winHeight-50, 50.0f);
 		}
 
