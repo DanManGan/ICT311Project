@@ -66,15 +66,13 @@ public:
 
 	void SetVelocity(float velX, float velY, float velZ);
 
-	void UpdatePosition(float deltaT);
-
 	float GetYaw();
 	void SetYaw(float yaw);
 
 	void DrawAABB();
 
-
-
+	bool Collision();
+	bool TestCollision(GameObject* obj);
 
 	void SetID(int id);
 	int GetID();
