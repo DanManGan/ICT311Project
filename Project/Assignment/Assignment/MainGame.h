@@ -246,6 +246,34 @@ private:
 	  * @post 
 	  */ 
 	bool m_running;
+
+	/**
+	 * @brief show exit screen state
+	 * @warning none
+	 *
+	 * @pre
+	 * @post
+	 */
+	bool m_showExit;
+
+	/** 
+	  * @brief exit screen texture ID
+	  * @warning None
+	  * 
+	  * 
+	  * @pre 
+	  * @post 
+	  */ 
+	unsigned int m_exitID;
+
+	/**
+	 * @brief count of how many times the ESC or 'x' key is pressed
+	 * @warning
+	 *
+	 * @pre
+	 * @post
+	 */
+	int m_count;
 };
 
 #endif

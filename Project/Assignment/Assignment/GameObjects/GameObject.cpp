@@ -261,29 +261,7 @@ void GameObject::SetYaw(float yaw)
 	m_yaw = yaw;
 }
 
-void GameObject::TestCollision(GameObject* obj)
-{
-	//std::cout << "Collision Test: " << this->m_name << " " << obj->m_name << std::endl;
-	//this->m_Position.Print();
-	//obj->m_Position.Print();
-	if(m_boundingBox.CheckCollision(m_Position, obj->m_boundingBox, obj->m_Position)) {
-		//std::cout << "Fuck Yeah" << std::endl;
-		this->m_collision = true;
-		obj->m_collision = true;
-	}
-	//else {
-	//	this->m_collision = false;
-	//	obj->m_collision = false;
-	//}
 
-}
-
-bool GameObject::Collision()
-{
-	bool temp = m_collision;
-	m_collision = false;
-	return temp;
-}
 
 void GameObject::SetID(int id)
 {

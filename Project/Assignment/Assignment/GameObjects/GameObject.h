@@ -73,8 +73,8 @@ public:
 
 	void DrawAABB();
 
-	void TestCollision(GameObject* obj);
-	bool Collision();
+
+
 
 	void SetID(int id);
 	int GetID();

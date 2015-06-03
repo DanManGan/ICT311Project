@@ -1,3 +1,0 @@
-
-
-1) Should we use an asset manager and an asset factory or just store that data in the factory and not use asset manager??
