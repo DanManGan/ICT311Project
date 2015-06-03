@@ -198,58 +198,6 @@ Vector3D GameObject::GetPos()
 {
 	return m_Position;
 }
-void GameObject::UpdatePosition(float deltaT)
-{
-     if ((m_yaw >= 360.0f) || (m_yaw <= -360.0f))
-          m_yaw = 0.0f;
-
-     //if (pitch > 60.0f)
-     //     pitch = 60.0f;
-     //if (pitch < -60.0f)
-     //     pitch = -60.0f;
-     
-	// calculate trig functions
-     float cosYaw = (float)cos(DEG_TO_RAD(m_yaw));
-     float sinYaw = (float)sin(DEG_TO_RAD(m_yaw));
-    // float sinPitch = (float)sin(DEG_TO_RAD(pitch));
-	 
-	// speed is velocity z-component
-     float speed = m_velocity.z * deltaT;
-
-	// strafe speed is velocity x-component
-     float strafeSpeed = m_velocity.x * deltaT;
-
-	// speed limit
-     if (speed > 5.0f)
-          speed = 5.0f; 
-     if (strafeSpeed > 5.0f)
-          strafeSpeed = 5.0f;
-     if (speed < -5.0f)
-          speed = -5.0f;
-     if (strafeSpeed < -5.0f)
-          strafeSpeed = -5.0f;
-
-	// calculate new position of model
-     //m_Position.x += float(cos(DEG_TO_RAD(m_yaw + 90.0f)))*strafeSpeed;
-     //m_Position.z += float(sin(DEG_TO_RAD(m_yaw + 90.0f)))*strafeSpeed;
-     //m_Position.x += float(cosYaw)*speed;
-     //m_Position.z += float(sinYaw)*speed;
-
-	// calculate new position of model
-
-//	 std::cout << "yaw " << float(cos(DEG_TO_RAD(m_yaw + 90.0f)))*strafeSpeed << std::endl;
-//	 std::cout << "NO yaw " << float(cos(DEG_TO_RAD(90.0f)))*strafeSpeed << std::endl;
-
-     m_Position.x += float(cos(DEG_TO_RAD(m_yaw)))*strafeSpeed;
-     m_Position.z += float(sin(DEG_TO_RAD(m_yaw)))*strafeSpeed;
-     m_Position.x += float(cosYaw)*speed;
-     m_Position.z += float(sinYaw)*speed;	
-
-	//// calculate lookAt based on new position
- //    lookAt.x = float(position.x + cosYaw);
- //    lookAt.y = float(position.y + sinPitch);
- //    lookAt.z = float(position.z + sinYaw);
-}
 
 float GameObject::GetYaw()
 {
@@ -272,4 +220,30 @@ void GameObject::SetID(int id)
 int GameObject::GetID()
 {
 	return m_id;
+}
+
+bool GameObject::TestCollision(GameObject* obj)
+{
+	//std::cout << "Collision Test: " << this->m_name << " " << obj->m_name << std::endl;
+	//this->m_Position.Print();
+	//obj->m_Position.Print();
+	if(m_boundingBox.CheckCollision(m_Position, obj->m_boundingBox, obj->m_Position)) {
+		//std::cout << "Fuck Yeah" << std::endl;
+
+		this->m_collision = true;
+		obj->m_collision = true;
+		return true;
+	}
+	//else {
+	//	this->m_collision = false;
+	//	obj->m_collision = false;
+	//}
+	return false;
+}
+
+bool GameObject::Collision()
+{
+	bool temp = m_collision;
+	m_collision = false;
+	return temp;
 }
