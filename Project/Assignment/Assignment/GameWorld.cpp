@@ -277,7 +277,7 @@ void GameWorld::LoadScripts()
 ////  registerMessage(lState);
 ////registerTelegram(lState);
 //  //load and run the script
-  luaL_dofile(lState, "LuaScripting/statemachine.lua");
+  luaL_dofile(lState, "Scripts/statemachine.lua");
 
 //  try{
 //	//luabind::globals(lState)["dude"] = dude;

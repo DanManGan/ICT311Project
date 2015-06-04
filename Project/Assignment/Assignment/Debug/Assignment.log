@@ -1,9 +1,560 @@
-﻿Build started 3/06/2015 7:58:06 PM.
+﻿Build started 4/06/2015 9:53:15 AM.
      1>Project "C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Assignment\Assignment.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\Assignment.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D LUABIND_DYNAMIC_LINK /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GameWorld.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D LUABIND_DYNAMIC_LINK /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AI\Movement.cpp AssetManagement\Camera.cpp AssetManagement\GameAssetFactory.cpp AssetManagement\GameAssetManager.cpp AssetManagement\Mesh.cpp AssetManagement\bmpLoader.cpp AssetManagement\md2.cpp AssetManagement\md2Loader.cpp AssetManagement\multitexture.cpp AssetManagement\obj.cpp AssetManagement\objLoader.cpp AssetManagement\pcxLoader.cpp AssetManagement\textureGenerator.cpp AssetManagement\tgaLoader.cpp AudioEngine.cpp Collision\AABB.cpp Extras\Vector3D.cpp GameObjects\GameObject.cpp GameObjects\GameObjectFactory.cpp GameObjects\Model.cpp GameObjects\NPC.cpp GameObjects\Player.cpp GameObjects\Terrain.cpp GameWorld.cpp Graphics\CameraModel.cpp Graphics\Skybox.cpp Graphics\TerrainModel.cpp Graphics\ViewOpenGL.cpp Graphics\md2Model.cpp Graphics\objModel.cpp Input\InputGLFW.cpp LuaScripting\RegisterScriptedFSM.cpp MainGame.cpp main.cpp
+         main.cpp
+         MainGame.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         RegisterScriptedFSM.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         InputGLFW.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         objModel.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         md2Model.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         ViewOpenGL.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         TerrainModel.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         Skybox.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         CameraModel.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
          GameWorld.cpp
      1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
                  c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
@@ -66,8 +617,533 @@
                  ]
      1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
                  c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         Terrain.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         Player.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         NPC.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\ai\waypoint.h(23): warning C4018: '<' : signed/unsigned mismatch
+                 c:\users\justin\uni\github\ict311project\project\assignment\assignment\ai\waypoint.h(21) : while compiling class template member function 'std::ostream &operator <<(std::ostream &,Waypoint<vectorType> &)'
+                 with
+                 [
+                     vectorType=Vector3D
+                 ]
+                 c:\users\justin\uni\github\ict311project\project\assignment\assignment\gameobjects\npc.h(59) : see reference to class template instantiation 'Waypoint<vectorType>' being compiled
+                 with
+                 [
+                     vectorType=Vector3D
+                 ]
+         Model.cpp
+         GameObjectFactory.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         GameObject.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         Vector3D.cpp
+         AABB.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\collision\aabb.cpp(90): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\collision\aabb.cpp(94): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\collision\aabb.cpp(98): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+         AudioEngine.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         Generating Code...
+         Compiling...
+         tgaLoader.cpp
+         textureGenerator.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         pcxLoader.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\assetmanagement\pcxloader.cpp(19): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+         objLoader.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(30): warning C4005: 'SB_RIGHT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(294) : see previous definition of 'SB_RIGHT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(31): warning C4005: 'SB_LEFT' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(292) : see previous definition of 'SB_LEFT'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(32): warning C4005: 'SB_TOP' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(291) : see previous definition of 'SB_TOP'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\graphics\skybox.h(33): warning C4005: 'SB_BOTTOM' : macro redefinition
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winuser.h(293) : see previous definition of 'SB_BOTTOM'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_registry.hpp(61): warning C4251: 'luabind::detail::class_registry::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of struct 'luabind::detail::class_registry'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_rep *
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(42): warning C4251: 'luabind::detail::cast_graph::m_impl' : class 'boost::scoped_ptr<T>' needs to have dll-interface to be used by clients of class 'luabind::detail::cast_graph'
+                 with
+                 [
+                     T=luabind::detail::cast_graph::impl
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\inheritance.hpp(60): warning C4251: 'luabind::detail::class_id_map::m_classes' : class 'std::map<_Kty,_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_id_map'
+                 with
+                 [
+                     _Kty=luabind::type_id,
+                     _Ty=luabind::detail::class_id
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\error.hpp(71): warning C4251: 'luabind::cast_failed::m_info' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::cast_failed'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(161): warning C4251: 'luabind::detail::class_rep::m_type' : class 'luabind::type_id' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\typeid.hpp(23) : see declaration of 'luabind::type_id'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(166): warning C4251: 'luabind::detail::class_rep::m_bases' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Ty=luabind::detail::class_rep::base_info
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(175): warning C4251: 'luabind::detail::class_rep::m_self_ref' : struct 'luabind::detail::lua_reference' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\ref.hpp(40) : see declaration of 'luabind::detail::lua_reference'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(182): warning C4251: 'luabind::detail::class_rep::m_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(186): warning C4251: 'luabind::detail::class_rep::m_default_table' : class 'luabind::handle' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\handle.hpp(34) : see declaration of 'luabind::handle'
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\class_rep.hpp(196): warning C4251: 'luabind::detail::class_rep::m_static_constants' : class 'std::map<_Kty,_Ty,_Pr>' needs to have dll-interface to be used by clients of class 'luabind::detail::class_rep'
+                 with
+                 [
+                     _Kty=const char *,
+                     _Ty=int,
+                     _Pr=luabind::detail::ltstr
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\object_rep.hpp(96): warning C4251: 'luabind::detail::object_rep::m_instance_buffer' : class 'boost::aligned_storage<size_>' needs to have dll-interface to be used by clients of class 'luabind::detail::object_rep'
+                 with
+                 [
+                     size_=32
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(46): warning C4251: 'luabind::detail::function_object::name' : class 'std::basic_string<_Elem,_Traits,_Ax>' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Ax=std::allocator<char>
+                 ]
+     1>c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\detail\call.hpp(48): warning C4251: 'luabind::detail::function_object::keepalive' : class 'luabind::adl::object' needs to have dll-interface to be used by clients of struct 'luabind::detail::function_object'
+                 c:\users\justin\uni\github\ict311project\project\assignment\ict311deps\include\luabind\object.hpp(723) : see declaration of 'luabind::adl::object'
+         obj.cpp
+         multitexture.cpp
+         md2Loader.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\assetmanagement\md2loader.cpp(32): warning C4244: '=' : conversion from 'std::streamoff' to 'int', possible loss of data
+         md2.cpp
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\assetmanagement\md2.cpp(287): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\justin\uni\github\ict311project\project\assignment\assignment\assetmanagement\md2.cpp(343): warning C4018: '>=' : signed/unsigned mismatch
+         bmpLoader.cpp
+         Mesh.cpp
+         GameAssetManager.cpp
+         GameAssetFactory.cpp
+         Camera.cpp
+         Movement.cpp
+         Generating Code...
        ManifestResourceCompile:
-         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\Assignment.exe.embed.manifest.res" Debug\Assignment_manifest.rc 
        Link:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.exe" /INCREMENTAL /NOLOGO irrKlang.lib lua5.1.lib luabindd.lib SOIL.lib OpenGL32.lib freeglut.lib SDL2.lib SDL2main.lib glew32.lib SOIL.lib OpenGL32.lib freeglut.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Assignment.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.lib" /MACHINE:X86 Debug\Assignment.exe.embed.manifest.res
          Debug\Movement.obj
@@ -114,6 +1190,12 @@
          Debug\MainGame.obj
          Debug\main.obj
          Debug\GameWorld.obj
+         LINK : C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\Assignment.exe not found or not built by the last incremental link; performing full link
+     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\vc100.pdb'; linking object as if no debug info
+     1>SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\vc100.pdb'; linking object as if no debug info
+     1>SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\vc100.pdb'; linking object as if no debug info
+     1>SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'C:\Users\Justin\Uni\GitHub\ICT311Project\Project\Assignment\Debug\vc100.pdb'; linking object as if no debug info
        Manifest:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\Assignment.exe.embed.manifest" /manifest Debug\Assignment.exe.intermediate.manifest
          All outputs are up-to-date.
@@ -127,4 +1209,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.83
+Time Elapsed 00:01:10.02
