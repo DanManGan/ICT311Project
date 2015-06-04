@@ -30,7 +30,11 @@
 #include "AssetManagement/md2.h"
 #include "GameObjects/GameObject.h"
 #include "GameObjects/GameObjectFactory.h"
-#include "Graphics/Skybox.h"
+//#include "Graphics/Skybox.h"
+
+#include"ScriptEngine\SC_Terrain.h"
+#include"ScriptEngine\SC_Assets.h"
+#include"ScriptEngine\SC_Skybox.h"
 
 #include <map>
 #include <string>
@@ -170,6 +174,7 @@ public:
 
 private:
 
+	SC_Assets assets;
 	/** 
 	  * @brief Terrain object
 	  * @warning None
@@ -180,7 +185,7 @@ private:
 	  * @pre 
 	  * @post 
 	  */ 
-	TerrainModel* m_terrain;
+	SC_Terrain* m_terrain;
 
 	/**
 	  * @brief copy constructor declaration.
@@ -220,7 +225,7 @@ private:
 	objects m_objects;
 
 	GameObjectFactory m_objFactory;
-	Skybox m_skybox; 
+	SC_Skybox m_skybox; 
 
 	lua_State* lState;
 };

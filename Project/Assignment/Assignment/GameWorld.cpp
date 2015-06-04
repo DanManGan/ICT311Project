@@ -22,7 +22,7 @@
 
 GameWorld::GameWorld() :
 	m_objFactory(GameObjectFactory()),
-	m_terrain(new TerrainModel())
+	m_terrain(new SC_Terrain())
 {
 	m_objects.clear();
 	LoadAssets();
@@ -56,13 +56,10 @@ void GameWorld::LoadAssets()
 	
 	//Procedural terrain only works correctly with TGA files currently
 
-	m_skybox.LoadTexture(SB_FRONT, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_BACK, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_BOTTOM, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_TOP, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_LEFT, "Texture/SkyboxFront.tga");
-	m_skybox.LoadTexture(SB_RIGHT, "Texture/SkyboxFront.tga");
+	m_skybox.LoadTextures();
 
+	assets.LoadAssets();
+	/*
 	//assetManager->Load("Textures/grass.bmp");
 	assetManager->Load("Textures/lowestTile.tga");
 	assetManager->Load("Textures/lowTile.tga");
@@ -99,27 +96,24 @@ void GameWorld::LoadAssets()
 	assetManager->Load("Models/number_5/number_5.obj");
 
 	assetManager->Load("Textures/menu.bmp");
-	assetManager->Load("Textures/exitScreen.bmp");
+	assetManager->Load("Textures/exitScreen.bmp");*/
 }
 
 //--------------------------------------------------------------------------------------
 
 bool GameWorld::CreateTerrain()
 {	
-	m_terrain->SetScaleFactor(1.0f,0.25f,1.0f);
+	m_terrain->SetScaleFactor();
 	//m_terrain->GenFaultFormation(100, 512,1,125,0.1f,false);
-	if(m_terrain->LoadHeightfield((Texture*)assetManager->GetAsset("Textures/heightmap.bmp"))) {
-		m_terrain->SetDetailMap(graphics->SetupTextureBasic((Texture*)assetManager->GetAsset("Textures/detailmap.tga")));
-		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowestTile.tga"));
-		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/lowTile.tga"));
-		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highTile.tga"));
-		m_terrain->AddProceduralTexture((Texture*)assetManager->GetAsset("Textures/highestTile.tga"));
+	if(m_terrain->LoadHeightfield()) {
+		m_terrain->SetDetailMap();
+		m_terrain->AddProceduralTextures();
 		m_terrain->CreateProceduralTexture();
-		m_terrain->SetTexture(graphics->CreateNewTexture(m_terrain->GetProTexData(), m_terrain->GetProTexWidth(), m_terrain->GetProTexHeight()));
-		m_terrain->SetNumTerrainTexRepeat(1);
-		m_terrain->SetNumDetailMapRepeat(12);
-		m_terrain->SetLightingColor(1.0f, 1.0f, 1.0f);
-		m_terrain->SetSlopeLightingParams( 1, 1, 0.5f, 1.0f, 100.0f );
+		m_terrain->SetTexture();
+		m_terrain->SetNumTerrainTexRepeat();
+		m_terrain->SetNumDetailMapRepeat();
+		m_terrain->SetLightingColor();
+		m_terrain->SetSlopeLightingParams();
 		m_terrain->CreateSlopeLighting();
 
 		return true;
@@ -277,7 +271,7 @@ void GameWorld::LoadScripts()
 ////  registerMessage(lState);
 ////registerTelegram(lState);
 //  //load and run the script
-  luaL_dofile(lState, "Scripts/statemachine.lua");
+  luaL_dofile(lState, "LuaScripting/statemachine.lua");
 
 //  try{
 //	//luabind::globals(lState)["dude"] = dude;
