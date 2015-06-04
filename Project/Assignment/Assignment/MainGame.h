@@ -31,6 +31,7 @@
 #include "GameObjects/Player.h"
 
 #include"ScriptEngine/SC_Graphics.h"
+#include"HUD/HUD_Picture.h"
 
 class MainGame
 {

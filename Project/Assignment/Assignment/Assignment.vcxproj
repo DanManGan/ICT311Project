@@ -127,9 +127,17 @@
     <ClInclude Include="Graphics\Skybox.h" />
     <ClInclude Include="Graphics\TerrainModel.h" />
     <ClInclude Include="Graphics\ViewOpenGL.h" />
+    <ClInclude Include="HUD\HUD_Element.h" />
+    <ClInclude Include="HUD\HUD_Picture.h" />
+    <ClInclude Include="HUD\HUD_Shape.h" />
     <ClInclude Include="Input\InputGLFW.h" />
     <ClInclude Include="LuaScripting\RegisterScriptedFSM.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="ScriptEngine\LuaEngine.h" />
+    <ClInclude Include="ScriptEngine\SC_Assets.h" />
+    <ClInclude Include="ScriptEngine\SC_Graphics.h" />
+    <ClInclude Include="ScriptEngine\SC_Skybox.h" />
+    <ClInclude Include="ScriptEngine\SC_Terrain.h" />
     <ClInclude Include="Singletons.h" />
     <ClInclude Include="GameWorld.h" />
   </ItemGroup>
@@ -173,11 +181,19 @@
     <ClCompile Include="Graphics\Skybox.cpp" />
     <ClCompile Include="Graphics\TerrainModel.cpp" />
     <ClCompile Include="Graphics\ViewOpenGL.cpp" />
+    <ClCompile Include="HUD\HUD_Element.cpp" />
+    <ClCompile Include="HUD\HUD_Picture.cpp" />
+    <ClCompile Include="HUD\HUD_Shape.cpp" />
     <ClCompile Include="Input\InputGLFW.cpp" />
     <ClCompile Include="LuaScripting\RegisterScriptedFSM.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="GameWorld.cpp" />
+    <ClCompile Include="ScriptEngine\LuaEngine.cpp" />
+    <ClCompile Include="ScriptEngine\SC_Assets.cpp" />
+    <ClCompile Include="ScriptEngine\SC_Graphics.cpp" />
+    <ClCompile Include="ScriptEngine\SC_Skybox.cpp" />
+    <ClCompile Include="ScriptEngine\SC_Terrain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

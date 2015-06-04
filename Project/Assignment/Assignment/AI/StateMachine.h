@@ -131,11 +131,11 @@ public:
 	void Update()
 	{
 		if(m_GlobalState.is_valid()) {
-			m_GlobalState["Execute"](m_Object);
+			//m_GlobalState["Execute"](m_Object);
 		}
 		
 		if(m_CurrentState.is_valid()) {
-			m_CurrentState["Execute"](m_Object);
+			//m_CurrentState["Execute"](m_Object);
 		}
 	}
 

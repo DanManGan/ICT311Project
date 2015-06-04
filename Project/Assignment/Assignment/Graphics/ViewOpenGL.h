@@ -346,6 +346,8 @@ public:
 	  */ 
 	void Render2D(unsigned int image, float left, float right,
 		float top, float bottom);
+
+
 	
 	void DrawTree(double baseRadius, double topRadius, 
 					double height, int slices, int stacks);

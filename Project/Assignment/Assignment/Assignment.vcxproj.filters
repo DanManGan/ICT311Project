@@ -61,6 +61,18 @@
     <Filter Include="Source Files\LuaScripting">
       <UniqueIdentifier>{ab8f6774-e843-4063-9bbd-709ae0a79c7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ScriptEngine">
+      <UniqueIdentifier>{d60b4e14-faa9-4d9c-b349-5787c5e1c5cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ScriptEngine">
+      <UniqueIdentifier>{2009fd63-5802-4661-89b9-45f0e0cf4f2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HUD">
+      <UniqueIdentifier>{6d739265-bd8d-46f6-99fd-80782e9c179a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HUD">
+      <UniqueIdentifier>{05aec158-cf85-423f-9650-cad2303bc8bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Singletons.h">
@@ -216,6 +228,30 @@
     <ClInclude Include="AI\Waypoint.h">
       <Filter>Header Files\AI</Filter>
     </ClInclude>
+    <ClInclude Include="ScriptEngine\LuaEngine.h">
+      <Filter>Header Files\ScriptEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptEngine\SC_Assets.h">
+      <Filter>Header Files\ScriptEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptEngine\SC_Graphics.h">
+      <Filter>Header Files\ScriptEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptEngine\SC_Skybox.h">
+      <Filter>Header Files\ScriptEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptEngine\SC_Terrain.h">
+      <Filter>Header Files\ScriptEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD\HUD_Element.h">
+      <Filter>Header Files\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD\HUD_Shape.h">
+      <Filter>Header Files\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD\HUD_Picture.h">
+      <Filter>Header Files\HUD</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -349,6 +385,30 @@
     </ClCompile>
     <ClCompile Include="LuaScripting\RegisterScriptedFSM.cpp">
       <Filter>Source Files\LuaScripting</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptEngine\LuaEngine.cpp">
+      <Filter>Source Files\ScriptEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptEngine\SC_Assets.cpp">
+      <Filter>Source Files\ScriptEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptEngine\SC_Graphics.cpp">
+      <Filter>Source Files\ScriptEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptEngine\SC_Skybox.cpp">
+      <Filter>Source Files\ScriptEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptEngine\SC_Terrain.cpp">
+      <Filter>Source Files\ScriptEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD\HUD_Element.cpp">
+      <Filter>Source Files\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD\HUD_Shape.cpp">
+      <Filter>Source Files\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD\HUD_Picture.cpp">
+      <Filter>Source Files\HUD</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
