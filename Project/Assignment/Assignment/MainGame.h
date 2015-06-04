@@ -30,6 +30,8 @@
 #include "GameObjects/GameObject.h"
 #include "GameObjects/Player.h"
 
+#include"ScriptEngine/SC_Graphics.h"
+
 class MainGame
 {
 public:
@@ -70,6 +72,8 @@ public:
 
 
 private:
+
+	SC_Graphics window;
 
 	/** 
 	  * @brief Initialise game members and states

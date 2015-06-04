@@ -48,9 +48,10 @@ void MainGame::Init()
 	m_oldX=m_winWidth/2;
 	m_oldY=m_winHeight/2;
 		
-	graphics->OpenWindow(m_winWidth, m_winHeight);
-	graphics->SetWindowPosition(500, 100);
-	graphics->SetWindowTitle("Maths Burst");
+	window.OpenWindow();
+	window.SetWindowPosition();
+	window.SetWindowTitle();
+
 	graphics->Init();
 	gameWorld->CreateObjects();
 	gameWorld->LoadScripts();
@@ -376,6 +377,10 @@ void MainGame::Display(float deltaT)
 			graphics->Render2D(m_exitID, 50.0f, (float)m_winWidth-50,
 							(float)m_winHeight-50, 50.0f);
 		}
+
+	graphics->BeginRendering2D();
+	//Render the HUD
+	graphics->EndRendering2D();
 
 	graphics->EndRendering();
 }
