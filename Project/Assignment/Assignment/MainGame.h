@@ -31,7 +31,6 @@
 #include "GameObjects/Player.h"
 
 #include"ScriptEngine/SC_Graphics.h"
-#include"HUD/HUD_Factory.h"
 
 #include<map>
 
@@ -284,12 +283,6 @@ private:
 	 */
 	int m_count;
 
-	typedef std::map<std::string, HUD_Element*> HUD_Elements;
-	typedef HUD_Elements::iterator HUDItr;
-
-	HUD_Elements m_HUD;
-
-	HUD_Factory m_HUDFactory;
 };
 
 #endif

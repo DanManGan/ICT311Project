@@ -32,6 +32,8 @@
 #include "Input/InputGLFW.h"
 #include "AudioEngine.h"
 #include "AssetManagement/GameAssetManager.h"
+#include "HUD/HUD_Factory.h"
+#include "HUD/HUD.h"
 
 //typedef Singleton<textureManager> textureMan;
 //#define texManager textureMan::GetInstance()
@@ -50,6 +52,12 @@ typedef Singleton<AudioEngine> audioEngine;
 
 typedef Singleton<GameAssetManager> gameAssetManager;
 #define assetManager gameAssetManager::GetInstance()
+
+typedef Singleton<HUD_Factory> HUDF;
+#define HUDFactory HUDF::GetInstance()
+
+typedef Singleton<HUD> HUDInstance;
+#define gameHUD HUDInstance::GetInstance()
 
 
 #endif

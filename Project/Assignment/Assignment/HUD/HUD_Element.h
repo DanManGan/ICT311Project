@@ -22,6 +22,8 @@ public:
 	void SetWidth(float w);
 	void SetHeight(float h);
 
+	virtual void Render() {};
+
 protected:
 	float xPos;
 	float yPos;

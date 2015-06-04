@@ -1,6 +1,7 @@
 #include"HUD_Factory.h"
 #include"HUD_Picture.h"
 #include"HUD_Shape.h"
+#include"HUD_Text.h"
 
 #include <algorithm>
 #include <iostream>
@@ -9,12 +10,14 @@ HUD_Factory::HUD_Factory()
 {
 	m_factory.Register(new FactoryMaker<HUD_Shape, HUD_Element>);
 	m_factory.Register(new FactoryMaker<HUD_Picture, HUD_Element>);
+	m_factory.Register(new FactoryMaker<HUD_Text, HUD_Element>);
 }
 
 HUD_Factory::~HUD_Factory()
 {
 	m_factory.Unregister(HUD_Shape::GetClassType());
 	m_factory.Unregister(HUD_Shape::GetClassType());
+	m_factory.Unregister(HUD_Text::GetClassType());
 }
 
 HUD_Element* HUD_Factory::Create(std::string object)
