@@ -1,0 +1,64 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 18.10.2014 15:33:17
+
+newmtl ConiferBark1
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.6039 0.5569 0.4745
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka BarkPine1.jpg
+	map_Kd BarkPine1.jpg
+	map_bump -bm 0.6200 Map__30_Normal_Bump.tga
+
+newmtl ConiferBranches
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.6039 0.5569 0.4745
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka BarkPine1.jpg
+	map_Kd BarkPine1.jpg
+	map_bump -bm 0.6000 Map__29_Normal_Bump.tga
+
+newmtl Leaves
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.3098 0.5922 0.4039
+	Kd 0.3098 0.5922 0.4039
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Fantasy_conifer_2.png
+	map_Kd Fantasy_conifer_2.png
+	map_d A_Fantasy_conifer_1.png
+	map_bump -bm 0.9000 Map__27_Normal_Bump.tga
+
+newmtl Leaves1
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.3922 0.5961 0.5216
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Fantasy_conifer_1.png
+	map_Kd Fantasy_conifer_1.png
+	map_d A_Fantasy_conifer_1.png
+	map_bump -bm 0.9000 Map__28_Normal_Bump.tga
