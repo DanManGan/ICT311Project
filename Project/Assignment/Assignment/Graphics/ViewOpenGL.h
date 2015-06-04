@@ -180,6 +180,31 @@ public:
 	void BeginRendering();
 
 	/** 
+	  * @brief Call pre-render functions for 2D rendering
+	  * @warning None
+	  * 
+	  * Clears colour and depth buffer, initialises orthogonal view, sets to matrix mode to model view
+	  * and loads the identity matrix before rendering
+	  * 
+	  * 
+	  * @pre 
+	  * @post 
+	  */ 
+	void BeginRendering2D();
+
+	/** 
+	  * @brief Call post-render functions
+	  * @warning None
+	  * 
+	  * Pops matrices which were pushed in BeginRendering2D
+	  * 
+	  * 
+	  * @pre 
+	  * @post 
+	  */ 
+	void EndRendering2D();
+
+	/** 
 	  * @brief Call post-render functions
 	  * @warning None
 	  * 

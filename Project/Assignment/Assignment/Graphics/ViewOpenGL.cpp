@@ -133,8 +133,53 @@ void ViewOpenGL::BeginRendering()
 {
 	// set all states and values to start rendering
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear The Screen And The Depth Buffer
+	//Re-enable states required for 3D
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(1);
+	glEnable(GL_CULL_FACE);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::BeginRendering2D()
+{
+	glColor3f(1.0f, 1.0f, 1.0f);
+	// set all states and values to start rendering
+	//glDisable(GL_DEPTH_TEST);//Disable states used for 3D
+	//glDepthMask(0);
+	//glDisable(GL_CULL_FACE);
+	glMatrixMode(GL_PROJECTION);//Set to projection to configure the view
+	glPushMatrix();
+	glLoadIdentity();
+	gluOrtho2D(0, m_winWidth, 0, m_winHeight);//Create an orthogonal view
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
+	
+	//2D Render test
+	/*
+	glColor3f(1, 0, 0);
+	glBegin(GL_QUADS);
+	glVertex2f(50.0f, 50.0f);
+	glVertex2f(0.0f, 50.0f);
+	glVertex2f(0.0f, 0.0f);
+	glVertex2f(50.0f, 0.0f);
+	glEnd();
+	*///Red Square at Bottom Left
+
+}
+
+//--------------------------------------------------------------------------------------
+
+void ViewOpenGL::EndRendering2D()
+{
+	// Pop Matrices
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
 }
 
 //--------------------------------------------------------------------------------------
