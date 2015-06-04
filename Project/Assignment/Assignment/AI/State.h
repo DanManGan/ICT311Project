@@ -1,3 +1,28 @@
+
+/** 
+  * @class State
+  * @brief class for fsm states
+  * 
+  * Detailed
+  * 
+  * 
+  * 
+  * 
+  * @author Dan Manganaro
+  * @version 01
+  * @date 03.06.15
+  * @status 
+  * 
+  * @author 
+  * @version 
+  * @date 
+  * @status 
+  * 
+  * @todo 
+  * 
+  * @bugs 
+  */ 
+
 #ifndef STATE_H
 #define STATE_H
 
