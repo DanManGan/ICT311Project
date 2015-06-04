@@ -10,12 +10,19 @@ HUD_Picture::HUD_Picture()
 	texture = 0;
 }
 
+HUD_Picture::HUD_Picture(float x, float y, float w, float h, unsigned int tex)
+{
+	HUD_Element(x, y, w, h);
+	texture = tex;
+}
+
 //--------------------------------------------------------------------------------------
 
 unsigned int HUD_Picture::GetTexture()
 {
 	return texture;
 }
+
 
 //--------------------------------------------------------------------------------------
 

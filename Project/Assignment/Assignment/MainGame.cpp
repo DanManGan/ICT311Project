@@ -5,6 +5,8 @@
 #include "Singletons.h"
 #include "Graphics/ViewOpenGL.h"
 #include "GameObjects/Player.h"
+#include "HUD\HUD_Picture.h"
+#include "HUD\HUD_Shape.h"
 
 
 #include <iostream>
@@ -62,6 +64,21 @@ void MainGame::Init()
 	//m_exitID = assetManager->Load("Textures/exitScreen.bmp");
 	m_menu = graphics->SetupTextureClamp(assetManager->GetAsset("Textures/menu.bmp"));
 	m_exitID = graphics->SetupTextureClamp(assetManager->GetAsset("Textures/exitScreen.bmp"));
+
+	m_HUD["shape"] = m_HUDFactory.Create("hud_shape");
+	m_HUD["shape"]->SetX(0.0);
+	m_HUD["shape"]->SetY(0.0);
+	m_HUD["shape"]->SetWidth(80.0);
+	m_HUD["shape"]->SetHeight(80.0);
+	((HUD_Shape*)m_HUD["shape"])->SetColor(1.0, 0.0, 0.0);
+	
+	m_HUD["pic"] = m_HUDFactory.Create("hud_picture");
+	m_HUD["pic"]->SetX(80.0);
+	m_HUD["pic"]->SetY(80.0);
+	m_HUD["pic"]->SetWidth(50.0);
+	m_HUD["pic"]->SetHeight(50.0);
+	((HUD_Picture*)m_HUD["pic"])->SetTexture(graphics->SetupTextureClamp(assetManager->GetAsset("Textures/exitScreen.bmp")));
+
 	//if(!m_menu)
 	//	std::cout << "Error Loading menu texture" << std::endl;
 	
@@ -380,6 +397,9 @@ void MainGame::Display(float deltaT)
 
 	graphics->BeginRendering2D();
 	//Render the HUD
+	((HUD_Shape*)m_HUD["shape"])->Render();
+	((HUD_Picture*)m_HUD["pic"])->Render();
+
 	graphics->EndRendering2D();
 
 	graphics->EndRendering();

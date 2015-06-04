@@ -1,6 +1,11 @@
 #ifndef HUD_ELEMENT_H
 #define HUD_ELEMENT_H
 
+#define CLASS_TYPE(classname) \
+    public: \
+        virtual const char * GetObjectType() { return GetClassType(); } \
+        static const char * GetClassType() { return #classname; }
+
 class HUD_Element
 {
 public:

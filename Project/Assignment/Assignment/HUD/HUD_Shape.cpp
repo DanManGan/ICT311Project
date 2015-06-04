@@ -1,7 +1,7 @@
 #include"HUD_Shape.h"
-
 #include <gl\glut.h>
 #include <GL/glfw.h>
+
 
 HUD_Shape::HUD_Shape()
 {
@@ -10,8 +10,9 @@ HUD_Shape::HUD_Shape()
 	color.b = 0.0f;
 }
 
-HUD_Shape::HUD_Shape(float r, float g, float b)
+HUD_Shape::HUD_Shape(float x, float y, float w, float h,float r, float g, float b)
 {
+	HUD_Element(x, y, w, h);
 	color.r = r;
 	color.g = g;
 	color.b = b;

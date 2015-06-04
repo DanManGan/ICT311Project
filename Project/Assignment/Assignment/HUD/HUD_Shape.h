@@ -3,25 +3,27 @@
 
 #include"HUD_Element.h"
 
-struct RGB
-{
-	float r;
-	float g;
-	float b;
-};
-
 class HUD_Shape : public HUD_Element
 {
 public:
 	HUD_Shape();
-	HUD_Shape(float r, float g, float b);
+	HUD_Shape(float x, float y, float w, float h, float r, float g, float b);
 
 	void SetColor(float r, float g, float b);
+
+	CLASS_TYPE(HUD_SHAPE);
 
 	void Render();
 
 private:
-	RGB color; 
+	struct RGB
+	{
+		float r;
+		float g;
+		float b;
+	};
+
+	RGB color;
 };
 
 #endif
